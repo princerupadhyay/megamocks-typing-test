@@ -1,0 +1,48 @@
+<!-- Navbar -->
+<header>
+  <div>
+    <a href="/" class="logo">Mega<span>Mocks</span></a>
+    <span class="logo-sub">// developer typing test</span>
+  </div>
+
+  <!-- Desktop nav -->
+  <ul class="nav-links">
+    <li><a href="/" class="nav-cta">Practice Now</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+
+  <div class="header-right">
+    <div class="header-stats">
+      <div class="hstat">
+        <span class="hstat-val" id="bestWpm">—</span>
+        <span class="hstat-label">Best</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-val" id="testsCount">0</span>
+        <span class="hstat-label">Tests</span>
+      </div>
+      <div class="stat-sep"></div>
+      <div class="hstat">
+        <span class="hstat-val" id="avgAcc">—</span>
+        <span class="hstat-label">Acc</span>
+      </div>
+    </div>
+
+    <button class="theme-toggle" onclick="toggleTheme()">
+      <span class="theme-icon" id="themeIcon">🌙</span>
+      <span class="theme-label" id="themeLabel">Dark</span>
+    </button>
+
+    <!-- Mobile hamburger -->
+    <button class="menu-toggle" onclick="toggleMenu()" id="menuToggle">
+      ☰
+    </button>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<nav class="mobile-nav" id="mobileNav">
+  <a href="/" class="nav-cta">Practice Now</a>
+  <a href="/blog/">Blog</a>
+</nav>

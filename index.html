@@ -1,0 +1,1721 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MegaMocks — Developer Typing Test</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ── Light mode (default) ── */
+      :root {
+        --bg: #f4f4f8;
+        --bg2: #ffffff;
+        --bg3: #eeeef4;
+        --border: #d8d8e4;
+        --border2: #c4c4d4;
+        --text: #1e1e2e;
+        --text2: #7878a0;
+        --text3: #a0a0bc;
+        --accent: #1a6ed8;
+        --accent2: #7c3aed;
+        --green: #15803d;
+        --red: #dc2626;
+        --yellow: #b45309;
+        --teal: #0e7490;
+        --peach: #c2410c;
+        --correct: #15803d;
+        --wrong: #dc2626;
+        --cursor-color: #1a6ed8;
+        --header-bg: rgba(244, 244, 248, 0.92);
+        --overlay-bg: rgba(244, 244, 248, 0.8);
+        --modal-overlay: rgba(200, 200, 220, 0.85);
+        --shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+      }
+
+      /* ── Dark mode ── */
+      body.dark {
+        --bg: #0c0e14;
+        --bg2: #111318;
+        --bg3: #181b22;
+        --border: #22262f;
+        --border2: #2d3240;
+        --text: #cdd6f4;
+        --text2: #6c7086;
+        --text3: #45475a;
+        --accent: #89b4fa;
+        --accent2: #cba6f7;
+        --green: #a6e3a1;
+        --red: #f38ba8;
+        --yellow: #f9e2af;
+        --teal: #94e2d5;
+        --peach: #fab387;
+        --correct: #a6e3a1;
+        --wrong: #f38ba8;
+        --cursor-color: #89b4fa;
+        --header-bg: rgba(12, 14, 20, 0.88);
+        --overlay-bg: rgba(12, 14, 20, 0.7);
+        --modal-overlay: rgba(12, 14, 20, 0.92);
+        --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Poppins", sans-serif;
+        overflow-x: hidden;
+        transition:
+          background 0.25s,
+          color 0.25s;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 80% 50% at 20% 20%,
+            rgba(26, 110, 216, 0.04) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 80% 80%,
+            rgba(124, 58, 237, 0.04) 0%,
+            transparent 60%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+      body.dark::before {
+        background:
+          radial-gradient(
+            ellipse 80% 50% at 20% 20%,
+            rgba(137, 180, 250, 0.04) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 40% at 80% 80%,
+            rgba(203, 166, 247, 0.04) 0%,
+            transparent 60%
+          );
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(26, 110, 216, 0.018) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(26, 110, 216, 0.018) 1px, transparent 1px);
+        background-size: 32px 32px;
+        pointer-events: none;
+        z-index: 0;
+      }
+      body.dark::after {
+        background-image:
+          linear-gradient(rgba(137, 180, 250, 0.015) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(137, 180, 250, 0.015) 1px,
+            transparent 1px
+          );
+        background-size: 32px 32px;
+      }
+
+      .app {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      header {
+        padding: 14px 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--border);
+        background: var(--header-bg);
+        backdrop-filter: blur(16px);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        gap: 12px;
+      }
+
+      .logo {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-size: 1.2rem;
+        letter-spacing: -0.03em;
+        color: var(--text);
+        white-space: nowrap;
+        text-decoration: none;
+      }
+      .logo span {
+        color: var(--accent);
+      }
+      .logo-sub {
+        font-size: 0.55rem;
+        color: var(--text2);
+        font-weight: 400;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        display: block;
+        margin-top: -2px;
+      }
+
+      /* nav links — matches blog post */
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 24px;
+        align-items: center;
+      }
+      .nav-links a {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--text2);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+      .nav-links a:hover {
+        color: var(--text);
+      }
+      .nav-cta {
+        background: var(--accent) !important;
+        color: #fff !important;
+        padding: 7px 14px;
+        border-radius: 7px;
+        font-weight: 700 !important;
+      }
+      .nav-cta:hover {
+        opacity: 0.85;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-shrink: 0;
+      }
+
+      .header-stats {
+        display: flex;
+        gap: 14px;
+        align-items: center;
+      }
+      .hstat {
+        text-align: center;
+      }
+      .hstat-val {
+        font-size: 0.95rem;
+        font-weight: 700;
+        color: var(--accent);
+        display: block;
+        line-height: 1;
+      }
+      .hstat-label {
+        font-size: 0.5rem;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-top: 2px;
+        display: block;
+      }
+      .stat-sep {
+        width: 1px;
+        height: 24px;
+        background: var(--border);
+        flex-shrink: 0;
+      }
+
+      /* Theme toggle */
+      .theme-toggle {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 6px 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--text2);
+        transition: all 0.2s;
+        white-space: nowrap;
+        flex-shrink: 0;
+        font-family: "Poppins", sans-serif;
+      }
+      .theme-toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .theme-icon {
+        font-size: 0.9rem;
+      }
+      .theme-label {
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+      }
+
+      /* ── Controls bar ── */
+      .controls {
+        padding: 14px 16px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+      }
+      .controls-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .pill-group {
+        display: flex;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 3px;
+        gap: 2px;
+        flex-wrap: wrap;
+      }
+
+      .pill {
+        padding: 6px 12px;
+        border-radius: 7px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: var(--text2);
+        transition: all 0.15s;
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+      }
+      .pill:hover {
+        color: var(--text);
+        background: var(--border);
+      }
+      .pill.active {
+        background: var(--accent);
+        color: #fff;
+      }
+      .pill.active-green {
+        background: var(--green);
+        color: #fff;
+      }
+      .pill.active-yellow {
+        background: var(--yellow);
+        color: #fff;
+      }
+      .pill.active-red {
+        background: var(--red);
+        color: #fff;
+      }
+
+      .divider-v {
+        width: 1px;
+        height: 24px;
+        background: var(--border2);
+        flex-shrink: 0;
+      }
+
+      /* ── Main typing area ── */
+      .main {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 18px 16px 28px;
+        max-width: 960px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      /* Live stats row */
+      .live-stats {
+        display: flex;
+        gap: 0;
+        margin-bottom: 16px;
+        width: 100%;
+        justify-content: center;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .stat-box {
+        text-align: center;
+        flex: 1;
+        padding: 12px 8px;
+        border-right: 1px solid var(--border);
+      }
+      .stat-box:last-child {
+        border-right: none;
+      }
+
+      .stat-num {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1;
+        font-variant-numeric: tabular-nums;
+        transition: color 0.2s;
+      }
+      .stat-num.wpm {
+        color: var(--accent);
+      }
+      .stat-num.acc {
+        color: var(--green);
+      }
+      .stat-num.timer {
+        color: var(--yellow);
+      }
+      .stat-num.errors {
+        color: var(--red);
+      }
+      .stat-label {
+        font-size: 0.56rem;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-top: 4px;
+        display: block;
+        font-weight: 500;
+      }
+
+      /* Code display — JetBrains Mono for code only */
+      .code-container {
+        width: 100%;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 14px;
+        box-shadow: var(--shadow);
+      }
+      .code-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-bottom: 1px solid var(--border);
+        background: var(--bg3);
+      }
+      .dot-r {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #f38ba8;
+        flex-shrink: 0;
+      }
+      .dot-y {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #f9e2af;
+        flex-shrink: 0;
+      }
+      .dot-g {
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        background: #a6e3a1;
+        flex-shrink: 0;
+      }
+
+      .file-name {
+        font-size: 0.68rem;
+        color: var(--text2);
+        margin-left: 6px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: "JetBrains Mono", monospace;
+      }
+      .lang-badge {
+        margin-left: auto;
+        font-size: 0.6rem;
+        padding: 2px 8px;
+        border-radius: 20px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        flex-shrink: 0;
+        font-family: "Poppins", sans-serif;
+      }
+      .code-body {
+        padding: 18px 16px;
+        position: relative;
+        min-height: 140px;
+        cursor: text;
+      }
+      #codeDisplay {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.92rem;
+        line-height: 1.85;
+        white-space: pre-wrap;
+        word-break: break-all;
+        letter-spacing: 0.02em;
+        user-select: none;
+        position: relative;
+      }
+
+      /* Character states */
+      .char {
+        position: relative;
+      }
+      .char.correct {
+        color: var(--correct);
+      }
+      .char.wrong {
+        color: var(--wrong);
+        background: rgba(220, 38, 38, 0.1);
+        border-radius: 2px;
+      }
+      .char.pending {
+        color: var(--text3);
+      }
+      .char.current {
+        color: var(--text);
+        position: relative;
+      }
+      .char.current::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5%;
+        width: 2px;
+        height: 90%;
+        background: var(--cursor-color);
+        border-radius: 2px;
+        animation: blink 1s step-end infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+
+      /* Hidden input */
+      .type-input-wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+        z-index: -1;
+      }
+      #hiddenInput {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: transparent;
+        caret-color: transparent;
+        padding: 0;
+      }
+      .type-input-label {
+        display: none;
+      }
+
+      /* Start overlay */
+      .start-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--overlay-bg);
+        backdrop-filter: blur(4px);
+        cursor: pointer;
+        border-radius: 0 0 14px 14px;
+        z-index: 10;
+        transition: opacity 0.2s;
+      }
+      .start-overlay.hidden {
+        display: none;
+      }
+      .start-prompt {
+        text-align: center;
+      }
+      .start-icon {
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+        display: block;
+        animation: pulse 2s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.7;
+        }
+      }
+      .start-text {
+        font-size: 0.78rem;
+        color: var(--text2);
+        font-family: "Poppins", sans-serif;
+      }
+      .start-text strong {
+        color: var(--accent);
+      }
+
+      /* Progress bar */
+      .progress-bar {
+        width: 100%;
+        height: 3px;
+        background: var(--border);
+        border-radius: 2px;
+        margin-bottom: 14px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, var(--accent), var(--accent2));
+        border-radius: 2px;
+        transition: width 0.1s;
+        width: 0%;
+      }
+
+      /* Action buttons */
+      .actions {
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        width: 100%;
+      }
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 20px;
+        border-radius: 9px;
+        font-size: 0.76rem;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        cursor: pointer;
+        border: 1px solid var(--border);
+        background: var(--bg3);
+        color: var(--text2);
+        transition: all 0.15s;
+      }
+      .btn:hover {
+        color: var(--text);
+        border-color: var(--border2);
+        background: var(--border);
+      }
+      .btn:active {
+        transform: scale(0.97);
+      }
+      .btn-primary {
+        background: var(--accent);
+        color: #fff;
+        border-color: var(--accent);
+      }
+      .btn-primary:hover {
+        opacity: 0.85;
+        color: #fff;
+      }
+
+      /* Keyboard hint */
+      .kb-hint {
+        text-align: center;
+        font-size: 0.62rem;
+        color: var(--text3);
+        margin-top: 10px;
+        letter-spacing: 0.04em;
+      }
+      .kbd {
+        display: inline-block;
+        background: var(--bg3);
+        border: 1px solid var(--border2);
+        border-radius: 4px;
+        padding: 1px 5px;
+        font-size: 0.62rem;
+        color: var(--text2);
+        font-family: "JetBrains Mono", monospace;
+      }
+
+      /* ── Results Modal ── */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: var(--modal-overlay);
+        backdrop-filter: blur(12px);
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+        padding: 16px;
+      }
+      .modal-overlay.show {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .modal {
+        background: var(--bg2);
+        border: 1px solid var(--border2);
+        border-radius: 20px;
+        padding: 28px 24px;
+        max-width: 480px;
+        width: 100%;
+        transform: translateY(20px);
+        transition: transform 0.3s;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .modal-overlay.show .modal {
+        transform: translateY(0);
+      }
+      .modal::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--accent),
+          var(--accent2),
+          var(--green)
+        );
+      }
+      .modal-title {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 800;
+        margin-bottom: 4px;
+        letter-spacing: -0.02em;
+      }
+      .modal-subtitle {
+        font-size: 0.7rem;
+        color: var(--text2);
+        margin-bottom: 20px;
+      }
+      .result-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin-bottom: 20px;
+      }
+      .result-card {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px;
+        text-align: center;
+      }
+      .result-val {
+        font-size: 1.9rem;
+        font-weight: 700;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .result-label {
+        font-size: 0.6rem;
+        color: var(--text2);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .rank-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 18px;
+        border-radius: 40px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        margin-bottom: 18px;
+        width: 100%;
+        justify-content: center;
+      }
+      .modal-actions {
+        display: flex;
+        gap: 10px;
+      }
+      .modal-actions .btn {
+        flex: 1;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .animate-in {
+        animation: fadeInUp 0.4s ease forwards;
+      }
+
+      /* ── Footer — matches blog post ── */
+      .site-footer {
+        border-top: 1px solid var(--border);
+        padding: 24px;
+        text-align: center;
+        font-size: 0.7rem;
+        color: var(--text3);
+        background: var(--bg2);
+        position: relative;
+        z-index: 1;
+      }
+      .site-footer a {
+        color: var(--text3);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .site-footer a:hover {
+        color: var(--accent);
+      }
+      .footer-logo {
+        font-family: "Poppins", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        color: var(--text);
+        margin-bottom: 6px;
+        letter-spacing: -0.02em;
+      }
+      .footer-logo span {
+        color: var(--accent);
+      }
+
+      /* ── Mobile Responsive ── */
+      @media (max-width: 640px) {
+        header {
+          padding: 10px 14px;
+          gap: 8px;
+        }
+        .logo {
+          font-size: 1.05rem;
+        }
+        .logo-sub {
+          display: none;
+        }
+        /* hide nav links on mobile */
+        .nav-links {
+          display: none;
+        }
+        .hstat-val {
+          font-size: 0.85rem;
+        }
+        .header-stats {
+          gap: 10px;
+        }
+        .theme-label {
+          display: none;
+        }
+
+        .controls {
+          padding: 10px 10px 0;
+          gap: 6px;
+        }
+        .pill {
+          padding: 5px 9px;
+          font-size: 0.65rem;
+        }
+        .pill-group {
+          padding: 2px;
+        }
+
+        .main {
+          padding: 12px 12px 20px;
+        }
+
+        .stat-num {
+          font-size: 1.45rem;
+        }
+        .stat-box {
+          padding: 10px 4px;
+        }
+        .stat-label {
+          font-size: 0.5rem;
+        }
+
+        #codeDisplay {
+          font-size: 0.82rem;
+          line-height: 1.75;
+        }
+        .code-body {
+          padding: 14px 12px;
+        }
+
+        .actions {
+          gap: 8px;
+        }
+        .actions .btn {
+          padding: 10px 14px;
+          font-size: 0.72rem;
+          flex: 1;
+        }
+
+        .kb-hint {
+          display: none;
+        }
+
+        .modal {
+          padding: 22px 16px;
+          border-radius: 16px;
+        }
+        .modal-title {
+          font-size: 1.1rem;
+        }
+        .result-val {
+          font-size: 1.6rem;
+        }
+      }
+
+      @media (max-width: 400px) {
+        .pill {
+          padding: 5px 8px;
+          font-size: 0.62rem;
+        }
+        .stat-num {
+          font-size: 1.2rem;
+        }
+        .stat-box {
+          padding: 8px 3px;
+        }
+      }
+
+      /* Hamburger menu for mobile (hidden on desktop) */
+      .menu-toggle {
+        display: none;
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 6px 10px;
+        cursor: pointer;
+        color: var(--text2);
+        font-size: 1rem;
+        flex-shrink: 0;
+        font-family: "Poppins", sans-serif;
+        transition: all 0.2s;
+      }
+      .menu-toggle:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+
+      @media (max-width: 640px) {
+        .menu-toggle {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      /* Mobile nav drawer */
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 57px;
+        z-index: 99;
+      }
+      .mobile-nav.open {
+        display: flex;
+      }
+      .mobile-nav a {
+        padding: 13px 20px;
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text2);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        transition:
+          color 0.15s,
+          background 0.15s;
+      }
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav a:hover {
+        color: var(--text);
+        background: var(--bg3);
+      }
+      .mobile-nav .nav-cta {
+        color: var(--accent) !important;
+        background: rgba(26, 110, 216, 0.07) !important;
+      }
+      body.dark .mobile-nav .nav-cta {
+        background: rgba(137, 180, 250, 0.07) !important;
+        color: var(--accent) !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <div id="navbar"></div>
+
+      <!-- Controls -->
+      <div class="controls">
+        <div class="controls-row">
+          <div class="pill-group" id="langGroup">
+            <button
+              class="pill active"
+              data-lang="python"
+              onclick="selectLang(this)"
+            >
+              Python
+            </button>
+            <button
+              class="pill"
+              data-lang="javascript"
+              onclick="selectLang(this)"
+            >
+              JS
+            </button>
+            <button class="pill" data-lang="html" onclick="selectLang(this)">
+              HTML
+            </button>
+            <button class="pill" data-lang="sql" onclick="selectLang(this)">
+              SQL
+            </button>
+            <button class="pill" data-lang="java" onclick="selectLang(this)">
+              Java
+            </button>
+            <button class="pill" data-lang="cpp" onclick="selectLang(this)">
+              C++
+            </button>
+          </div>
+        </div>
+        <div class="controls-row">
+          <div class="pill-group" id="diffGroup">
+            <button
+              class="pill active-green active"
+              data-diff="beginner"
+              onclick="selectDiff(this)"
+            >
+              Easy
+            </button>
+            <button
+              class="pill"
+              data-diff="intermediate"
+              onclick="selectDiff(this)"
+            >
+              Medium
+            </button>
+            <button
+              class="pill"
+              data-diff="advanced"
+              onclick="selectDiff(this)"
+            >
+              Hard
+            </button>
+          </div>
+          <div class="divider-v"></div>
+          <div class="pill-group" id="timerGroup">
+            <button class="pill" data-time="30" onclick="selectTimer(this)">
+              30s
+            </button>
+            <button
+              class="pill active"
+              data-time="60"
+              onclick="selectTimer(this)"
+            >
+              60s
+            </button>
+            <button class="pill" data-time="120" onclick="selectTimer(this)">
+              120s
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main area -->
+      <div class="main">
+        <!-- Live stats -->
+        <div class="live-stats animate-in">
+          <div class="stat-box">
+            <div class="stat-num wpm" id="wpmDisplay">0</div>
+            <span class="stat-label">WPM</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-box">
+            <div class="stat-num acc" id="accDisplay">100%</div>
+            <span class="stat-label">Accuracy</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-box">
+            <div class="stat-num timer" id="timerDisplay">60</div>
+            <span class="stat-label">Seconds</span>
+          </div>
+          <div class="stat-sep"></div>
+          <div class="stat-box">
+            <div class="stat-num errors" id="errDisplay">0</div>
+            <span class="stat-label">Errors</span>
+          </div>
+        </div>
+
+        <!-- Progress -->
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <!-- Code block -->
+        <div class="code-container animate-in">
+          <div class="code-header">
+            <div class="dot-r"></div>
+            <div class="dot-y"></div>
+            <div class="dot-g"></div>
+            <span class="file-name" id="fileName">main.py</span>
+            <span
+              class="lang-badge"
+              id="langBadge"
+              style="background: rgba(26, 110, 216, 0.12); color: var(--accent)"
+              >Python</span
+            >
+          </div>
+          <div class="code-body">
+            <div id="codeDisplay"></div>
+            <div class="start-overlay" id="startOverlay" onclick="startTest()">
+              <div class="start-prompt">
+                <span class="start-icon">⌨️</span>
+                <div class="start-text">
+                  <strong>Tap here</strong> or press any key to start
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="type-input-wrap" id="typeInputWrap">
+          <input
+            type="text"
+            id="hiddenInput"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            inputmode="text"
+            onclick="startTest()"
+          />
+        </div>
+
+        <!-- Actions -->
+        <div class="actions">
+          <button class="btn" onclick="newSnippet()">↺ New</button>
+          <button class="btn btn-primary" onclick="restartTest()">
+            ⟳ Restart
+          </button>
+        </div>
+
+        <div class="kb-hint">
+          <kbd class="kbd">Tab</kbd> restart &nbsp;·&nbsp;
+          <kbd class="kbd">Esc</kbd> reset &nbsp;·&nbsp;
+          <kbd class="kbd">Ctrl+R</kbd> new snippet
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer"></div>
+    </div>
+
+    <!-- Results Modal -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-title">Test Complete! 🎉</div>
+        <div class="modal-subtitle" id="modalSubtitle">Here's how you did</div>
+        <div class="rank-badge" id="rankBadge"></div>
+        <div class="result-grid">
+          <div class="result-card">
+            <div class="result-val" style="color: var(--accent)" id="resWpm">
+              0
+            </div>
+            <div class="result-label">Words/Min</div>
+          </div>
+          <div class="result-card">
+            <div class="result-val" style="color: var(--green)" id="resAcc">
+              0%
+            </div>
+            <div class="result-label">Accuracy</div>
+          </div>
+          <div class="result-card">
+            <div class="result-val" style="color: var(--red)" id="resErrors">
+              0
+            </div>
+            <div class="result-label">Errors</div>
+          </div>
+          <div class="result-card">
+            <div class="result-val" style="color: var(--yellow)" id="resChars">
+              0
+            </div>
+            <div class="result-label">Chars Typed</div>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button
+            class="btn"
+            onclick="
+              closeModal();
+              newSnippet();
+            "
+          >
+            New Snippet
+          </button>
+          <button
+            class="btn btn-primary"
+            onclick="
+              closeModal();
+              restartTest();
+            "
+          >
+            Try Again
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ── Snippets Database ──
+      const snippets = {
+        python: {
+          beginner: [
+            `def greet(name):\n    return "Hello, " + name\n\nresult = greet("World")\nprint(result)`,
+            `numbers = [1, 2, 3, 4, 5]\ntotal = sum(numbers)\naverage = total / len(numbers)\nprint(average)`,
+            `for i in range(10):\n    if i % 2 == 0:\n        print(i, "is even")\n    else:\n        print(i, "is odd")`,
+            `name = input("Enter name: ")\nage = int(input("Enter age: "))\nif age >= 18:\n    print(name + " is adult")\nelse:\n    print(name + " is minor")`,
+            `fruits = ["apple", "banana", "cherry"]\nfor fruit in fruits:\n    print(fruit.upper())\nprint("Total:", len(fruits))`,
+            `def square(n):\n    return n * n\n\ndef cube(n):\n    return n * n * n\n\nfor i in range(1, 6):\n    print(i, square(i), cube(i))`,
+            `my_dict = {"name": "Alice", "age": 25}\nfor key, value in my_dict.items():\n    print(key + ":", value)\nmy_dict["city"] = "London"\nprint(my_dict)`,
+            `def is_palindrome(s):\n    s = s.lower().replace(" ", "")\n    return s == s[::-1]\n\nwords = ["racecar", "hello", "level"]\nfor w in words:\n    print(w, is_palindrome(w))`,
+            `try:\n    x = int(input("Enter a number: "))\n    result = 100 / x\n    print("Result:", result)\nexcept ZeroDivisionError:\n    print("Cannot divide by zero")\nexcept ValueError:\n    print("Invalid input")`,
+            `import math\n\ndef circle_area(r):\n    return math.pi * r ** 2\n\nfor r in [1, 2, 5, 10]:\n    area = circle_area(r)\n    print(f"r={r}: area={area:.2f}")`,
+          ],
+          intermediate: [
+            `def fibonacci(n):\n    if n <= 1:\n        return n\n    return fibonacci(n-1) + fibonacci(n-2)\n\nfor i in range(10):\n    print(fibonacci(i), end=" ")`,
+            `class Stack:\n    def __init__(self):\n        self.items = []\n\n    def push(self, item):\n        self.items.append(item)\n\n    def pop(self):\n        return self.items.pop()\n\n    def is_empty(self):\n        return len(self.items) == 0`,
+            `def merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)`,
+            `from collections import defaultdict\n\ndef word_count(text):\n    counts = defaultdict(int)\n    for word in text.lower().split():\n        counts[word] += 1\n    return dict(sorted(counts.items()))`,
+            `def binary_search(arr, target):\n    left, right = 0, len(arr) - 1\n    while left <= right:\n        mid = (left + right) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            left = mid + 1\n        else:\n            right = mid - 1\n    return -1`,
+          ],
+          advanced: [
+            `import asyncio\n\nasync def fetch_data(url):\n    async with aiohttp.ClientSession() as session:\n        async with session.get(url) as response:\n            return await response.json()\n\nasync def main():\n    urls = ["https://api.example.com/data"]\n    tasks = [fetch_data(u) for u in urls]\n    results = await asyncio.gather(*tasks)\n    return results`,
+            `from functools import wraps\nimport time\n\ndef retry(max_attempts=3, delay=1.0):\n    def decorator(func):\n        @wraps(func)\n        def wrapper(*args, **kwargs):\n            for attempt in range(max_attempts):\n                try:\n                    return func(*args, **kwargs)\n                except Exception as e:\n                    if attempt == max_attempts - 1:\n                        raise\n                    time.sleep(delay)\n        return wrapper\n    return decorator`,
+            `class Singleton(type):\n    _instances = {}\n\n    def __call__(cls, *args, **kwargs):\n        if cls not in cls._instances:\n            cls._instances[cls] = super().__call__(*args, **kwargs)\n        return cls._instances[cls]\n\nclass Database(metaclass=Singleton):\n    def __init__(self):\n        self.connection = "connected"`,
+          ],
+        },
+        javascript: {
+          beginner: [
+            `function greet(name) {\n  return \`Hello, \${name}!\`;\n}\n\nconst result = greet("World");\nconsole.log(result);`,
+            `const numbers = [1, 2, 3, 4, 5];\nconst doubled = numbers.map(n => n * 2);\nconst evens = doubled.filter(n => n % 4 === 0);\nconsole.log(evens);`,
+            `for (let i = 0; i < 10; i++) {\n  if (i % 2 === 0) {\n    console.log(i + " is even");\n  } else {\n    console.log(i + " is odd");\n  }\n}`,
+            `const person = {\n  name: "Alice",\n  age: 25,\n  greet() {\n    return \`Hi, I'm \${this.name}\`;\n  }\n};\nconsole.log(person.greet());`,
+            `const fruits = ["apple", "banana", "cherry"];\nfruits.forEach((fruit, index) => {\n  console.log(\`\${index + 1}. \${fruit}\`);\n});\nconsole.log("Total:", fruits.length);`,
+          ],
+          intermediate: [
+            `const fetchUser = async (id) => {\n  try {\n    const response = await fetch(\`/api/users/\${id}\`);\n    const data = await response.json();\n    return data;\n  } catch (error) {\n    console.error("Error:", error);\n    return null;\n  }\n};`,
+            `class EventEmitter {\n  constructor() {\n    this.events = {};\n  }\n\n  on(event, callback) {\n    if (!this.events[event]) {\n      this.events[event] = [];\n    }\n    this.events[event].push(callback);\n  }\n\n  emit(event, data) {\n    if (this.events[event]) {\n      this.events[event].forEach(cb => cb(data));\n    }\n  }\n}`,
+            `function debounce(fn, delay) {\n  let timeout;\n  return function(...args) {\n    clearTimeout(timeout);\n    timeout = setTimeout(() => {\n      fn.apply(this, args);\n    }, delay);\n  };\n}`,
+            `function throttle(fn, limit) {\n  let lastCall = 0;\n  return function(...args) {\n    const now = Date.now();\n    if (now - lastCall >= limit) {\n      lastCall = now;\n      return fn.apply(this, args);\n    }\n  };\n}`,
+            `class LRUCache {\n  constructor(capacity) {\n    this.capacity = capacity;\n    this.cache = new Map();\n  }\n\n  get(key) {\n    if (!this.cache.has(key)) return -1;\n    const val = this.cache.get(key);\n    this.cache.delete(key);\n    this.cache.set(key, val);\n    return val;\n  }\n}`,
+          ],
+          advanced: [
+            `const pipe = (...fns) => (x) =>\n  fns.reduce((acc, fn) => fn(acc), x);\n\nconst transform = pipe(\n  x => x * 2,\n  x => x + 1,\n  x => x ** 2\n);\n\nconsole.log(transform(3));`,
+            `function* infiniteSequence(start = 0) {\n  let current = start;\n  while (true) {\n    yield current++;\n  }\n}\n\nconst gen = infiniteSequence(5);\nconst first10 = Array.from(\n  { length: 10 },\n  () => gen.next().value\n);`,
+          ],
+        },
+        html: {
+          beginner: [
+            `<!DOCTYPE html>\n<html lang="en">\n<head>\n  <title>My Page<\/title>\n<\/head>\n<body>\n  <h1>Hello World<\/h1>\n  <p>Welcome to my page.<\/p>\n<\/body>\n<\/html>`,
+            `.container {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  width: 100%;\n  padding: 20px;\n  background: #f0f0f0;\n}`,
+            `<nav class="navbar">\n  <a href="/">Home<\/a>\n  <a href="/about">About<\/a>\n  <a href="/contact">Contact<\/a>\n<\/nav>`,
+            `<div class="hero">\n  <h1>Welcome Back<\/h1>\n  <p>Start building something great.<\/p>\n  <button class="btn">Get Started<\/button>\n<\/div>\n\n<style>\n.hero {\n  text-align: center;\n  padding: 80px 20px;\n}\n.btn {\n  padding: 12px 28px;\n  background: #3b82f6;\n  color: white;\n  border: none;\n  border-radius: 8px;\n  cursor: pointer;\n}\n<\/style>`,
+          ],
+          intermediate: [
+            `.card {\n  background: white;\n  border-radius: 12px;\n  padding: 24px;\n  box-shadow: 0 4px 20px rgba(0,0,0,0.1);\n  transition: transform 0.2s ease;\n}\n\n.card:hover {\n  transform: translateY(-4px);\n}`,
+            `@keyframes fadeInUp {\n  from {\n    opacity: 0;\n    transform: translateY(20px);\n  }\n  to {\n    opacity: 1;\n    transform: translateY(0);\n  }\n}\n\n.animate {\n  animation: fadeInUp 0.5s ease forwards;\n}`,
+            `@media (max-width: 768px) {\n  .container {\n    flex-direction: column;\n    padding: 12px;\n  }\n\n  .sidebar {\n    width: 100%;\n    order: 2;\n  }\n\n  .main-content {\n    order: 1;\n    width: 100%;\n  }\n}`,
+          ],
+          advanced: [
+            `:root {\n  --primary: #3b82f6;\n  --bg: #0f172a;\n  --text: #e2e8f0;\n  --radius: 8px;\n}\n\n* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nbody {\n  font-family: system-ui, sans-serif;\n  background: var(--bg);\n  color: var(--text);\n}`,
+            `.glass {\n  background: rgba(255, 255, 255, 0.05);\n  backdrop-filter: blur(16px);\n  -webkit-backdrop-filter: blur(16px);\n  border: 1px solid rgba(255, 255, 255, 0.1);\n  border-radius: 16px;\n  padding: 28px;\n  box-shadow:\n    0 8px 32px rgba(0,0,0,0.3),\n    inset 0 1px 0 rgba(255,255,255,0.1);\n}`,
+          ],
+        },
+        sql: {
+          beginner: [
+            `SELECT first_name, last_name\nFROM employees\nWHERE department = 'Engineering'\nORDER BY last_name ASC;`,
+            `INSERT INTO users (name, email, created_at)\nVALUES ('Alice', 'alice@example.com', NOW());\n\nUPDATE users\nSET email = 'new@example.com'\nWHERE id = 1;`,
+            `SELECT COUNT(*) AS total_users\nFROM users\nWHERE active = 1\nGROUP BY country\nHAVING COUNT(*) > 100;`,
+            `CREATE TABLE customers (\n  id INT PRIMARY KEY AUTO_INCREMENT,\n  name VARCHAR(100) NOT NULL,\n  email VARCHAR(150) UNIQUE,\n  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP\n);`,
+          ],
+          intermediate: [
+            `SELECT u.name, COUNT(o.id) AS order_count,\n       SUM(o.total) AS revenue\nFROM users u\nLEFT JOIN orders o ON u.id = o.user_id\nWHERE o.created_at >= '2024-01-01'\nGROUP BY u.id, u.name\nORDER BY revenue DESC\nLIMIT 10;`,
+            `WITH monthly_sales AS (\n  SELECT DATE_FORMAT(created_at, '%Y-%m') AS month,\n         SUM(amount) AS total\n  FROM transactions\n  GROUP BY month\n)\nSELECT month, total,\n       LAG(total) OVER (ORDER BY month) AS prev_month\nFROM monthly_sales;`,
+          ],
+          advanced: [
+            `SELECT\n  DATE_TRUNC('month', created_at) AS month,\n  COUNT(*) AS new_users,\n  COUNT(*) - LAG(COUNT(*)) OVER (ORDER BY DATE_TRUNC('month', created_at))\n    AS growth\nFROM users\nGROUP BY month\nORDER BY month;`,
+          ],
+        },
+        java: {
+          beginner: [
+            `public class HelloWorld {\n    public static void main(String[] args) {\n        String name = "World";\n        System.out.println("Hello, " + name + "!");\n    }\n}`,
+            `int[] numbers = {1, 2, 3, 4, 5};\nint sum = 0;\nfor (int n : numbers) {\n    sum += n;\n}\nSystem.out.println("Sum: " + sum);`,
+            `public static boolean isPrime(int n) {\n    if (n < 2) return false;\n    for (int i = 2; i <= Math.sqrt(n); i++) {\n        if (n % i == 0) return false;\n    }\n    return true;\n}`,
+            `public class Animal {\n    private String name;\n    private String sound;\n\n    public Animal(String name, String sound) {\n        this.name = name;\n        this.sound = sound;\n    }\n\n    public void speak() {\n        System.out.println(name + " says " + sound);\n    }\n}`,
+          ],
+          intermediate: [
+            `public interface Shape {\n    double area();\n    double perimeter();\n}\n\npublic class Circle implements Shape {\n    private final double radius;\n    public Circle(double r) { this.radius = r; }\n\n    @Override\n    public double area() { return Math.PI * radius * radius; }\n\n    @Override\n    public double perimeter() { return 2 * Math.PI * radius; }\n}`,
+            `public class BinarySearch {\n    public static int search(int[] arr, int target) {\n        int left = 0, right = arr.length - 1;\n        while (left <= right) {\n            int mid = left + (right - left) / 2;\n            if (arr[mid] == target) return mid;\n            if (arr[mid] < target) left = mid + 1;\n            else right = mid - 1;\n        }\n        return -1;\n    }\n}`,
+          ],
+          advanced: [
+            `public sealed interface Result<T>\n    permits Result.Ok, Result.Err {\n\n    record Ok<T>(T value) implements Result<T> {}\n    record Err<T>(String error) implements Result<T> {}\n\n    static <T> Result<T> ok(T value) { return new Ok<>(value); }\n    static <T> Result<T> err(String msg) { return new Err<>(msg); }\n}`,
+          ],
+        },
+        cpp: {
+          beginner: [
+            `#include <iostream>\nusing namespace std;\n\nint main() {\n    string name = "World";\n    cout << "Hello, " << name << "!" << endl;\n    return 0;\n}`,
+            `#include <vector>\n#include <numeric>\n\nvector<int> nums = {1, 2, 3, 4, 5};\nint sum = accumulate(nums.begin(), nums.end(), 0);\ncout << "Sum: " << sum << endl;`,
+            `bool isPrime(int n) {\n    if (n < 2) return false;\n    for (int i = 2; i * i <= n; i++)\n        if (n % i == 0) return false;\n    return true;\n}\n\nfor (int i = 2; i <= 50; i++)\n    if (isPrime(i))\n        cout << i << " ";`,
+          ],
+          intermediate: [
+            `template <typename T>\nclass Stack {\nprivate:\n    vector<T> data;\npublic:\n    void push(T item) {\n        data.push_back(item);\n    }\n    T pop() {\n        T item = data.back();\n        data.pop_back();\n        return item;\n    }\n    bool empty() const {\n        return data.empty();\n    }\n};`,
+            `#include <thread>\n#include <mutex>\n\nclass ThreadSafeCounter {\n    int count = 0;\n    mutable mutex mtx;\npublic:\n    void increment() {\n        lock_guard<mutex> lock(mtx);\n        count++;\n    }\n    int get() const {\n        lock_guard<mutex> lock(mtx);\n        return count;\n    }\n};`,
+          ],
+          advanced: [
+            `template<typename T>\nclass UniquePtr {\n    T* ptr;\npublic:\n    explicit UniquePtr(T* p = nullptr) : ptr(p) {}\n    ~UniquePtr() { delete ptr; }\n    UniquePtr(const UniquePtr&) = delete;\n    UniquePtr& operator=(const UniquePtr&) = delete;\n    UniquePtr(UniquePtr&& other) noexcept : ptr(other.ptr) {\n        other.ptr = nullptr;\n    }\n    T& operator*() const { return *ptr; }\n    T* operator->() const { return ptr; }\n};`,
+          ],
+        },
+      };
+
+      // ── State ──
+      let currentLang = "python";
+      let currentDiff = "beginner";
+      let currentTime = 60;
+      let currentSnippet = "";
+      let typedChars = [];
+      let currentPos = 0;
+      let started = false;
+      let finished = false;
+      let timerInterval = null;
+      let timeLeft = 60;
+      let startTime = null;
+      let errors = 0;
+      let totalTyped = 0;
+      let sessionBest = null;
+      let sessionTests = 0;
+      let sessionAccTotal = 0;
+      let lastInputVal = "";
+
+      const fileNames = {
+        python: "main.py",
+        javascript: "index.js",
+        html: "index.html",
+        sql: "query.sql",
+        java: "Main.java",
+        cpp: "main.cpp",
+      };
+
+      const langColors = {
+        python: { bg: "rgba(180,83,9,0.1)", color: "var(--yellow)" },
+        javascript: { bg: "rgba(180,83,9,0.1)", color: "var(--yellow)" },
+        html: { bg: "rgba(194,65,12,0.1)", color: "var(--peach)" },
+        sql: { bg: "rgba(14,116,144,0.1)", color: "var(--teal)" },
+        java: { bg: "rgba(220,38,38,0.1)", color: "var(--red)" },
+        cpp: { bg: "rgba(26,110,216,0.1)", color: "var(--accent)" },
+      };
+
+      function init() {
+        loadSnippet();
+        document.addEventListener("keydown", onKeyDown);
+
+        const inp = document.getElementById("hiddenInput");
+        inp.value = "";
+
+        inp.addEventListener("keydown", function (e) {
+          if (!started && e.key !== "Tab" && e.key !== "Escape") startTest();
+          if (!started || finished) return;
+
+          if (e.key === "Backspace") {
+            e.preventDefault();
+            if (currentPos > 0) {
+              currentPos--;
+              typedChars[currentPos] = null;
+              renderCode();
+              updateWpm();
+            }
+            this.value = "";
+            lastInputVal = "";
+            return;
+          }
+
+          if (e.key === "Tab") {
+            e.preventDefault();
+            restartTest();
+            return;
+          }
+          if (e.key === "Escape") {
+            e.preventDefault();
+            resetTest();
+            return;
+          }
+
+          if (e.key === "Enter") {
+            e.preventDefault();
+            this.value = "";
+            lastInputVal = "";
+            processChar("\n");
+            return;
+          }
+        });
+
+        inp.addEventListener("input", function (e) {
+          if (!started || finished) return;
+          const newVal = this.value;
+          if (newVal.length > lastInputVal.length) {
+            const added = newVal.slice(lastInputVal.length);
+            for (const ch of added) {
+              if (ch !== "\n" && ch !== "\r") processChar(ch);
+            }
+          } else if (newVal.length < lastInputVal.length) {
+            if (currentPos > 0) {
+              currentPos--;
+              typedChars[currentPos] = null;
+              renderCode();
+              updateWpm();
+            }
+          }
+          lastInputVal = newVal;
+          if (newVal.length > 100) {
+            this.value = "";
+            lastInputVal = "";
+          }
+        });
+
+        document
+          .querySelector(".code-body")
+          .addEventListener("click", function () {
+            startTest();
+            setTimeout(() => inp.focus(), 30);
+          });
+      }
+
+      function loadSnippet() {
+        const pool = snippets[currentLang][currentDiff];
+        const idx = Math.floor(Math.random() * pool.length);
+        currentSnippet = pool[idx];
+        resetTest();
+      }
+
+      function resetTest() {
+        clearInterval(timerInterval);
+        started = false;
+        finished = false;
+        currentPos = 0;
+        errors = 0;
+        totalTyped = 0;
+        timeLeft = currentTime;
+        typedChars = Array(currentSnippet.length).fill(null);
+
+        document.getElementById("timerDisplay").textContent = timeLeft;
+        document.getElementById("wpmDisplay").textContent = "0";
+        document.getElementById("accDisplay").textContent = "100%";
+        document.getElementById("errDisplay").textContent = "0";
+        document.getElementById("progressFill").style.width = "0%";
+        document.getElementById("timerDisplay").style.color = "var(--yellow)";
+
+        document.getElementById("fileName").textContent =
+          fileNames[currentLang];
+        const lc = langColors[currentLang];
+        const badge = document.getElementById("langBadge");
+        badge.style.background = lc.bg;
+        badge.style.color = lc.color;
+        badge.textContent =
+          currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+
+        renderCode();
+        document.getElementById("startOverlay").classList.remove("hidden");
+        const inp = document.getElementById("hiddenInput");
+        inp.value = "";
+        inp.blur();
+        lastInputVal = "";
+      }
+
+      function renderCode() {
+        const display = document.getElementById("codeDisplay");
+        let html = "";
+        for (let i = 0; i < currentSnippet.length; i++) {
+          const ch = currentSnippet[i];
+          let cls = "pending";
+          if (i < currentPos) {
+            cls = typedChars[i] === ch ? "correct" : "wrong";
+          } else if (i === currentPos) {
+            cls = "current";
+          }
+          if (ch === "\n") {
+            html += `<span class="char ${cls}">\n</span>`;
+          } else {
+            html += `<span class="char ${cls}">${ch === "<" ? "&lt;" : ch === ">" ? "&gt;" : ch === "&" ? "&amp;" : ch}</span>`;
+          }
+        }
+        display.innerHTML = html;
+        const currentEl = display.querySelector(".current");
+        if (currentEl)
+          currentEl.scrollIntoView({ block: "nearest", behavior: "smooth" });
+      }
+
+      function startTest() {
+        if (started) return;
+        started = true;
+        startTime = Date.now();
+        document.getElementById("startOverlay").classList.add("hidden");
+
+        const inp = document.getElementById("hiddenInput");
+        const wrap = document.getElementById("typeInputWrap");
+        wrap.style.pointerEvents = "auto";
+        inp.value = "";
+        lastInputVal = "";
+        setTimeout(() => {
+          inp.focus();
+          wrap.style.pointerEvents = "none";
+        }, 30);
+
+        timerInterval = setInterval(() => {
+          timeLeft--;
+          document.getElementById("timerDisplay").textContent = timeLeft;
+          if (timeLeft <= 10)
+            document.getElementById("timerDisplay").style.color = "var(--red)";
+          else if (timeLeft <= 20)
+            document.getElementById("timerDisplay").style.color =
+              "var(--peach)";
+          updateWpm();
+          if (timeLeft <= 0) endTest();
+        }, 1000);
+      }
+
+      function updateWpm() {
+        if (!startTime) return;
+        const elapsed = (Date.now() - startTime) / 1000 / 60;
+        const correctChars = typedChars.filter(
+          (c, i) => c !== null && c === currentSnippet[i],
+        ).length;
+        const wpm = elapsed > 0 ? Math.round(correctChars / 5 / elapsed) : 0;
+        document.getElementById("wpmDisplay").textContent = wpm;
+        const acc =
+          totalTyped > 0
+            ? Math.round(((totalTyped - errors) / totalTyped) * 100)
+            : 100;
+        document.getElementById("accDisplay").textContent = acc + "%";
+        document.getElementById("errDisplay").textContent = errors;
+        const progress = (currentPos / currentSnippet.length) * 100;
+        document.getElementById("progressFill").style.width = progress + "%";
+      }
+
+      function endTest() {
+        clearInterval(timerInterval);
+        finished = true;
+        const elapsed = (Date.now() - startTime) / 1000 / 60;
+        const correctChars = typedChars.filter(
+          (c, i) => c !== null && c === currentSnippet[i],
+        ).length;
+        const wpm = elapsed > 0 ? Math.round(correctChars / 5 / elapsed) : 0;
+        const acc =
+          totalTyped > 0
+            ? Math.round(((totalTyped - errors) / totalTyped) * 100)
+            : 100;
+
+        sessionTests++;
+        sessionAccTotal += acc;
+        if (!sessionBest || wpm > sessionBest) sessionBest = wpm;
+
+        document.getElementById("bestWpm").textContent = sessionBest;
+        document.getElementById("testsCount").textContent = sessionTests;
+        document.getElementById("avgAcc").textContent =
+          Math.round(sessionAccTotal / sessionTests) + "%";
+
+        showResults(wpm, acc, errors, totalTyped);
+      }
+
+      function showResults(wpm, acc, errs, chars) {
+        document.getElementById("resWpm").textContent = wpm;
+        document.getElementById("resAcc").textContent = acc + "%";
+        document.getElementById("resErrors").textContent = errs;
+        document.getElementById("resChars").textContent = chars;
+
+        let rank, rankStyle;
+        if (wpm >= 80) {
+          rank = "🏆 Expert Coder";
+          rankStyle =
+            "background:rgba(180,83,9,0.12); color:var(--yellow); border:1px solid rgba(180,83,9,0.2)";
+        } else if (wpm >= 60) {
+          rank = "🚀 Advanced Dev";
+          rankStyle =
+            "background:rgba(26,110,216,0.12); color:var(--accent); border:1px solid rgba(26,110,216,0.2)";
+        } else if (wpm >= 40) {
+          rank = "⚡ Intermediate";
+          rankStyle =
+            "background:rgba(21,128,61,0.12); color:var(--green); border:1px solid rgba(21,128,61,0.2)";
+        } else if (wpm >= 20) {
+          rank = "📈 Improving";
+          rankStyle =
+            "background:rgba(194,65,12,0.12); color:var(--peach); border:1px solid rgba(194,65,12,0.2)";
+        } else {
+          rank = "🌱 Beginner";
+          rankStyle =
+            "background:var(--bg3); color:var(--text2); border:1px solid var(--border)";
+        }
+
+        const badge = document.getElementById("rankBadge");
+        badge.textContent = rank;
+        badge.style.cssText += rankStyle;
+        document.getElementById("modalSubtitle").textContent =
+          `${currentLang} · ${currentDiff} · ${currentTime}s test`;
+        document.getElementById("modalOverlay").classList.add("show");
+      }
+
+      function closeModal() {
+        document.getElementById("modalOverlay").classList.remove("show");
+      }
+
+      function processChar(ch) {
+        if (currentPos >= currentSnippet.length) {
+          endTest();
+          return;
+        }
+        typedChars[currentPos] = ch;
+        totalTyped++;
+        if (ch !== currentSnippet[currentPos]) errors++;
+        currentPos++;
+        renderCode();
+        updateWpm();
+        if (currentPos >= currentSnippet.length) endTest();
+      }
+
+      function onKeyDown(e) {
+        if (e.key === "Tab") {
+          e.preventDefault();
+        }
+        if (finished) return;
+        if (!started && e.key !== "Tab" && e.key !== "Escape" && !e.ctrlKey)
+          startTest();
+        if (e.ctrlKey && e.key === "r") {
+          e.preventDefault();
+          newSnippet();
+        }
+      }
+
+      function selectLang(btn) {
+        document
+          .querySelectorAll("#langGroup .pill")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        currentLang = btn.dataset.lang;
+        loadSnippet();
+      }
+
+      function selectDiff(btn) {
+        document.querySelectorAll("#diffGroup .pill").forEach((p) => {
+          p.classList.remove(
+            "active",
+            "active-green",
+            "active-yellow",
+            "active-red",
+          );
+        });
+        const diff = btn.dataset.diff;
+        if (diff === "beginner") btn.classList.add("active", "active-green");
+        else if (diff === "intermediate")
+          btn.classList.add("active", "active-yellow");
+        else btn.classList.add("active", "active-red");
+        currentDiff = diff;
+        loadSnippet();
+      }
+
+      function selectTimer(btn) {
+        document
+          .querySelectorAll("#timerGroup .pill")
+          .forEach((p) => p.classList.remove("active"));
+        btn.classList.add("active");
+        currentTime = parseInt(btn.dataset.time);
+        timeLeft = currentTime;
+        resetTest();
+      }
+
+      function newSnippet() {
+        loadSnippet();
+      }
+      function restartTest() {
+        closeModal();
+        resetTest();
+      }
+
+      // ── Mobile menu toggle ──
+      function toggleMenu() {
+        const nav = document.getElementById("mobileNav");
+        nav.classList.toggle("open");
+      }
+
+      // Close mobile menu when clicking a link
+      document.querySelectorAll(".mobile-nav a").forEach((a) => {
+        a.addEventListener("click", () => {
+          document.getElementById("mobileNav").classList.remove("open");
+        });
+      });
+
+      // ── Start ──
+      init();
+    </script>
+    <script src="/theme.js"></script>
+    <script>
+      // Load Navbar
+      fetch("/navbar.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("navbar").innerHTML = data;
+        });
+
+      // Load Footer
+      fetch("/footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
