@@ -3,36 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      How to Type Code Faster: 10 Proven Techniques for Developers — MegaMocks
-      Blog
-    </title>
-    <meta
-      name="description"
-      content="Want to type code faster? These 10 proven techniques help developers boost typing speed, reduce errors, and write cleaner code in less time."
-    />
-    <meta
-      name="keywords"
-      content="how to type code faster, typing speed for developers, developer typing techniques, coding typing speed, improve typing accuracy, touch typing for programmers"
-    />
-    <link
-      rel="canonical"
-      href="https://megamocks.com/blog/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html"
-    />
+    <title>How to Type Code Faster: 10 Proven Techniques for Developers — MegaMocks Blog</title>
+    <meta name="description" content="Want to type code faster? These 10 proven techniques help developers boost typing speed, reduce errors, and write cleaner code in less time." />
+    <meta name="keywords" content="how to type code faster, typing speed for developers, developer typing techniques, coding typing speed, improve typing accuracy, touch typing for programmers" />
+    <link rel="canonical" href="https://megamocks.com/blog/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html" />
     <!-- Open Graph -->
-    <meta
-      property="og:title"
-      content="How to Type Code Faster: 10 Proven Techniques for Developers"
-    />
-    <meta
-      property="og:description"
-      content="Want to type code faster? These 10 proven techniques help developers boost typing speed, reduce errors, and write cleaner code in less time."
-    />
+    <meta property="og:title" content="How to Type Code Faster: 10 Proven Techniques for Developers" />
+    <meta property="og:description" content="Want to type code faster? These 10 proven techniques help developers boost typing speed, reduce errors, and write cleaner code in less time." />
     <meta property="og:type" content="article" />
-    <meta
-      property="og:url"
-      content="https://megamocks.com/blog/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html"
-    />
+    <meta property="og:url" content="https://megamocks.com/blog/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html" />
     <meta property="og:site_name" content="MegaMocks" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
@@ -78,80 +57,47 @@
         --header-bg: rgba(12, 14, 20, 0.88);
         --shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
       }
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-      html,
-      body {
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html, body {
         height: 100%;
         background: var(--bg);
         color: var(--text);
         font-family: "Poppins", sans-serif;
         overflow-x: hidden;
-        transition:
-          background 0.25s,
-          color 0.25s;
+        transition: background 0.25s, color 0.25s;
       }
       body::before {
         content: "";
         position: fixed;
         inset: 0;
         background:
-          radial-gradient(
-            ellipse 80% 50% at 20% 20%,
-            rgba(26, 110, 216, 0.04) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            ellipse 60% 40% at 80% 80%,
-            rgba(124, 58, 237, 0.04) 0%,
-            transparent 60%
-          );
+          radial-gradient(ellipse 80% 50% at 20% 20%, rgba(26,110,216,0.04) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 40% at 80% 80%, rgba(124,58,237,0.04) 0%, transparent 60%);
         pointer-events: none;
         z-index: 0;
       }
       body.dark::before {
         background:
-          radial-gradient(
-            ellipse 80% 50% at 20% 20%,
-            rgba(137, 180, 250, 0.04) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            ellipse 60% 40% at 80% 80%,
-            rgba(203, 166, 247, 0.04) 0%,
-            transparent 60%
-          );
+          radial-gradient(ellipse 80% 50% at 20% 20%, rgba(137,180,250,0.04) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 40% at 80% 80%, rgba(203,166,247,0.04) 0%, transparent 60%);
       }
       body::after {
         content: "";
         position: fixed;
         inset: 0;
         background-image:
-          linear-gradient(rgba(26, 110, 216, 0.018) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(26, 110, 216, 0.018) 1px, transparent 1px);
+          linear-gradient(rgba(26,110,216,0.018) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(26,110,216,0.018) 1px, transparent 1px);
         background-size: 32px 32px;
         pointer-events: none;
         z-index: 0;
       }
       body.dark::after {
         background-image:
-          linear-gradient(rgba(137, 180, 250, 0.015) 1px, transparent 1px),
-          linear-gradient(
-            90deg,
-            rgba(137, 180, 250, 0.015) 1px,
-            transparent 1px
-          );
+          linear-gradient(rgba(137,180,250,0.015) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(137,180,250,0.015) 1px, transparent 1px);
       }
-      .app {
-        position: relative;
-        z-index: 1;
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
+      .app { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
 
       /* ── Header ── */
       header {
@@ -167,203 +113,40 @@
         z-index: 100;
         gap: 12px;
       }
-      .logo {
-        font-family: "Poppins", sans-serif;
-        font-weight: 800;
-        font-size: 1.2rem;
-        letter-spacing: -0.03em;
-        color: var(--text);
-        white-space: nowrap;
-        text-decoration: none;
-      }
-      .logo span {
-        color: var(--accent);
-      }
-      .logo-sub {
-        font-size: 0.55rem;
-        color: var(--text2);
-        font-weight: 400;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        display: block;
-        margin-top: -2px;
-      }
-      .nav-links {
-        display: flex;
-        list-style: none;
-        gap: 24px;
-        align-items: center;
-      }
-      .nav-links a {
-        font-size: 0.72rem;
-        font-weight: 600;
-        color: var(--text2);
-        text-decoration: none;
-        letter-spacing: 0.04em;
-        transition: color 0.2s;
-      }
-      .nav-links a:hover {
-        color: var(--text);
-      }
-      .nav-cta {
-        background: var(--accent) !important;
-        color: #fff !important;
-        padding: 7px 14px;
-        border-radius: 7px;
-        font-weight: 700 !important;
-      }
-      .nav-cta:hover {
-        opacity: 0.85;
-      }
-      .header-right {
-        display: flex;
-        align-items: center;
-        gap: 14px;
-        flex-shrink: 0;
-      }
-      .header-stats {
-        display: flex;
-        gap: 14px;
-        align-items: center;
-      }
-      .hstat {
-        text-align: center;
-      }
-      .hstat-val {
-        font-size: 0.95rem;
-        font-weight: 700;
-        color: var(--accent);
-        display: block;
-        line-height: 1;
-      }
-      .hstat-label {
-        font-size: 0.5rem;
-        color: var(--text2);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        margin-top: 2px;
-        display: block;
-      }
-      .stat-sep {
-        width: 1px;
-        height: 24px;
-        background: var(--border);
-        flex-shrink: 0;
-      }
-      .theme-toggle {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 6px 10px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        color: var(--text2);
-        transition: all 0.2s;
-        white-space: nowrap;
-        flex-shrink: 0;
-        font-family: "Poppins", sans-serif;
-      }
-      .theme-toggle:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      .theme-icon {
-        font-size: 0.9rem;
-      }
-      .theme-label {
-        font-size: 0.68rem;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-      }
-      .menu-toggle {
-        display: none;
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 6px 10px;
-        cursor: pointer;
-        color: var(--text2);
-        font-size: 1rem;
-        flex-shrink: 0;
-        font-family: "Poppins", sans-serif;
-        transition: all 0.2s;
-      }
-      .menu-toggle:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      .mobile-nav {
-        display: none;
-        flex-direction: column;
-        gap: 0;
-        background: var(--bg2);
-        border-bottom: 1px solid var(--border);
-        position: sticky;
-        top: 57px;
-        z-index: 99;
-      }
-      .mobile-nav.open {
-        display: flex;
-      }
-      .mobile-nav a {
-        padding: 13px 20px;
-        font-size: 0.82rem;
-        font-weight: 600;
-        color: var(--text2);
-        text-decoration: none;
-        border-bottom: 1px solid var(--border);
-        transition:
-          color 0.15s,
-          background 0.15s;
-      }
-      .mobile-nav a:last-child {
-        border-bottom: none;
-      }
-      .mobile-nav a:hover {
-        color: var(--text);
-        background: var(--bg3);
-      }
-      .mobile-nav .nav-cta {
-        color: var(--accent) !important;
-        background: rgba(26, 110, 216, 0.07) !important;
-      }
-      body.dark .mobile-nav .nav-cta {
-        background: rgba(137, 180, 250, 0.07) !important;
-        color: var(--accent) !important;
-      }
+      .logo { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 1.2rem; letter-spacing: -0.03em; color: var(--text); white-space: nowrap; text-decoration: none; }
+      .logo span { color: var(--accent); }
+      .logo-sub { font-size: 0.55rem; color: var(--text2); font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; display: block; margin-top: -2px; }
+      .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
+      .nav-links a { font-size: 0.72rem; font-weight: 600; color: var(--text2); text-decoration: none; letter-spacing: 0.04em; transition: color 0.2s; }
+      .nav-links a:hover { color: var(--text); }
+      .nav-cta { background: var(--accent) !important; color: #fff !important; padding: 7px 14px; border-radius: 7px; font-weight: 700 !important; }
+      .nav-cta:hover { opacity: 0.85; }
+      .header-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+      .header-stats { display: flex; gap: 14px; align-items: center; }
+      .hstat { text-align: center; }
+      .hstat-val { font-size: 0.95rem; font-weight: 700; color: var(--accent); display: block; line-height: 1; }
+      .hstat-label { font-size: 0.5rem; color: var(--text2); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; display: block; }
+      .stat-sep { width: 1px; height: 24px; background: var(--border); flex-shrink: 0; }
+      .theme-toggle { background: var(--bg3); border: 1px solid var(--border); border-radius: 20px; padding: 6px 10px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: var(--text2); transition: all 0.2s; white-space: nowrap; flex-shrink: 0; font-family: "Poppins", sans-serif; }
+      .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+      .theme-icon { font-size: 0.9rem; }
+      .theme-label { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.04em; }
+      .menu-toggle { display: none; background: var(--bg3); border: 1px solid var(--border); border-radius: 8px; padding: 6px 10px; cursor: pointer; color: var(--text2); font-size: 1rem; flex-shrink: 0; font-family: "Poppins", sans-serif; transition: all 0.2s; }
+      .menu-toggle:hover { border-color: var(--accent); color: var(--accent); }
+      .mobile-nav { display: none; flex-direction: column; gap: 0; background: var(--bg2); border-bottom: 1px solid var(--border); position: sticky; top: 57px; z-index: 99; }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav a { padding: 13px 20px; font-size: 0.82rem; font-weight: 600; color: var(--text2); text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.15s, background 0.15s; }
+      .mobile-nav a:last-child { border-bottom: none; }
+      .mobile-nav a:hover { color: var(--text); background: var(--bg3); }
+      .mobile-nav .nav-cta { color: var(--accent) !important; background: rgba(26,110,216,0.07) !important; }
+      body.dark .mobile-nav .nav-cta { background: rgba(137,180,250,0.07) !important; color: var(--accent) !important; }
 
       /* ── Footer ── */
-      .site-footer {
-        border-top: 1px solid var(--border);
-        padding: 24px;
-        text-align: center;
-        font-size: 0.7rem;
-        color: var(--text3);
-        background: var(--bg2);
-        position: relative;
-        z-index: 1;
-      }
-      .site-footer a {
-        color: var(--text3);
-        text-decoration: none;
-        transition: color 0.15s;
-      }
-      .site-footer a:hover {
-        color: var(--accent);
-      }
-      .footer-logo {
-        font-family: "Poppins", sans-serif;
-        font-weight: 800;
-        font-size: 1rem;
-        color: var(--text);
-        margin-bottom: 6px;
-        letter-spacing: -0.02em;
-      }
-      .footer-logo span {
-        color: var(--accent);
-      }
+      .site-footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; font-size: 0.7rem; color: var(--text3); background: var(--bg2); position: relative; z-index: 1; }
+      .site-footer a { color: var(--text3); text-decoration: none; transition: color 0.15s; }
+      .site-footer a:hover { color: var(--accent); }
+      .footer-logo { font-family: "Poppins", sans-serif; font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 6px; letter-spacing: -0.02em; }
+      .footer-logo span { color: var(--accent); }
 
       /* ── Article layout ── */
       .article-layout {
@@ -379,459 +162,99 @@
       }
 
       /* Breadcrumb */
-      .breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        font-size: 0.65rem;
-        color: var(--text3);
-        margin-bottom: 24px;
-        flex-wrap: wrap;
-      }
-      .breadcrumb a {
-        color: var(--text3);
-        text-decoration: none;
-        transition: color 0.15s;
-      }
-      .breadcrumb a:hover {
-        color: var(--accent);
-      }
-      .breadcrumb-sep {
-        color: var(--border2);
-      }
+      .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.65rem; color: var(--text3); margin-bottom: 24px; flex-wrap: wrap; }
+      .breadcrumb a { color: var(--text3); text-decoration: none; transition: color 0.15s; }
+      .breadcrumb a:hover { color: var(--accent); }
+      .breadcrumb-sep { color: var(--border2); }
 
       /* Article header */
-      .article-header {
-        margin-bottom: 32px;
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
-      .article-tags {
-        display: flex;
-        gap: 8px;
-        flex-wrap: wrap;
-        width: 100%;
-      }
-      .article-tag {
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 4px 11px;
-        border-radius: 20px;
-        background: rgba(26, 110, 216, 0.1);
-        color: var(--accent);
-      }
-      body.dark .article-tag {
-        background: rgba(137, 180, 250, 0.1);
-      }
-      .article-title {
-        font-size: 2.2rem;
-        font-weight: 800;
-        letter-spacing: -0.04em;
-        line-height: 1.2;
-        margin-bottom: 4px;
-      }
-      .article-meta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        padding: 14px 0;
-        border-top: 1px solid var(--border);
-        border-bottom: 1px solid var(--border);
-        width: 100%;
-      }
-      .author-avatar {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: linear-gradient(135deg, var(--accent), var(--accent2));
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 0.72rem;
-        font-weight: 800;
-        color: #fff;
-        flex-shrink: 0;
-      }
-      .author-name {
-        font-size: 0.76rem;
-        font-weight: 600;
-        color: var(--text);
-      }
-      .article-meta-item {
-        font-size: 0.65rem;
-        color: var(--text3);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
+      .article-header { margin-bottom: 32px; display: flex; flex-direction: column; gap: 14px; }
+      .article-tags { display: flex; gap: 8px; flex-wrap: wrap; width: 100%; }
+      .article-tag { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; background: rgba(26,110,216,0.1); color: var(--accent); }
+      body.dark .article-tag { background: rgba(137,180,250,0.1); }
+      .article-title { font-size: 2.2rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1.2; margin-bottom: 4px; }
+      .article-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); width: 100%; }
+      .author-avatar { width: 30px; height: 30px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; font-weight: 800; color: #fff; flex-shrink: 0; }
+      .author-name { font-size: 0.76rem; font-weight: 600; color: var(--text); }
+      .article-meta-item { font-size: 0.65rem; color: var(--text3); display: flex; align-items: center; gap: 4px; }
 
       /* Cover */
-      .article-cover {
-        width: 100%;
-        aspect-ratio: 21/9;
-        background: linear-gradient(
-          135deg,
-          rgba(26, 110, 216, 0.12) 0%,
-          rgba(124, 58, 237, 0.12) 100%
-        );
-        border-radius: 16px;
-        border: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 4rem;
-        margin: 28px 0;
-        overflow: hidden;
-      }
+      .article-cover { width: 100%; aspect-ratio: 21/9; background: linear-gradient(135deg, rgba(26,110,216,0.12) 0%, rgba(124,58,237,0.12) 100%); border-radius: 16px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 4rem; margin: 28px 0; overflow: hidden; }
 
       /* Article prose */
-      .article-body {
-        font-size: 0.92rem;
-        line-height: 1.85;
-        color: var(--text);
-      }
-      .article-body p {
-        margin-bottom: 20px;
-      }
-      .article-body h2 {
-        font-size: 1.35rem;
-        font-weight: 800;
-        letter-spacing: -0.03em;
-        margin: 36px 0 12px;
-        line-height: 1.25;
-        color: var(--text);
-      }
-      .article-body h2::before {
-        content: "// ";
-        color: var(--accent);
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.9em;
-      }
-      .article-body h3 {
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin: 28px 0 10px;
-        color: var(--text);
-      }
-      .article-body ul,
-      .article-body ol {
-        padding-left: 22px;
-        margin-bottom: 20px;
-      }
-      .article-body li {
-        margin-bottom: 6px;
-      }
-      .article-body strong {
-        font-weight: 700;
-        color: var(--text);
-      }
-      .article-body a {
-        color: var(--accent);
-        text-decoration: none;
-        border-bottom: 1px solid rgba(26, 110, 216, 0.3);
-        transition: border-color 0.15s;
-      }
-      .article-body a:hover {
-        border-color: var(--accent);
-      }
-      .article-body pre {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 20px;
-        overflow-x: auto;
-        margin-bottom: 20px;
-        position: relative;
-      }
-      .article-body pre::before {
-        content: attr(data-lang);
-        position: absolute;
-        top: 10px;
-        right: 14px;
-        font-size: 0.58rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--text3);
-        font-family: "Poppins", sans-serif;
-      }
-      .article-body code {
-        font-family: "JetBrains Mono", monospace;
-        font-size: 0.83rem;
-        line-height: 1.7;
-        color: var(--accent2);
-      }
-      .article-body p code,
-      .article-body li code {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 5px;
-        padding: 1px 6px;
-        font-size: 0.82em;
-        color: var(--peach);
-      }
+      .article-body { font-size: 0.92rem; line-height: 1.85; color: var(--text); }
+      .article-body p { margin-bottom: 20px; }
+      .article-body h2 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.03em; margin: 36px 0 12px; line-height: 1.25; color: var(--text); }
+      .article-body h2::before { content: "// "; color: var(--accent); font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
+      .article-body h3 { font-size: 1.05rem; font-weight: 700; margin: 28px 0 10px; color: var(--text); }
+      .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 20px; }
+      .article-body li { margin-bottom: 6px; }
+      .article-body strong { font-weight: 700; color: var(--text); }
+      .article-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(26,110,216,0.3); transition: border-color 0.15s; }
+      .article-body a:hover { border-color: var(--accent); }
+      .article-body pre { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 20px; overflow-x: auto; margin-bottom: 20px; position: relative; }
+      .article-body pre::before { content: attr(data-lang); position: absolute; top: 10px; right: 14px; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); font-family: "Poppins", sans-serif; }
+      .article-body code { font-family: "JetBrains Mono", monospace; font-size: 0.83rem; line-height: 1.7; color: var(--accent2); }
+      .article-body p code, .article-body li code { background: var(--bg3); border: 1px solid var(--border); border-radius: 5px; padding: 1px 6px; font-size: 0.82em; color: var(--peach); }
 
       /* Callout */
-      .callout {
-        background: rgba(26, 110, 216, 0.06);
-        border-left: 3px solid var(--accent);
-        border-radius: 0 10px 10px 0;
-        padding: 16px 18px;
-        margin-bottom: 20px;
-        font-size: 0.86rem;
-        line-height: 1.65;
-        color: var(--text2);
-      }
-      body.dark .callout {
-        background: rgba(137, 180, 250, 0.06);
-      }
-      .callout strong {
-        color: var(--accent);
-      }
+      .callout { background: rgba(26,110,216,0.06); border-left: 3px solid var(--accent); border-radius: 0 10px 10px 0; padding: 16px 18px; margin-bottom: 20px; font-size: 0.86rem; line-height: 1.65; color: var(--text2); }
+      body.dark .callout { background: rgba(137,180,250,0.06); }
+      .callout strong { color: var(--accent); }
 
       /* Article footer / related */
-      .article-footer {
-        margin-top: 48px;
-        padding-top: 28px;
-        border-top: 1px solid var(--border);
-      }
-      .article-footer-label {
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--text3);
-        margin-bottom: 16px;
-      }
-      .related-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 14px;
-      }
-      .related-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 16px;
-        text-decoration: none;
-        color: inherit;
-        transition:
-          border-color 0.2s,
-          transform 0.2s;
-      }
-      .related-card:hover {
-        border-color: var(--accent);
-        transform: translateY(-2px);
-      }
-      .related-card-tag {
-        font-size: 0.58rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--accent);
-        margin-bottom: 6px;
-      }
-      .related-card-title {
-        font-size: 0.82rem;
-        font-weight: 700;
-        line-height: 1.4;
-        color: var(--text);
-      }
-      .related-card:hover .related-card-title {
-        color: var(--accent);
-      }
+      .article-footer { margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--border); }
+      .article-footer-label { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); margin-bottom: 16px; }
+      .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .related-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 16px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+      .related-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+      .related-card-tag { font-size: 0.58rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 6px; }
+      .related-card-title { font-size: 0.82rem; font-weight: 700; line-height: 1.4; color: var(--text); }
+      .related-card:hover .related-card-title { color: var(--accent); }
 
       /* Post nav */
-      .post-nav {
-        display: flex;
-        gap: 14px;
-        margin-top: 28px;
-      }
-      .post-nav-btn {
-        flex: 1;
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 12px;
-        padding: 14px 18px;
-        text-decoration: none;
-        color: var(--text2);
-        font-size: 0.72rem;
-        font-weight: 600;
-        transition: all 0.2s;
-      }
-      .post-nav-btn:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      .post-nav-btn.next {
-        text-align: right;
-      }
-      .post-nav-label {
-        font-size: 0.58rem;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        color: var(--text3);
-        display: block;
-        margin-bottom: 4px;
-      }
+      .post-nav { display: flex; gap: 14px; margin-top: 28px; }
+      .post-nav-btn { flex: 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 12px; padding: 14px 18px; text-decoration: none; color: var(--text2); font-size: 0.72rem; font-weight: 600; transition: all 0.2s; }
+      .post-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .post-nav-btn.next { text-align: right; }
+      .post-nav-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); display: block; margin-bottom: 4px; }
 
       /* ── Sidebar ── */
-      .blog-sidebar {
-        position: sticky;
-        top: 80px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .sidebar-widget {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-      }
-      .sidebar-widget-header {
-        padding: 14px 18px;
-        border-bottom: 1px solid var(--border);
-        background: var(--bg3);
-        font-size: 0.68rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--text2);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .sidebar-search {
-        padding: 16px;
-      }
-      .search-input-wrap {
-        position: relative;
-      }
-      .search-input {
-        width: 100%;
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 9px 14px 9px 36px;
-        font-family: "Poppins", sans-serif;
-        font-size: 0.75rem;
-        color: var(--text);
-        outline: none;
-        transition: border-color 0.2s;
-      }
-      .search-input::placeholder {
-        color: var(--text3);
-      }
-      .search-input:focus {
-        border-color: var(--accent);
-      }
-      .search-icon {
-        position: absolute;
-        left: 11px;
-        top: 50%;
-        transform: translateY(-50%);
-        color: var(--text3);
-        font-size: 0.85rem;
-        pointer-events: none;
-      }
-      .sidebar-posts {
-        padding: 8px 0;
-      }
-      .sidebar-post-item {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        padding: 12px 18px;
-        text-decoration: none;
-        color: inherit;
-        border-bottom: 1px solid var(--border);
-        transition: background 0.15s;
-      }
-      .sidebar-post-item:last-child {
-        border-bottom: none;
-      }
-      .sidebar-post-item:hover {
-        background: var(--bg3);
-      }
-      .sidebar-post-num {
-        font-size: 1.1rem;
-        font-weight: 800;
-        color: var(--border2);
-        line-height: 1;
-        flex-shrink: 0;
-        width: 20px;
-        font-variant-numeric: tabular-nums;
-      }
-      .sidebar-post-info {
-        flex: 1;
-        min-width: 0;
-      }
-      .sidebar-post-title {
-        font-size: 0.75rem;
-        font-weight: 600;
-        line-height: 1.4;
-        color: var(--text);
-        margin-bottom: 3px;
-      }
-      .sidebar-post-item:hover .sidebar-post-title {
-        color: var(--accent);
-      }
-      .sidebar-post-meta {
-        font-size: 0.6rem;
-        color: var(--text3);
-      }
+      .blog-sidebar { position: sticky; top: 80px; display: flex; flex-direction: column; gap: 20px; }
+      .sidebar-widget { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+      .sidebar-widget-header { padding: 14px 18px; border-bottom: 1px solid var(--border); background: var(--bg3); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text2); display: flex; align-items: center; gap: 8px; }
+      .sidebar-search { padding: 16px; }
+      .search-input-wrap { position: relative; }
+      .search-input { width: 100%; background: var(--bg3); border: 1px solid var(--border); border-radius: 10px; padding: 9px 14px 9px 36px; font-family: "Poppins", sans-serif; font-size: 0.75rem; color: var(--text); outline: none; transition: border-color 0.2s; }
+      .search-input::placeholder { color: var(--text3); }
+      .search-input:focus { border-color: var(--accent); }
+      .search-icon { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--text3); font-size: 0.85rem; pointer-events: none; }
+      .sidebar-posts { padding: 8px 0; }
+      .sidebar-post-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 18px; text-decoration: none; color: inherit; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+      .sidebar-post-item:last-child { border-bottom: none; }
+      .sidebar-post-item:hover { background: var(--bg3); }
+      .sidebar-post-num { font-size: 1.1rem; font-weight: 800; color: var(--border2); line-height: 1; flex-shrink: 0; width: 20px; font-variant-numeric: tabular-nums; }
+      .sidebar-post-info { flex: 1; min-width: 0; }
+      .sidebar-post-title { font-size: 0.75rem; font-weight: 600; line-height: 1.4; color: var(--text); margin-bottom: 3px; }
+      .sidebar-post-item:hover .sidebar-post-title { color: var(--accent); }
+      .sidebar-post-meta { font-size: 0.6rem; color: var(--text3); }
 
       /* ── Mobile ── */
       @media (max-width: 900px) {
-        .article-layout {
-          grid-template-columns: 1fr;
-          gap: 28px;
-          padding: 32px 16px 56px;
-        }
-        .blog-sidebar {
-          position: static;
-        }
-        .related-grid {
-          grid-template-columns: 1fr;
-        }
-        .post-nav {
-          flex-direction: column;
-        }
+        .article-layout { grid-template-columns: 1fr; gap: 28px; padding: 32px 16px 56px; }
+        .blog-sidebar { position: static; }
+        .related-grid { grid-template-columns: 1fr; }
+        .post-nav { flex-direction: column; }
       }
       @media (max-width: 640px) {
-        header {
-          padding: 10px 14px;
-          gap: 8px;
-        }
-        .logo-sub {
-          display: none;
-        }
-        .nav-links {
-          display: none;
-        }
-        .theme-label {
-          display: none;
-        }
-        .menu-toggle {
-          display: flex;
-          align-items: center;
-        }
-        .article-title {
-          font-size: 1.65rem;
-        }
-        .article-body h2 {
-          font-size: 1.15rem;
-        }
-        .article-cover {
-          aspect-ratio: 16/9;
-          font-size: 3rem;
-        }
+        header { padding: 10px 14px; gap: 8px; }
+        .logo-sub { display: none; }
+        .nav-links { display: none; }
+        .theme-label { display: none; }
+        .menu-toggle { display: flex; align-items: center; }
+        .article-title { font-size: 1.65rem; }
+        .article-body h2 { font-size: 1.15rem; }
+        .article-cover { aspect-ratio: 16/9; font-size: 3rem; }
       }
     </style>
   </head>
@@ -876,16 +299,9 @@
 
           <!-- Body -->
           <div class="article-body" id="articleBody">
+
             <p>
-              You know that feeling when a senior dev is flying through code and
-              you're still looking for the curly brace key? Yeah, that's a sign.
-              Learning <strong>how to type code faster</strong> is something
-              most developers put off forever — and then regret. At
-              <a href="https://megamocks.com" target="_blank" rel="noopener"
-                >MegaMocks</a
-              >, we track thousands of developer typing sessions, and the
-              pattern is always the same: the fast ones aren't magically
-              talented. They just built better habits, earlier.
+              You know that feeling when a senior dev is flying through code and you're still looking for the curly brace key? Yeah, that's a sign. Learning <strong>how to type code faster</strong> is something most developers put off forever — and then regret. At <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>, we track thousands of developer typing sessions, and the pattern is always the same: the fast ones aren't magically talented. They just built better habits, earlier.
             </p>
 
             <p>Here are 10 techniques that actually work.</p>
@@ -893,208 +309,113 @@
             <h2 id="section-keyboard">1. Stop Looking at Your Keyboard</h2>
 
             <p>
-              Seriously. Every time you glance down, you lose your place, break
-              your flow, and add a tiny delay that compounds across your entire
-              session. Touch typing — trusting your fingers to find the keys
-              without your eyes — is the single most impactful thing you can do.
+              Seriously. Every time you glance down, you lose your place, break your flow, and add a tiny delay that compounds across your entire session. Touch typing — trusting your fingers to find the keys without your eyes — is the single most impactful thing you can do.
             </p>
             <p>
-              Cover your keyboard with a cloth during practice. The first week
-              feels awful. After that it starts to click.
+              Cover your keyboard with a cloth during practice. The first week feels awful. After that it starts to click.
             </p>
 
-            <h2 id="section-homerow">
-              2. Actually Learn the Home Row for Code
-            </h2>
+            <h2 id="section-homerow">2. Actually Learn the Home Row for Code</h2>
 
             <p>
-              You've heard "keep your fingers on ASDF JKL;" a hundred times. But
-              here's the thing — most developers never internalize it beyond
-              basic letters. For code, you need that same muscle memory on the
-              number row, the bracket keys, and every shift combination you use
-              daily.
+              You've heard "keep your fingers on ASDF JKL;" a hundred times. But here's the thing — most developers never internalize it beyond basic letters. For code, you need that same muscle memory on the number row, the bracket keys, and every shift combination you use daily.
             </p>
             <p>
-              Pick your five weakest keys. Drill them in isolation for 10
-              minutes a day. Not full snippets — just those keys, over and over.
+              Pick your five weakest keys. Drill them in isolation for 10 minutes a day. Not full snippets — just those keys, over and over.
             </p>
 
             <h2 id="section-codepractice">3. Practice Code, Not Prose</h2>
 
             <p>
-              General typing tests only get you so far. Prose is predictable —
-              your fingers learn common patterns like <code>th</code>,
-              <code>in</code>, <code>er</code>. Code is completely different.
-              You're constantly jumping between letters, symbols like
-              <code>{}[]();&lt;&gt;</code>, CamelCase identifiers, and
-              language-specific keywords that don't appear anywhere in normal
-              writing.
+              General typing tests only get you so far. Prose is predictable — your fingers learn common patterns like <code>th</code>, <code>in</code>, <code>er</code>. Code is completely different. You're constantly jumping between letters, symbols like <code>{}[]();&lt;&gt;</code>, CamelCase identifiers, and language-specific keywords that don't appear anywhere in normal writing.
             </p>
             <p>
-              This is exactly why code-specific practice matters. On
-              <a href="https://megamocks.com" target="_blank" rel="noopener"
-                >MegaMocks</a
-              >, you can drill real code snippets in Python, JavaScript, SQL,
-              Java, C++, and HTML — sorted by difficulty — so the patterns you
-              actually use at work become automatic.
+              This is exactly why code-specific practice matters. On <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>, you can drill real code snippets in Python, JavaScript, SQL, Java, C++, and HTML — sorted by difficulty — so the patterns you actually use at work become automatic.
             </p>
 
-            <h2 id="section-shortcuts">
-              4. Use Keyboard Shortcuts Aggressively
-            </h2>
+            <h2 id="section-shortcuts">4. Use Keyboard Shortcuts Aggressively</h2>
 
             <p>
-              Every mouse reach is lost time. Across an 8-hour workday that adds
-              up to a lot. The fastest developers treat shortcuts like muscle
-              memory — they don't think about them.
+              Every mouse reach is lost time. Across an 8-hour workday that adds up to a lot. The fastest developers treat shortcuts like muscle memory — they don't think about them.
             </p>
             <p>Start with these:</p>
             <ul>
-              <li>
-                <code>Ctrl+D</code> / <code>Cmd+D</code> — multi-cursor
-                selection
-              </li>
+              <li><code>Ctrl+D</code> / <code>Cmd+D</code> — multi-cursor selection</li>
               <li><code>Ctrl+/</code> — toggle comment</li>
               <li><code>Alt+Up/Down</code> — move line up or down</li>
               <li><code>Ctrl+P</code> — quick file open in VS Code</li>
             </ul>
             <p>
-              Pick five you don't use yet. Force yourself to use them
-              exclusively for one week.
+              Pick five you don't use yet. Force yourself to use them exclusively for one week.
             </p>
 
-            <h2 id="section-snippets">
-              5. Build Snippet Libraries for Repetitive Code
-            </h2>
+            <h2 id="section-snippets">5. Build Snippet Libraries for Repetitive Code</h2>
 
             <p>
-              You type <code>console.log()</code> about ten thousand times per
-              project. Same with <code>def __init__(self):</code> or
-              <code>SELECT * FROM</code>. These aren't creative — they're
-              mechanical. Let your editor do them in 2 keystrokes.
+              You type <code>console.log()</code> about ten thousand times per project. Same with <code>def __init__(self):</code> or <code>SELECT * FROM</code>. These aren't creative — they're mechanical. Let your editor do them in 2 keystrokes.
             </p>
             <p>
-              Set up live snippets or use a snippet manager. Save your actual
-              typing energy for the logic that requires real thought.
+              Set up live snippets or use a snippet manager. Save your actual typing energy for the logic that requires real thought.
             </p>
 
             <h2 id="section-slowdown">6. Slow Down to Speed Up</h2>
 
             <p>
-              This sounds wrong. It isn't. If you're making errors constantly,
-              you're not training speed — you're training the habit of making
-              and fixing mistakes. Your brain literally practices the wrong
-              movement.
+              This sounds wrong. It isn't. If you're making errors constantly, you're not training speed — you're training the habit of making and fixing mistakes. Your brain literally practices the wrong movement.
             </p>
             <p>
-              Drop to half your normal speed for two weeks and aim for zero
-              errors. Your ceiling will climb faster than if you'd been pushing
-              90 WPM with 80% accuracy the whole time. It's frustrating. It
-              works.
+              Drop to half your normal speed for two weeks and aim for zero errors. Your ceiling will climb faster than if you'd been pushing 90 WPM with 80% accuracy the whole time. It's frustrating. It works.
             </p>
 
             <div class="callout">
-              <strong>Pro tip:</strong> Use the
-              <strong>Easy → Medium → Hard</strong> difficulty progression on
-              <a href="https://megamocks.com" target="_blank" rel="noopener"
-                >MegaMocks</a
-              >. Start on Easy until you're near 100% accuracy, then push to
-              Medium. Don't rush the jump.
+              <strong>Pro tip:</strong> Use the <strong>Easy → Medium → Hard</strong> difficulty progression on <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>. Start on Easy until you're near 100% accuracy, then push to Medium. Don't rush the jump.
             </div>
 
-            <h2 id="section-weakpatterns">
-              7. Find Your Weak Patterns and Overload Them
-            </h2>
+            <h2 id="section-weakpatterns">7. Find Your Weak Patterns and Overload Them</h2>
 
             <p>
-              Every developer has specific spots where they hesitate. Python
-              devs slow down on list comprehensions and decorator syntax.
-              JavaScript folks stumble on arrow functions and template literals.
-              SQL developers choke on complex JOIN chains.
+              Every developer has specific spots where they hesitate. Python devs slow down on list comprehensions and decorator syntax. JavaScript folks stumble on arrow functions and template literals. SQL developers choke on complex JOIN chains.
             </p>
             <p>
-              Don't avoid your weak patterns — overload them until they stop
-              requiring thought. The difficulty levels on MegaMocks are
-              specifically built to introduce and repeat these patterns
-              progressively. Easy builds recognition, Advanced builds
-              automation.
+              Don't avoid your weak patterns — overload them until they stop requiring thought. The difficulty levels on MegaMocks are specifically built to introduce and repeat these patterns progressively. Easy builds recognition, Advanced builds automation.
             </p>
 
             <h2 id="section-accuracy">8. Fix Accuracy Before Chasing Speed</h2>
 
             <p>
-              Accuracy and speed feel like opposites. They're actually
-              sequential. You build accuracy first. Speed comes later, as a
-              byproduct of accurate movements repeated enough times to become
-              automatic.
+              Accuracy and speed feel like opposites. They're actually sequential. You build accuracy first. Speed comes later, as a byproduct of accurate movements repeated enough times to become automatic.
             </p>
             <p>
-              A developer at 65 WPM with 98% accuracy ships more code than one
-              at 90 WPM with 82% accuracy. The slower typist barely touches the
-              backspace key. The faster one burns time correcting errors and
-              breaking focus every few seconds. If you want a deeper look at
-              what WPM actually means for your career, check out our post on
-              <a
-                href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
-                >what is a good WPM for developers</a
-              >
-              — the numbers might surprise you.
+              A developer at 65 WPM with 98% accuracy ships more code than one at 90 WPM with 82% accuracy. The slower typist barely touches the backspace key. The faster one burns time correcting errors and breaking focus every few seconds. If you want a deeper look at what WPM actually means for your career, check out our post on <a href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html">what is a good WPM for developers</a> — the numbers might surprise you.
             </p>
 
-            <h2 id="section-sessions">
-              9. Practice in Short, Distraction-Free Sessions
-            </h2>
+            <h2 id="section-sessions">9. Practice in Short, Distraction-Free Sessions</h2>
 
             <p>
-              15 minutes of full focus beats an hour of half-hearted drilling
-              with YouTube in the background. Every time.
+              15 minutes of full focus beats an hour of half-hearted drilling with YouTube in the background. Every time.
             </p>
             <p>
-              Pick a time when your attention is sharpest — first thing in the
-              morning usually works well — and commit to a daily session. Keep a
-              simple log of your WPM and accuracy. Watching that number move is
-              genuinely motivating.
+              Pick a time when your attention is sharpest — first thing in the morning usually works well — and commit to a daily session. Keep a simple log of your WPM and accuracy. Watching that number move is genuinely motivating.
             </p>
 
-            <h2 id="section-consistency">
-              10. Show Up Every Day — Don't Go Heroic on Weekends
-            </h2>
+            <h2 id="section-consistency">10. Show Up Every Day — Don't Go Heroic on Weekends</h2>
 
             <p>
-              The developers who improve fastest aren't grinding for three hours
-              on Sunday. They're showing up for 15 minutes every single day.
-              Consistency compounds in a way that heroic sessions don't.
+              The developers who improve fastest aren't grinding for three hours on Sunday. They're showing up for 15 minutes every single day. Consistency compounds in a way that heroic sessions don't.
             </p>
             <p>
-              3 WPM improvement per week, held consistently for two months,
-              turns a 45 WPM developer into a 65 WPM developer. That's a real
-              transformation — not from talent, just from showing up. Once
-              you've got the consistency habit down, the next step is touch
-              typing — and if you're not sure where to begin with that, our
-              guide on
-              <a
-                href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
-                >touch typing for developers</a
-              >
-              walks you through the whole thing from scratch.
+              3 WPM improvement per week, held consistently for two months, turns a 45 WPM developer into a 65 WPM developer. That's a real transformation — not from talent, just from showing up. Once you've got the consistency habit down, the next step is touch typing — and if you're not sure where to begin with that, our guide on <a href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html">touch typing for developers</a> walks you through the whole thing from scratch.
             </p>
 
             <h2 id="section-start">Start Here</h2>
 
             <p>
-              <strong>How to type code faster</strong> isn't some mysterious
-              skill. It's a set of habits — specific, learnable, and faster to
-              build than most people think. The techniques above work. They just
-              need repetition.
+              <strong>How to type code faster</strong> isn't some mysterious skill. It's a set of habits — specific, learnable, and faster to build than most people think. The techniques above work. They just need repetition.
             </p>
             <p>
-              Best place to start? Go to
-              <a href="https://megamocks.com" target="_blank" rel="noopener"
-                >MegaMocks</a
-              >, run a 60-second test right now, and note your WPM and accuracy.
-              Come back tomorrow and do it again. The gap closes faster than
-              you'd expect once you're actually measuring it.
+              Best place to start? Go to <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>, run a 60-second test right now, and note your WPM and accuracy. Come back tomorrow and do it again. The gap closes faster than you'd expect once you're actually measuring it.
             </p>
+
           </div>
           <!-- /.article-body -->
 
@@ -1102,36 +423,23 @@
           <footer class="article-footer">
             <div class="article-footer-label">Related Articles</div>
             <div class="related-grid">
-              <a
-                href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
-                class="related-card"
-              >
+              <a href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html" class="related-card">
                 <div class="related-card-tag">Developer Productivity</div>
-                <div class="related-card-title">
-                  What Is a Good WPM for Developers? (Benchmark &amp; Tips)
-                </div>
+                <div class="related-card-title">What Is a Good WPM for Developers? (Benchmark &amp; Tips)</div>
               </a>
-              <a
-                href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
-                class="related-card"
-              >
+              <a href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html" class="related-card">
                 <div class="related-card-tag">Coding Speed</div>
-                <div class="related-card-title">
-                  Touch Typing for Developers: Why It Matters and How to Start
-                </div>
+                <div class="related-card-title">Touch Typing for Developers: Why It Matters and How to Start</div>
               </a>
             </div>
 
             <!-- Post navigation -->
             <div class="post-nav">
-              <span class="post-nav-btn" style="opacity: 0.4; cursor: default">
+              <span class="post-nav-btn" style="opacity:0.4; cursor:default;">
                 <span class="post-nav-label">← Previous</span>
                 No previous post
               </span>
-              <a
-                href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
-                class="post-nav-btn next"
-              >
+              <a href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html" class="post-nav-btn next">
                 <span class="post-nav-label">Next →</span>
                 What Is a Good WPM for Developers?
               </a>
@@ -1152,12 +460,7 @@
                   type="text"
                   class="search-input"
                   placeholder="Search articles…"
-                  onkeydown="
-                    if (event.key === 'Enter') {
-                      window.location =
-                        '/blog/?q=' + encodeURIComponent(this.value);
-                    }
-                  "
+                  onkeydown="if(event.key==='Enter'){window.location='/blog/?q='+encodeURIComponent(this.value);}"
                 />
               </div>
             </div>
@@ -1170,56 +473,12 @@
           </div>
 
           <!-- Practice CTA -->
-          <div
-            class="sidebar-widget"
-            style="
-              background: linear-gradient(
-                135deg,
-                rgba(26, 110, 216, 0.1) 0%,
-                rgba(124, 58, 237, 0.1) 100%
-              );
-              border-color: rgba(26, 110, 216, 0.2);
-            "
-          >
+          <div class="sidebar-widget" style="background: linear-gradient(135deg, rgba(26,110,216,0.1) 0%, rgba(124,58,237,0.1) 100%); border-color: rgba(26,110,216,0.2);">
             <div style="padding: 20px 18px; text-align: center">
               <div style="font-size: 1.8rem; margin-bottom: 10px">⌨️</div>
-              <div
-                style="
-                  font-size: 0.85rem;
-                  font-weight: 700;
-                  margin-bottom: 6px;
-                  letter-spacing: -0.01em;
-                "
-              >
-                Ready to Practice?
-              </div>
-              <p
-                style="
-                  font-size: 0.72rem;
-                  color: var(--text2);
-                  margin-bottom: 14px;
-                  line-height: 1.5;
-                "
-              >
-                Put these tips to work. Start a typing test right now.
-              </p>
-              <a
-                href="/"
-                style="
-                  display: block;
-                  background: var(--accent);
-                  color: #fff;
-                  padding: 9px 16px;
-                  border-radius: 9px;
-                  font-size: 0.75rem;
-                  font-weight: 700;
-                  text-decoration: none;
-                  transition: opacity 0.2s;
-                "
-                onmouseover="this.style.opacity = '0.85'"
-                onmouseout="this.style.opacity = '1'"
-                >Practice Now →</a
-              >
+              <div style="font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.01em;">Ready to Practice?</div>
+              <p style="font-size: 0.72rem; color: var(--text2); margin-bottom: 14px; line-height: 1.5;">Put these tips to work. Start a typing test right now.</p>
+              <a href="/" style="display: block; background: var(--accent); color: #fff; padding: 9px 16px; border-radius: 9px; font-size: 0.75rem; font-weight: 700; text-decoration: none; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Practice Now →</a>
             </div>
           </div>
         </aside>
@@ -1233,61 +492,47 @@
 
     <script>
       const LATEST_POSTS = [
-        {
-          slug: "how-to-type-code-faster-10-proven-techniques-for-developers-megamocks",
-          title: "How to Type Code Faster: 10 Proven Techniques for Developers",
-          date: "Apr 29, 2026",
-          readTime: "7 min",
-        },
-        {
-          slug: "what-is-good-wpm-for-developers-benchmark-tips-megamocks",
-          title: "What Is a Good WPM for Developers? (Benchmark & Tips)",
-          date: "Apr 22, 2026",
-          readTime: "6 min",
-        },
-        {
-          slug: "touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks",
-          title: "Touch Typing for Developers: Why It Matters and How to Start",
-          date: "Apr 15, 2026",
-          readTime: "5 min",
-        },
+        { slug: "how-to-type-code-faster-10-proven-techniques-for-developers-megamocks", title: "How to Type Code Faster: 10 Proven Techniques for Developers", date: "Apr 29, 2026", readTime: "7 min" },
+        { slug: "what-is-good-wpm-for-developers-benchmark-tips-megamocks", title: "What Is a Good WPM for Developers? (Benchmark & Tips)", date: "Apr 22, 2026", readTime: "6 min" },
+        { slug: "touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks", title: "Touch Typing for Developers: Why It Matters and How to Start", date: "Apr 15, 2026", readTime: "5 min" },
       ];
 
-      document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map(
-        (p, i) => `
+      document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map((p, i) => `
         <a href="https://megamocks.com/blog/${p.slug}.html" class="sidebar-post-item">
           <span class="sidebar-post-num">0${i + 1}</span>
           <div class="sidebar-post-info">
             <div class="sidebar-post-title">${p.title}</div>
             <div class="sidebar-post-meta">${p.date} · ${p.readTime}</div>
           </div>
-        </a>`,
-      ).join("");
+        </a>`).join("");
 
+      let isDark = false;
+      function toggleTheme() {
+        isDark = !isDark;
+        document.body.classList.toggle("dark", isDark);
+        const icon = document.getElementById("themeIcon");
+        const label = document.getElementById("themeLabel");
+        if (icon) icon.textContent = isDark ? "☀️" : "🌙";
+        if (label) label.textContent = isDark ? "Light" : "Dark";
+      }
       function toggleMenu() {
         const nav = document.getElementById("mobileNav");
         if (nav) nav.classList.toggle("open");
       }
     </script>
-    <script src="/theme.js"></script>
+
     <script>
       fetch("/navbar.html")
-        .then((r) => r.text())
-        .then((html) => {
+        .then(r => r.text())
+        .then(html => {
           document.getElementById("navbar").innerHTML = html;
-          document
-            .querySelectorAll(".mobile-nav a")
-            .forEach((a) =>
-              a.addEventListener("click", () =>
-                document.getElementById("mobileNav")?.classList.remove("open"),
-              ),
-            );
+          document.querySelectorAll(".mobile-nav a").forEach(a =>
+            a.addEventListener("click", () => document.getElementById("mobileNav")?.classList.remove("open"))
+          );
         });
       fetch("/footer.html")
-        .then((r) => r.text())
-        .then((html) => {
-          document.getElementById("footer").innerHTML = html;
-        });
+        .then(r => r.text())
+        .then(html => { document.getElementById("footer").innerHTML = html; });
     </script>
   </body>
 </html>
