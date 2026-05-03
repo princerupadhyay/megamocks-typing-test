@@ -7,26 +7,26 @@
   (see index.html), and theme.js → initScrollFreeze() adds/removes .scrolled.
 -->
 <style>
-  /* Frozen state applied by theme.js → initScrollFreeze() */
-  #navbar-mount header {
-    position: sticky;
-    top: 0;
+  header {
+    position: sticky !important;
+    top: 0 !important;
     z-index: 100;
+    background: var(--header-bg);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    gap: 24px;
+    transition:
+      height 0.25s ease,
+      box-shadow 0.25s ease;
   }
-  #navbar-mount header.scrolled {
-    height: 54px !important;
+  header.scrolled {
+    height: 54px;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
-  }
-  body.dark #navbar-mount header.scrolled {
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
-  }
-  #navbar-mount header.scrolled .logo {
-    font-size: 1.15rem;
-  }
-  #navbar-mount header.scrolled .logo-tag {
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
   }
 </style>
 
