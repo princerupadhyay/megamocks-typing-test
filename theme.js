@@ -82,7 +82,7 @@ function initScrollFreeze() {
           fixed = true;
           applyFixed();
         }
-        header.classList.toggle('scrolled', scrolled);
+        header.style.boxShadow = scrolled ? '0 4px 24px rgba(0,0,0,0.09)' : '';
         ticking = false;
       });
       ticking = true;
