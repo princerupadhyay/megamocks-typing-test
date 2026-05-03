@@ -44,8 +44,13 @@ function highlightNav() {
    Adds .scrolled class to <header> after 10px scroll so pages can style
    the "frozen" state (shadow, slightly reduced height, etc.)             */
 function initScrollFreeze() {
-  const header = document.querySelector('header');
+  const header = document.querySelector('#navbar-mount header');
   if (!header) return;
+
+  // Ensure sticky is applied to the actual header element
+  header.style.position = 'sticky';
+  header.style.top = '0';
+  header.style.zIndex = '100';
 
   let ticking = false;
   const onScroll = () => {
@@ -58,7 +63,7 @@ function initScrollFreeze() {
     }
   };
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run once on load
+  onScroll();
 }
 
 /* ── Sync theme across tabs ── */

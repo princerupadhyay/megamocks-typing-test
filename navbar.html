@@ -8,6 +8,11 @@
 -->
 <style>
   /* Frozen state applied by theme.js → initScrollFreeze() */
+  #navbar-mount header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
   #navbar-mount header.scrolled {
     height: 54px !important;
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
