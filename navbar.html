@@ -1,4 +1,30 @@
 <!-- MegaMocks Shared Navbar — include via fetch('/navbar.html') -->
+
+<!--
+  SCROLL-FREEZE CSS
+  These rules live here so they travel with the navbar regardless of which
+  page loads it. The header itself must be inside a sticky #navbar-mount
+  (see index.html), and theme.js → initScrollFreeze() adds/removes .scrolled.
+-->
+<style>
+  /* Frozen state applied by theme.js → initScrollFreeze() */
+  #navbar-mount header.scrolled {
+    height: 54px !important;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+  }
+  body.dark #navbar-mount header.scrolled {
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+  }
+  #navbar-mount header.scrolled .logo {
+    font-size: 1.15rem;
+  }
+  #navbar-mount header.scrolled .logo-tag {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+  }
+</style>
+
 <header>
   <a href="/" class="logo-wrap">
     <div class="logo">Mega<em>Mocks</em></div>
@@ -16,24 +42,48 @@
 
   <div class="header-actions">
     <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.35-4.35" />
       </svg>
-      <input type="text" id="navSearchInput" placeholder="Search articles…"
-        onkeydown="if(event.key==='Enter'&&this.value.trim()){window.location='/?q='+encodeURIComponent(this.value.trim())}" />
+      <input type="text" id="navSearchInput" placeholder="Search articles…" />
     </div>
-    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">🌙</button>
+    <!--
+      onclick="toggleTheme()" still works as a fallback because theme.js
+      defines the global. initNav() in theme.js also wires an addEventListener
+      so there's no double-fire risk (it checks data-wired).
+    -->
+    <button
+      class="theme-btn"
+      onclick="toggleTheme()"
+      id="themeBtn"
+      title="Toggle theme"
+    >
+      🌙
+    </button>
     <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
+      <svg
+        width="22"
+        height="22"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <line x1="3" y1="6" x2="21" y2="6" />
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <line x1="3" y1="18" x2="21" y2="18" />
       </svg>
     </button>
   </div>
 </header>
 
-<!-- Mobile nav -->
+<!-- Mobile nav — sticky directly below the header -->
 <nav class="mobile-nav" id="mobileNav">
   <a href="/" onclick="closeMobileNav()">Home</a>
   <a href="/reviews/" onclick="closeMobileNav()">Reviews</a>
