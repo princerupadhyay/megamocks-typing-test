@@ -1,48 +1,43 @@
-<!-- Navbar -->
+<!-- MegaMocks Shared Navbar — include via fetch('/navbar.html') -->
 <header>
-  <div>
-    <a href="/" class="logo">Mega<span>Mocks</span></a>
-    <span class="logo-sub">// developer typing test</span>
-  </div>
+  <a href="/" class="logo-wrap">
+    <div class="logo">Mega<em>Mocks</em></div>
+    <span class="logo-divider">/</span>
+    <span class="logo-tag">AI Tools Blog</span>
+  </a>
 
-  <!-- Desktop nav -->
-  <ul class="nav-links">
-    <li><a href="/" class="nav-cta">Practice Now</a></li>
-    <li><a href="/blog/">Blog</a></li>
-  </ul>
+  <nav class="main-nav">
+    <a href="/">Home</a>
+    <a href="/reviews/">Reviews</a>
+    <a href="/guides/">Guides</a>
+    <a href="/news/">News</a>
+    <a href="/compare/">Compare</a>
+  </nav>
 
-  <div class="header-right">
-    <div class="header-stats">
-      <div class="hstat">
-        <span class="hstat-val" id="bestWpm">—</span>
-        <span class="hstat-label">Best</span>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="hstat">
-        <span class="hstat-val" id="testsCount">0</span>
-        <span class="hstat-label">Tests</span>
-      </div>
-      <div class="stat-sep"></div>
-      <div class="hstat">
-        <span class="hstat-val" id="avgAcc">—</span>
-        <span class="hstat-label">Acc</span>
-      </div>
+  <div class="header-actions">
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="text" id="navSearchInput" placeholder="Search articles…"
+        onkeydown="if(event.key==='Enter'&&this.value.trim()){window.location='/?q='+encodeURIComponent(this.value.trim())}" />
     </div>
-
-    <button class="theme-toggle" onclick="toggleTheme()">
-      <span class="theme-icon" id="themeIcon">🌙</span>
-      <span class="theme-label" id="themeLabel">Dark</span>
-    </button>
-
-    <!-- Mobile hamburger -->
-    <button class="menu-toggle" onclick="toggleMenu()" id="menuToggle">
-      ☰
+    <button class="theme-btn" onclick="toggleTheme()" id="themeBtn" title="Toggle theme">🌙</button>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <line x1="3" y1="12" x2="21" y2="12"/>
+        <line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
     </button>
   </div>
 </header>
 
 <!-- Mobile nav -->
 <nav class="mobile-nav" id="mobileNav">
-  <a href="/" class="nav-cta">Practice Now</a>
-  <a href="/blog/">Blog</a>
+  <a href="/" onclick="closeMobileNav()">Home</a>
+  <a href="/reviews/" onclick="closeMobileNav()">Reviews</a>
+  <a href="/guides/" onclick="closeMobileNav()">Guides</a>
+  <a href="/news/" onclick="closeMobileNav()">News</a>
+  <a href="/compare/" onclick="closeMobileNav()">Compare</a>
 </nav>
