@@ -82,6 +82,39 @@
         flex-direction: column;
       }
 
+      /* ── Header (injected via fetch into #navbar-mount) ── */
+      #navbar-mount {
+        top: 0;
+      }
+
+      /* Styles applied to the injected <header> element */
+      #navbar-mount header {
+        background: var(--header-bg);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        height: var(--header-h);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        /* Smooth freeze transition */
+        transition:
+          height 0.25s ease,
+          box-shadow 0.25s ease,
+          background 0.3s;
+      }
+
+      /* Frozen / scrolled state */
+      #navbar-mount header.scrolled {
+        height: 54px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
+      }
+      body.dark #navbar-mount header.scrolled {
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+      }
+
       .logo-wrap {
         display: flex;
         align-items: baseline;
