@@ -4,10 +4,23 @@
 function applyTheme(theme) {
   const isDark = theme === 'dark';
   document.body.classList.toggle('dark', isDark);
-  // Update every theme button on the page (navbar may be injected later)
-  document.querySelectorAll('[data-theme-btn], #themeBtn').forEach(btn => {
-    btn.textContent = isDark ? '☀️' : '🌙';
-  });
+  // Runs after navbar injection too
+  const btn = document.getElementById('themeBtn');
+  if (btn) btn.textContent = isDark ? '☀️' : '🌙';
+}
+
+function initNav() {
+  highlightNav();
+  applyTheme(localStorage.getItem('theme') || 'light'); // re-run now that btn exists
+
+  // Wire theme button — single listener, no onclick conflict
+  const btn = document.getElementById('themeBtn');
+  if (btn && !btn.dataset.wired) {
+    btn.addEventListener('click', toggleTheme);
+    btn.dataset.wired = '1';
+  }
+
+  initScrollFreeze();
 }
 
 function toggleTheme() {
