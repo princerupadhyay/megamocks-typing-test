@@ -16,7 +16,7 @@
     />
     <link
       rel="canonical"
-      href="https://megamocks.com/blog/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
+      href="https://megamocks.com/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
     />
     <meta
       property="og:title"
@@ -29,7 +29,7 @@
     <meta property="og:type" content="article" />
     <meta
       property="og:url"
-      content="https://megamocks.com/blog/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
+      content="https://megamocks.com/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
     />
     <meta property="og:site_name" content="MegaMocks" />
 
@@ -387,9 +387,20 @@
         color: var(--border);
       }
 
-      /* ── Article header ── */
       .article-header {
-        margin-bottom: 28px;
+        display: block;
+        width: 100%;
+      }
+
+      .article-header .article-tags,
+      .article-header .article-title,
+      .article-header .article-meta {
+        display: flex; /* tags/meta stay flex */
+        width: 100%;
+      }
+
+      .article-header .article-title {
+        display: block; /* title is block, not flex */
       }
 
       .article-tags {
@@ -421,12 +432,15 @@
 
       .article-title {
         font-family: "Playfair Display", serif;
-        font-size: clamp(1.8rem, 4vw, 2.6rem);
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
         font-weight: 800;
         line-height: 1.18;
         letter-spacing: -0.03em;
         margin-bottom: 20px;
         color: var(--text);
+        /* Ensure it spans full column width */
+        display: block;
+        width: 100%;
       }
 
       .article-meta {
@@ -434,7 +448,7 @@
         align-items: center;
         gap: 14px;
         flex-wrap: wrap;
-        padding: 16px 0;
+        padding: 14px 0;
         border-top: 1px solid var(--border);
         border-bottom: 1px solid var(--border);
       }
@@ -999,13 +1013,11 @@
           <nav class="breadcrumb">
             <a href="/">Home</a>
             <span class="breadcrumb-sep">›</span>
-            <a href="/blog/">Blog</a>
-            <span class="breadcrumb-sep">›</span>
             <span>Guides</span>
           </nav>
 
           <!-- Article header -->
-          <header class="article-header fade-up">
+          <div class="article-header fade-up">
             <div class="article-tags">
               <span class="article-tag">Guide</span>
               <span class="article-tag tag-python">Python</span>
@@ -1020,7 +1032,7 @@
               <span class="article-meta-item">📅 May 2, 2026</span>
               <span class="article-meta-item">⏱ 6 min read</span>
             </div>
-          </header>
+          </div>
 
           <!-- Share -->
           <div
@@ -1030,14 +1042,14 @@
             <span class="share-label">Share:</span>
             <a
               class="share-btn"
-              href="https://twitter.com/intent/tweet?url=https://megamocks.com/blog/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
+              href="https://twitter.com/intent/tweet?url=https://megamocks.com/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
               target="_blank"
               rel="noopener"
               >𝕏 Twitter</a
             >
             <a
               class="share-btn"
-              href="https://www.linkedin.com/shareArticle?url=https://megamocks.com/blog/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
+              href="https://www.linkedin.com/shareArticle?url=https://megamocks.com/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html"
               target="_blank"
               rel="noopener"
               >LinkedIn</a
@@ -1214,7 +1226,7 @@ print(result)</code></pre>
               nothing about coding speed. Want a solid benchmark? Check out our
               breakdown of
               <a
-                href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
+                href="https://megamocks.com/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
               >
                 what is a good WPM for developers</a
               >
@@ -1263,7 +1275,7 @@ print(result)</code></pre>
               single session. And for extra techniques to keep the momentum
               going, our post on
               <a
-                href="https://megamocks.com/blog/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html"
+                href="https://megamocks.com/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html"
               >
                 how to type code faster</a
               >
@@ -1276,7 +1288,7 @@ print(result)</code></pre>
               <code>for key, value in my_dict.items():</code>. Real snippets
               build real patterns. Also worth reading our guide on
               <a
-                href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
+                href="https://megamocks.com/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
               >
                 touch typing for developers</a
               >
@@ -1327,7 +1339,7 @@ print(result)</code></pre>
             <div class="article-footer-label">Related Articles</div>
             <div class="related-grid">
               <a
-                href="https://megamocks.com/blog/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html"
+                href="https://megamocks.com/how-to-type-code-faster-10-proven-techniques-for-developers-megamocks.html"
                 class="related-card"
               >
                 <div class="related-card-tag">Tips &amp; Tricks</div>
@@ -1336,7 +1348,7 @@ print(result)</code></pre>
                 </div>
               </a>
               <a
-                href="https://megamocks.com/blog/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
+                href="https://megamocks.com/what-is-good-wpm-for-developers-benchmark-tips-megamocks.html"
                 class="related-card"
               >
                 <div class="related-card-tag">Developer Productivity</div>
@@ -1345,7 +1357,7 @@ print(result)</code></pre>
                 </div>
               </a>
               <a
-                href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
+                href="https://megamocks.com/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
                 class="related-card"
               >
                 <div class="related-card-tag">Tips &amp; Tricks</div>
@@ -1358,7 +1370,7 @@ print(result)</code></pre>
             <!-- Post navigation -->
             <div class="post-nav">
               <a
-                href="https://megamocks.com/blog/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
+                href="https://megamocks.com/touch-typing-for-developers-why-it-matters-and-how-to-start-megamocks.html"
                 class="post-nav-btn"
               >
                 <span class="post-nav-label">← Previous</span>
@@ -1477,7 +1489,7 @@ print(result)</code></pre>
       ];
       document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map(
         (p, i) => `
-    <a href="/blog/${p.slug}.html" class="sidebar-post-item">
+    <a href="/${p.slug}.html" class="sidebar-post-item">
       <span class="sidebar-num">0${i + 1}</span>
       <div>
         <div class="sidebar-post-title">${p.title}</div>
