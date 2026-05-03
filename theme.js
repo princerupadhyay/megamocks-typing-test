@@ -40,29 +40,57 @@ function highlightNav() {
   });
 }
 
-/* ── Sticky header scroll freeze ──
-   Adds .scrolled class to <header> after 10px scroll so pages can style
-   the "frozen" state (shadow, slightly reduced height, etc.)             */
+/* ── Fixed navbar freeze ──
+   Switches the header to position:fixed after any scroll, and adds a
+   spacer element so page content doesn't jump under it.                 */
 function initScrollFreeze() {
-  const header = document.querySelector('#navbar-mount header');
+  const header = document.querySelector('header');
   if (!header) return;
 
-  // Ensure sticky is applied to the actual header element
-  header.style.position = 'sticky';
-  header.style.top = '0';
-  header.style.zIndex = '100';
+  // Create a spacer that holds the header's reserved space
+  let spacer = document.getElementById('_navSpacer');
+  if (!spacer) {
+    spacer = document.createElement('div');
+    spacer.id = '_navSpacer';
+    spacer.style.cssText = 'display:none;flex-shrink:0;';
+    header.parentElement.insertBefore(spacer, header);
+  }
+
+  function applyFixed() {
+    const h = header.offsetHeight;
+    // Lock it fixed
+    header.style.cssText = `
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      z-index: 9999 !important;
+    `;
+    // Spacer fills the gap
+    spacer.style.cssText = `display:block;height:${h}px;flex-shrink:0;`;
+  }
 
   let ticking = false;
+  let fixed = false;
+
   const onScroll = () => {
     if (!ticking) {
       requestAnimationFrame(() => {
-        header.classList.toggle('scrolled', window.scrollY > 10);
+        const scrolled = window.scrollY > 4;
+        if (scrolled && !fixed) {
+          fixed = true;
+          applyFixed();
+        }
+        header.classList.toggle('scrolled', scrolled);
         ticking = false;
       });
       ticking = true;
     }
   };
+
   window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { if (fixed) applyFixed(); });
   onScroll();
 }
 
