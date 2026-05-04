@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Top 5 AI Habits Every iPhone User Should Build Right Now — MegaMocks
+    </title>
+    <meta
+      name="description"
+      content="Most iPhone users only use 10% of what AI can do. These 5 practical habits change that — no tech degree needed, just small changes with big results."
+    />
+    <meta
+      name="keywords"
+      content="AI habits for iPhone users, iPhone AI tips, ChatGPT iPhone tricks, AI on mobile, iPhone productivity AI, drag and drop AI, action button ChatGPT"
+    />
+    <link
+      rel="canonical"
+      href="https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html"
+    />
+    <meta
+      property="og:title"
+      content="Top 5 AI Habits Every iPhone User Should Build Right Now"
+    />
+    <meta
+      property="og:description"
+      content="Most iPhone users only use 10% of what AI can do. These 5 practical habits change that — no tech degree needed, just small changes with big results."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html"
+    />
+    <meta property="og:site_name" content="MegaMocks" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ════════════════════════════════
+         CSS Variables
+      ════════════════════════════════ */
+      :root {
+        --bg: #faf9f6;
+        --bg2: #ffffff;
+        --bg3: #f0ede8;
+        --border: #e8e4de;
+        --text: #1a1814;
+        --text2: #6b6560;
+        --text3: #a09a93;
+        --accent: #d4572a;
+        --accent2: #2a6dd4;
+        --gold: #c9a227;
+        --green: #2d7a4e;
+        --header-bg: rgba(250, 249, 246, 0.94);
+        --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+        --code-bg: #f5f2ee;
+        --code-border: #e0dbd4;
+      }
+      body.dark {
+        --bg: #0f0e0c;
+        --bg2: #171512;
+        --bg3: #1f1c18;
+        --border: #2a2620;
+        --text: #ede8e0;
+        --text2: #8a8278;
+        --text3: #55504a;
+        --accent: #e8724a;
+        --accent2: #6aacf0;
+        --gold: #e0b84a;
+        --green: #5ab87a;
+        --header-bg: rgba(15, 14, 12, 0.92);
+        --shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+        --code-bg: #13110e;
+        --code-border: #2a2620;
+      }
+
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      html, body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        transition: background 0.3s, color 0.3s;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .app {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      #navbar { display: contents; }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--header-bg);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .logo-wrap { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
+      .logo { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.02em; }
+      .logo em { color: var(--accent); font-style: normal; }
+      .logo-divider { color: var(--border); font-weight: 300; font-size: 1.1rem; }
+      .logo-tag { font-size: 0.62rem; font-weight: 500; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; }
+      .main-nav { display: flex; align-items: center; gap: 28px; }
+      .main-nav a { font-size: 0.78rem; font-weight: 500; color: var(--text2); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
+      .main-nav a:hover, .main-nav a.active { color: var(--accent); }
+      .header-actions { display: flex; align-items: center; gap: 12px; }
+      .search-wrap { position: relative; display: flex; align-items: center; }
+      .search-wrap input { background: var(--bg3); border: 1px solid var(--border); border-radius: 24px; padding: 7px 14px 7px 34px; font-family: "DM Sans", sans-serif; font-size: 0.75rem; color: var(--text); outline: none; width: 200px; transition: all 0.2s; }
+      .search-wrap input::placeholder { color: var(--text3); }
+      .search-wrap input:focus { border-color: var(--accent); width: 240px; }
+      .search-wrap svg { position: absolute; left: 11px; width: 14px; height: 14px; color: var(--text3); pointer-events: none; }
+      .theme-btn { background: var(--bg3); border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; color: var(--text2); }
+      .theme-btn:hover { border-color: var(--accent); }
+      .menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--text2); padding: 4px; }
+      .mobile-nav { display: none; flex-direction: column; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 4px; position: sticky; top: 64px; z-index: 99; }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav a { padding: 10px 0; font-size: 0.85rem; font-weight: 500; color: var(--text2); text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.15s; }
+      .mobile-nav a:last-child { border-bottom: none; }
+      .mobile-nav a:hover { color: var(--accent); }
+
+      /* ── Footer ── */
+      footer { border-top: 1px solid var(--border); background: var(--bg2); padding: 40px 32px 32px; position: relative; z-index: 1; }
+      .footer-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+      .footer-logo { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.15rem; color: var(--text); margin-bottom: 8px; }
+      .footer-logo em { color: var(--accent); font-style: normal; }
+      .footer-desc { font-size: 0.74rem; color: var(--text2); line-height: 1.65; max-width: 220px; }
+      .footer-col-title { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); margin-bottom: 14px; }
+      .footer-links { display: flex; flex-direction: column; gap: 9px; }
+      .footer-links a { font-size: 0.76rem; color: var(--text2); text-decoration: none; transition: color 0.15s; }
+      .footer-links a:hover { color: var(--accent); }
+      .footer-bottom { max-width: 1160px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+      .footer-copy, .footer-made { font-size: 0.68rem; color: var(--text3); }
+
+      /* ── Article layout ── */
+      .article-layout {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 48px;
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 48px 32px 72px;
+        width: 100%;
+        align-items: start;
+      }
+
+      .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.65rem; color: var(--text3); margin-bottom: 28px; flex-wrap: wrap; }
+      .breadcrumb a { color: var(--text3); text-decoration: none; transition: color 0.15s; }
+      .breadcrumb a:hover { color: var(--accent); }
+      .breadcrumb-sep { color: var(--border); }
+
+      .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+      .article-tag { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; background: rgba(212, 87, 42, 0.1); color: var(--accent); }
+      body.dark .article-tag { background: rgba(232, 114, 74, 0.12); }
+      .article-tag.tag-guide { background: rgba(45, 122, 78, 0.1); color: var(--green); }
+      body.dark .article-tag.tag-guide { background: rgba(90, 184, 122, 0.1); }
+      .article-tag.tag-ai { background: rgba(212, 87, 42, 0.1); color: var(--accent); }
+
+      .article-title { font-family: "Playfair Display", serif; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 20px; color: var(--text); display: block; width: 100%; }
+
+      .article-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      .author-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; color: #fff; flex-shrink: 0; }
+      .author-name { font-size: 0.76rem; font-weight: 600; color: var(--text); }
+      .meta-sep { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; }
+      .article-meta-item { font-size: 0.65rem; color: var(--text3); display: flex; align-items: center; gap: 4px; }
+
+      .article-cover { width: 100%; aspect-ratio: 21/9; background: linear-gradient(135deg, rgba(212,87,42,0.1) 0%, rgba(42,109,212,0.1) 100%); border-radius: 18px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 5rem; margin: 28px 0; overflow: hidden; box-shadow: var(--shadow); }
+
+      /* ── Article body ── */
+      .article-body { font-size: 1rem; line-height: 1.85; color: var(--text); }
+      .article-body p { margin-bottom: 22px; color: var(--text2); }
+      .article-body p:first-child { color: var(--text); font-size: 1.05rem; }
+      .article-body h2 { font-family: "Playfair Display", serif; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; margin: 44px 0 14px; line-height: 1.25; color: var(--text); }
+      .article-body h2::before { content: ""; display: block; width: 32px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 12px; }
+      .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 30px 0 10px; color: var(--text); letter-spacing: -0.01em; }
+      .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 22px; }
+      .article-body li { margin-bottom: 8px; color: var(--text2); }
+      .article-body strong { font-weight: 600; color: var(--text); }
+      .article-body a { color: var(--accent); text-decoration: none; border-bottom: 1px solid rgba(212,87,42,0.3); transition: border-color 0.15s; }
+      .article-body a:hover { border-color: var(--accent); }
+      .article-body pre { background: var(--code-bg); border: 1px solid var(--code-border); border-radius: 14px; padding: 22px 22px 20px; overflow-x: auto; margin-bottom: 22px; position: relative; box-shadow: var(--shadow); }
+      .article-body pre::before { content: attr(data-lang); position: absolute; top: 10px; right: 14px; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text3); font-family: "DM Sans", sans-serif; }
+      .article-body code { font-family: "DM Mono", monospace; font-size: 0.85rem; line-height: 1.7; color: var(--accent2); }
+      .article-body p code, .article-body li code { background: var(--bg3); border: 1px solid var(--border); border-radius: 5px; padding: 1px 6px; font-size: 0.82em; color: var(--accent); font-family: "DM Mono", monospace; }
+      body.dark .article-body p code, body.dark .article-body li code { color: var(--gold); }
+
+      .callout { background: rgba(212,87,42,0.05); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0; padding: 18px 20px; margin-bottom: 22px; font-size: 0.88rem; line-height: 1.7; color: var(--text2); }
+      body.dark .callout { background: rgba(232,114,74,0.07); }
+      .callout strong { color: var(--accent); }
+
+      /* ── Progress bar ── */
+      .progress-bar { position: fixed; top: 64px; left: 0; right: 0; height: 2px; background: var(--border); z-index: 99; }
+      .progress-fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.1s linear; }
+
+      /* ── TOC ── */
+      .toc-widget { padding: 0; }
+      .toc-list { list-style: none; padding: 12px 0; }
+      .toc-list li a { display: block; padding: 8px 18px; font-size: 0.74rem; color: var(--text2); text-decoration: none; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
+      .toc-list li a:hover { color: var(--accent); border-left-color: var(--accent); }
+      .toc-list li a.active { color: var(--accent); border-left-color: var(--accent); background: rgba(212,87,42,0.05); }
+
+      /* ── Article footer ── */
+      .article-footer { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
+      .article-footer-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text3); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+      .article-footer-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
+      .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .related-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 18px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow); }
+      .related-card:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+      .related-card-tag { font-size: 0.57rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent); margin-bottom: 8px; }
+      .related-card-title { font-size: 0.84rem; font-weight: 600; line-height: 1.45; color: var(--text); }
+      .related-card:hover .related-card-title { color: var(--accent); }
+
+      .post-nav { display: flex; gap: 14px; margin-top: 28px; }
+      .post-nav-btn { flex: 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 0.74rem; font-weight: 500; transition: all 0.2s; box-shadow: var(--shadow); }
+      .post-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .post-nav-btn.next { text-align: right; }
+      .post-nav-label { font-size: 0.57rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); display: block; margin-bottom: 5px; }
+
+      /* ── Sidebar ── */
+      .blog-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 20px; }
+      .sidebar-widget { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
+      .sidebar-header { padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); }
+
+      .sidebar-newsletter { border: none !important; background: linear-gradient(135deg, var(--accent) 0%, #b8401a 100%) !important; }
+      .sidebar-newsletter .newsletter-inner { padding: 22px 20px; display: flex; flex-direction: column; gap: 10px; }
+      .sidebar-newsletter .nl-icon { font-size: 1.4rem; }
+      .sidebar-newsletter .nl-title { font-family: "Playfair Display", serif; font-size: 1rem; font-weight: 700; color: #fff; }
+      .sidebar-newsletter .nl-sub { font-size: 0.72rem; color: rgba(255,255,255,0.8); line-height: 1.55; }
+      .sidebar-newsletter input { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 9px; padding: 8px 13px; font-family: "DM Sans", sans-serif; font-size: 0.74rem; color: #fff; outline: none; width: 100%; }
+      .sidebar-newsletter input::placeholder { color: rgba(255,255,255,0.6); }
+      .sidebar-newsletter input:focus { border-color: rgba(255,255,255,0.6); }
+      .sidebar-newsletter button { background: #fff; color: var(--accent); border: none; border-radius: 9px; padding: 9px; font-family: "DM Sans", sans-serif; font-size: 0.74rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s; width: 100%; }
+      .sidebar-newsletter button:hover { opacity: 0.9; }
+
+      .sidebar-post-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 18px; text-decoration: none; color: inherit; border-bottom: 1px solid var(--border); transition: background 0.15s; }
+      .sidebar-post-item:last-child { border-bottom: none; }
+      .sidebar-post-item:hover { background: var(--bg3); }
+      .sidebar-num { font-family: "DM Mono", monospace; font-size: 0.65rem; font-weight: 500; color: var(--accent); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
+      .sidebar-post-title { font-size: 0.75rem; font-weight: 500; line-height: 1.45; color: var(--text); }
+      .sidebar-post-item:hover .sidebar-post-title { color: var(--accent); }
+      .sidebar-post-meta { font-size: 0.6rem; color: var(--text3); margin-top: 3px; }
+
+      /* ── Share ── */
+      .share-row { display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap; }
+      .share-label { font-size: 0.62rem; color: var(--text3); font-weight: 500; }
+      .share-btn { font-size: 0.66rem; font-weight: 600; padding: 5px 12px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg3); color: var(--text2); cursor: pointer; text-decoration: none; transition: all 0.2s; font-family: "DM Sans", sans-serif; }
+      .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+      /* ── Fade-up ── */
+      .fade-up { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
+      .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+      /* ── Responsive ── */
+      @media (max-width: 960px) {
+        .article-layout { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px 56px; }
+        .blog-sidebar { position: static; }
+        .related-grid { grid-template-columns: 1fr; }
+        .post-nav { flex-direction: column; }
+        .main-nav { display: none; }
+        .menu-btn { display: block; }
+        .search-wrap { display: none; }
+      }
+      @media (max-width: 600px) {
+        header { padding: 0 16px; }
+        .article-layout { padding: 24px 16px 48px; }
+        .article-cover { aspect-ratio: 16/9; font-size: 3.5rem; }
+        footer { padding: 28px 16px 20px; }
+        .footer-inner { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+
+      <!-- Reading progress bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <!-- Navbar -->
+      <div id="navbar"></div>
+
+      <!-- Article layout -->
+      <div class="article-layout">
+
+        <!-- ── Main Article ── -->
+        <article>
+
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span class="breadcrumb-sep">›</span>
+            <span>Guides</span>
+          </nav>
+
+          <!-- Article header -->
+          <div class="article-header fade-up">
+            <div class="article-tags">
+              <span class="article-tag tag-guide">Guide</span>
+              <span class="article-tag tag-ai">AI Tools</span>
+            </div>
+            <h1 class="article-title">
+              Top 5 AI Habits Every iPhone User Should Build Right Now
+            </h1>
+            <div class="article-meta">
+              <div class="author-avatar">MM</div>
+              <div class="author-name">MegaMocks Team</div>
+              <div class="meta-sep"></div>
+              <span class="article-meta-item">📅 May 4, 2026</span>
+              <span class="article-meta-item">⏱ 7 min read</span>
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div class="share-row fade-up" style="margin-top: 16px; margin-bottom: 0">
+            <span class="share-label">Share:</span>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html" target="_blank" rel="noopener">𝕏 Twitter</a>
+            <a class="share-btn" href="https://www.linkedin.com/shareArticle?url=https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html" target="_blank" rel="noopener">LinkedIn</a>
+            <button class="share-btn" onclick="navigator.clipboard.writeText(location.href); this.textContent='Copied!'; setTimeout(()=>(this.textContent='Copy link'),2000);">Copy link</button>
+          </div>
+
+          <!-- Cover -->
+          <div class="article-cover fade-up">📱</div>
+
+          <!-- Body -->
+          <div class="article-body fade-up" id="articleBody">
+
+            <p>
+              Most iPhone users have powerful AI tools sitting right in their pocket — and use maybe 10% of what those tools can actually do. <strong>Top 5 AI Habits Every iPhone User Should Build Right Now</strong> is exactly what this is about. At <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>, we cover practical AI tips that make a real difference — and these five habits are as practical as it gets.
+            </p>
+
+            <p>
+              These aren't fancy tricks that need a tech degree. They're small changes to how you use your phone. Build these habits and AI stops feeling like an extra step. It starts feeling like a natural part of how you work.
+            </p>
+
+            <h2 id="section-drag">Habit 1: Drag and Drop Into AI</h2>
+
+            <p>
+              Most people don't know this, but your iPhone already supports drag and drop between apps. It's been there for a while. Almost nobody uses it with AI — and that's a huge missed opportunity.
+            </p>
+
+            <p>
+              Here's how it works. Long press on any image or piece of text in a native app. While you're still holding it, use a second finger to swipe over to your AI app — like ChatGPT. Then drop it in. Done.
+            </p>
+
+            <p>
+              This sounds small but it cuts out a lot of annoying steps. No more taking a screenshot, going to your camera roll, copying it, switching apps, and pasting. You just drag and drop.
+            </p>
+
+            <p>A few real ways this saves time:</p>
+
+            <ul>
+              <li>You come across a complex graph or chart. Long press the image, drag it into ChatGPT, ask a quick question, and get an explanation in seconds.</li>
+              <li>You get a contract PDF in your files app. Drag it straight into ChatGPT and ask about the terms — even while you're on a call.</li>
+              <li>You're looking at a spreadsheet and want it as a CSV. Screenshot it, long press, drag into ChatGPT, type "recreate this as a table and download as CSV," done.</li>
+            </ul>
+
+            <p>
+              One thing to know: not every app supports drag and drop. Third-party apps like Gmail don't always cooperate. That's where habit two comes in.
+            </p>
+
+            <h2 id="section-share">Habit 2: Pin Your AI App to the Share Sheet</h2>
+
+            <p>
+              When drag and drop doesn't work, you need a backup. The best one is pinning your AI app to your iPhone's share sheet so it's always one tap away.
+            </p>
+
+            <p>
+              The share sheet is that menu that pops up when you hit the share button in any app. By default, your AI apps probably aren't anywhere near the front. Here's how to fix that:
+            </p>
+
+            <p>
+              Open any app and tap share. Scroll all the way right and tap <strong>More</strong>. Tap <strong>Edit</strong>, toggle on your AI app (make sure it's installed), hit the plus icon to add it to favorites, drag it right next to AirDrop, and tap Done.
+            </p>
+
+            <p>Now every time you hit share anywhere on your phone, your AI is right there. This opens up a lot:</p>
+
+            <ul>
+              <li><strong>Websites</strong> — Share a link from Safari or Chrome to ChatGPT and ask it to summarize. ChatGPT can read the page as long as it doesn't require a login.</li>
+              <li><strong>Emails</strong> — In Gmail or Apple Mail, go to the print option first, then share to your AI. The email lands as a PDF, ready to process.</li>
+              <li><strong>LinkedIn posts</strong> — LinkedIn blocks direct sharing, so open the post in Chrome, take a full-page screenshot, and share that to AI instead.</li>
+            </ul>
+
+            <div class="callout">
+              <strong>Pro tip:</strong> If you're commuting and can't read, share an article, ask for a summary, and tap the speaker icon to listen. You stay on top of things without staring at your screen.
+            </div>
+
+            <h2 id="section-keyboard">Habit 3: Use a Prompt Snippet Keyboard</h2>
+
+            <p>
+              Typing long AI prompts on a phone is slow and annoying. The fix is text replacement — and it works really well for this.
+            </p>
+
+            <p>
+              Text replacement lets you type a short keyword and your phone expands it into a full phrase automatically. You've probably seen autocorrect do something like this. The trick is to set it up on purpose for your most-used AI prompts.
+            </p>
+
+            <p>
+              Go to <strong>Settings</strong>, search for <strong>Text Replacement</strong>, tap the plus icon, type your full prompt as the "Phrase," and set a short keyword as the "Shortcut."
+            </p>
+
+            <p>
+              Smart move: use a <strong>ZZ prefix</strong> for all your prompt shortcuts. It's fast to type and it won't fire accidentally in normal writing.
+            </p>
+
+            <p>Three to start with:</p>
+
+            <ul>
+              <li><strong>ZZ-ANAL</strong> expands to: <em>"Analyze this excerpt. Share the top five takeaways and a clear, concise, and objective summary."</em> Great for turning a wall of text into quick talking points before a meeting.</li>
+              <li><strong>ZZ-IMG</strong> expands to: <em>"Describe what this image is about and extract all text from it so I can copy and paste."</em> Perfect for screenshots, dashboards, and charts people send you.</li>
+              <li><strong>ZZ-LATE</strong> expands to: <em>"Detect the language of this text and translate it to English."</em> Useful if you work with people across different languages.</li>
+            </ul>
+
+            <p>
+              Mac users get a bonus: text replacement syncs across Apple devices. Set it up on your MacBook and the shortcuts appear on your iPhone automatically.
+            </p>
+
+            <h2 id="section-action">Habit 4: Map the Action Button to Open AI by Voice</h2>
+
+            <p>
+              If you have an iPhone 15 Pro or newer, you have an Action Button on the side. Most people set it to silent mode and move on. There's a much better use for it.
+            </p>
+
+            <p>
+              Map it to open ChatGPT and start voice dictation instantly. One press and you're talking to AI. No unlocking, no hunting for the app, no typing anything.
+            </p>
+
+            <p>
+              Setup: go to <strong>Settings</strong>, search <strong>Action Button</strong>, scroll to the <strong>Shortcut</strong> option, search for <strong>ChatGPT</strong>, and choose <strong>Start Dictation</strong> — not just "open app." That last part matters. Start Dictation means it opens and immediately starts listening, so you can speak your question right away without any extra taps.
+            </p>
+
+            <p>
+              A quick real example: you're in a store looking at two products with no idea which to pick. Press the button and say "which pillow type is better for side sleepers?" ChatGPT searches and answers in seconds. No typing required.
+            </p>
+
+            <p>
+              If you already had something else mapped to the Action Button — like Do Not Disturb — move that to the <strong>Back Tap</strong> setting instead. Go to Settings, search Back Tap, and set a double tap to a shortcut for whatever you moved. You keep both features, nothing gets lost.
+            </p>
+
+            <h2 id="section-shortcut">Habit 5: Build an AI Actions Shortcut</h2>
+
+            <p>
+              This one takes a few minutes to set up. Once it's done though, it's the most useful habit on this list.
+            </p>
+
+            <p>
+              The idea: create a custom shortcut that shows up in your share sheet. When you highlight any text and tap share, this shortcut gives you a menu of pre-built AI actions — things like <em>Quick Summary</em>, <em>Draft a Reply</em>, or <em>Explain Like I'm Five</em>. Pick one, and it automatically grabs your selected text, combines it with the right prompt, copies it to your clipboard, and opens ChatGPT. You tap paste and hit send.
+            </p>
+
+            <p>Two examples of how this plays out in real life:</p>
+
+            <p>
+              You're reading something confusing — a contract clause, a regulation, anything dense. Highlight it, tap share, pick <em>Explain Like I'm Five</em>, tap paste in ChatGPT, and you get a plain English explanation in seconds.
+            </p>
+
+            <p>
+              You get a quick work email while away from your desk. Highlight the body, tap share, pick <em>Draft Reply</em>, tap paste, add your thoughts, send. Done in two minutes.
+            </p>
+
+            <p>
+              You can add as many actions as you want. One that's genuinely useful: <em>Analyze Meeting Notes</em> — automatically pulls out action items, owners, and deadlines from any notes you paste in.
+            </p>
+
+            <div class="callout">
+              <strong>Heads up:</strong> There's currently a small annoyance where the shortcut can't auto-send text to ChatGPT. You still have to tap paste manually once the app opens. It's a known issue waiting on a fix from OpenAI. Even with that one extra tap, the whole thing is still much faster than doing it by hand.
+            </div>
+
+            <h2 id="section-why">Why These Habits Actually Stick</h2>
+
+            <p>
+              Most AI tips sound great but never make it into your daily routine. These five are different because they plug into things you're already doing. You already tap share. You already type on your keyboard. You already take screenshots. These habits just redirect those existing actions toward AI.
+            </p>
+
+            <p>
+              That's the whole point. The goal isn't to build some elaborate new system. It's to make AI the natural next step from what you're already doing on your phone. If you want to go deeper on getting more out of AI tools day-to-day, check out our guide on <a href="https://megamocks.com/how-to-use-ai-for-research.html">how to use AI tools for deep research without getting burned</a> — it covers a lot of the same practical ground.
+            </p>
+
+            <h2 id="section-start">Start With One</h2>
+
+            <p>
+              Don't try all five today. Pick one.
+            </p>
+
+            <p>
+              The easiest starting point is Habit 2 — pinning your AI app to the share sheet. Takes two minutes. You'll use it the same day. Once that becomes automatic, add the prompt snippet keyboard. Then drag and drop. Build from there.
+            </p>
+
+            <p>
+              <strong>Top 5 AI Habits Every iPhone User Should Build Right Now</strong> is really just about removing friction. Small changes, real difference. Head over to <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a> for more tips like these — the kind that actually fit into how you already work.
+            </p>
+
+          </div>
+          <!-- /.article-body -->
+
+          <!-- Related posts -->
+          <footer class="article-footer fade-up">
+            <div class="article-footer-label">Related Articles</div>
+            <div class="related-grid">
+              <a href="https://megamocks.com/how-to-use-ai-for-research.html" class="related-card">
+                <div class="related-card-tag">Guide</div>
+                <div class="related-card-title">How to Use AI Tools for Deep Research Without Getting Burned</div>
+              </a>
+              <a href="https://megamocks.com/top-ai-tools-for-developers.html" class="related-card">
+                <div class="related-card-tag">AI Tools</div>
+                <div class="related-card-title">Top 10 AI Tools Every Developer Should Be Using Right Now</div>
+              </a>
+              <a href="https://megamocks.com/ai-productivity-stack-2026.html" class="related-card">
+                <div class="related-card-tag">Guide</div>
+                <div class="related-card-title">The AI Productivity Stack That's Adding 3 Hours to My Day</div>
+              </a>
+            </div>
+
+            <!-- Post navigation -->
+            <div class="post-nav">
+              <a href="https://megamocks.com/python-typing-practice-improve-your-coding-speed-in-30-days-megamocks.html" class="post-nav-btn">
+                <span class="post-nav-label">← Previous</span>
+                Python Typing Practice: Improve Your Coding Speed in 30 Days
+              </a>
+              <span class="post-nav-btn next" style="opacity:0.4;cursor:default;">
+                <span class="post-nav-label">Next →</span>
+                No next post yet
+              </span>
+            </div>
+          </footer>
+
+        </article>
+
+        <!-- ── Sidebar ── -->
+        <aside class="blog-sidebar">
+
+          <!-- Newsletter CTA -->
+          <div class="sidebar-widget sidebar-newsletter">
+            <div class="newsletter-inner">
+              <div class="nl-icon">✉️</div>
+              <div class="nl-title">Get the AI Weekly</div>
+              <div class="nl-sub">Top AI tool picks, reviews &amp; news — every Friday. No spam.</div>
+              <input type="email" placeholder="you@example.com" />
+              <button>Subscribe Free →</button>
+            </div>
+          </div>
+
+          <!-- Table of contents -->
+          <div class="sidebar-widget">
+            <div class="sidebar-header">Table of Contents</div>
+            <div class="toc-widget">
+              <ul class="toc-list" id="tocList">
+                <li><a href="#section-drag">Habit 1: Drag and Drop Into AI</a></li>
+                <li><a href="#section-share">Habit 2: Pin to the Share Sheet</a></li>
+                <li><a href="#section-keyboard">Habit 3: Prompt Snippet Keyboard</a></li>
+                <li><a href="#section-action">Habit 4: Map the Action Button</a></li>
+                <li><a href="#section-shortcut">Habit 5: AI Actions Shortcut</a></li>
+                <li><a href="#section-why">Why These Habits Stick</a></li>
+                <li><a href="#section-start">Start With One</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Latest posts -->
+          <div class="sidebar-widget">
+            <div class="sidebar-header">Latest Posts</div>
+            <div id="sidebarLatest"></div>
+          </div>
+
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer"></div>
+    </div>
+
+    <script src="/theme.js"></script>
+    <script>
+      /* Inject navbar + footer */
+      fetch("/navbar.html").then(r => r.text()).then(html => {
+        document.getElementById("navbar").innerHTML = html;
+        if (typeof initNav === "function") initNav();
+      });
+      fetch("/footer.html").then(r => r.text()).then(html => {
+        document.getElementById("footer").innerHTML = html;
+      });
+
+      /* Sidebar latest posts */
+      const LATEST_POSTS = [
+        { slug: "claude-vs-chatgpt-2026", title: "Claude vs ChatGPT in 2026: Which AI Assistant Actually Wins?", date: "May 1, 2026", readTime: "9 min" },
+        { slug: "best-ai-writing-tools-2026", title: "Best AI Writing Tools in 2026: A Practical Roundup", date: "Apr 29, 2026", readTime: "11 min" },
+        { slug: "cursor-ai-review", title: "Cursor AI Review: The Code Editor That Thinks With You", date: "Apr 27, 2026", readTime: "8 min" },
+        { slug: "how-to-use-ai-for-research", title: "How to Use AI Tools for Deep Research Without Getting Burned", date: "Apr 24, 2026", readTime: "7 min" },
+      ];
+      document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map((p, i) => `
+        <a href="/${p.slug}.html" class="sidebar-post-item">
+          <span class="sidebar-num">0${i + 1}</span>
+          <div>
+            <div class="sidebar-post-title">${p.title}</div>
+            <div class="sidebar-post-meta">${p.date} · ${p.readTime}</div>
+          </div>
+        </a>`).join("");
+
+      /* Reading progress bar */
+      window.addEventListener("scroll", () => {
+        const body = document.body, html = document.documentElement;
+        const total = Math.max(body.scrollHeight, html.scrollHeight) - window.innerHeight;
+        const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+        document.getElementById("progressFill").style.width = pct + "%";
+      });
+
+      /* TOC active highlight */
+      const headings = document.querySelectorAll(".article-body h2[id]");
+      const tocLinks = document.querySelectorAll(".toc-list a");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            tocLinks.forEach(a => a.classList.remove("active"));
+            const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+            if (link) link.classList.add("active");
+          }
+        });
+      }, { rootMargin: "-20% 0px -70% 0px" });
+      headings.forEach(h => observer.observe(h));
+
+      /* Fade-up on scroll */
+      const fadeObs = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add("visible"); fadeObs.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll(".fade-up").forEach(el => fadeObs.observe(el));
+    </script>
+  </body>
+</html>
