@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://megamocks.com/</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Post 1 -->
+  <url>
+    <loc>https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html</loc>
+    <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Post 2 -->
+  <url>
+    <loc>https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html</loc>
+    <lastmod>2026-05-06</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Post 3 -->
+  <url>
+    <loc>https://megamocks.com/can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.html</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Post 4 -->
+  <url>
+    <loc>https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html</loc>
+    <lastmod>2026-05-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
