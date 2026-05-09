@@ -41,4 +41,11 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Post 5 -->
+  <url>
+    <loc>https://megamocks.com/the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.html</loc>
+    <lastmod>2026-05-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
