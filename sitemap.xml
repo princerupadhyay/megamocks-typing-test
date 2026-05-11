@@ -56,4 +56,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 7 -->
+  <url>
+    <loc>https://megamocks.com/gpt-realtime-2-what-openai-biggest-voice-ai-upgrade-actually-does-megamocks.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
