@@ -64,4 +64,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 8 -->
+  <url>
+    <loc>https://megamocks.com/why-youtube-is-really-demonetizing-ai-channels-megamocks.html</loc>
+    <lastmod>2026-05-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
