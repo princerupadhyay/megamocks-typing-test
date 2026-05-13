@@ -72,4 +72,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 9 -->
+  <url>
+    <loc>https://megamocks.com/5-ai-video-tools-that-are-changing-how-videos-are-made-2026-megamocks.html</loc>
+    <lastmod>2026-05-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
