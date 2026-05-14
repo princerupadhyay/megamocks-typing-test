@@ -1,0 +1,1157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      How to Get Better Results From NotebookLM Without Changing Your Prompts — MegaMocks
+    </title>
+    <meta
+      name="description"
+      content="Most people blame their prompts when NotebookLM gives bad answers. The real fix happens before you type anything. Here are the 4 steps that change everything."
+    />
+    <meta
+      name="keywords"
+      content="NotebookLM tips, NotebookLM better results, how to use NotebookLM, NotebookLM setup, NotebookLM prompts, NotebookLM ACG workflow, Google NotebookLM guide"
+    />
+    <link
+      rel="canonical"
+      href="https://megamocks.com/how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.html"
+    />
+    <meta
+      property="og:title"
+      content="How to Get Better Results From NotebookLM Without Changing Your Prompts"
+    />
+    <meta
+      property="og:description"
+      content="Most people blame their prompts when NotebookLM gives bad answers. The real fix happens before you type anything. Here are the 4 steps that change everything."
+    />
+    <meta property="og:type" content="article" />
+    <meta
+      property="og:url"
+      content="https://megamocks.com/how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.html"
+    />
+    <meta property="og:site_name" content="MegaMocks" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ════════════════════════════════
+         CSS Variables
+      ════════════════════════════════ */
+      :root {
+        --bg: #faf9f6;
+        --bg2: #ffffff;
+        --bg3: #f0ede8;
+        --border: #e8e4de;
+        --text: #1a1814;
+        --text2: #6b6560;
+        --text3: #a09a93;
+        --accent: #d4572a;
+        --accent2: #2a6dd4;
+        --gold: #c9a227;
+        --green: #2d7a4e;
+        --header-bg: rgba(250, 249, 246, 0.94);
+        --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
+        --code-bg: #f5f2ee;
+        --code-border: #e0dbd4;
+      }
+      body.dark {
+        --bg: #0f0e0c;
+        --bg2: #171512;
+        --bg3: #1f1c18;
+        --border: #2a2620;
+        --text: #ede8e0;
+        --text2: #8a8278;
+        --text3: #55504a;
+        --accent: #e8724a;
+        --accent2: #6aacf0;
+        --gold: #e0b84a;
+        --green: #5ab87a;
+        --header-bg: rgba(15, 14, 12, 0.92);
+        --shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
+        --code-bg: #13110e;
+        --code-border: #2a2620;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        transition: background 0.3s, color 0.3s;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .app {
+        position: relative;
+        z-index: 1;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* ── Header ── */
+      #navbar { display: contents; }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--header-bg);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 0 32px;
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .logo-wrap {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 800;
+        font-size: 1.35rem;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+      .logo em { color: var(--accent); font-style: normal; }
+      .logo-divider { color: var(--border); font-weight: 300; font-size: 1.1rem; }
+      .logo-tag {
+        font-size: 0.62rem;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .main-nav { display: flex; align-items: center; gap: 28px; }
+      .main-nav a {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--text2);
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: color 0.2s;
+      }
+      .main-nav a:hover, .main-nav a.active { color: var(--accent); }
+      .header-actions { display: flex; align-items: center; gap: 12px; }
+      .search-wrap { position: relative; display: flex; align-items: center; }
+      .search-wrap input {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 7px 14px 7px 34px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.75rem;
+        color: var(--text);
+        outline: none;
+        width: 200px;
+        transition: all 0.2s;
+      }
+      .search-wrap input::placeholder { color: var(--text3); }
+      .search-wrap input:focus { border-color: var(--accent); width: 240px; }
+      .search-wrap svg {
+        position: absolute;
+        left: 11px;
+        width: 14px;
+        height: 14px;
+        color: var(--text3);
+        pointer-events: none;
+      }
+      .theme-btn {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.9rem;
+        color: var(--text2);
+      }
+      .theme-btn:hover { border-color: var(--accent); }
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text2);
+        padding: 4px;
+      }
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
+        gap: 4px;
+        position: sticky;
+        top: 64px;
+        z-index: 99;
+      }
+      .mobile-nav.open { display: flex; }
+      .mobile-nav a {
+        padding: 10px 0;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text2);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.15s;
+      }
+      .mobile-nav a:last-child { border-bottom: none; }
+      .mobile-nav a:hover { color: var(--accent); }
+
+      /* ── Footer ── */
+      footer {
+        border-top: 1px solid var(--border);
+        background: var(--bg2);
+        padding: 40px 32px 32px;
+        position: relative;
+        z-index: 1;
+      }
+      .footer-inner {
+        max-width: 1160px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .footer-logo em { color: var(--accent); font-style: normal; }
+      .footer-desc {
+        font-size: 0.74rem;
+        color: var(--text2);
+        line-height: 1.65;
+        max-width: 220px;
+      }
+      .footer-col-title {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 14px;
+      }
+      .footer-links { display: flex; flex-direction: column; gap: 9px; }
+      .footer-links a {
+        font-size: 0.76rem;
+        color: var(--text2);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .footer-links a:hover { color: var(--accent); }
+      .footer-bottom {
+        max-width: 1160px;
+        margin: 28px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-copy, .footer-made { font-size: 0.68rem; color: var(--text3); }
+
+      /* ── Article layout ── */
+      .article-layout {
+        flex: 1;
+        display: grid;
+        grid-template-columns: 1fr 300px;
+        gap: 48px;
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 48px 32px 72px;
+        width: 100%;
+        align-items: start;
+      }
+
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.65rem;
+        color: var(--text3);
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .breadcrumb a { color: var(--text3); text-decoration: none; transition: color 0.15s; }
+      .breadcrumb a:hover { color: var(--accent); }
+      .breadcrumb-sep { color: var(--border); }
+
+      .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+      .article-tag {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 11px;
+        border-radius: 20px;
+        background: rgba(212, 87, 42, 0.1);
+        color: var(--accent);
+      }
+      body.dark .article-tag { background: rgba(232, 114, 74, 0.12); }
+      .article-tag.tag-guide { background: rgba(45, 122, 78, 0.1); color: var(--green); }
+      body.dark .article-tag.tag-guide { background: rgba(90, 184, 122, 0.1); }
+
+      .article-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        font-weight: 800;
+        line-height: 1.18;
+        letter-spacing: -0.03em;
+        margin-bottom: 20px;
+        color: var(--text);
+        display: block;
+        width: 100%;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 14px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .author-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .author-name { font-size: 0.76rem; font-weight: 600; color: var(--text); }
+      .meta-sep { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; }
+      .article-meta-item {
+        font-size: 0.65rem;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .article-cover {
+        width: 100%;
+        aspect-ratio: 21/9;
+        background: linear-gradient(135deg, rgba(212,87,42,0.1) 0%, rgba(42,109,212,0.1) 100%);
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        margin: 28px 0;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      /* ── Article body ── */
+      .article-body {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: var(--text);
+      }
+      .article-body p { margin-bottom: 22px; color: var(--text2); }
+      .article-body p:first-child { color: var(--text); font-size: 1.05rem; }
+      .article-body h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.55rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        margin: 44px 0 14px;
+        line-height: 1.25;
+        color: var(--text);
+      }
+      .article-body h2::before {
+        content: "";
+        display: block;
+        width: 32px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 2px;
+        margin-bottom: 12px;
+      }
+      .article-body h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 30px 0 10px;
+        color: var(--text);
+        letter-spacing: -0.01em;
+      }
+      .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 22px; }
+      .article-body li { margin-bottom: 8px; color: var(--text2); }
+      .article-body strong { font-weight: 600; color: var(--text); }
+      .article-body a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(212, 87, 42, 0.3);
+        transition: border-color 0.15s;
+      }
+      .article-body a:hover { border-color: var(--accent); }
+      .article-body em { font-style: italic; color: var(--text2); }
+
+      .callout {
+        background: rgba(212, 87, 42, 0.05);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 12px 12px 0;
+        padding: 18px 20px;
+        margin-bottom: 22px;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--text2);
+      }
+      body.dark .callout { background: rgba(232, 114, 74, 0.07); }
+      .callout strong { color: var(--accent); }
+
+      /* ── Progress bar ── */
+      .progress-bar {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--border);
+        z-index: 99;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--accent);
+        width: 0%;
+        transition: width 0.1s linear;
+      }
+
+      /* ── TOC ── */
+      .toc-widget { padding: 0; }
+      .toc-list { list-style: none; padding: 12px 0; }
+      .toc-list li a {
+        display: block;
+        padding: 8px 18px;
+        font-size: 0.74rem;
+        color: var(--text2);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: all 0.15s;
+        line-height: 1.4;
+      }
+      .toc-list li a:hover { color: var(--accent); border-left-color: var(--accent); }
+      .toc-list li a.active {
+        color: var(--accent);
+        border-left-color: var(--accent);
+        background: rgba(212, 87, 42, 0.05);
+      }
+
+      /* ── Article footer ── */
+      .article-footer {
+        margin-top: 56px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .article-footer-label {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .article-footer-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .related-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        text-decoration: none;
+        color: inherit;
+        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+        box-shadow: var(--shadow);
+      }
+      .related-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+      .related-card-tag {
+        font-size: 0.57rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .related-card-title {
+        font-size: 0.84rem;
+        font-weight: 600;
+        line-height: 1.45;
+        color: var(--text);
+      }
+      .related-card:hover .related-card-title { color: var(--accent); }
+
+      .post-nav { display: flex; gap: 14px; margin-top: 28px; }
+      .post-nav-btn {
+        flex: 1;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px 20px;
+        text-decoration: none;
+        color: var(--text2);
+        font-size: 0.74rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        box-shadow: var(--shadow);
+      }
+      .post-nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+      .post-nav-btn.next { text-align: right; }
+      .post-nav-label {
+        font-size: 0.57rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text3);
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      /* ── Sidebar ── */
+      .blog-sidebar {
+        position: sticky;
+        top: 88px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .sidebar-widget {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .sidebar-header {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text3);
+      }
+
+      .sidebar-newsletter {
+        border: none !important;
+        background: linear-gradient(135deg, var(--accent) 0%, #b8401a 100%) !important;
+      }
+      .sidebar-newsletter .newsletter-inner {
+        padding: 22px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .sidebar-newsletter .nl-icon { font-size: 1.4rem; }
+      .sidebar-newsletter .nl-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .sidebar-newsletter .nl-sub { font-size: 0.72rem; color: rgba(255,255,255,0.8); line-height: 1.55; }
+      .sidebar-newsletter input {
+        background: rgba(255,255,255,0.15);
+        border: 1px solid rgba(255,255,255,0.25);
+        border-radius: 9px;
+        padding: 8px 13px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.74rem;
+        color: #fff;
+        outline: none;
+        width: 100%;
+      }
+      .sidebar-newsletter input::placeholder { color: rgba(255,255,255,0.6); }
+      .sidebar-newsletter input:focus { border-color: rgba(255,255,255,0.6); }
+      .sidebar-newsletter button {
+        background: #fff;
+        color: var(--accent);
+        border: none;
+        border-radius: 9px;
+        padding: 9px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        width: 100%;
+      }
+      .sidebar-newsletter button:hover { opacity: 0.9; }
+
+      .sidebar-post-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 12px 18px;
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.15s;
+      }
+      .sidebar-post-item:last-child { border-bottom: none; }
+      .sidebar-post-item:hover { background: var(--bg3); }
+      .sidebar-num {
+        font-family: "DM Mono", monospace;
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: var(--accent);
+        opacity: 0.7;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .sidebar-post-title {
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.45;
+        color: var(--text);
+      }
+      .sidebar-post-item:hover .sidebar-post-title { color: var(--accent); }
+      .sidebar-post-meta { font-size: 0.6rem; color: var(--text3); margin-top: 3px; }
+
+      /* ── Share ── */
+      .share-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 4px;
+        flex-wrap: wrap;
+      }
+      .share-label { font-size: 0.62rem; color: var(--text3); font-weight: 500; }
+      .share-btn {
+        font-size: 0.66rem;
+        font-weight: 600;
+        padding: 5px 12px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--bg3);
+        color: var(--text2);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .share-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+      /* ── Fade-up ── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.5s, transform 0.5s;
+      }
+      .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+      /* ── Responsive ── */
+      @media (max-width: 960px) {
+        .article-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 32px 24px 56px;
+        }
+        .blog-sidebar { position: static; }
+        .related-grid { grid-template-columns: 1fr; }
+        .post-nav { flex-direction: column; }
+        .main-nav { display: none; }
+        .menu-btn { display: block; }
+        .search-wrap { display: none; }
+      }
+      @media (max-width: 600px) {
+        header { padding: 0 16px; }
+        .article-layout { padding: 24px 16px 48px; }
+        .article-cover { aspect-ratio: 16/9; font-size: 3.5rem; }
+        footer { padding: 28px 16px 20px; }
+        .footer-inner { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Reading progress bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <!-- Navbar -->
+      <div id="navbar"></div>
+
+      <!-- Article layout -->
+      <div class="article-layout">
+        <!-- ── Main Article ── -->
+        <article>
+          <!-- Breadcrumb -->
+          <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span class="breadcrumb-sep">›</span>
+            <span>Turorials</span>
+          </nav>
+
+          <!-- Article header -->
+          <div class="article-header fade-up">
+            <div class="article-tags">
+              <span class="article-tag tag-guide">Tutorial</span>
+              <span class="article-tag">AI Tools</span>
+            </div>
+            <h1 class="article-title">
+              How to Get Better Results From NotebookLM Without Changing Your Prompts
+            </h1>
+            <div class="article-meta">
+              <div class="author-avatar">MM</div>
+              <div class="author-name">MegaMocks Team</div>
+              <div class="meta-sep"></div>
+              <span class="article-meta-item">📅 May 14, 2026</span>
+              <span class="article-meta-item">⏱ 7 min read</span>
+            </div>
+          </div>
+
+          <!-- Share -->
+          <div class="share-row fade-up" style="margin-top: 16px; margin-bottom: 0">
+            <span class="share-label">Share:</span>
+            <a
+              class="share-btn"
+              href="https://twitter.com/intent/tweet?url=https://megamocks.com/how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.html"
+              target="_blank"
+              rel="noopener"
+              >𝕏 Twitter</a
+            >
+            <a
+              class="share-btn"
+              href="https://www.linkedin.com/shareArticle?url=https://megamocks.com/how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.html"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+            <button
+              class="share-btn"
+              onclick="
+                navigator.clipboard.writeText(location.href);
+                this.textContent = 'Copied!';
+                setTimeout(() => (this.textContent = 'Copy link'), 2000);
+              "
+            >
+              Copy link
+            </button>
+          </div>
+
+          <!-- Cover -->
+          <div class="article-cover fade-up">
+            <img
+              src="how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.jpeg"
+              alt="How to Get Better Results From NotebookLM Without Changing Your Prompts"
+              style="width: 100%; height: auto; display: block"
+              onerror="this.style.display='none'"
+            />
+          </div>
+
+          <!-- Body -->
+          <div class="article-body fade-up" id="articleBody">
+
+            <p>
+              <strong>How to Get Better Results From NotebookLM Without Changing Your Prompts</strong> is something most people never figure out — and at <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>, we cover the practical stuff that actually makes a difference.
+            </p>
+
+            <p>
+              Most people open NotebookLM, throw in some files, type a prompt, and get a bland answer. Then they try a better prompt. Still bland. The problem isn't the prompt. It never was. The problem is everything that happens before you type anything. There are four steps that shape every answer NotebookLM gives you. Miss any one of them, and the results stay generic no matter what you type.
+            </p>
+
+            <p>Here's what those four steps actually look like.</p>
+
+            <h2 id="section-sources">Step 1: Be Picky About What You Upload</h2>
+
+            <p>
+              NotebookLM works nothing like ChatGPT. When you ask ChatGPT something, it pulls from its training data. You have no say in that. NotebookLM only pulls from the files you give it. Every answer comes directly from your documents — nothing outside of that.
+            </p>
+
+            <p>So whatever goes in controls what comes out.</p>
+
+            <p>
+              The most common mistake is treating the notebook like a dump folder. People grab a bunch of PDFs, throw them all in, and start chatting. The answers they get are vague and kind of useless — because the AI is working with a small, unchecked pile of documents.
+            </p>
+
+            <p>
+              The fix is simple: be selective. Only upload sources you've actually read or confirmed are relevant to the specific project this notebook is for.
+            </p>
+
+            <p>
+              NotebookLM also has a built-in web research tool. Under "Add Sources," you'll find a Web option with two modes — fast research and deep research. Fast research does a quick scan and grabs a handful of links. Deep research runs in the background, browses hundreds of pages, and returns a full report with recommended sources.
+            </p>
+
+            <div class="callout">
+              <strong>Pro tip:</strong> Tell deep research what to include and what to skip. Something like — <em>"Research product launch strategies for B2B SaaS companies. Focus on industry reports, case studies, and data from consulting firms. Exclude blog posts, opinion pieces, and listicles."</em> That one extra line filters out the junk before it even shows up.
+            </div>
+
+            <p>
+              Even after deep research returns results, don't import blindly. Open each source, skim it, decide if it belongs. Takes five extra minutes. But a clean notebook is what gives you answers you can trust later.
+            </p>
+
+            <p>
+              Once your sources are in, run this check: <em>"Are there any contradictions or conflicting data points across my sources?"</em> NotebookLM will scan everything and flag where documents disagree. Catch those early and every answer from that point forward is built on solid ground.
+            </p>
+
+            <h2 id="section-configure">Step 2: Configure the Notebook Before You Ask Anything</h2>
+
+            <p>
+              This is the step almost nobody does. And it's exactly why most notebooks produce generic answers.
+            </p>
+
+            <p>
+              Click "Configure Notebook" after your sources are loaded. You'll see two settings.
+            </p>
+
+            <p>
+              The first is the <strong>conversational goal</strong>. Three options: Default (general purpose), Learning Guide (educational framing), and Custom. Always pick Custom. This is where you tell NotebookLM how to think — what role to play, what to focus on, what actually matters for your project.
+            </p>
+
+            <p>
+              For a product launch notebook, you might write: <em>"Act as a product marketing strategist preparing a B2B SaaS launch. Prioritize competitive positioning, messaging clarity, pricing sensitivity, and go-to-market sequencing."</em>
+            </p>
+
+            <p>
+              The second setting is <strong>response length</strong>. Research and analysis work? Go longer. Daily briefing notebook where you just want highlights? Go shorter.
+            </p>
+
+            <p>
+              Save those settings. Then ask the exact same question you would've asked before. The difference is obvious. Instead of five bullet points that could describe any product anywhere, you get answers that pull from actual competitor data in your sources and connect to your specific goal.
+            </p>
+
+            <div class="callout">
+              <strong>Not sure how to write the custom role?</strong> Ask NotebookLM before you configure anything: <em>"Based on the sources in this notebook, suggest three custom roles I should configure for the most useful responses."</em> It reads your documents and recommends roles that actually fit. Way better than guessing.
+            </div>
+
+            <h2 id="section-acg">Step 3: Use the ACG Workflow to Stress-Test Your Answers</h2>
+
+            <p>
+              A good setup gets you a solid first answer. But a first answer is still a first draft. And first drafts have blind spots that show up at the worst time — like in the middle of a meeting.
+            </p>
+
+            <p>
+              The ACG workflow catches them before that happens. It stands for <strong>Analyze, Challenge, Gap</strong>.
+            </p>
+
+            <p>
+              <strong>Analyze</strong> is what most people already do. Ask NotebookLM to pull insights from your sources. That's your starting point.
+            </p>
+
+            <p>
+              <strong>Challenge</strong> is where it gets useful. After you get your first answer, type: <em>"What are the weakest assumptions in this analysis and which claims have the least supporting evidence?"</em> This makes NotebookLM push back on its own output. It might flag that a pricing argument doesn't account for enterprise buyers, or that a positioning angle relies on claims that aren't backed up well. These are the exact questions someone in a meeting would ask. Now you have the answers ready.
+            </p>
+
+            <p>
+              <strong>Gap</strong> is the last one. Type: <em>"What's missing from my sources? What topics or data points would I need to make this analysis complete?"</em> NotebookLM will tell you what's not there — missing market data, no buyer persona research, whatever it is. That one prompt tells you exactly what to upload next. Your notebook gets stronger every session instead of staying the same.
+            </p>
+
+            <p>Two other things in the chat panel worth knowing.</p>
+
+            <p>
+              <strong>Citations.</strong> Every response has small reference markers. Hover over one and you see the exact quote from the exact source behind that claim. You can verify anything in a couple of seconds. General chatbots can't do that — they pull from training data you can't see.
+            </p>
+
+            <p>
+              <strong>Source filtering.</strong> On the left side, every source has a checkmark. Those checkmarks control which documents the chat pulls from. If you only want answers from your beta user survey, uncheck everything else and ask. Targeted answer, not a blended summary.
+            </p>
+
+            <p>
+              And here's a move worth building into your routine: when you get an answer you want to keep, save it as a note. Then click the three dots and hit "Convert to Source." That answer now sits alongside your original documents. Next time you ask something, NotebookLM draws from your own analysis on top of the raw data. The notebook compounds on itself. Every good answer you save makes the next one better.
+            </p>
+
+            <p>
+              For more tips on getting real work done with AI tools, check out our guide on <a href="https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html">5 AI Tools That Replace Hours of Work (And When to Use Each One)</a> — same practical energy, different tools.
+            </p>
+
+            <h2 id="section-studio">Step 4: Use Studio to Turn Conversations Into Real Deliverables</h2>
+
+            <p>
+              Everything up to this point is conversation. At some point you need actual documents — something to send, present, or share. That's what the Studio panel is for.
+            </p>
+
+            <p>
+              Look for a small toggle on the right side of the screen. Studio takes everything in your notebook — sources, saved notes, configured settings — and builds finished outputs from it.
+            </p>
+
+            <p>There are a lot of output types. But three are worth focusing on.</p>
+
+            <p>
+              <strong>Audio Overviews</strong> generate an AI podcast — two hosts talking through your source material. The default version gives a general overview. Before you generate, click the pencil icon. It opens format options: Deep Dive, Debate, Critique, Brief. Pick the one that fits. You can also add a focus instruction — something like <em>"Focus on whether our pricing model is competitive based on the market data, and challenge any assumptions in the beta user feedback."</em> The hosts will argue different positions using data from your notebook. There's even an interactive mode where you can jump in mid-conversation, ask a question, and they'll answer from the notebook before picking back up.
+            </p>
+
+            <p>
+              <strong>Reports</strong> give you formatted documents. Preset options like briefing doc sit at the top. Below those, NotebookLM suggests formats based on what's actually in your notebook — not generic templates, but formats matched to your content. Click one and it generates a multi-page document pulling from every source. The kind of thing that used to take an hour and a half manually now takes about 90 seconds. If none of the presets fit, click "Create Your Own" and describe what you need.
+            </p>
+
+            <p>
+              <strong>Data Tables</strong> are probably the most underrated feature in the whole tool. Ask NotebookLM to build a comparison table — say, all three competitors with columns for pricing tiers, free trial length, onboarding support, and biggest weaknesses. It pulls from across all your sources, organizes everything into a clean table, and you can export it directly to Google Sheets in about a minute.
+            </p>
+
+            <p>
+              You can also share your notebook. Full access lets someone add sources and chat with the notebook themselves. Chat-only access means they can ask questions but can't change anything. You build it once, configure it right, and anyone you share it with pulls from the same clean setup.
+            </p>
+
+            <h2 id="section-why">The Setup Is the Prompt</h2>
+
+            <p>
+              Most people spend all their time trying to write better prompts. Prompts matter — but they're not the main variable.
+            </p>
+
+            <p>
+              The quality of your results is mostly decided before you type a single word. Clean sources, a configured role, the ACG workflow, and the right output format — those four things shape everything NotebookLM produces. Get those right and the prompts almost write themselves.
+            </p>
+
+            <p>
+              For more on getting the most out of AI tools, check out <a href="https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html">The 6 Claude Code Skills That Clients Actually Pay For</a> and <a href="https://megamocks.com/can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.html">Can Manus AI Really Replace Hours of Work?</a> — both worth reading if you liked this one.
+            </p>
+
+            <h2 id="section-start">Start With One Notebook</h2>
+
+            <p>
+              Pick one project you're already working on. Load in three to five sources you trust. Set the custom role. Run ACG once. Generate one real deliverable from Studio.
+            </p>
+
+            <p>
+              That's the whole thing. One notebook done right will show you exactly what <strong>How to Get Better Results From NotebookLM Without Changing Your Prompts</strong> actually means in practice. Head over to <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a> for more guides like this — the kind that skip the hype and show you what actually works.
+            </p>
+
+          </div>
+          <!-- /.article-body -->
+
+          <!-- Related posts -->
+          <footer class="article-footer fade-up">
+            <div class="article-footer-label">Related Articles</div>
+            <div class="related-grid">
+              <a
+                href="https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html"
+                class="related-card"
+              >
+                <div class="related-card-tag">Guide</div>
+                <div class="related-card-title">
+                  5 AI Tools That Replace Hours of Work (And When to Use Each One)
+                </div>
+              </a>
+              <a
+                href="https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html"
+                class="related-card"
+              >
+                <div class="related-card-tag">Guide</div>
+                <div class="related-card-title">
+                  The 6 Claude Code Skills That Clients Actually Pay For (2026)
+                </div>
+              </a>
+              <a
+                href="https://megamocks.com/can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.html"
+                class="related-card"
+              >
+                <div class="related-card-tag">Guide</div>
+                <div class="related-card-title">
+                  Can Manus AI Really Replace Hours of Work? Here Are 7 Proof Points
+                </div>
+              </a>
+            </div>
+
+            <!-- Post navigation -->
+            <div class="post-nav">
+              <a
+                href="https://megamocks.com/why-youtube-is-really-demonetizing-ai-channels-megamocks.html"
+                class="post-nav-btn"
+              >
+                <span class="post-nav-label">← Previous</span>
+                Why YouTube Is Really Demonetizing AI Channels (And It's Not What You Think)
+              </a>
+              <span
+                class="post-nav-btn next"
+                style="opacity: 0.4; cursor: default"
+              >
+                <span class="post-nav-label">Next →</span>
+                No next post yet
+              </span>
+            </div>
+          </footer>
+        </article>
+
+        <!-- ── Sidebar ── -->
+        <aside class="blog-sidebar">
+          <!-- Newsletter CTA -->
+          <div class="sidebar-widget sidebar-newsletter">
+            <div class="newsletter-inner">
+              <div class="nl-icon">✉️</div>
+              <div class="nl-title">Get the AI Weekly</div>
+              <div class="nl-sub">
+                Top AI tool picks, reviews &amp; news — every Friday. No spam.
+              </div>
+              <input type="email" placeholder="you@example.com" />
+              <button>Subscribe Free →</button>
+            </div>
+          </div>
+
+          <!-- Table of contents -->
+          <div class="sidebar-widget">
+            <div class="sidebar-header">Table of Contents</div>
+            <div class="toc-widget">
+              <ul class="toc-list" id="tocList">
+                <li><a href="#section-sources">Step 1: Be Picky About What You Upload</a></li>
+                <li><a href="#section-configure">Step 2: Configure the Notebook</a></li>
+                <li><a href="#section-acg">Step 3: The ACG Workflow</a></li>
+                <li><a href="#section-studio">Step 4: Use Studio for Deliverables</a></li>
+                <li><a href="#section-why">The Setup Is the Prompt</a></li>
+                <li><a href="#section-start">Start With One Notebook</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Latest posts -->
+          <div class="sidebar-widget">
+            <div class="sidebar-header">Latest Posts</div>
+            <div id="sidebarLatest"></div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer"></div>
+    </div>
+
+    <script src="/theme.js"></script>
+    <script>
+      /* Inject navbar + footer */
+      fetch("/navbar.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("navbar").innerHTML = html;
+          if (typeof initNav === "function") initNav();
+        });
+      fetch("/footer.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("footer").innerHTML = html;
+        });
+
+      /* Sidebar latest posts */
+      const LATEST_POSTS = [
+        {
+          slug: "why-youtube-is-really-demonetizing-ai-channels-megamocks",
+          title: "Why YouTube Is Really Demonetizing AI Channels (And It's Not What You Think)",
+          date: "May 12, 2026",
+          readTime: "6 min",
+        },
+        {
+          slug: "the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks",
+          title: "The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost, and Results",
+          date: "May 9, 2026",
+          readTime: "8 min",
+        },
+        {
+          slug: "5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks",
+          title: "5 AI Tools That Replace Hours of Work (And When to Use Each One)",
+          date: "May 6, 2026",
+          readTime: "7 min",
+        },
+        {
+          slug: "top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks",
+          title: "Top 5 AI Habits Every iPhone User Should Build Right Now",
+          date: "May 4, 2026",
+          readTime: "7 min",
+        },
+      ];
+      document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map(
+        (p, i) => `
+        <a href="/${p.slug}.html" class="sidebar-post-item">
+          <span class="sidebar-num">0${i + 1}</span>
+          <div>
+            <div class="sidebar-post-title">${p.title}</div>
+            <div class="sidebar-post-meta">${p.date} · ${p.readTime}</div>
+          </div>
+        </a>`
+      ).join("");
+
+      /* Reading progress bar */
+      window.addEventListener("scroll", () => {
+        const body = document.body, html = document.documentElement;
+        const total = Math.max(body.scrollHeight, html.scrollHeight) - window.innerHeight;
+        const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+        document.getElementById("progressFill").style.width = pct + "%";
+      });
+
+      /* TOC active highlight */
+      const headings = document.querySelectorAll(".article-body h2[id]");
+      const tocLinks = document.querySelectorAll(".toc-list a");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              tocLinks.forEach((a) => a.classList.remove("active"));
+              const link = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+              if (link) link.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" }
+      );
+      headings.forEach((h) => observer.observe(h));
+
+      /* Fade-up on scroll */
+      const fadeObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              fadeObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 }
+      );
+      document.querySelectorAll(".fade-up").forEach((el) => fadeObs.observe(el));
+    </script>
+  </body>
+</html>

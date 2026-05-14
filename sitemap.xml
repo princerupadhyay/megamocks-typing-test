@@ -80,4 +80,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 10 -->
+  <url>
+    <loc>https://megamocks.com/how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.html</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
