@@ -88,4 +88,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 11 -->
+  <url>
+    <loc>https://megamocks.com/wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks.html</loc>
+    <lastmod>2026-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
