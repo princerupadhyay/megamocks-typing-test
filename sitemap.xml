@@ -96,4 +96,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 12 -->
+  <url>
+    <loc>https://megamocks.com/google-android-ai-iphone-switch-megamocks.html</loc>
+    <lastmod>2026-05-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
