@@ -104,4 +104,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
+  <!-- Post 13 -->
+  <url>
+    <loc>https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html</loc>
+    <lastmod>2026-05-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>
