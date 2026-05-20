@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026? — MegaMocks</title>
+    <title>
+      OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026? — MegaMocks
+    </title>
     <meta
       name="description"
       content="OpenAI Codex vs Claude Cowork — we compare every feature head to head so you can pick the right AI agent for your work in 2026."
@@ -16,7 +18,10 @@
       rel="canonical"
       href="https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html"
     />
-    <meta property="og:title" content="OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026?" />
+    <meta
+      property="og:title"
+      content="OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026?"
+    />
     <meta
       property="og:description"
       content="OpenAI Codex vs Claude Cowork — we compare every feature head to head so you can pick the right AI agent for your work in 2026."
@@ -34,6 +39,9 @@
     />
 
     <style>
+      /* ════════════════════════════════
+         CSS Variables
+      ════════════════════════════════ */
       :root {
         --bg: #faf9f6;
         --bg2: #ffffff;
@@ -71,13 +79,20 @@
         --code-border: #2a2620;
       }
 
-      * { box-sizing: border-box; margin: 0; padding: 0; }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-      html, body {
+      html,
+      body {
         font-family: "DM Sans", sans-serif;
         background: var(--bg);
         color: var(--text);
-        transition: background 0.3s, color 0.3s;
+        transition:
+          background 0.3s,
+          color 0.3s;
         overflow-x: hidden;
       }
 
@@ -98,7 +113,10 @@
         flex-direction: column;
       }
 
-      #navbar { display: contents; }
+      /* ── Header ── */
+      #navbar {
+        display: contents;
+      }
 
       header {
         position: sticky;
@@ -114,29 +132,145 @@
         justify-content: space-between;
         gap: 24px;
       }
-      .logo-wrap { display: flex; align-items: baseline; gap: 10px; text-decoration: none; }
-      .logo { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.35rem; color: var(--text); letter-spacing: -0.02em; }
-      .logo em { color: var(--accent); font-style: normal; }
-      .logo-divider { color: var(--border); font-weight: 300; font-size: 1.1rem; }
-      .logo-tag { font-size: 0.62rem; font-weight: 500; color: var(--text3); letter-spacing: 0.12em; text-transform: uppercase; }
-      .main-nav { display: flex; align-items: center; gap: 28px; }
-      .main-nav a { font-size: 0.78rem; font-weight: 500; color: var(--text2); text-decoration: none; letter-spacing: 0.03em; transition: color 0.2s; }
-      .main-nav a:hover, .main-nav a.active { color: var(--accent); }
-      .header-actions { display: flex; align-items: center; gap: 12px; }
-      .search-wrap { position: relative; display: flex; align-items: center; }
-      .search-wrap input { background: var(--bg3); border: 1px solid var(--border); border-radius: 24px; padding: 7px 14px 7px 34px; font-family: "DM Sans", sans-serif; font-size: 0.75rem; color: var(--text); outline: none; width: 200px; transition: all 0.2s; }
-      .search-wrap input::placeholder { color: var(--text3); }
-      .search-wrap input:focus { border-color: var(--accent); width: 240px; }
-      .search-wrap svg { position: absolute; left: 11px; width: 14px; height: 14px; color: var(--text3); pointer-events: none; }
-      .theme-btn { background: var(--bg3); border: 1px solid var(--border); border-radius: 50%; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; color: var(--text2); }
-      .theme-btn:hover { border-color: var(--accent); }
-      .menu-btn { display: none; background: none; border: none; cursor: pointer; color: var(--text2); padding: 4px; }
-      .mobile-nav { display: none; flex-direction: column; background: var(--bg2); border-bottom: 1px solid var(--border); padding: 16px 24px; gap: 4px; position: sticky; top: 64px; z-index: 99; }
-      .mobile-nav.open { display: flex; }
-      .mobile-nav a { padding: 10px 0; font-size: 0.85rem; font-weight: 500; color: var(--text2); text-decoration: none; border-bottom: 1px solid var(--border); transition: color 0.15s; }
-      .mobile-nav a:last-child { border-bottom: none; }
-      .mobile-nav a:hover { color: var(--accent); }
+      .logo-wrap {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+        text-decoration: none;
+      }
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 800;
+        font-size: 1.35rem;
+        color: var(--text);
+        letter-spacing: -0.02em;
+      }
+      .logo em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .logo-divider {
+        color: var(--border);
+        font-weight: 300;
+        font-size: 1.1rem;
+      }
+      .logo-tag {
+        font-size: 0.62rem;
+        font-weight: 500;
+        color: var(--text3);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+      .main-nav a {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--text2);
+        text-decoration: none;
+        letter-spacing: 0.03em;
+        transition: color 0.2s;
+      }
+      .main-nav a:hover,
+      .main-nav a.active {
+        color: var(--accent);
+      }
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .search-wrap {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .search-wrap input {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 7px 14px 7px 34px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.75rem;
+        color: var(--text);
+        outline: none;
+        width: 200px;
+        transition: all 0.2s;
+      }
+      .search-wrap input::placeholder {
+        color: var(--text3);
+      }
+      .search-wrap input:focus {
+        border-color: var(--accent);
+        width: 240px;
+      }
+      .search-wrap svg {
+        position: absolute;
+        left: 11px;
+        width: 14px;
+        height: 14px;
+        color: var(--text3);
+        pointer-events: none;
+      }
+      .theme-btn {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        font-size: 0.9rem;
+        color: var(--text2);
+      }
+      .theme-btn:hover {
+        border-color: var(--accent);
+      }
+      .menu-btn {
+        display: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: var(--text2);
+        padding: 4px;
+      }
+      .mobile-nav {
+        display: none;
+        flex-direction: column;
+        background: var(--bg2);
+        border-bottom: 1px solid var(--border);
+        padding: 16px 24px;
+        gap: 4px;
+        position: sticky;
+        top: 64px;
+        z-index: 99;
+      }
+      .mobile-nav.open {
+        display: flex;
+      }
+      .mobile-nav a {
+        padding: 10px 0;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--text2);
+        text-decoration: none;
+        border-bottom: 1px solid var(--border);
+        transition: color 0.15s;
+      }
+      .mobile-nav a:last-child {
+        border-bottom: none;
+      }
+      .mobile-nav a:hover {
+        color: var(--accent);
+      }
 
+      /* ── Footer ── */
       footer {
         border-top: 1px solid var(--border);
         background: var(--bg2);
@@ -144,17 +278,68 @@
         position: relative;
         z-index: 1;
       }
-      .footer-inner { max-width: 1160px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-      .footer-logo { font-family: "Playfair Display", serif; font-weight: 800; font-size: 1.15rem; color: var(--text); margin-bottom: 8px; }
-      .footer-logo em { color: var(--accent); font-style: normal; }
-      .footer-desc { font-size: 0.74rem; color: var(--text2); line-height: 1.65; max-width: 220px; }
-      .footer-col-title { font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); margin-bottom: 14px; }
-      .footer-links { display: flex; flex-direction: column; gap: 9px; }
-      .footer-links a { font-size: 0.76rem; color: var(--text2); text-decoration: none; transition: color 0.15s; }
-      .footer-links a:hover { color: var(--accent); }
-      .footer-bottom { max-width: 1160px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
-      .footer-copy, .footer-made { font-size: 0.68rem; color: var(--text3); }
+      .footer-inner {
+        max-width: 1160px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 32px;
+      }
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--text);
+        margin-bottom: 8px;
+      }
+      .footer-logo em {
+        color: var(--accent);
+        font-style: normal;
+      }
+      .footer-desc {
+        font-size: 0.74rem;
+        color: var(--text2);
+        line-height: 1.65;
+        max-width: 220px;
+      }
+      .footer-col-title {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text3);
+        margin-bottom: 14px;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 9px;
+      }
+      .footer-links a {
+        font-size: 0.76rem;
+        color: var(--text2);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+      .footer-bottom {
+        max-width: 1160px;
+        margin: 28px auto 0;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .footer-copy,
+      .footer-made {
+        font-size: 0.68rem;
+        color: var(--text3);
+      }
 
+      /* ── Article layout ── */
       .article-layout {
         flex: 1;
         display: grid;
@@ -167,159 +352,633 @@
         align-items: start;
       }
 
-      .breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 0.65rem; color: var(--text3); margin-bottom: 28px; flex-wrap: wrap; }
-      .breadcrumb a { color: var(--text3); text-decoration: none; transition: color 0.15s; }
-      .breadcrumb a:hover { color: var(--accent); }
-      .breadcrumb-sep { color: var(--border); }
-
-      .article-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
-      .article-tag { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 11px; border-radius: 20px; }
-      .article-tag.tag-compare { background: rgba(42, 109, 212, 0.08); color: var(--accent2); }
-      body.dark .article-tag.tag-compare { background: rgba(106, 172, 240, 0.08); }
-      .article-tag.tag-ai { background: rgba(212, 87, 42, 0.1); color: var(--accent); }
-      body.dark .article-tag.tag-ai { background: rgba(232, 114, 74, 0.12); }
-
-      .article-title { font-family: "Playfair Display", serif; font-size: clamp(1.9rem, 4vw, 2.6rem); font-weight: 800; line-height: 1.18; letter-spacing: -0.03em; margin-bottom: 20px; color: var(--text); display: block; width: 100%; }
-
-      .article-meta { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-      .author-avatar { width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; color: #fff; flex-shrink: 0; }
-      .author-name { font-size: 0.76rem; font-weight: 600; color: var(--text); }
-      .meta-sep { width: 1px; height: 16px; background: var(--border); flex-shrink: 0; }
-      .article-meta-item { font-size: 0.65rem; color: var(--text3); display: flex; align-items: center; gap: 4px; }
-
-      .article-cover { width: 100%; aspect-ratio: 21/9; border-radius: 18px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 5rem; margin: 28px 0; overflow: hidden; box-shadow: var(--shadow); background: linear-gradient(135deg, rgba(42,109,212,0.12) 0%, rgba(212,87,42,0.10) 100%); }
-
-      .article-body { font-size: 1rem; line-height: 1.85; color: var(--text); }
-      .article-body p { margin-bottom: 22px; color: var(--text2); }
-      .article-body p:first-child { color: var(--text); font-size: 1.05rem; }
-      .article-body h2 { font-family: "Playfair Display", serif; font-size: 1.55rem; font-weight: 800; letter-spacing: -0.025em; margin: 44px 0 14px; line-height: 1.25; color: var(--text); }
-      .article-body h2::before { content: ""; display: block; width: 32px; height: 3px; background: var(--accent2); border-radius: 2px; margin-bottom: 12px; }
-      .article-body h3 { font-size: 1.1rem; font-weight: 600; margin: 30px 0 10px; color: var(--text); letter-spacing: -0.01em; }
-      .article-body ul, .article-body ol { padding-left: 22px; margin-bottom: 22px; }
-      .article-body li { margin-bottom: 8px; color: var(--text2); }
-      .article-body strong { font-weight: 600; color: var(--text); }
-      .article-body a { color: var(--accent2); text-decoration: none; border-bottom: 1px solid rgba(42,109,212,0.3); transition: border-color 0.15s; }
-      .article-body a:hover { border-color: var(--accent2); }
-
-      /* Winner badge */
-      .winner-badge {
-        display: inline-flex;
+      .breadcrumb {
+        display: flex;
         align-items: center;
         gap: 6px;
+        font-size: 0.65rem;
+        color: var(--text3);
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .breadcrumb a {
+        color: var(--text3);
+        text-decoration: none;
+        transition: color 0.15s;
+      }
+      .breadcrumb a:hover {
+        color: var(--accent);
+      }
+      .breadcrumb-sep {
+        color: var(--border);
+      }
+
+      .article-tags {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-bottom: 16px;
+      }
+      .article-tag {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 11px;
+        border-radius: 20px;
+        background: rgba(212, 87, 42, 0.1);
+        color: var(--accent);
+      }
+      body.dark .article-tag {
+        background: rgba(232, 114, 74, 0.12);
+      }
+      .article-tag.tag-compare {
         background: rgba(42, 109, 212, 0.08);
-        border: 1px solid rgba(42, 109, 212, 0.2);
-        border-radius: 8px;
-        padding: 10px 16px;
-        font-size: 0.8rem;
-        font-weight: 600;
         color: var(--accent2);
+      }
+      body.dark .article-tag.tag-compare {
+        background: rgba(106, 172, 240, 0.08);
+      }
+      .article-tag.tag-ai {
+        background: rgba(212, 87, 42, 0.1);
+        color: var(--accent);
+      }
+
+      .article-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.9rem, 4vw, 2.6rem);
+        font-weight: 800;
+        line-height: 1.18;
+        letter-spacing: -0.03em;
+        margin-bottom: 20px;
+        color: var(--text);
+        display: block;
+        width: 100%;
+      }
+
+      .article-meta {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        padding: 14px 0;
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .author-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.65rem;
+        font-weight: 800;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .author-name {
+        font-size: 0.76rem;
+        font-weight: 600;
+        color: var(--text);
+      }
+      .meta-sep {
+        width: 1px;
+        height: 16px;
+        background: var(--border);
+        flex-shrink: 0;
+      }
+      .article-meta-item {
+        font-size: 0.65rem;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .article-cover {
+        width: 100%;
+        aspect-ratio: 21/9;
+        background: linear-gradient(
+          135deg,
+          rgba(42, 109, 212, 0.1) 0%,
+          rgba(212, 87, 42, 0.1) 100%
+        );
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        margin: 28px 0;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+
+      /* ── Article body ── */
+      .article-body {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: var(--text);
+      }
+      .article-body p {
+        margin-bottom: 22px;
+        color: var(--text2);
+      }
+      .article-body p:first-child {
+        color: var(--text);
+        font-size: 1.05rem;
+      }
+      .article-body h2 {
+        font-family: "Playfair Display", serif;
+        font-size: 1.55rem;
+        font-weight: 800;
+        letter-spacing: -0.025em;
+        margin: 44px 0 14px;
+        line-height: 1.25;
+        color: var(--text);
+      }
+      .article-body h2::before {
+        content: "";
+        display: block;
+        width: 32px;
+        height: 3px;
+        background: var(--accent);
+        border-radius: 2px;
+        margin-bottom: 12px;
+      }
+      .article-body h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 30px 0 10px;
+        color: var(--text);
+        letter-spacing: -0.01em;
+      }
+      .article-body ul,
+      .article-body ol {
+        padding-left: 22px;
         margin-bottom: 22px;
       }
-      body.dark .winner-badge { background: rgba(106, 172, 240, 0.08); border-color: rgba(106,172,240,0.2); }
+      .article-body li {
+        margin-bottom: 8px;
+        color: var(--text2);
+      }
+      .article-body strong {
+        font-weight: 600;
+        color: var(--text);
+      }
+      .article-body a {
+        color: var(--accent);
+        text-decoration: none;
+        border-bottom: 1px solid rgba(212, 87, 42, 0.3);
+        transition: border-color 0.15s;
+      }
+      .article-body a:hover {
+        border-color: var(--accent);
+      }
+      .article-body pre {
+        background: var(--code-bg);
+        border: 1px solid var(--code-border);
+        border-radius: 14px;
+        padding: 22px 22px 20px;
+        overflow-x: auto;
+        margin-bottom: 22px;
+        position: relative;
+        box-shadow: var(--shadow);
+      }
+      .article-body pre::before {
+        content: attr(data-lang);
+        position: absolute;
+        top: 10px;
+        right: 14px;
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--text3);
+        font-family: "DM Sans", sans-serif;
+      }
+      .article-body code {
+        font-family: "DM Mono", monospace;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: var(--accent2);
+      }
+      .article-body p code,
+      .article-body li code {
+        background: var(--bg3);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 1px 6px;
+        font-size: 0.82em;
+        color: var(--accent);
+        font-family: "DM Mono", monospace;
+      }
+      body.dark .article-body p code,
+      body.dark .article-body li code {
+        color: var(--gold);
+      }
 
-      .callout { background: rgba(42, 109, 212, 0.05); border-left: 3px solid var(--accent2); border-radius: 0 12px 12px 0; padding: 18px 20px; margin-bottom: 22px; font-size: 0.88rem; line-height: 1.7; color: var(--text2); }
-      body.dark .callout { background: rgba(106, 172, 240, 0.07); }
-      .callout strong { color: var(--accent2); }
+      .callout {
+        background: rgba(212, 87, 42, 0.05);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 12px 12px 0;
+        padding: 18px 20px;
+        margin-bottom: 22px;
+        font-size: 0.88rem;
+        line-height: 1.7;
+        color: var(--text2);
+      }
+      body.dark .callout {
+        background: rgba(232, 114, 74, 0.07);
+      }
+      .callout strong {
+        color: var(--accent);
+      }
 
-      /* Comparison table */
-      .compare-table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 0.82rem; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
-      .compare-table th { background: var(--bg3); padding: 12px 16px; text-align: left; font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); border-bottom: 1px solid var(--border); }
-      .compare-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text2); vertical-align: top; }
-      .compare-table tr:last-child td { border-bottom: none; }
-      .compare-table tr:hover td { background: var(--bg3); }
-      .compare-table .win { color: var(--accent2); font-weight: 600; }
-      .compare-table .lose { color: var(--text3); }
-      .compare-table .tie { color: var(--gold); font-weight: 500; }
+      /* ── Progress bar ── */
+      .progress-bar {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--border);
+        z-index: 99;
+      }
+      .progress-fill {
+        height: 100%;
+        background: var(--accent);
+        width: 0%;
+        transition: width 0.1s linear;
+      }
 
-      .progress-bar { position: fixed; top: 64px; left: 0; right: 0; height: 2px; background: var(--border); z-index: 99; }
-      .progress-fill { height: 100%; background: var(--accent2); width: 0%; transition: width 0.1s linear; }
+      /* ── TOC ── */
+      .toc-widget {
+        padding: 0;
+      }
+      .toc-list {
+        list-style: none;
+        padding: 12px 0;
+      }
+      .toc-list li a {
+        display: block;
+        padding: 8px 18px;
+        font-size: 0.74rem;
+        color: var(--text2);
+        text-decoration: none;
+        border-left: 2px solid transparent;
+        transition: all 0.15s;
+        line-height: 1.4;
+      }
+      .toc-list li a:hover {
+        color: var(--accent);
+        border-left-color: var(--accent);
+      }
+      .toc-list li a.active {
+        color: var(--accent);
+        border-left-color: var(--accent);
+        background: rgba(212, 87, 42, 0.05);
+      }
 
-      .toc-widget { padding: 0; }
-      .toc-list { list-style: none; padding: 12px 0; }
-      .toc-list li a { display: block; padding: 8px 18px; font-size: 0.74rem; color: var(--text2); text-decoration: none; border-left: 2px solid transparent; transition: all 0.15s; line-height: 1.4; }
-      .toc-list li a:hover { color: var(--accent2); border-left-color: var(--accent2); }
-      .toc-list li a.active { color: var(--accent2); border-left-color: var(--accent2); background: rgba(42,109,212,0.05); }
+      /* ── Article footer ── */
+      .article-footer {
+        margin-top: 56px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .article-footer-label {
+        font-size: 0.58rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--text3);
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .article-footer-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: var(--border);
+      }
+      .related-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .related-card {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 18px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          border-color 0.2s,
+          transform 0.2s,
+          box-shadow 0.2s;
+        box-shadow: var(--shadow);
+      }
+      .related-card:hover {
+        border-color: var(--accent);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+      }
+      .related-card-tag {
+        font-size: 0.57rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 8px;
+      }
+      .related-card-title {
+        font-size: 0.84rem;
+        font-weight: 600;
+        line-height: 1.45;
+        color: var(--text);
+      }
+      .related-card:hover .related-card-title {
+        color: var(--accent);
+      }
 
-      .article-footer { margin-top: 56px; padding-top: 32px; border-top: 1px solid var(--border); }
-      .article-footer-label { font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--text3); display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
-      .article-footer-label::after { content: ""; flex: 1; height: 1px; background: var(--border); }
-      .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-      .related-card { background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 18px; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: var(--shadow); }
-      .related-card:hover { border-color: var(--accent2); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
-      .related-card-tag { font-size: 0.57rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--accent2); margin-bottom: 8px; }
-      .related-card-title { font-size: 0.84rem; font-weight: 600; line-height: 1.45; color: var(--text); }
-      .related-card:hover .related-card-title { color: var(--accent2); }
+      .post-nav {
+        display: flex;
+        gap: 14px;
+        margin-top: 28px;
+      }
+      .post-nav-btn {
+        flex: 1;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px 20px;
+        text-decoration: none;
+        color: var(--text2);
+        font-size: 0.74rem;
+        font-weight: 500;
+        transition: all 0.2s;
+        box-shadow: var(--shadow);
+      }
+      .post-nav-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
+      .post-nav-btn.next {
+        text-align: right;
+      }
+      .post-nav-label {
+        font-size: 0.57rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--text3);
+        display: block;
+        margin-bottom: 5px;
+      }
 
-      .post-nav { display: flex; gap: 14px; margin-top: 28px; }
-      .post-nav-btn { flex: 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 14px; padding: 16px 20px; text-decoration: none; color: var(--text2); font-size: 0.74rem; font-weight: 500; transition: all 0.2s; box-shadow: var(--shadow); }
-      .post-nav-btn:hover { border-color: var(--accent2); color: var(--accent2); }
-      .post-nav-btn.next { text-align: right; }
-      .post-nav-label { font-size: 0.57rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); display: block; margin-bottom: 5px; }
+      /* ── Sidebar ── */
+      .blog-sidebar {
+        position: sticky;
+        top: 88px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+      .sidebar-widget {
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: var(--shadow);
+      }
+      .sidebar-header {
+        padding: 14px 18px;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text3);
+      }
 
-      .blog-sidebar { position: sticky; top: 88px; display: flex; flex-direction: column; gap: 20px; }
-      .sidebar-widget { background: var(--bg2); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow); }
-      .sidebar-header { padding: 14px 18px; border-bottom: 1px solid var(--border); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text3); }
+      .sidebar-newsletter {
+        border: none !important;
+        background: linear-gradient(
+          135deg,
+          var(--accent) 0%,
+          #b8401a 100%
+        ) !important;
+      }
+      .sidebar-newsletter .newsletter-inner {
+        padding: 22px 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .sidebar-newsletter .nl-icon {
+        font-size: 1.4rem;
+      }
+      .sidebar-newsletter .nl-title {
+        font-family: "Playfair Display", serif;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      .sidebar-newsletter .nl-sub {
+        font-size: 0.72rem;
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.55;
+      }
+      .sidebar-newsletter input {
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        border-radius: 9px;
+        padding: 8px 13px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.74rem;
+        color: #fff;
+        outline: none;
+        width: 100%;
+      }
+      .sidebar-newsletter input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+      }
+      .sidebar-newsletter input:focus {
+        border-color: rgba(255, 255, 255, 0.6);
+      }
+      .sidebar-newsletter button {
+        background: #fff;
+        color: var(--accent);
+        border: none;
+        border-radius: 9px;
+        padding: 9px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.74rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 0.2s;
+        width: 100%;
+      }
+      .sidebar-newsletter button:hover {
+        opacity: 0.9;
+      }
 
-      .sidebar-newsletter { border: none !important; background: linear-gradient(135deg, var(--accent2) 0%, #1a4fa0 100%) !important; }
-      .sidebar-newsletter .newsletter-inner { padding: 22px 20px; display: flex; flex-direction: column; gap: 10px; }
-      .sidebar-newsletter .nl-icon { font-size: 1.4rem; }
-      .sidebar-newsletter .nl-title { font-family: "Playfair Display", serif; font-size: 1rem; font-weight: 700; color: #fff; }
-      .sidebar-newsletter .nl-sub { font-size: 0.72rem; color: rgba(255,255,255,0.8); line-height: 1.55; }
-      .sidebar-newsletter input { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 9px; padding: 8px 13px; font-family: "DM Sans", sans-serif; font-size: 0.74rem; color: #fff; outline: none; width: 100%; }
-      .sidebar-newsletter input::placeholder { color: rgba(255,255,255,0.6); }
-      .sidebar-newsletter button { background: #fff; color: var(--accent2); border: none; border-radius: 9px; padding: 9px; font-family: "DM Sans", sans-serif; font-size: 0.74rem; font-weight: 700; cursor: pointer; transition: opacity 0.2s; width: 100%; }
-      .sidebar-newsletter button:hover { opacity: 0.9; }
+      .sidebar-post-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 12px 18px;
+        text-decoration: none;
+        color: inherit;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.15s;
+      }
+      .sidebar-post-item:last-child {
+        border-bottom: none;
+      }
+      .sidebar-post-item:hover {
+        background: var(--bg3);
+      }
+      .sidebar-num {
+        font-family: "DM Mono", monospace;
+        font-size: 0.65rem;
+        font-weight: 500;
+        color: var(--accent);
+        opacity: 0.7;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .sidebar-post-title {
+        font-size: 0.75rem;
+        font-weight: 500;
+        line-height: 1.45;
+        color: var(--text);
+      }
+      .sidebar-post-item:hover .sidebar-post-title {
+        color: var(--accent);
+      }
+      .sidebar-post-meta {
+        font-size: 0.6rem;
+        color: var(--text3);
+        margin-top: 3px;
+      }
 
-      .sidebar-post-item { display: flex; gap: 12px; align-items: flex-start; padding: 12px 18px; text-decoration: none; color: inherit; border-bottom: 1px solid var(--border); transition: background 0.15s; }
-      .sidebar-post-item:last-child { border-bottom: none; }
-      .sidebar-post-item:hover { background: var(--bg3); }
-      .sidebar-num { font-family: "DM Mono", monospace; font-size: 0.65rem; font-weight: 500; color: var(--accent2); opacity: 0.7; flex-shrink: 0; margin-top: 2px; }
-      .sidebar-post-title { font-size: 0.75rem; font-weight: 500; line-height: 1.45; color: var(--text); }
-      .sidebar-post-item:hover .sidebar-post-title { color: var(--accent2); }
-      .sidebar-post-meta { font-size: 0.6rem; color: var(--text3); margin-top: 3px; }
+      /* ── Share ── */
+      .share-row {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-top: 4px;
+        flex-wrap: wrap;
+      }
+      .share-label {
+        font-size: 0.62rem;
+        color: var(--text3);
+        font-weight: 500;
+      }
+      .share-btn {
+        font-size: 0.66rem;
+        font-weight: 600;
+        padding: 5px 12px;
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        background: var(--bg3);
+        color: var(--text2);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .share-btn:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+      }
 
-      .share-row { display: flex; gap: 8px; align-items: center; margin-top: 4px; flex-wrap: wrap; }
-      .share-label { font-size: 0.62rem; color: var(--text3); font-weight: 500; }
-      .share-btn { font-size: 0.66rem; font-weight: 600; padding: 5px 12px; border: 1px solid var(--border); border-radius: 20px; background: var(--bg3); color: var(--text2); cursor: pointer; text-decoration: none; transition: all 0.2s; font-family: "DM Sans", sans-serif; }
-      .share-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+      /* ── Fade-up ── */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .fade-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-      .fade-up { opacity: 0; transform: translateY(16px); transition: opacity 0.5s, transform 0.5s; }
-      .fade-up.visible { opacity: 1; transform: translateY(0); }
-
+      /* ── Responsive ── */
       @media (max-width: 960px) {
-        .article-layout { grid-template-columns: 1fr; gap: 32px; padding: 32px 24px 56px; }
-        .blog-sidebar { position: static; }
-        .related-grid { grid-template-columns: 1fr; }
-        .post-nav { flex-direction: column; }
-        .main-nav { display: none; }
-        .menu-btn { display: block; }
-        .search-wrap { display: none; }
+        .article-layout {
+          grid-template-columns: 1fr;
+          gap: 32px;
+          padding: 32px 24px 56px;
+        }
+        .blog-sidebar {
+          position: static;
+        }
+        .related-grid {
+          grid-template-columns: 1fr;
+        }
+        .post-nav {
+          flex-direction: column;
+        }
+        .main-nav {
+          display: none;
+        }
+        .menu-btn {
+          display: block;
+        }
+        .search-wrap {
+          display: none;
+        }
       }
       @media (max-width: 600px) {
-        header { padding: 0 16px; }
-        .article-layout { padding: 24px 16px 48px; }
-        .article-cover { aspect-ratio: 16/9; font-size: 3.5rem; }
-        footer { padding: 28px 16px 20px; }
-        .footer-inner { grid-template-columns: 1fr; }
+        header {
+          padding: 0 16px;
+        }
+        .article-layout {
+          padding: 24px 16px 48px;
+        }
+        .article-cover {
+          aspect-ratio: 16/9;
+          font-size: 3.5rem;
+        }
+        footer {
+          padding: 28px 16px 20px;
+        }
+        .footer-inner {
+          grid-template-columns: 1fr;
+        }
       }
     </style>
   </head>
   <body>
     <div class="app">
-      <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      <!-- Reading progress bar -->
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
 
+      <!-- Navbar -->
       <div id="navbar"></div>
 
+      <!-- Article layout -->
       <div class="article-layout">
+        <!-- ── Main Article ── -->
         <article>
+          <!-- Breadcrumb -->
           <nav class="breadcrumb">
             <a href="/">Home</a>
             <span class="breadcrumb-sep">›</span>
             <a href="/compare/">Compare</a>
-            <span class="breadcrumb-sep">›</span>
-            <span>Codex vs Cowork 2026</span>
           </nav>
 
+          <!-- Article header -->
           <div class="article-header fade-up">
             <div class="article-tags">
               <span class="article-tag tag-compare">Compare</span>
@@ -337,205 +996,512 @@
             </div>
           </div>
 
-          <div class="share-row fade-up" style="margin-top: 16px; margin-bottom: 0">
+          <!-- Share -->
+          <div
+            class="share-row fade-up"
+            style="margin-top: 16px; margin-bottom: 0"
+          >
             <span class="share-label">Share:</span>
-            <a class="share-btn" href="https://twitter.com/intent/tweet?url=https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html" target="_blank" rel="noopener">𝕏 Twitter</a>
-            <a class="share-btn" href="https://www.linkedin.com/shareArticle?url=https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html" target="_blank" rel="noopener">LinkedIn</a>
-            <button class="share-btn" onclick="navigator.clipboard.writeText(location.href); this.textContent='Copied!'; setTimeout(()=>(this.textContent='Copy link'),2000)">Copy link</button>
+            <a
+              class="share-btn"
+              href="https://twitter.com/intent/tweet?url=https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html"
+              target="_blank"
+              rel="noopener"
+              >𝕏 Twitter</a
+            >
+            <a
+              class="share-btn"
+              href="https://www.linkedin.com/shareArticle?url=https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html"
+              target="_blank"
+              rel="noopener"
+              >LinkedIn</a
+            >
+            <button
+              class="share-btn"
+              onclick="
+                navigator.clipboard.writeText(location.href);
+                this.textContent = 'Copied!';
+                setTimeout(() => (this.textContent = 'Copy link'), 2000);
+              "
+            >
+              Copy link
+            </button>
           </div>
 
+          <!-- Cover -->
           <div class="article-cover fade-up">
             <img
               src="openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.jpeg"
               alt="OpenAI Codex vs Claude Cowork comparison 2026"
-              style="width:100%;height:100%;object-fit:cover;display:block;"
-              onerror="this.style.display='none'"
+              style="width: 100%; height: auto; display: block"
             />
           </div>
 
+          <!-- Body -->
           <div class="article-body fade-up" id="articleBody">
-
             <p>
-              If you've been going back and forth on whether to use OpenAI Codex or Claude Cowork, this is the breakdown you need. <strong>OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026?</strong> — that's exactly what we're covering today at <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a>. Both tools do similar things on the surface. But once you actually use them side by side, the differences show up fast.
+              If you've been going back and forth on whether to use OpenAI Codex
+              or Claude Cowork, this is the breakdown you need.
+              <strong>OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually
+              Better for You in 2026?</strong> — that's exactly what we're
+              covering today at
+              <a href="https://megamocks.com" target="_blank" rel="noopener"
+                >MegaMocks</a
+              >. Both tools do similar things on the surface. But once you
+              actually use them side by side, the differences show up fast.
             </p>
 
             <p>Here's everything you need to know.</p>
 
-            <!-- Summary table -->
-            <table class="compare-table">
-              <thead>
-                <tr>
-                  <th>Feature</th>
-                  <th>Claude Cowork</th>
-                  <th>OpenAI Codex</th>
-                  <th>Winner</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Interface</td><td>Tabbed (Chat / Cowork / Code)</td><td>All-in-one, minimal</td><td class="tie">Tie</td></tr>
-                <tr><td>Multi-folder access</td><td>Yes — multiple folders</td><td>One folder at a time</td><td class="win">Cowork</td></tr>
-                <tr><td>Third-party connectors</td><td>Large library + Zapier</td><td>Fewer plugins, no Zapier</td><td class="win">Cowork</td></tr>
-                <tr><td>Permission controls</td><td>Granular per-action</td><td>Not available</td><td class="win">Cowork</td></tr>
-                <tr><td>Scheduled tasks</td><td>Reliable, clean UI</td><td>Sometimes doesn't fire</td><td class="win">Cowork</td></tr>
-                <tr><td>File viewer / editor</td><td>Limited preview</td><td>Full-screen, zoom, annotate</td><td class="win">Codex</td></tr>
-                <tr><td>Image generation</td><td>Not built in</td><td>GPT Images 2.0 built in</td><td class="win">Codex</td></tr>
-                <tr><td>Motion graphics</td><td>Claude Design (easy)</td><td>Remotion plugin (harder)</td><td class="win">Cowork</td></tr>
-                <tr><td>Writing quality</td><td>Slight edge</td><td>Very close</td><td class="win">Cowork</td></tr>
-                <tr><td>Price / usage ratio</td><td>$20/mo limited</td><td>$20/mo goes further</td><td class="win">Codex</td></tr>
-              </tbody>
-            </table>
-
             <h2 id="section-access">How You Get Into Each Tool</h2>
 
-            <p>Both tools start the same way — you download a desktop app. Mobile exists for both, but the real action is on your computer.</p>
+            <p>
+              Both tools start the same way — you download a desktop app. Mobile
+              exists for both, but the real action is on your computer.
+            </p>
 
-            <p>Inside the Claude app, there are three tabs: Chat, Cowork, and Code. Chat is regular conversation. Cowork is for creating files and getting knowledge work done. Code is for coding. You always know which mode you're in.</p>
+            <p>
+              Inside the Claude app, there are three tabs: Chat, Cowork, and
+              Code. Chat is regular conversation. Cowork is for creating files
+              and getting knowledge work done. Code is for coding. You always
+              know which mode you're in.
+            </p>
 
-            <p>Codex doesn't have tabs. It's all one screen. You go into Settings, pick whether you do more everyday work or more coding, and the app adjusts. You can still do both. It just leans toward whichever you pick.</p>
+            <p>
+              Codex doesn't have tabs. It's all one screen. You go into
+              Settings, pick whether you do more everyday work or more coding,
+              and the app adjusts. You can still do both. It just leans toward
+              whichever you pick.
+            </p>
 
-            <p>Honestly? Neither approach is better. It's about how you think. Some people want clear separation. Others prefer one clean screen. Call it a tie.</p>
+            <p>
+              Honestly? Neither approach is better. It's about how you think.
+              Some people want clear separation. Others prefer one clean screen.
+              Call it a tie.
+            </p>
 
             <h2 id="section-folders">Which Files Can Each Tool See?</h2>
 
-            <p>Both tools let you pick folders on your computer. That's how they read your files and create new ones.</p>
+            <p>
+              Both tools let you pick folders on your computer. That's how they
+              read your files and create new ones.
+            </p>
 
-            <p>Claude Cowork lets you open multiple folders at the same time. You can also create more than one project from the same folder — useful if you're running two different workflows in the same place. All the files and chats from a project live inside it, neatly organized.</p>
+            <p>
+              Claude Cowork lets you open multiple folders at the same time. You
+              can also create more than one project from the same folder — useful
+              if you're running two different workflows in the same place. All
+              the files and chats from a project live inside it, neatly
+              organized.
+            </p>
 
-            <p>Codex only works inside one folder at a time. Pick a folder, and it automatically becomes a project. One project per folder, no exceptions. If you need two different types of tasks in the same folder, Codex won't do that.</p>
+            <p>
+              Codex only works inside one folder at a time. Pick a folder, and
+              it automatically becomes a project. One project per folder, no
+              exceptions. If you need two different types of tasks in the same
+              folder, Codex won't do that.
+            </p>
 
-            <p>Codex does have one advantage — your recent chats are visible right in the left sidebar without clicking into anything. In Claude Cowork, you have to open the project first. Faster to navigate in Codex, more flexible in Claude. Another tie.</p>
+            <p>
+              Codex does have one advantage — your recent chats are visible
+              right in the left sidebar without clicking into anything. In Claude
+              Cowork, you have to open the project first. Faster to navigate in
+              Codex, more flexible in Claude. Another tie.
+            </p>
 
             <h2 id="section-connectors">Connecting to Other Apps</h2>
 
             <p>This is where Claude Cowork has a real lead.</p>
 
-            <p>Claude calls them connectors. Codex calls them plugins. Both let your AI agent talk to tools like Gmail, so it can read emails, draft replies, and more.</p>
+            <p>
+              Claude calls them connectors. Codex calls them plugins. Both let
+              your AI agent talk to tools like Gmail, so it can read emails,
+              draft replies, and more.
+            </p>
 
-            <p>Claude's connector list is long. And if something isn't on the list, you can connect it through Zapier, which links to thousands of other apps. Codex doesn't have Zapier. You're limited to the plugins they've built, and there are fewer of them.</p>
+            <p>
+              Claude's connector list is long. And if something isn't on the
+              list, you can connect it through Zapier, which links to thousands
+              of other apps. Codex doesn't have Zapier. You're limited to the
+              plugins they've built, and there are fewer of them.
+            </p>
 
-            <p>The bigger deal is permissions. In Claude, you can control exactly what the AI is allowed to do on its own versus what needs your approval first. Want it to read emails freely but ask you before sending anything? You can set that. Codex doesn't have this yet.</p>
+            <p>
+              The bigger deal is permissions. In Claude, you can control exactly
+              what the AI is allowed to do on its own versus what needs your
+              approval first. Want it to read emails freely but ask you before
+              sending anything? You can set that. Codex doesn't have this yet.
+            </p>
 
-            <p>One honest note — Claude's Gmail integration had a bug where it would create a new email instead of replying inside the actual thread. Codex gets this right and places replies in the correct thread. So for email specifically, Codex works better right now. But overall on integrations, Claude Cowork wins by a clear margin.</p>
+            <p>
+              One honest note — Claude's Gmail integration had a bug where it
+              would create a new email instead of replying inside the actual
+              thread. Codex gets this right and places replies in the correct
+              thread. So for email specifically, Codex works better right now.
+              But overall on integrations, Claude Cowork wins by a clear margin.
+            </p>
 
-            <p>This matters a lot if you're building out a real AI workflow. If you're curious about stacking tools together effectively, check out <a href="https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html">5 AI Tools That Replace Hours of Work (And When to Use Each One)</a> — it covers exactly how to think about combining tools like these.</p>
+            <p>
+              This matters a lot if you're building out a real AI workflow. If
+              you're curious about stacking tools together effectively, check out
+              <a
+                href="https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html"
+                >5 AI Tools That Replace Hours of Work (And When to Use Each
+                One)</a
+              >
+              — it covers exactly how to think about combining tools like these.
+            </p>
 
-            <div class="winner-badge">🏆 Winner: Claude Cowork — more connectors, more control.</div>
+            <div class="callout">
+              <strong>Winner:</strong> Claude Cowork — more connectors, more
+              control.
+            </div>
 
             <h2 id="section-scheduled">Scheduled Tasks vs Automations</h2>
 
-            <p>Both tools let you set recurring tasks. You tell the AI what to do and when, and it runs automatically.</p>
+            <p>
+              Both tools let you set recurring tasks. You tell the AI what to do
+              and when, and it runs automatically.
+            </p>
 
-            <p>In Claude Cowork, you set it up in plain chat. Just say "every morning at 5am, tell me the weather and a fun fact." It asks if you want to save that as a scheduled task. Done. Each task gets its own entry in the sidebar. You can see the latest run and scroll back through older ones without any trouble.</p>
+            <p>
+              In Claude Cowork, you set it up in plain chat. Just say "every
+              morning at 5am, tell me the weather and a fun fact." It asks if
+              you want to save that as a scheduled task. Done. Each task gets
+              its own entry in the sidebar. You can see the latest run and
+              scroll back through older ones without any trouble.
+            </p>
 
-            <p>Codex does this through automations. The setup is similar, but every time the automation runs, it adds to the original chat instead of making a new entry. So after a few weeks, that chat is a long scroll of repeated outputs. Not great.</p>
+            <p>
+              Codex does this through automations. The setup is similar, but
+              every time the automation runs, it adds to the original chat
+              instead of making a new entry. So after a few weeks, that chat is
+              a long scroll of repeated outputs. Not great.
+            </p>
 
-            <p>More importantly — Claude Cowork runs its scheduled tasks reliably. Codex automations sometimes just don't fire, even when the computer is on and the app is open. That's a real problem if you're relying on something to run every day.</p>
+            <p>
+              More importantly — Claude Cowork runs its scheduled tasks
+              reliably. Codex automations sometimes just don't fire, even when
+              the computer is on and the app is open. That's a real problem if
+              you're relying on something to run every day.
+            </p>
 
-            <div class="winner-badge">🏆 Winner: Claude Cowork — more reliable and better organized.</div>
+            <div class="callout">
+              <strong>Winner:</strong> Claude Cowork — more reliable and better
+              organized.
+            </div>
 
             <h2 id="section-files">Creating and Editing Files</h2>
 
-            <p>Both tools can build Word documents, PDFs, Excel files, and PowerPoint presentations. Both do a solid job. The quality is close enough that you'd be happy with either.</p>
+            <p>
+              Both tools can build Word documents, PDFs, Excel files, and
+              PowerPoint presentations. Both do a solid job. The quality is
+              close enough that you'd be happy with either.
+            </p>
 
-            <p>Where they split is how you work with those files after they're made.</p>
+            <p>
+              Where they split is how you work with those files after they're
+              made.
+            </p>
 
-            <p>In Codex, you open any created file inside the app. Resize the panel, zoom in and out, full screen it. If you highlight a section of text and don't like it, you click "add to chat" and tell the AI exactly what to change — right there, pointing at the specific part. On web pages and landing pages, you can annotate specific elements and leave comments about what you want different.</p>
+            <p>
+              In Codex, you open any created file inside the app. Resize the
+              panel, zoom in and out, full screen it. If you highlight a section
+              of text and don't like it, you click "add to chat" and tell the AI
+              exactly what to change — right there, pointing at the specific
+              part. On web pages and landing pages, you can annotate specific
+              elements and leave comments about what you want different.
+            </p>
 
-            <p>Claude Cowork doesn't have any of that. You can preview files in a small panel but can't zoom freely. There's no "add to chat" for specific sections. You describe changes in the chat box and hope the AI understands what you mean without being able to point at it.</p>
+            <p>
+              Claude Cowork doesn't have any of that. You can preview files in a
+              small panel but can't zoom freely. There's no "add to chat" for
+              specific sections. You describe changes in the chat box and hope
+              the AI understands what you mean without being able to point at it.
+            </p>
 
-            <p>The AI model underneath does matter though. Claude's writing tends to feel a bit more polished, especially on longer documents. OpenAI's models have gotten much closer recently, but there's still a slight edge on writing quality for Claude.</p>
+            <p>
+              The AI model underneath does matter though. Claude's writing tends
+              to feel a bit more polished, especially on longer documents.
+              OpenAI's models have gotten much closer recently, but there's still
+              a slight edge on writing quality for Claude.
+            </p>
 
             <div class="callout">
-              <strong>Worth knowing:</strong> If you want to get better output from AI tools without changing how you prompt them, we covered some of that in <a href="https://megamocks.com/can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.html">Can Manus AI Really Replace Hours of Work? Here Are 7 Proof Points</a> — same principles apply here.
+              <strong>Worth knowing:</strong> If you want to get better output
+              from AI tools without changing how you prompt them, we covered some
+              of that in
+              <a
+                href="https://megamocks.com/can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.html"
+                >Can Manus AI Really Replace Hours of Work? Here Are 7 Proof
+                Points</a
+              >
+              — same principles apply here.
             </div>
-
-            <div class="winner-badge">⚙️ Tool experience: Codex wins. ✍️ Writing quality: slight edge to Cowork.</div>
 
             <h2 id="section-design">Design Work and Image Generation</h2>
 
-            <p>For PowerPoints and web pages, both tools produce good results. Claude's designs are slightly cleaner on the first try. Codex's outputs are close but sometimes need more passes.</p>
+            <p>
+              For PowerPoints and web pages, both tools produce good results.
+              Claude's designs are slightly cleaner on the first try. Codex's
+              outputs are close but sometimes need more passes.
+            </p>
 
-            <p>Image generation is a different story. Codex has GPT Images 2.0 built in. Ask it to make an image, it makes one — right in the chat, no extra steps. Claude Cowork has no built-in image generation at all. You'd need a third-party connector.</p>
+            <p>
+              Image generation is a different story. Codex has GPT Images 2.0
+              built in. Ask it to make an image, it makes one — right in the
+              chat, no extra steps. Claude Cowork has no built-in image
+              generation at all. You'd need a third-party connector.
+            </p>
 
-            <p>For motion graphics, Claude has a separate tool called Claude Design. It's quick, easy, and usually gets to a usable result in one or two tries. Codex has a plugin called Remotion for the same purpose, but it's harder to set up, sometimes has device compatibility issues, and takes longer to produce something good.</p>
+            <p>
+              For motion graphics, Claude has a separate tool called Claude
+              Design. It's quick, easy, and usually gets to a usable result in
+              one or two tries. Codex has a plugin called Remotion for the same
+              purpose, but it's harder to set up, sometimes has device
+              compatibility issues, and takes longer to produce something good.
+            </p>
 
-            <p>If you're evaluating AI tools for video and visual work more broadly, <a href="https://megamocks.com/5-ai-video-tools-that-are-changing-how-videos-are-made-2026-megamocks.html">5 AI Video Tools That Are Changing How Videos Are Made (2026)</a> has more options worth knowing about. And if you're looking at video creation tools as alternatives, the <a href="https://megamocks.com/free-heygen-alternative-nobody-is-talking-about-in-2026-megamocks.html">Free HeyGen Alternative Nobody Is Talking About in 2026</a> is also worth a look.</p>
+            <p>
+              If you're evaluating AI tools for video and visual work more
+              broadly,
+              <a
+                href="https://megamocks.com/5-ai-video-tools-that-are-changing-how-videos-are-made-2026-megamocks.html"
+                >5 AI Video Tools That Are Changing How Videos Are Made
+                (2026)</a
+              >
+              has more options worth knowing about. And if you're looking at
+              video creation tools as alternatives, the
+              <a
+                href="https://megamocks.com/free-heygen-alternative-nobody-is-talking-about-in-2026-megamocks.html"
+                >Free HeyGen Alternative Nobody Is Talking About in 2026</a
+              >
+              is worth a look too.
+            </p>
 
             <ul>
-              <li><strong>PowerPoints and web pages:</strong> roughly equal, slight edge to Codex for easier editing</li>
-              <li><strong>Image generation:</strong> Codex wins clearly</li>
-              <li><strong>Motion graphics:</strong> Claude Design wins</li>
+              <li>
+                <strong>PowerPoints and web pages:</strong> roughly equal,
+                slight edge to Codex for easier editing
+              </li>
+              <li>
+                <strong>Image generation:</strong> Codex wins clearly
+              </li>
+              <li>
+                <strong>Motion graphics:</strong> Claude Design wins
+              </li>
             </ul>
 
             <h2 id="section-browser">Browser Control and Computer Use</h2>
 
-            <p>Both tools can control your browser through a Chrome extension. Tell the AI to do something in your browser and it opens Chrome and handles it.</p>
+            <p>
+              Both tools can control your browser through a Chrome extension.
+              Tell the AI to do something in your browser and it opens Chrome
+              and handles it.
+            </p>
 
-            <p>Claude Cowork's browser control is faster. Codex is a bit slower but has something Claude doesn't — a built-in sandboxed browser. If you want the AI to look something up without touching your actual logged-in browser, it can do that in its own contained environment.</p>
+            <p>
+              Claude Cowork's browser control is faster. Codex is a bit slower
+              but has something Claude doesn't — a built-in sandboxed browser.
+              If you want the AI to look something up without touching your
+              actual logged-in browser, it can do that in its own contained
+              environment.
+            </p>
 
-            <p>Both tools also support full computer use — opening apps, clicking around, doing things across your whole desktop. Both work reasonably well for this. No clear winner here.</p>
+            <p>
+              Both tools also support full computer use — opening apps, clicking
+              around, doing things across your whole desktop. Both work
+              reasonably well for this. No clear winner here.
+            </p>
 
             <h2 id="section-extras">The Small Stuff That Adds Up</h2>
 
-            <p>Skills — saved, reusable workflows — work identically in both tools. No difference worth calling out. Both tools also let you save prompts so you're not retyping the same instructions over and over.</p>
+            <p>
+              Skills — saved, reusable workflows — work identically in both
+              tools. No difference worth calling out. Both tools also let you
+              save prompts so you're not retyping the same instructions over and
+              over.
+            </p>
 
-            <p>Codex has a couple of extras that are genuinely useful. <strong>Mini windows</strong> — right-click any chat, pop it into a small floating window, move it anywhere on your screen. Useful when you're working in another app and want to keep an eye on what the AI is doing. <strong>Pets</strong> — type <code>/pet</code> and a little virtual creature shows up in the corner. It shows live updates on what your agent is doing and lets you know when something needs your approval or when a task finishes. Sounds gimmicky. Actually pretty helpful.</p>
+            <p>
+              Codex has a couple of extras that are genuinely useful.
+              <strong>Mini windows</strong> — right-click any chat, pop it into
+              a small floating window, move it anywhere on your screen. Useful
+              when you're working in another app and want to keep an eye on what
+              the AI is doing. <strong>Pets</strong> — type
+              <code>/pet</code> and a little virtual creature shows up in the
+              corner. It shows live updates on what your agent is doing and lets
+              you know when something needs your approval or when a task
+              finishes. Sounds gimmicky. Actually pretty helpful.
+            </p>
 
-            <p>Claude Cowork has Dispatch — the ability to monitor and continue tasks from your phone while your computer keeps running. Good idea in theory. In practice, it doesn't work reliably enough to depend on.</p>
+            <p>
+              Claude Cowork has Dispatch — the ability to monitor and continue
+              tasks from your phone while your computer keeps running. Good idea
+              in theory. In practice, it doesn't work reliably enough to depend
+              on.
+            </p>
 
-            <p>The Claude Cowork app also feels more cluttered. Lots of things pinned in the sidebar, multiple menu sections, recent chats mixed in with everything else. Codex is simpler to look at and faster to navigate.</p>
+            <p>
+              The Claude Cowork app also feels more cluttered. Lots of things
+              pinned in the sidebar, multiple menu sections, recent chats mixed
+              in with everything else. Codex is simpler to look at and faster to
+              navigate.
+            </p>
 
-            <div class="winner-badge">🏆 Winner: Codex — better extras and a cleaner interface.</div>
+            <div class="callout">
+              <strong>Winner:</strong> Codex — better extras and a cleaner
+              interface.
+            </div>
 
             <h2 id="section-pricing">Pricing</h2>
 
-            <p>Claude Cowork is part of Anthropic's plans. The $20/month Pro plan includes it, but the usage limits are tight — tight enough that you'll hit them fast if you're using it for real work. The $100/month or $200/month plans give you much more room.</p>
+            <p>
+              Claude Cowork is part of Anthropic's plans. The $20/month Pro plan
+              includes it, but the usage limits are tight — tight enough that
+              you'll hit them fast if you're using it for real work. The
+              $100/month or $200/month plans give you much more room.
+            </p>
 
-            <p>Codex comes with your ChatGPT plan. The Plus plan at $20/month gives you noticeably more usage than what Claude's Pro plan gives you for Cowork. If you're going to use Codex seriously, Plus is the right starting point.</p>
+            <p>
+              Codex comes with your ChatGPT plan. The Plus plan at $20/month
+              gives you noticeably more usage than what Claude's Pro plan gives
+              you for Cowork. If you're going to use Codex seriously, Plus is
+              the right starting point. Dollar for dollar at the entry level,
+              Codex goes further.
+            </p>
 
-            <p>Dollar for dollar at the entry level, Codex goes further. For a deeper look at how Claude and ChatGPT stack up on model quality — not just the agent tools — check out <a href="https://megamocks.com/the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.html">The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost, and Results</a>. It's a useful read if pricing and performance are both on your mind.</p>
+            <p>
+              For a deeper look at how Claude and ChatGPT stack up on model
+              quality — not just the agent tools — check out
+              <a
+                href="https://megamocks.com/the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.html"
+                >The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost,
+                and Results</a
+              >. It's a useful read if pricing and performance are both on your
+              mind.
+            </p>
 
-            <div class="winner-badge">🏆 Winner: Codex — more usage per dollar.</div>
+            <div class="callout">
+              <strong>Winner:</strong> Codex — more usage per dollar.
+            </div>
 
             <h2 id="section-verdict">So Which One Do You Actually Use?</h2>
 
-            <p><strong>Go with Claude Cowork</strong> if you need more third-party app connections, granular permission controls, reliable scheduled tasks, and better motion graphics.</p>
+            <p>
+              <strong>Go with Claude Cowork</strong> if you need more
+              third-party app connections, granular permission controls, reliable
+              scheduled tasks, and better motion graphics.
+            </p>
 
-            <p><strong>Go with Codex</strong> if you want a cleaner interface, better file viewing and editing inside the app, built-in image generation, and more usage per dollar.</p>
+            <p>
+              <strong>Go with Codex</strong> if you want a cleaner interface,
+              better file viewing and editing inside the app, built-in image
+              generation, and more usage per dollar.
+            </p>
 
-            <p>The real answer for most people who use AI seriously? Run both. Point them at the same folder. Use Claude for what it's better at. Use Codex for what it's better at. The creator of the video this article is based on does exactly that — a shared folder system where both tools can pick up the same instructions and run with them.</p>
+            <p>
+              The real answer for most people who use AI seriously? Run both.
+              Point them at the same folder. Use Claude for what it's better at.
+              Use Codex for what it's better at. The creator of the video this
+              article is based on does exactly that — a shared folder system
+              where both tools can pick up the same instructions and run with
+              them.
+            </p>
 
-            <p>If you're building habits around AI tools, <a href="https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html">Top 5 AI Habits Every iPhone User Should Build Right Now</a> is worth reading too — especially if you want your AI agent working for you even when you're away from your desk. And if you're thinking about Claude Code specifically as part of your setup, <a href="https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html">The 6 Claude Code Skills That Clients Actually Pay For (2026)</a> breaks down exactly where Claude's coding tools create real value.</p>
+            <p>
+              If you're building habits around AI tools,
+              <a
+                href="https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html"
+                >Top 5 AI Habits Every iPhone User Should Build Right Now</a
+              >
+              is worth reading too — especially if you want your AI agent
+              working for you even when you're away from your desk. And if
+              you're thinking about Claude Code specifically as part of your
+              setup,
+              <a
+                href="https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html"
+                >The 6 Claude Code Skills That Clients Actually Pay For
+                (2026)</a
+              >
+              breaks down exactly where Claude's coding tools create real value.
+            </p>
 
-            <p>If you want to stay on top of what's happening in voice AI — another fast-moving area alongside these agents — <a href="https://megamocks.com/gpt-realtime-2-what-openai-biggest-voice-ai-upgrade-actually-does-megamocks.html">GPT Realtime 2: What OpenAI's Biggest Voice AI Upgrade Actually Does</a> is a quick read worth your time.</p>
+            <p>
+              If you want to stay on top of what's happening in voice AI — another
+              fast-moving area alongside these agents —
+              <a
+                href="https://megamocks.com/gpt-realtime-2-what-openai-biggest-voice-ai-upgrade-actually-does-megamocks.html"
+                >GPT Realtime 2: What OpenAI's Biggest Voice AI Upgrade
+                Actually Does</a
+              >
+              is a quick read worth your time.
+            </p>
 
-            <p><strong>OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026?</strong> — there's no single answer, but now you have the full picture. Head to <a href="https://megamocks.com" target="_blank" rel="noopener">MegaMocks</a> for more honest, no-fluff breakdowns of the AI tools actually worth your time.</p>
-
+            <p>
+              <strong
+                >OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually
+                Better for You in 2026?</strong
+              >
+              — there's no single answer, but now you have the full picture.
+              Head to
+              <a href="https://megamocks.com" target="_blank" rel="noopener"
+                >MegaMocks</a
+              >
+              for more honest, no-fluff breakdowns of the AI tools actually
+              worth your time.
+            </p>
           </div>
+          <!-- /.article-body -->
 
+          <!-- Related posts -->
           <footer class="article-footer fade-up">
             <div class="article-footer-label">Related Articles</div>
             <div class="related-grid">
-              <a href="https://megamocks.com/the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.html" class="related-card">
+              <a
+                href="https://megamocks.com/the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.html"
+                class="related-card"
+              >
                 <div class="related-card-tag">Compare</div>
-                <div class="related-card-title">The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost, and Results</div>
+                <div class="related-card-title">
+                  The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost,
+                  and Results
+                </div>
               </a>
-              <a href="https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html" class="related-card">
+              <a
+                href="https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html"
+                class="related-card"
+              >
                 <div class="related-card-tag">Guide</div>
-                <div class="related-card-title">5 AI Tools That Replace Hours of Work (And When to Use Each One)</div>
+                <div class="related-card-title">
+                  5 AI Tools That Replace Hours of Work (And When to Use Each
+                  One)
+                </div>
               </a>
-              <a href="https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html" class="related-card">
+              <a
+                href="https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html"
+                class="related-card"
+              >
                 <div class="related-card-tag">Guide</div>
-                <div class="related-card-title">The 6 Claude Code Skills That Clients Actually Pay For (2026)</div>
+                <div class="related-card-title">
+                  The 6 Claude Code Skills That Clients Actually Pay For (2026)
+                </div>
               </a>
             </div>
 
+            <!-- Post navigation -->
             <div class="post-nav">
-              <a href="https://megamocks.com/wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks.html" class="post-nav-btn">
+              <a
+                href="https://megamocks.com/wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks.html"
+                class="post-nav-btn"
+              >
                 <span class="post-nav-label">← Previous</span>
                 Wispr Flow Review: The One AI App You Actually Need in 2026
               </a>
-              <span class="post-nav-btn next" style="opacity:0.4;cursor:default;">
+              <span
+                class="post-nav-btn next"
+                style="opacity: 0.4; cursor: default"
+              >
                 <span class="post-nav-label">Next →</span>
                 No next post yet
               </span>
@@ -543,17 +1509,22 @@
           </footer>
         </article>
 
+        <!-- ── Sidebar ── -->
         <aside class="blog-sidebar">
+          <!-- Newsletter CTA -->
           <div class="sidebar-widget sidebar-newsletter">
             <div class="newsletter-inner">
               <div class="nl-icon">✉️</div>
               <div class="nl-title">Get the AI Weekly</div>
-              <div class="nl-sub">Top AI tool picks, reviews &amp; news — every Friday. No spam.</div>
+              <div class="nl-sub">
+                Top AI tool picks, reviews &amp; news — every Friday. No spam.
+              </div>
               <input type="email" placeholder="you@example.com" />
               <button>Subscribe Free →</button>
             </div>
           </div>
 
+          <!-- Table of contents -->
           <div class="sidebar-widget">
             <div class="sidebar-header">Table of Contents</div>
             <div class="toc-widget">
@@ -572,6 +1543,7 @@
             </div>
           </div>
 
+          <!-- Latest posts -->
           <div class="sidebar-widget">
             <div class="sidebar-header">Latest Posts</div>
             <div id="sidebarLatest"></div>
@@ -579,60 +1551,107 @@
         </aside>
       </div>
 
+      <!-- Footer -->
       <div id="footer"></div>
     </div>
 
     <script src="/theme.js"></script>
     <script>
-      fetch("/navbar.html").then(r=>r.text()).then(html=>{
-        document.getElementById("navbar").innerHTML=html;
-        if(typeof initNav==="function") initNav();
-      });
-      fetch("/footer.html").then(r=>r.text()).then(html=>{
-        document.getElementById("footer").innerHTML=html;
-      });
+      /* Inject navbar + footer */
+      fetch("/navbar.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("navbar").innerHTML = html;
+          if (typeof initNav === "function") initNav();
+        });
+      fetch("/footer.html")
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById("footer").innerHTML = html;
+        });
 
+      /* Sidebar latest posts */
       const LATEST_POSTS = [
-        { slug:"wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks", title:"Wispr Flow Review: The One AI App You Actually Need in 2026", date:"May 15, 2026", readTime:"8 min" },
-        { slug:"the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks", title:"The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost, and Results", date:"May 12, 2026", readTime:"9 min" },
-        { slug:"the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks", title:"The 6 Claude Code Skills That Clients Actually Pay For (2026)", date:"May 9, 2026", readTime:"8 min" },
-        { slug:"5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks", title:"5 AI Tools That Replace Hours of Work (And When to Use Each One)", date:"May 6, 2026", readTime:"7 min" },
+        {
+          slug: "wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks",
+          title: "Wispr Flow Review: The One AI App You Actually Need in 2026",
+          date: "May 15, 2026",
+          readTime: "8 min",
+        },
+        {
+          slug: "the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks",
+          title: "The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost, and Results",
+          date: "May 12, 2026",
+          readTime: "9 min",
+        },
+        {
+          slug: "the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks",
+          title: "The 6 Claude Code Skills That Clients Actually Pay For (2026)",
+          date: "May 9, 2026",
+          readTime: "8 min",
+        },
+        {
+          slug: "5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks",
+          title: "5 AI Tools That Replace Hours of Work (And When to Use Each One)",
+          date: "May 6, 2026",
+          readTime: "7 min",
+        },
       ];
-      document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map((p,i)=>`
+      document.getElementById("sidebarLatest").innerHTML = LATEST_POSTS.map(
+        (p, i) => `
         <a href="/${p.slug}.html" class="sidebar-post-item">
-          <span class="sidebar-num">0${i+1}</span>
+          <span class="sidebar-num">0${i + 1}</span>
           <div>
             <div class="sidebar-post-title">${p.title}</div>
             <div class="sidebar-post-meta">${p.date} · ${p.readTime}</div>
           </div>
-        </a>`).join("");
+        </a>`,
+      ).join("");
 
-      window.addEventListener("scroll",()=>{
-        const body=document.body,html=document.documentElement;
-        const total=Math.max(body.scrollHeight,html.scrollHeight)-window.innerHeight;
-        const pct=total>0?(window.scrollY/total)*100:0;
-        document.getElementById("progressFill").style.width=pct+"%";
+      /* Reading progress bar */
+      window.addEventListener("scroll", () => {
+        const body = document.body,
+          html = document.documentElement;
+        const total =
+          Math.max(body.scrollHeight, html.scrollHeight) - window.innerHeight;
+        const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+        document.getElementById("progressFill").style.width = pct + "%";
       });
 
-      const headings=document.querySelectorAll(".article-body h2[id]");
-      const tocLinks=document.querySelectorAll(".toc-list a");
-      const observer=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){
-            tocLinks.forEach(a=>a.classList.remove("active"));
-            const link=document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
-            if(link) link.classList.add("active");
-          }
-        });
-      },{rootMargin:"-20% 0px -70% 0px"});
-      headings.forEach(h=>observer.observe(h));
+      /* TOC active highlight */
+      const headings = document.querySelectorAll(".article-body h2[id]");
+      const tocLinks = document.querySelectorAll(".toc-list a");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              tocLinks.forEach((a) => a.classList.remove("active"));
+              const link = document.querySelector(
+                `.toc-list a[href="#${e.target.id}"]`,
+              );
+              if (link) link.classList.add("active");
+            }
+          });
+        },
+        { rootMargin: "-20% 0px -70% 0px" },
+      );
+      headings.forEach((h) => observer.observe(h));
 
-      const fadeObs=new IntersectionObserver(entries=>{
-        entries.forEach(e=>{
-          if(e.isIntersecting){ e.target.classList.add("visible"); fadeObs.unobserve(e.target); }
-        });
-      },{threshold:0.08});
-      document.querySelectorAll(".fade-up").forEach(el=>fadeObs.observe(el));
+      /* Fade-up on scroll */
+      const fadeObs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              e.target.classList.add("visible");
+              fadeObs.unobserve(e.target);
+            }
+          });
+        },
+        { threshold: 0.08 },
+      );
+      document
+        .querySelectorAll(".fade-up")
+        .forEach((el) => fadeObs.observe(el));
     </script>
   </body>
 </html>
