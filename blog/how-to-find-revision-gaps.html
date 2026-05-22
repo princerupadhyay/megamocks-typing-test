@@ -1,155 +1,410 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>How to Find Revision Gaps Before They Cost You Marks — MegaMocks Blog</title>
-  <meta name="description" content="Most students don't know which topics they've neglected until the exam reveals it. Here's how to systematically find your revision gaps while there's still time to fix them." />
-  <link rel="canonical" href="https://megamocks.com/blog/how-to-find-revision-gaps.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <style>
-    .blog-body { max-width:720px; margin:0 auto; }
-    .blog-body h2 { margin-top:2.5rem; margin-bottom:.75rem; }
-    .blog-body h3 { margin-top:1.75rem; margin-bottom:.5rem; color:var(--text); font-size:1.05rem; }
-    .blog-body p  { font-size:.95rem; line-height:1.85; }
-    .blog-body ul, .blog-body ol { padding-left:1.25rem; color:var(--muted); font-size:.92rem; }
-    .blog-body li { margin-bottom:.5rem; line-height:1.7; }
-    .blog-body blockquote { border-left:3px solid var(--accent); margin:1.5rem 0; padding:.75rem 1.25rem; background:var(--card); border-radius:0 8px 8px 0; }
-    .blog-body blockquote p { font-style:italic; color:var(--text); margin:0; }
-    .blog-hero-meta { display:flex; gap:1rem; flex-wrap:wrap; font-size:.82rem; color:var(--muted); margin-top:.75rem; }
-    .related-posts { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:1rem; margin-top:1.5rem; }
-    .related-post-card { background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:1rem; text-decoration:none; color:var(--text); transition:var(--transition); display:flex; flex-direction:column; gap:.4rem; }
-    .related-post-card:hover { border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
-    .related-post-card span { font-size:.85rem; font-weight:500; }
-    .related-post-card small { font-size:.75rem; color:var(--muted); }
-  </style>
-</head>
-<body>
-<div id="site-header"></div>
-<div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="index.html">Blog</a><span class="sep">/</span><span>How to Find Revision Gaps</span></div>
-</div>
-<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
-
-<section style="padding:2rem 0 1rem;">
-  <div class="container">
-    <div class="blog-body">
-      <span style="display:inline-block;font-size:.75rem;padding:.2rem .65rem;border-radius:50px;background:rgba(56,189,248,.12);color:var(--accent);font-weight:500;margin-bottom:1rem;">🔍 Revision Strategy</span>
-      <h1 style="font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.3;margin-bottom:.75rem;">How to Find Revision Gaps Before They Cost You Marks</h1>
-      <div class="blog-hero-meta"><span>📖 7 min read</span><span>Revision Strategy</span><span>January 2025</span></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      How to Find Revision Gaps Before They Cost You Marks — MegaMocks Blog
+    </title>
+    <meta
+      name="description"
+      content="Most students don't know which topics they've neglected until the exam reveals it. Here's how to systematically find your revision gaps while there's still time to fix them."
+    />
+    <link
+      rel="canonical"
+      href="https://megamocks.com/blog/how-to-find-revision-gaps.html"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <style>
+      .blog-body {
+        max-width: 720px;
+        margin: 0 auto;
+      }
+      .blog-body h2 {
+        margin-top: 2.5rem;
+        margin-bottom: 0.75rem;
+      }
+      .blog-body h3 {
+        margin-top: 1.75rem;
+        margin-bottom: 0.5rem;
+        color: var(--text);
+        font-size: 1.05rem;
+      }
+      .blog-body p {
+        font-size: 0.95rem;
+        line-height: 1.85;
+      }
+      .blog-body ul,
+      .blog-body ol {
+        padding-left: 1.25rem;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+      .blog-body li {
+        margin-bottom: 0.5rem;
+        line-height: 1.7;
+      }
+      .blog-body blockquote {
+        border-left: 3px solid var(--accent);
+        margin: 1.5rem 0;
+        padding: 0.75rem 1.25rem;
+        background: var(--card);
+        border-radius: 0 8px 8px 0;
+      }
+      .blog-body blockquote p {
+        font-style: italic;
+        color: var(--text);
+        margin: 0;
+      }
+      .blog-hero-meta {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        font-size: 0.82rem;
+        color: var(--muted);
+        margin-top: 0.75rem;
+      }
+      .related-posts {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+      .related-post-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1rem;
+        text-decoration: none;
+        color: var(--text);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+      .related-post-card:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .related-post-card span {
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+      .related-post-card small {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span
+        ><a href="index.html">Blog</a><span class="sep">/</span
+        ><span>How to Find Revision Gaps</span>
+      </div>
     </div>
-  </div>
-</section>
-
-<div class="container" style="margin-bottom:4rem;">
-  <div class="blog-body">
-
-    <p>Here is something that happens to almost every student. You spend weeks preparing for an exam. You feel broadly ready. You sit down, open the paper — and a question comes up on a topic you haven't touched since October. Not because you meant to skip it. You just forgot it existed.</p>
-
-    <p>That's a revision gap. And the frustrating thing is that you don't know you have them until the moment it's too late to fix them.</p>
-
-    <p>This post is about finding those gaps while there's still time to do something about it.</p>
-
-    <h2>What Is a Revision Gap?</h2>
-
-    <p>A revision gap is any topic in your syllabus that you haven't properly revised in long enough that your memory of it has significantly faded. It's not necessarily a topic you don't know — it might be one you studied months ago but haven't returned to since.</p>
-
-    <p>Memory doesn't stay static. Without revisiting material, the brain gradually deprioritises it. Research on memory suggests that after one week without revision, recall of new material can drop by 50% or more. After three weeks, it's often worse.</p>
-
-    <blockquote><p>Studying a topic once and never returning to it is the same as not studying it at all — eventually.</p></blockquote>
-
-    <p>The problem is that this decay happens slowly and invisibly. You don't feel yourself forgetting. You just gradually stop being able to recall things you once knew — and often don't notice until a question requires that knowledge.</p>
-
-    <h2>Why Students Don't Notice Their Gaps</h2>
-
-    <p>There are a few reasons revision gaps stay hidden until they become a problem.</p>
-
-    <h3>You revise what you like</h3>
-    <p>It's human nature to spend more time on topics you enjoy or feel confident in. The difficult or boring topics get pushed to "later." Later arrives as exam week. There's no time left for a proper recovery. The gap becomes a lost mark.</p>
-
-    <h3>You don't track revision dates</h3>
-    <p>Most students don't keep a record of when they last revised each topic. Without that record, it's easy to think "I covered that" without realising it was three weeks ago and the content has faded considerably since.</p>
-
-    <h3>Your study schedule doesn't include every topic</h3>
-    <p>When students plan study sessions, they often plan by subject ("two hours of Chemistry tonight") rather than by specific topic. This means you can spend weeks on a subject while specific chapters within it never come up.</p>
-
-    <h2>How to Find Your Revision Gaps</h2>
-
-    <h3>Step 1 — Make a complete topic list</h3>
-    <p>Write down every topic in your syllabus. Every chapter, every unit, every sub-section that might appear in an exam. This sounds simple but most students have never actually done it. Until you list everything, you can't know what you're missing.</p>
-
-    <h3>Step 2 — Record your last revision date for each</h3>
-    <p>For each topic on your list, write down when you last genuinely revised it — not just glanced at it, but actually worked through it actively. If you can't remember, that itself is a signal.</p>
-
-    <h3>Step 3 — Calculate how long it's been</h3>
-    <p>Topics you haven't touched in more than 7 days are at risk of memory fade. Topics untouched for 14+ days have almost certainly faded. Topics you haven't looked at in a month are gaps — regardless of how well you knew them when you first studied them.</p>
-
-    <h3>Step 4 — Prioritise by urgency and exam weight</h3>
-    <p>Not all gaps are equally important. A topic that accounts for 20% of the exam paper is more urgent to fix than one worth 3%. Look at your syllabus breakdown and fix the highest-value gaps first.</p>
-
-    <h3>Use the Revision Gap Finder</h3>
-    <p>We built the <a href="../tools/revision-gap-finder.html">Revision Gap Finder</a> to automate all of this. You enter your topics and the date you last revised each one. The tool calculates how overdue each one is against a safe interval you set, flags the biggest gaps, and shows you which ones need immediate attention.</p>
-    <p>It takes about 3 minutes and works for any number of subjects. The results are colour-coded so the most urgent gaps stand out immediately.</p>
-
-    <h2>How Often Should You Revise Each Topic?</h2>
-
-    <p>The research on spaced repetition gives us a useful framework. For exam preparation, a practical target is:</p>
-    <ul>
-      <li>Revisit any topic within 24 hours of first studying it</li>
-      <li>Revisit again within 3–5 days</li>
-      <li>Revisit once more 7–10 days after that</li>
-      <li>Monthly maintenance revision after that, increasing to more frequent as the exam approaches</li>
-    </ul>
-
-    <p>In the final month before an exam, no topic should go more than 7 days without at least a brief revisit. In the final week, aim for every 2–3 days on your most important topics.</p>
-
-    <h2>What a "Good" Revision Session Looks Like</h2>
-
-    <p>Not all revision is equal. Re-reading notes is better than nothing, but it's the weakest form of revision. For a revisit to actually slow memory decay, it should involve some form of active recall:</p>
-    <ul>
-      <li>Answering practice questions on the topic</li>
-      <li>Writing a summary of the topic from memory, then checking it</li>
-      <li>Teaching the topic out loud to yourself or a study partner</li>
-      <li>Drawing a concept map from scratch without looking at notes</li>
-    </ul>
-
-    <p>Even 15 minutes of this kind of active revision does more to maintain memory than an hour of passive re-reading.</p>
-
-    <h2>Building a Gap-Free Revision Schedule</h2>
-
-    <p>The best way to prevent revision gaps is to plan topic-by-topic rather than subject-by-subject. Instead of blocking "3 hours of History" in your schedule, plan "Chapter 4 Cold War causes + Chapter 7 Cuban Missile Crisis." That way you know exactly which topics are being covered each week and which ones aren't getting attention.</p>
-
-    <p>Review your full topic list weekly. Run the Revision Gap Finder. Any topic that's overdue goes into the next week's plan. This takes about 10 minutes per week and almost completely eliminates the "I forgot that topic existed" problem.</p>
-
-    <h2>The Takeaway</h2>
-
-    <p>Revision gaps are almost entirely preventable — but only if you're actively tracking them. Most students aren't. They study broadly and hope for the best, then discover the gaps when the exam reveals them.</p>
-
-    <p>The students who consistently avoid this problem are the ones who treat their full topic list as a living document — checking off topics as they revise them, noticing which ones haven't been touched lately, and deliberately scheduling those back in.</p>
-
-    <blockquote><p>Revision is not about covering everything once. It's about not letting anything fade.</p></blockquote>
-
-    <div class="ad-placeholder" style="margin:2.5rem 0;">Advertisement space — AdSense placeholder</div>
-
-    <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-top:2rem;">
-      <h3 style="color:var(--text);margin-bottom:.75rem;margin-top:0;">Try the Tool</h3>
-      <p style="font-size:.9rem;">Enter your topics and last revision dates. Get a clear list of what's overdue in under 3 minutes.</p>
-      <a href="../tools/revision-gap-finder.html" class="btn btn-primary">Open Revision Gap Finder →</a>
+    <div class="container">
+      <div class="ad-placeholder">
+        Advertisement space — AdSense placeholder
+      </div>
     </div>
 
-    <h2 style="margin-top:3rem;">Related Posts</h2>
-    <div class="related-posts">
-      <a href="false-confidence-in-studying.html" class="related-post-card"><span>🎭 False Confidence in Studying</span><small>Exam Prep · 8 min read</small></a>
-      <a href="weak-topic-recovery-guide.html" class="related-post-card"><span>🛠️ How to Recover Weak Topics Before It's Too Late</span><small>Weak Areas · 8 min read</small></a>
-      <a href="how-to-set-realistic-study-targets.html" class="related-post-card"><span>🎯 Setting Daily Study Targets You'll Stick To</span><small>Goal Setting · 7 min read</small></a>
+    <section style="padding: 2rem 0 1rem">
+      <div class="container">
+        <div class="blog-body">
+          <span
+            style="
+              display: inline-block;
+              font-size: 0.75rem;
+              padding: 0.2rem 0.65rem;
+              border-radius: 50px;
+              background: rgba(56, 189, 248, 0.12);
+              color: var(--accent);
+              font-weight: 500;
+              margin-bottom: 1rem;
+            "
+            >🔍 Revision Strategy</span
+          >
+          <h1
+            style="
+              font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+              line-height: 1.3;
+              margin-bottom: 0.75rem;
+            "
+          >
+            How to Find Revision Gaps Before They Cost You Marks
+          </h1>
+          <div class="blog-hero-meta">
+            <span>📖 7 min read</span><span>Revision Strategy</span
+            ><span>January 2025</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="margin-bottom: 4rem">
+      <div class="blog-body">
+        <p>
+          Here is something that happens to almost every student. You spend
+          weeks preparing for an exam. You feel broadly ready. You sit down,
+          open the paper — and a question comes up on a topic you haven't
+          touched since October. Not because you meant to skip it. You just
+          forgot it existed.
+        </p>
+
+        <p>
+          That's a revision gap. And the frustrating thing is that you don't
+          know you have them until the moment it's too late to fix them.
+        </p>
+
+        <p>
+          This post is about finding those gaps while there's still time to do
+          something about it.
+        </p>
+
+        <h2>What Is a Revision Gap?</h2>
+
+        <p>
+          A revision gap is any topic in your syllabus that you haven't properly
+          revised in long enough that your memory of it has significantly faded.
+          It's not necessarily a topic you don't know — it might be one you
+          studied months ago but haven't returned to since.
+        </p>
+
+        <p>
+          Memory doesn't stay static. Without revisiting material, the brain
+          gradually deprioritises it. Research on memory suggests that after one
+          week without revision, recall of new material can drop by 50% or more.
+          After three weeks, it's often worse.
+        </p>
+
+        <blockquote>
+          <p>
+            Studying a topic once and never returning to it is the same as not
+            studying it at all — eventually.
+          </p>
+        </blockquote>
+
+        <p>
+          The problem is that this decay happens slowly and invisibly. You don't
+          feel yourself forgetting. You just gradually stop being able to recall
+          things you once knew — and often don't notice until a question
+          requires that knowledge.
+        </p>
+
+        <h2>Why Students Don't Notice Their Gaps</h2>
+
+        <p>
+          There are a few reasons revision gaps stay hidden until they become a
+          problem.
+        </p>
+
+        <h3>You revise what you like</h3>
+        <p>
+          It's human nature to spend more time on topics you enjoy or feel
+          confident in. The difficult or boring topics get pushed to "later."
+          Later arrives as exam week. There's no time left for a proper
+          recovery. The gap becomes a lost mark.
+        </p>
+
+        <h3>You don't track revision dates</h3>
+        <p>
+          Most students don't keep a record of when they last revised each
+          topic. Without that record, it's easy to think "I covered that"
+          without realising it was three weeks ago and the content has faded
+          considerably since.
+        </p>
+
+        <h3>Your study schedule doesn't include every topic</h3>
+        <p>
+          When students plan study sessions, they often plan by subject ("two
+          hours of Chemistry tonight") rather than by specific topic. This means
+          you can spend weeks on a subject while specific chapters within it
+          never come up.
+        </p>
+
+        <h2>How to Find Your Revision Gaps</h2>
+
+        <h3>Step 1 — Make a complete topic list</h3>
+        <p>
+          Write down every topic in your syllabus. Every chapter, every unit,
+          every sub-section that might appear in an exam. This sounds simple but
+          most students have never actually done it. Until you list everything,
+          you can't know what you're missing.
+        </p>
+
+        <h3>Step 2 — Record your last revision date for each</h3>
+        <p>
+          For each topic on your list, write down when you last genuinely
+          revised it — not just glanced at it, but actually worked through it
+          actively. If you can't remember, that itself is a signal.
+        </p>
+
+        <h3>Step 3 — Calculate how long it's been</h3>
+        <p>
+          Topics you haven't touched in more than 7 days are at risk of memory
+          fade. Topics untouched for 14+ days have almost certainly faded.
+          Topics you haven't looked at in a month are gaps — regardless of how
+          well you knew them when you first studied them.
+        </p>
+
+        <h3>Step 4 — Prioritise by urgency and exam weight</h3>
+        <p>
+          Not all gaps are equally important. A topic that accounts for 20% of
+          the exam paper is more urgent to fix than one worth 3%. Look at your
+          syllabus breakdown and fix the highest-value gaps first.
+        </p>
+
+        <h3>Use the Revision Gap Finder</h3>
+        <p>
+          We built the
+          <a href="../tools/revision-gap-finder.html">Revision Gap Finder</a> to
+          automate all of this. You enter your topics and the date you last
+          revised each one. The tool calculates how overdue each one is against
+          a safe interval you set, flags the biggest gaps, and shows you which
+          ones need immediate attention.
+        </p>
+        <p>
+          It takes about 3 minutes and works for any number of subjects. The
+          results are colour-coded so the most urgent gaps stand out
+          immediately.
+        </p>
+
+        <h2>How Often Should You Revise Each Topic?</h2>
+
+        <p>
+          The research on spaced repetition gives us a useful framework. For
+          exam preparation, a practical target is:
+        </p>
+        <ul>
+          <li>Revisit any topic within 24 hours of first studying it</li>
+          <li>Revisit again within 3–5 days</li>
+          <li>Revisit once more 7–10 days after that</li>
+          <li>
+            Monthly maintenance revision after that, increasing to more frequent
+            as the exam approaches
+          </li>
+        </ul>
+
+        <p>
+          In the final month before an exam, no topic should go more than 7 days
+          without at least a brief revisit. In the final week, aim for every 2–3
+          days on your most important topics.
+        </p>
+
+        <h2>What a "Good" Revision Session Looks Like</h2>
+
+        <p>
+          Not all revision is equal. Re-reading notes is better than nothing,
+          but it's the weakest form of revision. For a revisit to actually slow
+          memory decay, it should involve some form of active recall:
+        </p>
+        <ul>
+          <li>Answering practice questions on the topic</li>
+          <li>Writing a summary of the topic from memory, then checking it</li>
+          <li>Teaching the topic out loud to yourself or a study partner</li>
+          <li>Drawing a concept map from scratch without looking at notes</li>
+        </ul>
+
+        <p>
+          Even 15 minutes of this kind of active revision does more to maintain
+          memory than an hour of passive re-reading.
+        </p>
+
+        <h2>Building a Gap-Free Revision Schedule</h2>
+
+        <p>
+          The best way to prevent revision gaps is to plan topic-by-topic rather
+          than subject-by-subject. Instead of blocking "3 hours of History" in
+          your schedule, plan "Chapter 4 Cold War causes + Chapter 7 Cuban
+          Missile Crisis." That way you know exactly which topics are being
+          covered each week and which ones aren't getting attention.
+        </p>
+
+        <p>
+          Review your full topic list weekly. Run the Revision Gap Finder. Any
+          topic that's overdue goes into the next week's plan. This takes about
+          10 minutes per week and almost completely eliminates the "I forgot
+          that topic existed" problem.
+        </p>
+
+        <h2>The Takeaway</h2>
+
+        <p>
+          Revision gaps are almost entirely preventable — but only if you're
+          actively tracking them. Most students aren't. They study broadly and
+          hope for the best, then discover the gaps when the exam reveals them.
+        </p>
+
+        <p>
+          The students who consistently avoid this problem are the ones who
+          treat their full topic list as a living document — checking off topics
+          as they revise them, noticing which ones haven't been touched lately,
+          and deliberately scheduling those back in.
+        </p>
+
+        <blockquote>
+          <p>
+            Revision is not about covering everything once. It's about not
+            letting anything fade.
+          </p>
+        </blockquote>
+
+        <div class="ad-placeholder" style="margin: 2.5rem 0">
+          Advertisement space — AdSense placeholder
+        </div>
+
+        <div
+          style="
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-top: 2rem;
+          "
+        >
+          <h3 style="color: var(--text); margin-bottom: 0.75rem; margin-top: 0">
+            Try the Tool
+          </h3>
+          <p style="font-size: 0.9rem">
+            Enter your topics and last revision dates. Get a clear list of
+            what's overdue in under 3 minutes.
+          </p>
+          <a href="../tools/revision-gap-finder.html" class="btn btn-primary"
+            >Open Revision Gap Finder →</a
+          >
+        </div>
+
+        <h2 style="margin-top: 3rem">Related Posts</h2>
+        <div class="related-posts">
+          <a href="false-confidence-in-studying.html" class="related-post-card"
+            ><span>🎭 False Confidence in Studying</span
+            ><small>Exam Prep · 8 min read</small></a
+          >
+          <a href="weak-topic-recovery-guide.html" class="related-post-card"
+            ><span>🛠️ How to Recover Weak Topics Before It's Too Late</span
+            ><small>Weak Areas · 8 min read</small></a
+          >
+          <a
+            href="how-to-set-realistic-study-targets.html"
+            class="related-post-card"
+            ><span>🎯 Setting Daily Study Targets You'll Stick To</span
+            ><small>Goal Setting · 7 min read</small></a
+          >
+        </div>
+      </div>
     </div>
 
-  </div>
-</div>
-
-<div id="site-footer"></div>
-<script src="../js/components.js"></script>
-<script src="../js/main.js"></script>
-</body>
+    <div id="site-footer"></div>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+  </body>
 </html>

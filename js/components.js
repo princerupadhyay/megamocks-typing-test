@@ -36,8 +36,9 @@
       <li><a href="${R}index.html">Home</a></li>
       <li><a href="${R}tools/">All Tools</a></li>
       <li><a href="${R}blog/">Blog</a></li>
-      <li><a href="${R}about.html">About</a></li>
-      <li><a href="${R}contact.html">Contact</a></li>
+      <li><a href="${R}about.html">About Us</a></li>
+      <li><a href="${R}contact.html">Contact Us</a></li>
+      <li><a href="${R}sitemap.html">Sitemap</a></li>
     </ul>
     <div class="nav-right">
       <button class="theme-toggle" id="themeToggle">☀️ Light</button>
@@ -50,8 +51,9 @@
     <a href="${R}index.html">Home</a>
     <a href="${R}tools/">All Tools</a>
     <a href="${R}blog/">Blog</a>
-    <a href="${R}about.html">About</a>
-    <a href="${R}contact.html">Contact</a>
+    <a href="${R}about.html">About Us</a>
+    <a href="${R}contact.html">Contact Us</a>
+    <a href="${R}sitemap.html">Sitemap</a>
   </div>
 </header>`;
   }
@@ -109,9 +111,9 @@
         <ul>
           <li><a href="${R}about.html">About</a></li>
           <li><a href="${R}contact.html">Contact</a></li>
-          <li><a href="${R}pages/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="${R}pages/disclaimer.html">Disclaimer</a></li>
-          <li><a href="${R}pages/terms.html">Terms &amp; Conditions</a></li>
+          <li><a href="${R}privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="${R}disclaimer.html">Disclaimer</a></li>
+          <li><a href="${R}terms.html">Terms &amp; Conditions</a></li>
           <li><a href="${R}sitemap.html">Sitemap</a></li>
         </ul>
       </div>
@@ -159,7 +161,7 @@
     }
 
     // Mobile nav
-    const ham  = document.getElementById('hamburger');
+    const ham = document.getElementById('hamburger');
     const mNav = document.getElementById('mobileNav');
     if (ham && mNav) {
       ham.addEventListener('click', function () {
@@ -168,14 +170,14 @@
         ham.classList.toggle('active');
       });
       // Close when a nav link is tapped
-      mNav.querySelectorAll('a').forEach(function(link) {
-        link.addEventListener('click', function() {
+      mNav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
           mNav.classList.remove('open');
           ham.classList.remove('active');
         });
       });
       // Close when tapping outside
-      document.addEventListener('click', function(e) {
+      document.addEventListener('click', function (e) {
         if (!ham.contains(e.target) && !mNav.contains(e.target)) {
           mNav.classList.remove('open');
           ham.classList.remove('active');

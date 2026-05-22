@@ -1,208 +1,318 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact MegaMocks — Get in Touch</title>
-  <meta name="description" content="Have a question, suggestion, or bug report for MegaMocks? Get in touch. We read every message." />
-  <link rel="canonical" href="https://megamocks.com/contact.html" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <style>
-    .contact-reasons {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-      margin-bottom: 2rem;
-    }
-    @media (max-width: 580px) {
-      .contact-reasons { grid-template-columns: 1fr; }
-    }
-    .reason-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.1rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 0.75rem;
-    }
-    .reason-card .r-emoji { font-size: 1.3rem; flex-shrink: 0; margin-top: 0.1rem; }
-    .reason-card h4 { font-size: 0.88rem; color: var(--text); margin-bottom: 0.2rem; }
-    .reason-card p  { font-size: 0.8rem; margin: 0; line-height: 1.5; }
-    .contact-form-wrap {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-    }
-    @media (max-width: 480px) {
-      .contact-form-wrap { padding: 1.25rem 1rem; }
-    }
-    .form-success {
-      display: none;
-      background: rgba(74,222,128,0.08);
-      border: 1px solid rgba(74,222,128,0.3);
-      border-radius: 10px;
-      padding: 1rem 1.1rem;
-      font-size: 0.88rem;
-      color: var(--success);
-      margin-top: 1rem;
-    }
-    .contact-note {
-      font-size: 0.75rem;
-      color: var(--muted);
-      margin-top: 0.75rem;
-      line-height: 1.5;
-    }
-    .contact-info-box {
-      background: rgba(56,189,248,0.06);
-      border: 1px solid rgba(56,189,248,0.2);
-      border-radius: var(--radius);
-      padding: 1rem 1.25rem;
-      margin-bottom: 1.5rem;
-      font-size: 0.86rem;
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .form-group select {
-      appearance: none;
-      -webkit-appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.9rem center;
-      padding-right: 2.5rem !important;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact MegaMocks — Get in Touch</title>
+    <meta
+      name="description"
+      content="Have a question, suggestion, or bug report for MegaMocks? Get in touch. We read every message."
+    />
+    <link rel="canonical" href="https://megamocks.com/contact.html" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      .contact-reasons {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      @media (max-width: 580px) {
+        .contact-reasons {
+          grid-template-columns: 1fr;
+        }
+      }
+      .reason-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 1rem 1.1rem;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+      .reason-card .r-emoji {
+        font-size: 1.3rem;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+      .reason-card h4 {
+        font-size: 0.88rem;
+        color: var(--text);
+        margin-bottom: 0.2rem;
+      }
+      .reason-card p {
+        font-size: 0.8rem;
+        margin: 0;
+        line-height: 1.5;
+      }
+      .contact-form-wrap {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 1.75rem;
+      }
+      @media (max-width: 480px) {
+        .contact-form-wrap {
+          padding: 1.25rem 1rem;
+        }
+      }
+      .form-success {
+        display: none;
+        background: rgba(74, 222, 128, 0.08);
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        border-radius: 10px;
+        padding: 1rem 1.1rem;
+        font-size: 0.88rem;
+        color: var(--success);
+        margin-top: 1rem;
+      }
+      .contact-note {
+        font-size: 0.75rem;
+        color: var(--muted);
+        margin-top: 0.75rem;
+        line-height: 1.5;
+      }
+      .contact-info-box {
+        background: rgba(56, 189, 248, 0.06);
+        border: 1px solid rgba(56, 189, 248, 0.2);
+        border-radius: var(--radius);
+        padding: 1rem 1.25rem;
+        margin-bottom: 1.5rem;
+        font-size: 0.86rem;
+        color: var(--text);
+        line-height: 1.6;
+      }
+      .form-group select {
+        appearance: none;
+        -webkit-appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394a3b8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.9rem center;
+        padding-right: 2.5rem !important;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-header"></div>
 
-<div id="site-header"></div>
-
-<div class="container">
-  <div class="breadcrumb">
-    <a href="index.html">Home</a><span class="sep">/</span><span>Contact</span>
-  </div>
-</div>
-
-<section class="page-hero">
-  <div class="container">
-    <h1>Get in Touch</h1>
-    <p>Have a suggestion, found a bug, or just want to say something? We'd like to hear from you.</p>
-  </div>
-</section>
-
-<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
-
-<section style="padding: 1.5rem 0 4rem;">
-  <div class="container" style="max-width: 680px;">
-
-    <div class="contact-info-box">
-      💬 We read every message. We can't always reply individually, but every piece of feedback shapes what gets built or fixed next.
-    </div>
-
-    <h2 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text);">What can we help with?</h2>
-    <div class="contact-reasons">
-      <div class="reason-card">
-        <span class="r-emoji">🐛</span>
-        <div><h4>Found a bug?</h4><p>Tell us which tool, what you entered, and what happened. A screenshot helps.</p></div>
-      </div>
-      <div class="reason-card">
-        <span class="r-emoji">💡</span>
-        <div><h4>Got a tool idea?</h4><p>Describe the student problem your idea would solve. We love real requests.</p></div>
-      </div>
-      <div class="reason-card">
-        <span class="r-emoji">📣</span>
-        <div><h4>General feedback?</h4><p>Tell us what's working and what isn't. Honest feedback is always welcome.</p></div>
-      </div>
-      <div class="reason-card">
-        <span class="r-emoji">📧</span>
-        <div><h4>Business enquiry?</h4><p>For partnerships or advertising, mention it in the subject line below.</p></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a><span class="sep">/</span
+        ><span>Contact</span>
       </div>
     </div>
 
-    <div class="contact-form-wrap">
-      <h2 style="margin-bottom: 1.25rem; font-size: 1.1rem; color: var(--text);">Send a Message</h2>
+    <section class="page-hero">
+      <div class="container">
+        <h1>Get in Touch</h1>
+        <p>
+          Have a suggestion, found a bug, or just want to say something? We'd
+          like to hear from you.
+        </p>
+      </div>
+    </section>
 
-      <div class="form-group">
-        <label for="c_name">Your name</label>
-        <input type="text" id="c_name" placeholder="What should we call you?" autocomplete="name" />
+    <div class="container">
+      <div class="ad-placeholder">
+        Advertisement space — AdSense placeholder
       </div>
-      <div class="form-group">
-        <label for="c_email">Email address</label>
-        <input type="email" id="c_email" placeholder="your@email.com" autocomplete="email" />
-      </div>
-      <div class="form-group">
-        <label for="c_subject">What is this about?</label>
-        <select id="c_subject">
-          <option value="">Select a topic...</option>
-          <option value="bug">Bug report</option>
-          <option value="idea">Tool idea / suggestion</option>
-          <option value="feedback">General feedback</option>
-          <option value="business">Business enquiry</option>
-          <option value="other">Something else</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="c_message">Your message</label>
-        <textarea id="c_message" rows="5" placeholder="Tell us what's on your mind..."></textarea>
-      </div>
-
-      <button class="btn btn-primary" onclick="sendMessage()" style="width:100%;justify-content:center;padding:.8rem 1rem;font-size:.95rem;">
-        Send Message →
-      </button>
-
-      <div class="form-success" id="formSuccess">
-        ✅ Message received. We read everything — thanks for reaching out.
-      </div>
-      <p class="contact-note">
-        Note: This form is a frontend demo. To enable real sending, connect it to
-        <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a> or
-        <a href="https://www.emailjs.com" target="_blank" rel="noopener">EmailJS</a>.
-      </p>
     </div>
 
-  </div>
-</section>
+    <section style="padding: 1.5rem 0 4rem">
+      <div class="container" style="max-width: 680px">
+        <div class="contact-info-box">
+          💬 We read every message. We can't always reply individually, but
+          every piece of feedback shapes what gets built or fixed next.
+        </div>
 
-<div id="site-footer"></div>
-<script src="js/components.js"></script>
-<script src="js/main.js"></script>
-<script>
-function sendMessage() {
-  var name    = document.getElementById('c_name').value.trim();
-  var email   = document.getElementById('c_email').value.trim();
-  var subject = document.getElementById('c_subject').value;
-  var message = document.getElementById('c_message').value.trim();
-  if (!name)              { flashError('c_name',    'Please enter your name.'); return; }
-  if (!email || !email.includes('@')) { flashError('c_email', 'Please enter a valid email.'); return; }
-  if (!subject)           { flashError('c_subject', 'Please choose a topic.'); return; }
-  if (!message)           { flashError('c_message', 'Please write a message.'); return; }
-  document.getElementById('c_name').value    = '';
-  document.getElementById('c_email').value   = '';
-  document.getElementById('c_subject').value = '';
-  document.getElementById('c_message').value = '';
-  var s = document.getElementById('formSuccess');
-  s.style.display = 'block';
-  setTimeout(function(){ s.style.display = 'none'; }, 6000);
-}
-function flashError(id, msg) {
-  var el = document.getElementById(id);
-  el.style.borderColor = 'var(--danger)';
-  el.focus();
-  setTimeout(function(){ el.style.borderColor = ''; }, 2500);
-  var err = document.getElementById(id+'_err');
-  if (!err) {
-    err = document.createElement('p');
-    err.id = id+'_err';
-    err.style.cssText = 'font-size:.78rem;color:var(--danger);margin:.25rem 0 0;';
-    el.parentNode.appendChild(err);
-  }
-  err.textContent = msg;
-  setTimeout(function(){ err.textContent=''; }, 2500);
-}
-</script>
-</body>
+        <h2 style="margin-bottom: 1rem; font-size: 1.1rem; color: var(--text)">
+          What can we help with?
+        </h2>
+        <div class="contact-reasons">
+          <div class="reason-card">
+            <span class="r-emoji">🐛</span>
+            <div>
+              <h4>Found a bug?</h4>
+              <p>
+                Tell us which tool, what you entered, and what happened. A
+                screenshot helps.
+              </p>
+            </div>
+          </div>
+          <div class="reason-card">
+            <span class="r-emoji">💡</span>
+            <div>
+              <h4>Got a tool idea?</h4>
+              <p>
+                Describe the student problem your idea would solve. We love real
+                requests.
+              </p>
+            </div>
+          </div>
+          <div class="reason-card">
+            <span class="r-emoji">📣</span>
+            <div>
+              <h4>General feedback?</h4>
+              <p>
+                Tell us what's working and what isn't. Honest feedback is always
+                welcome.
+              </p>
+            </div>
+          </div>
+          <div class="reason-card">
+            <span class="r-emoji">📧</span>
+            <div>
+              <h4>Business enquiry?</h4>
+              <p>
+                For partnerships or advertising, mention it in the subject line
+                below.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-wrap">
+          <h2
+            style="
+              margin-bottom: 1.25rem;
+              font-size: 1.1rem;
+              color: var(--text);
+            "
+          >
+            Send a Message
+          </h2>
+
+          <div class="form-group">
+            <label for="c_name">Your name</label>
+            <input
+              type="text"
+              id="c_name"
+              placeholder="What should we call you?"
+              autocomplete="name"
+            />
+          </div>
+          <div class="form-group">
+            <label for="c_email">Email address</label>
+            <input
+              type="email"
+              id="c_email"
+              placeholder="your@email.com"
+              autocomplete="email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="c_subject">What is this about?</label>
+            <select id="c_subject">
+              <option value="">Select a topic...</option>
+              <option value="bug">Bug report</option>
+              <option value="idea">Tool idea / suggestion</option>
+              <option value="feedback">General feedback</option>
+              <option value="business">Business enquiry</option>
+              <option value="other">Something else</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="c_message">Your message</label>
+            <textarea
+              id="c_message"
+              rows="5"
+              placeholder="Tell us what's on your mind..."
+            ></textarea>
+          </div>
+
+          <button
+            class="btn btn-primary"
+            onclick="sendMessage()"
+            style="
+              width: 100%;
+              justify-content: center;
+              padding: 0.8rem 1rem;
+              font-size: 0.95rem;
+            "
+          >
+            Send Message →
+          </button>
+
+          <div class="form-success" id="formSuccess">
+            ✅ Message received. We read everything — thanks for reaching out.
+          </div>
+          <p class="contact-note">
+            Note: This form is a frontend demo. To enable real sending, connect
+            it to
+            <a href="https://formspree.io" target="_blank" rel="noopener"
+              >Formspree</a
+            >
+            or
+            <a href="https://www.emailjs.com" target="_blank" rel="noopener"
+              >EmailJS</a
+            >.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div id="site-footer"></div>
+    <script src="js/components.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+      function sendMessage() {
+        var name = document.getElementById("c_name").value.trim();
+        var email = document.getElementById("c_email").value.trim();
+        var subject = document.getElementById("c_subject").value;
+        var message = document.getElementById("c_message").value.trim();
+        if (!name) {
+          flashError("c_name", "Please enter your name.");
+          return;
+        }
+        if (!email || !email.includes("@")) {
+          flashError("c_email", "Please enter a valid email.");
+          return;
+        }
+        if (!subject) {
+          flashError("c_subject", "Please choose a topic.");
+          return;
+        }
+        if (!message) {
+          flashError("c_message", "Please write a message.");
+          return;
+        }
+        document.getElementById("c_name").value = "";
+        document.getElementById("c_email").value = "";
+        document.getElementById("c_subject").value = "";
+        document.getElementById("c_message").value = "";
+        var s = document.getElementById("formSuccess");
+        s.style.display = "block";
+        setTimeout(function () {
+          s.style.display = "none";
+        }, 6000);
+      }
+      function flashError(id, msg) {
+        var el = document.getElementById(id);
+        el.style.borderColor = "var(--danger)";
+        el.focus();
+        setTimeout(function () {
+          el.style.borderColor = "";
+        }, 2500);
+        var err = document.getElementById(id + "_err");
+        if (!err) {
+          err = document.createElement("p");
+          err.id = id + "_err";
+          err.style.cssText =
+            "font-size:.78rem;color:var(--danger);margin:.25rem 0 0;";
+          el.parentNode.appendChild(err);
+        }
+        err.textContent = msg;
+        setTimeout(function () {
+          err.textContent = "";
+        }, 2500);
+      }
+    </script>
+  </body>
 </html>
