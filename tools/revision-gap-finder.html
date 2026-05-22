@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revision Gap Finder — MegaMocks</title>
+  <meta name="description" content="Find which topics you haven't revised in too long. Enter your subjects and last revision dates — the Revision Gap Finder shows you exactly what needs attention." />
+  <link rel="canonical" href="https://megamocks.com/tools/revision-gap-finder/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/tools.html">All Tools</a></li>
+      <li><a href="../pages/about.html">About</a></li>
+      <li><a href="../pages/contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="../pages/tools.html">All Tools</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">/</span>
+    <a href="../pages/tools.html">Tools</a><span class="sep">/</span>
+    <span>Revision Gap Finder</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tool-intro">
+    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:0.75rem;">🔍</div>
+    <h1>Revision Gap Finder</h1>
+    <p style="font-size:1rem;color:var(--muted);">
+      Enter your topics and when you last revised each one. This tool will find the ones that are overdue — before your exam finds them for you.
+    </p>
+    <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 3 minutes</p>
+  </div>
+</div>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<div class="container">
+  <div class="tool-ui-box">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+      <h3 style="color:var(--text);">Your Topics</h3>
+      <button class="btn btn-outline btn-sm" onclick="addTopic()">+ Add Topic</button>
+    </div>
+
+    <div id="topicsContainer">
+      <!-- Topics will be added here -->
+    </div>
+
+    <div class="form-group" style="margin-top:1rem;">
+      <label for="examDate">When is your exam?</label>
+      <input type="date" id="examDate" />
+    </div>
+
+    <div class="form-group">
+      <label>What do you consider a "safe" revision interval?</label>
+      <select id="safeInterval">
+        <option value="3">3 days — very active revision</option>
+        <option value="5">5 days — standard revision pace</option>
+        <option value="7" selected>7 days — once a week is fine</option>
+        <option value="10">10 days — relaxed schedule</option>
+        <option value="14">14 days — low intensity period</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="findGaps()" style="width:100%;justify-content:center;">
+      Find Revision Gaps →
+    </button>
+
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('copyText').value, this)">📋 Copy Result</button>
+        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+        <button class="btn btn-outline btn-sm" onclick="saveToLocal()">💾 Save</button>
+      </div>
+      <textarea id="copyText" style="position:absolute;left:-9999px;"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container" style="margin-top:1rem;">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<div class="container" style="margin-top:2rem;">
+  <div class="info-section">
+
+    <h2>Example Usage</h2>
+    <div class="example-box">
+      <strong>Inputs:</strong><br/>
+      Topics: Physics, Maths, Chemistry, History<br/>
+      Last revised: Physics — 2 days ago, Maths — 12 days ago, Chemistry — 1 day ago, History — 18 days ago<br/>
+      Safe interval: 7 days | Exam: 3 weeks away<br/><br/>
+      <strong>Result:</strong> 🚨 2 overdue gaps found — Maths (12 days ago, 5 days overdue) and History (18 days ago, 11 days overdue). Revision needed today.
+    </div>
+
+    <h2 style="margin-top:2rem;">How This Tool Works</h2>
+    <p>For each topic, the tool calculates how many days have passed since your last revision. It then compares that against the safe interval you selected. Any topic past that interval is flagged as a gap.</p>
+    <p>Topics closest to your exam date with the biggest gaps are highlighted first — so you always know what to tackle first.</p>
+
+    <h2 style="margin-top:2rem;">Why Revision Gaps Are Dangerous</h2>
+    <p>Memory fades faster than most students expect. Research shows that without revision, we forget up to 80% of new information within a week. The longer the gap, the harder it is to recall — and the more time it takes to re-learn.</p>
+    <p>Regular spaced revision — even just 15 minutes per topic — keeps material fresh and makes exam preparation dramatically easier.</p>
+
+    <h2 style="margin-top:2rem;">Study Tips</h2>
+    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.6rem;">
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Schedule regular revision for all subjects — not just the ones you enjoy.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Even 15 minutes of quick recall for a topic keeps the memory fresh for another week.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Don't wait until 2 weeks before the exam to realise you haven't touched half your syllabus.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Use this tool weekly — not just once. Revision gaps grow silently over time.</li>
+    </ul>
+  </div>
+</div>
+
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+  <div class="container">
+    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">How often should I revise each topic? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>For most subjects, revisiting a topic every 5–7 days is a reasonable pace. In the final week before an exam, you might want to reduce that to every 2–3 days for the most important topics.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What counts as a revision session? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Any active engagement counts — answering practice questions, writing a summary from memory, teaching the topic to yourself, or making a quick mind map. Just reading passively does not count as effective revision.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Should I revise everything equally? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Not necessarily. Topics with bigger gaps, bigger mark weightings, or where you're weakest should get more attention. Use the gap finder alongside your syllabus to prioritise.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I save my topic list for next time? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes — use the Save button after generating results. Your topic list is saved in your browser's local storage so you can come back without re-entering everything.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How many topics can I add? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>You can add as many topics as you need. There's no limit. For very long lists, you might want to group by subject first to keep things readable.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
+  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+  <div class="related-grid">
+    <a href="false-confidence-detector.html" class="related-card">
+      <span class="r-icon">🎭</span><span>False Confidence Detector</span>
+    </a>
+    <a href="exam-readiness-index.html" class="related-card">
+      <span class="r-icon">📊</span><span>Exam Readiness Index</span>
+    </a>
+    <a href="weak-topic-recovery-planner.html" class="related-card">
+      <span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span>
+    </a>
+    <a href="daily-study-target-validator.html" class="related-card">
+      <span class="r-icon">🎯</span><span>Daily Study Target Validator</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+        <p>Free study tools for students. No login, no cost.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="false-confidence-detector.html">False Confidence Detector</a></li>
+          <li><a href="exam-readiness-index.html">Exam Readiness Index</a></li>
+          <li><a href="../pages/tools.html">All Tools →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MegaMocks — Free study tools for every student.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top">↑</button>
+<script src="../js/main.js"></script>
+<script>
+// Default topics on load
+const defaultTopics = ['', '', ''];
+
+function addTopic(name='', lastRevised='') {
+  const container = document.getElementById('topicsContainer');
+  const idx = container.children.length;
+  const div = document.createElement('div');
+  div.className = 'topic-row';
+  div.style.cssText = 'display:grid;grid-template-columns:1fr 1fr auto;gap:0.6rem;margin-bottom:0.6rem;align-items:end;';
+  div.innerHTML = `
+    <div class="form-group" style="margin:0;">
+      <label style="font-size:0.78rem;">Topic name</label>
+      <input type="text" class="topic-name" placeholder="e.g. Trigonometry" value="${name}" />
+    </div>
+    <div class="form-group" style="margin:0;">
+      <label style="font-size:0.78rem;">Last revised</label>
+      <input type="date" class="topic-date" value="${lastRevised}" />
+    </div>
+    <button onclick="this.closest('.topic-row').remove()" class="btn btn-outline btn-sm" style="height:42px;margin-bottom:0;" title="Remove">✕</button>
+  `;
+  container.appendChild(div);
+}
+
+function saveToLocal() {
+  const rows = document.querySelectorAll('.topic-row');
+  const data = [];
+  rows.forEach(row => {
+    data.push({ name: row.querySelector('.topic-name').value, date: row.querySelector('.topic-date').value });
+  });
+  localStorage.setItem('mm_rgf_topics', JSON.stringify(data));
+  localStorage.setItem('mm_rgf_exam', document.getElementById('examDate').value);
+  alert('Saved! Your topics will be here next time you visit.');
+}
+
+function loadFromLocal() {
+  const saved = localStorage.getItem('mm_rgf_topics');
+  const exam  = localStorage.getItem('mm_rgf_exam');
+  if (saved) {
+    JSON.parse(saved).forEach(t => addTopic(t.name, t.date));
+  } else {
+    defaultTopics.forEach(() => addTopic());
+  }
+  if (exam) document.getElementById('examDate').value = exam;
+}
+
+function findGaps() {
+  const today = new Date(); today.setHours(0,0,0,0);
+  const examDateVal = document.getElementById('examDate').value;
+  const safeInterval = parseInt(document.getElementById('safeInterval').value);
+  const rows = document.querySelectorAll('.topic-row');
+
+  const topics = [];
+  rows.forEach(row => {
+    const name = row.querySelector('.topic-name').value.trim();
+    const dateVal = row.querySelector('.topic-date').value;
+    if (!name) return;
+    const lastDate = dateVal ? new Date(dateVal) : null;
+    const daysSince = lastDate ? Math.floor((today - lastDate) / 86400000) : 999;
+    const gap = daysSince - safeInterval;
+    topics.push({ name, daysSince, gap, overdue: gap > 0 });
+  });
+
+  if (topics.length === 0) {
+    alert('Please add at least one topic with a name first.');
+    return;
+  }
+
+  topics.sort((a, b) => b.gap - a.gap);
+  const overdue = topics.filter(t => t.overdue);
+  const onTrack = topics.filter(t => !t.overdue);
+
+  let html = '';
+  let copyLines = ['MegaMocks — Revision Gap Finder\n'];
+
+  const examText = examDateVal ? `Exam: ${new Date(examDateVal).toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'})}` : '';
+
+  if (overdue.length > 0) {
+    html += `<div style="margin-bottom:1rem;">
+      <div class="result-score score-danger" style="font-size:1.6rem;margin-bottom:0.25rem;">🚨 ${overdue.length} Overdue Topic${overdue.length > 1 ? 's' : ''}</div>
+      <div class="result-label">These topics need revision now. ${examText}</div>
+    </div>`;
+    html += `<div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.25rem;">`;
+    overdue.forEach(t => {
+      const urgency = t.gap > 14 ? 'score-danger' : t.gap > 7 ? 'score-warn' : '';
+      html += `
+        <div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--danger);border-radius:8px;padding:0.75rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+          <div>
+            <strong style="color:var(--text);font-size:0.9rem;">${t.name}</strong>
+            <div style="font-size:0.78rem;color:var(--muted);">Last revised: ${t.daysSince === 999 ? 'Never' : t.daysSince + ' days ago'}</div>
+          </div>
+          <span class="badge badge-red">${t.gap > 0 ? t.gap + 'd overdue' : 'due today'}</span>
+        </div>`;
+      copyLines.push(`❌ ${t.name} — ${t.daysSince === 999 ? 'Never revised' : t.daysSince + ' days ago'} (${t.gap}d overdue)`);
+    });
+    html += `</div>`;
+  }
+
+  if (onTrack.length > 0) {
+    html += `<div style="margin-bottom:0.75rem;font-size:0.85rem;color:var(--muted);">On track (${onTrack.length} topic${onTrack.length > 1 ? 's' : ''}):</div>`;
+    html += `<div style="display:flex;flex-direction:column;gap:0.4rem;">`;
+    onTrack.forEach(t => {
+      html += `
+        <div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--success);border-radius:8px;padding:0.65rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;">
+          <strong style="color:var(--text);font-size:0.88rem;">${t.name}</strong>
+          <span class="badge badge-green">${t.daysSince} day${t.daysSince !== 1 ? 's' : ''} ago ✓</span>
+        </div>`;
+      copyLines.push(`✓ ${t.name} — ${t.daysSince} days ago (on track)`);
+    });
+    html += `</div>`;
+  }
+
+  if (overdue.length === 0) {
+    html = `<div class="result-score score-good" style="font-size:1.6rem;margin-bottom:0.5rem;">✅ No Gaps Found!</div>
+    <p style="font-size:0.9rem;color:var(--text);">All topics are within your safe revision interval. Keep this up!</p>` + html;
+  }
+
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('copyText').value = copyLines.join('\n');
+  const box = document.getElementById('resultBox');
+  box.classList.add('show');
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.addEventListener('DOMContentLoaded', loadFromLocal);
+</script>
+</body>
+</html>

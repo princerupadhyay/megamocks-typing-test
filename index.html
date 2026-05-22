@@ -1,1705 +1,406 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MegaMocks — AI Tools & Insights</title>
-    <link rel="icon" type="image/png" href="/favicon.png" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Centralized theme + nav helpers — load before body renders -->
-    <script src="/theme.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MegaMocks — Free Study Tools for Students</title>
+  <meta name="description" content="MegaMocks offers free study and productivity tools for students. Find your revision gaps, track exam readiness, balance your study load, and study smarter — no login needed." />
+  <meta name="keywords" content="study tools, exam preparation, revision, student productivity, free study planner" />
+  <link rel="canonical" href="https://megamocks.com/" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="MegaMocks — Free Study Tools for Students" />
+  <meta property="og:description" content="Simple study tools for revision, focus, planning, and exam prep. Free, no login, works on any device." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <!-- Schema: WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "MegaMocks",
+    "url": "https://megamocks.com",
+    "description": "Free study and productivity tools for students"
+  }
+  </script>
+</head>
+<body>
 
-    <style>
-      /* ── CSS Variables ── */
-      :root {
-        --bg: #faf9f6;
-        --bg2: #ffffff;
-        --bg3: #f0ede8;
-        --border: #e8e4de;
-        --text: #1a1814;
-        --text2: #6b6560;
-        --text3: #a09a93;
-        --accent: #d4572a;
-        --accent2: #2a6dd4;
-        --gold: #c9a227;
-        --green: #2d7a4e;
-        --header-bg: rgba(250, 249, 246, 0.94);
-        --header-h: 64px;
-        --shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
-        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.1);
-      }
-      body.dark {
-        --bg: #0f0e0c;
-        --bg2: #171512;
-        --bg3: #1f1c18;
-        --border: #2a2620;
-        --text: #ede8e0;
-        --text2: #8a8278;
-        --text3: #55504a;
-        --accent: #e8724a;
-        --accent2: #6aacf0;
-        --gold: #e0b84a;
-        --green: #5ab87a;
-        --header-bg: rgba(15, 14, 12, 0.92);
-        --shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        --shadow-lg: 0 8px 40px rgba(0, 0, 0, 0.5);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      html,
-      body {
-        font-family: "DM Sans", sans-serif;
-        background: var(--bg);
-        color: var(--text);
-        transition:
-          background 0.3s,
-          color 0.3s;
-        overflow-x: hidden;
-      }
-
-      /* ── Paper texture overlay ── */
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E");
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      .app {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-      }
-
-      /* ── Header (injected via fetch into #navbar-mount) ── */
-      #navbar-mount {
-        position: sticky;
-        top: 0;
-        z-index: 9999;
-      }
-
-      /* Styles applied to the injected <header> element */
-      #navbar-mount header {
-        background: var(--header-bg);
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
-        padding: 0 32px;
-        height: var(--header-h);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 24px;
-        /* Smooth freeze transition */
-        transition:
-          height 0.25s ease,
-          box-shadow 0.25s ease,
-          background 0.3s;
-      }
-
-      /* Frozen / scrolled state */
-      #navbar-mount header.scrolled {
-        height: 54px;
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.09);
-      }
-      body.dark #navbar-mount header.scrolled {
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
-      }
-
-      .logo-wrap {
-        display: flex;
-        align-items: baseline;
-        gap: 10px;
-        text-decoration: none;
-      }
-      .logo {
-        font-family: "Playfair Display", serif;
-        font-weight: 800;
-        font-size: 1.35rem;
-        color: var(--text);
-        letter-spacing: -0.02em;
-        transition: font-size 0.25s;
-      }
-      header.scrolled .logo {
-        font-size: 1.15rem;
-      }
-
-      .logo em {
-        color: var(--accent);
-        font-style: normal;
-      }
-      .logo-divider {
-        color: var(--border);
-        font-weight: 300;
-        font-size: 1.1rem;
-      }
-      .logo-tag {
-        font-size: 0.62rem;
-        font-weight: 500;
-        color: var(--text3);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-      }
-
-      .main-nav {
-        display: flex;
-        align-items: center;
-        gap: 28px;
-      }
-      .main-nav a {
-        font-size: 0.78rem;
-        font-weight: 500;
-        color: var(--text2);
-        text-decoration: none;
-        letter-spacing: 0.03em;
-        transition: color 0.2s;
-      }
-      .main-nav a:hover {
-        color: var(--text);
-      }
-      .main-nav a.active {
-        color: var(--accent);
-      }
-
-      .header-actions {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .search-wrap {
-        position: relative;
-        display: flex;
-        align-items: center;
-      }
-      .search-wrap input {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 7px 14px 7px 34px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.75rem;
-        color: var(--text);
-        outline: none;
-        width: 200px;
-        transition: all 0.2s;
-      }
-      .search-wrap input::placeholder {
-        color: var(--text3);
-      }
-      .search-wrap input:focus {
-        border-color: var(--accent);
-        width: 240px;
-      }
-      .search-wrap svg {
-        position: absolute;
-        left: 11px;
-        width: 14px;
-        height: 14px;
-        color: var(--text3);
-        pointer-events: none;
-      }
-
-      .theme-btn {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.2s;
-        font-size: 0.9rem;
-        color: var(--text2);
-      }
-      .theme-btn:hover {
-        border-color: var(--accent);
-      }
-
-      .menu-btn {
-        display: none;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: var(--text2);
-        padding: 4px;
-      }
-
-      /* ── Mobile nav ── */
-      .mobile-nav {
-        display: none;
-        flex-direction: column;
-        background: var(--bg2);
-        border-bottom: 1px solid var(--border);
-        padding: 16px 24px;
-        gap: 4px;
-      }
-      .mobile-nav.open {
-        display: flex;
-      }
-      .mobile-nav a {
-        padding: 10px 0;
-        font-size: 0.85rem;
-        font-weight: 500;
-        color: var(--text2);
-        text-decoration: none;
-        border-bottom: 1px solid var(--border);
-        transition: color 0.15s;
-      }
-      .mobile-nav a:last-child {
-        border-bottom: none;
-      }
-      .mobile-nav a:hover {
-        color: var(--accent);
-      }
-
-      /* ── Hero ── */
-      .hero {
-        padding: 72px 32px 56px;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-      .hero-eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.65rem;
-        font-weight: 600;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--accent);
-        margin-bottom: 20px;
-      }
-      .hero-eyebrow::before,
-      .hero-eyebrow::after {
-        content: "";
-        width: 28px;
-        height: 1px;
-        background: var(--accent);
-        opacity: 0.5;
-      }
-      .hero h1 {
-        font-family: "Playfair Display", serif;
-        font-size: clamp(2.4rem, 5vw, 3.8rem);
-        font-weight: 800;
-        line-height: 1.12;
-        letter-spacing: -0.03em;
-        margin-bottom: 20px;
-      }
-      .hero h1 em {
-        font-style: italic;
-        color: var(--accent);
-      }
-      .hero-sub {
-        font-size: 1rem;
-        color: var(--text2);
-        line-height: 1.75;
-        max-width: 520px;
-        margin: 0 auto 32px;
-      }
-      .hero-tags {
-        display: flex;
-        gap: 8px;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-      .hero-tag {
-        font-size: 0.68rem;
-        font-weight: 500;
-        padding: 5px 14px;
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        color: var(--text2);
-        cursor: pointer;
-        text-decoration: none;
-        transition: all 0.2s;
-      }
-      .hero-tag:hover,
-      .hero-tag.active {
-        border-color: var(--accent);
-        color: var(--accent);
-        background: rgba(212, 87, 42, 0.06);
-      }
-
-      /* ── Layout ── */
-      .content-wrap {
-        flex: 1;
-        max-width: 1160px;
-        margin: 0 auto;
-        padding: 0 32px 80px;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 300px;
-        gap: 48px;
-        align-items: start;
-      }
-
-      /* ── Section label ── */
-      .section-label {
-        font-size: 0.58rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        text-transform: uppercase;
-        color: var(--text3);
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-bottom: 24px;
-      }
-      .section-label::after {
-        content: "";
-        flex: 1;
-        height: 1px;
-        background: var(--border);
-      }
-
-      /* ── Featured post ── */
-      .featured-post {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        overflow: hidden;
-        margin-bottom: 32px;
-        box-shadow: var(--shadow);
-        text-decoration: none;
-        color: inherit;
-        transition:
-          box-shadow 0.25s,
-          transform 0.25s;
-      }
-      .featured-post:hover {
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-2px);
-      }
-      .featured-cover {
-        min-height: 280px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 5rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .featured-cover-inner {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 6rem;
-      }
-      .featured-body {
-        padding: 32px 32px 28px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 12px;
-      }
-      .featured-label {
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--accent);
-      }
-      .featured-title {
-        font-family: "Playfair Display", serif;
-        font-size: 1.55rem;
-        font-weight: 800;
-        line-height: 1.25;
-        letter-spacing: -0.02em;
-        color: var(--text);
-      }
-      .featured-post:hover .featured-title {
-        color: var(--accent);
-      }
-      .featured-excerpt {
-        font-size: 0.82rem;
-        color: var(--text2);
-        line-height: 1.7;
-      }
-      .featured-meta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-top: 4px;
-      }
-      .featured-date,
-      .featured-read {
-        font-size: 0.65rem;
-        color: var(--text3);
-      }
-      .featured-read-more {
-        margin-left: auto;
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-
-      /* ── Posts grid ── */
-      .posts-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-bottom: 32px;
-      }
-      .post-card {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        overflow: hidden;
-        text-decoration: none;
-        color: inherit;
-        display: flex;
-        flex-direction: column;
-        box-shadow: var(--shadow);
-        transition:
-          box-shadow 0.2s,
-          transform 0.2s,
-          border-color 0.2s;
-      }
-      .post-card:hover {
-        box-shadow: var(--shadow-lg);
-        transform: translateY(-2px);
-      }
-      .post-card-cover {
-        aspect-ratio: 16/9;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.4rem;
-        position: relative;
-        overflow: hidden;
-      }
-      .post-card-cover img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-      }
-      .post-card-body {
-        padding: 18px 20px 20px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .post-meta {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
-      .post-tag {
-        font-size: 0.57rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        padding: 3px 9px;
-        border-radius: 20px;
-      }
-      .tag-ai {
-        background: rgba(212, 87, 42, 0.1);
-        color: var(--accent);
-      }
-      .tag-review {
-        background: rgba(42, 109, 212, 0.1);
-        color: var(--accent2);
-      }
-      .tag-guide {
-        background: rgba(45, 122, 78, 0.1);
-        color: var(--green);
-      }
-      .tag-news {
-        background: rgba(201, 162, 39, 0.1);
-        color: var(--gold);
-      }
-      .tag-compare {
-        background: rgba(42, 109, 212, 0.08);
-        color: var(--accent2);
-      }
-      .tag-tutorial {
-        background: rgba(45, 122, 78, 0.1);
-        color: var(--green);
-      }
-      body.dark .tag-ai {
-        background: rgba(232, 114, 74, 0.12);
-      }
-      body.dark .tag-review {
-        background: rgba(106, 172, 240, 0.1);
-      }
-      body.dark .tag-guide {
-        background: rgba(90, 184, 122, 0.1);
-      }
-      body.dark .tag-news {
-        background: rgba(224, 184, 74, 0.1);
-      }
-      body.dark .tag-compare {
-        background: rgba(106, 172, 240, 0.08);
-      }
-      body.dark .tag-tutorial {
-        background: rgba(90, 184, 122, 0.1);
-      }
-
-      .post-date {
-        font-size: 0.6rem;
-        color: var(--text3);
-        margin-left: auto;
-      }
-      .post-card-title {
-        font-size: 0.92rem;
-        font-weight: 600;
-        line-height: 1.45;
-        letter-spacing: -0.01em;
-        color: var(--text);
-      }
-      .post-card:hover .post-card-title {
-        color: var(--accent);
-      }
-      .post-card-excerpt {
-        font-size: 0.74rem;
-        color: var(--text2);
-        line-height: 1.65;
-        flex: 1;
-      }
-      .post-card-footer {
-        margin-top: 10px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .post-read-time {
-        font-size: 0.6rem;
-        color: var(--text3);
-      }
-      .post-read-more {
-        font-size: 0.66rem;
-        font-weight: 600;
-        color: var(--accent);
-      }
-
-      /* ── Pagination ── */
-      .pagination {
-        display: flex;
-        gap: 6px;
-        align-items: center;
-        justify-content: center;
-      }
-      .page-btn {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 8px;
-        padding: 7px 12px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.75rem;
-        font-weight: 500;
-        color: var(--text2);
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-      .page-btn:hover {
-        border-color: var(--accent);
-        color: var(--accent);
-      }
-      .page-btn.active {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
-      }
-      .page-btn.wide {
-        padding: 7px 16px;
-      }
-
-      /* ── Sidebar ── */
-      .sidebar {
-        position: sticky;
-        top: calc(var(--header-h) + 24px);
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-      .sidebar-widget {
-        background: var(--bg2);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--shadow);
-      }
-      .sidebar-header {
-        padding: 14px 18px;
-        border-bottom: 1px solid var(--border);
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text3);
-      }
-      .newsletter-widget {
-        padding: 24px 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
-      .newsletter-icon {
-        font-size: 1.6rem;
-      }
-      .newsletter-title {
-        font-family: "Playfair Display", serif;
-        font-size: 1.05rem;
-        font-weight: 700;
-        line-height: 1.3;
-      }
-      .newsletter-sub {
-        font-size: 0.74rem;
-        color: var(--text2);
-        line-height: 1.6;
-      }
-      .newsletter-input {
-        background: var(--bg3);
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 9px 14px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.75rem;
-        color: var(--text);
-        outline: none;
-        width: 100%;
-        transition: border-color 0.2s;
-      }
-      .newsletter-input::placeholder {
-        color: var(--text3);
-      }
-      .newsletter-input:focus {
-        border-color: var(--accent);
-      }
-      .newsletter-btn {
-        background: var(--accent);
-        color: #fff;
-        border: none;
-        border-radius: 10px;
-        padding: 9px 16px;
-        font-family: "DM Sans", sans-serif;
-        font-size: 0.75rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: opacity 0.2s;
-        width: 100%;
-      }
-      .newsletter-btn:hover {
-        opacity: 0.88;
-      }
-
-      .sidebar-post-item {
-        display: flex;
-        gap: 12px;
-        align-items: flex-start;
-        padding: 13px 18px;
-        text-decoration: none;
-        color: inherit;
-        border-bottom: 1px solid var(--border);
-        transition: background 0.15s;
-      }
-      .sidebar-post-item:last-child {
-        border-bottom: none;
-      }
-      .sidebar-post-item:hover {
-        background: var(--bg3);
-      }
-      .sidebar-num {
-        font-family: "DM Mono", monospace;
-        font-size: 0.65rem;
-        font-weight: 500;
-        color: var(--accent);
-        opacity: 0.7;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-      .sidebar-post-title {
-        font-size: 0.76rem;
-        font-weight: 500;
-        line-height: 1.45;
-        color: var(--text);
-      }
-      .sidebar-post-item:hover .sidebar-post-title {
-        color: var(--accent);
-      }
-      .sidebar-post-meta {
-        font-size: 0.6rem;
-        color: var(--text3);
-        margin-top: 3px;
-      }
-
-      .tags-cloud {
-        padding: 16px 18px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-      }
-      .cloud-tag {
-        font-size: 0.64rem;
-        font-weight: 500;
-        padding: 5px 12px;
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        color: var(--text2);
-        text-decoration: none;
-        transition: all 0.2s;
-        cursor: pointer;
-      }
-      .cloud-tag:hover,
-      .cloud-tag.active {
-        border-color: var(--accent);
-        color: var(--accent);
-        background: rgba(212, 87, 42, 0.06);
-      }
-
-      /* ── Footer (injected via fetch into #footer-mount) ── */
-      #footer-mount footer {
-        border-top: 1px solid var(--border);
-        background: var(--bg2);
-        padding: 40px 32px 32px;
-        position: relative;
-        z-index: 1;
-      }
-      .footer-inner {
-        max-width: 1160px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-        gap: 32px;
-      }
-      .footer-logo {
-        font-family: "Playfair Display", serif;
-        font-weight: 800;
-        font-size: 1.15rem;
-        color: var(--text);
-        margin-bottom: 8px;
-      }
-      .footer-logo em {
-        color: var(--accent);
-        font-style: normal;
-      }
-      .footer-desc {
-        font-size: 0.74rem;
-        color: var(--text2);
-        line-height: 1.65;
-        max-width: 220px;
-      }
-      .footer-col-title {
-        font-size: 0.6rem;
-        font-weight: 700;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-        color: var(--text3);
-        margin-bottom: 14px;
-      }
-      .footer-links {
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-      }
-      .footer-links a {
-        font-size: 0.76rem;
-        color: var(--text2);
-        text-decoration: none;
-        transition: color 0.15s;
-      }
-      .footer-links a:hover {
-        color: var(--accent);
-      }
-      .footer-bottom {
-        max-width: 1160px;
-        margin: 28px auto 0;
-        padding-top: 20px;
-        border-top: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-      .footer-copy,
-      .footer-made {
-        font-size: 0.68rem;
-        color: var(--text3);
-      }
-
-      /* ── Ticker strip ── */
-      .ticker-strip {
-        background: var(--accent);
-        color: #fff;
-        padding: 9px 0;
-        overflow: hidden;
-        position: relative;
-      }
-      .ticker-inner {
-        display: flex;
-        gap: 40px;
-        white-space: nowrap;
-        animation: ticker 30s linear infinite;
-        font-size: 0.66rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-      }
-      @keyframes ticker {
-        from {
-          transform: translateX(0);
-        }
-        to {
-          transform: translateX(-50%);
-        }
-      }
-
-      /* ── Scroll animations ── */
-      .fade-up {
-        opacity: 0;
-        transform: translateY(18px);
-        transition:
-          opacity 0.5s,
-          transform 0.5s;
-      }
-      .fade-up.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* ── Loading skeleton for async nav/footer ── */
-      .nav-skeleton {
-        height: var(--header-h);
-        background: var(--header-bg);
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: center;
-        padding: 0 32px;
-        gap: 24px;
-      }
-      .nav-skeleton::before {
-        content: "MegaMocks";
-        font-family: "Playfair Display", serif;
-        font-size: 1.35rem;
-        font-weight: 800;
-        color: var(--text);
-        opacity: 0.4;
-      }
-
-      /* ── Responsive ── */
-      @media (max-width: 900px) {
-        .content-wrap {
-          grid-template-columns: 1fr;
-        }
-        .sidebar {
-          position: static;
-        }
-        .main-nav {
-          display: none;
-        }
-        .menu-btn {
-          display: block;
-        }
-        .featured-post {
-          grid-template-columns: 1fr;
-        }
-        .featured-cover {
-          min-height: 200px;
-        }
-        .footer-inner {
-          grid-template-columns: 1fr 1fr;
-        }
-        .search-wrap {
-          display: none;
-        }
-      }
-      @media (max-width: 600px) {
-        #navbar-mount header {
-          padding: 0 16px;
-        }
-        .hero {
-          padding: 48px 16px 36px;
-        }
-        .content-wrap {
-          padding: 0 16px 60px;
-        }
-        .posts-grid {
-          grid-template-columns: 1fr;
-        }
-        .footer-inner {
-          grid-template-columns: 1fr;
-        }
-        #footer-mount footer {
-          padding: 32px 16px 24px;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="app">
-      <!-- ── Navbar mount — filled via fetch('/navbar.html') ── -->
-      <div id="navbar-mount">
-        <!-- Skeleton shown while fetch is in flight -->
-        <div class="nav-skeleton" id="navSkeleton"></div>
+<!-- ===== HEADER ===== -->
+<header>
+  <nav>
+    <a href="index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="pages/tools.html">All Tools</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
       </div>
-
-      <!-- ── Ticker strip ── -->
-      <div class="ticker-strip">
-        <div class="ticker-inner" id="ticker">
-          <span>🤖 Latest AI Tools Reviews</span>
-          <span>·</span>
-          <span>🔥 GPT-4o vs Claude 3.5 — Full Breakdown</span>
-          <span>·</span>
-          <span>⚡ Top Coding Assistants 2026</span>
-          <span>·</span>
-          <span>🧠 Best AI Writing Tools This Month</span>
-          <span>·</span>
-          <span>📊 AI Productivity Stacks Compared</span>
-          <span>·</span>
-          <span>🤖 Latest AI Tools Reviews</span>
-          <span>·</span>
-          <span>🔥 GPT-4o vs Claude 3.5 — Full Breakdown</span>
-          <span>·</span>
-          <span>⚡ Top Coding Assistants 2026</span>
-          <span>·</span>
-          <span>🧠 Best AI Writing Tools This Month</span>
-          <span>·</span>
-          <span>📊 AI Productivity Stacks Compared</span>
-        </div>
-      </div>
-
-      <!-- ── Hero ── -->
-      <div class="hero fade-up">
-        <div class="hero-eyebrow">Independent AI Coverage</div>
-        <h1>Your guide to the <em>best AI tools</em> on the planet</h1>
-        <p class="hero-sub">
-          Honest reviews, in-depth comparisons, and practical guides for
-          developers, writers, and creators navigating the AI landscape.
-        </p>
-        <div class="hero-tags" id="filterTags">
-          <span class="hero-tag active" onclick="filterByTag(null, this)"
-            >All</span
-          >
-          <span class="hero-tag" onclick="filterByTag('ai', this)"
-            >🤖 AI Tools</span
-          >
-          <span class="hero-tag" onclick="filterByTag('review', this)"
-            >⭐ Reviews</span
-          >
-          <span class="hero-tag" onclick="filterByTag('guide', this)"
-            >📘 Guides</span
-          >
-          <span class="hero-tag" onclick="filterByTag('news', this)"
-            >📰 News</span
-          >
-          <span class="hero-tag" onclick="filterByTag('compare', this)"
-            >⚖️ Compare</span
-          >
-          <span class="hero-tag" onclick="filterByTag('tutorial', this)"
-            >🎓 Tutorials</span
-          >
-        </div>
-      </div>
-
-      <!-- ── Main content ── -->
-      <div class="content-wrap">
-        <main class="blog-main">
-          <div class="section-label">Featured Post</div>
-          <div id="featuredPost"></div>
-
-          <div class="section-label" style="margin-top: 32px">
-            Latest Articles
-          </div>
-          <div class="posts-grid" id="postsGrid"></div>
-          <div class="pagination" id="pagination"></div>
-        </main>
-
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <!-- Newsletter -->
-          <div
-            class="sidebar-widget"
-            style="
-              border: none;
-              background: linear-gradient(
-                135deg,
-                var(--accent) 0%,
-                #b8401a 100%
-              );
-              color: #fff;
-            "
-          >
-            <div class="newsletter-widget" style="color: #fff">
-              <div class="newsletter-icon">✉️</div>
-              <div class="newsletter-title" style="color: #fff">
-                Get the AI Weekly
-              </div>
-              <div
-                class="newsletter-sub"
-                style="color: rgba(255, 255, 255, 0.8)"
-              >
-                Top AI tool picks, reviews, and news — every Friday. No spam.
-              </div>
-              <input
-                class="newsletter-input"
-                type="email"
-                placeholder="you@example.com"
-                style="
-                  background: rgba(255, 255, 255, 0.15);
-                  border-color: rgba(255, 255, 255, 0.25);
-                  color: #fff;
-                "
-              />
-              <button
-                class="newsletter-btn"
-                style="background: #fff; color: var(--accent)"
-              >
-                Subscribe Free →
-              </button>
-            </div>
-          </div>
-
-          <!-- Trending -->
-          <div class="sidebar-widget">
-            <div class="sidebar-header">Trending This Week</div>
-            <div id="sidebarTrending"></div>
-          </div>
-
-          <!-- Tags cloud -->
-          <div class="sidebar-widget">
-            <div class="sidebar-header">Browse Topics</div>
-            <div class="tags-cloud" id="tagsCloud">
-              <span
-                class="cloud-tag active"
-                onclick="filterByTag(null, this, true)"
-                >All</span
-              >
-              <span class="cloud-tag" onclick="filterByTag('ai', this, true)"
-                >AI Tools</span
-              >
-              <span
-                class="cloud-tag"
-                onclick="filterByTag('review', this, true)"
-                >Reviews</span
-              >
-              <span class="cloud-tag" onclick="filterByTag('guide', this, true)"
-                >Guides</span
-              >
-              <span class="cloud-tag" onclick="filterByTag('news', this, true)"
-                >News</span
-              >
-              <span
-                class="cloud-tag"
-                onclick="filterByTag('compare', this, true)"
-                >Compare</span
-              >
-              <span
-                class="cloud-tag"
-                onclick="filterByTag('tutorial', this, true)"
-                >Tutorials</span
-              >
-              <span
-                class="cloud-tag"
-                onclick="filterByTag('productivity', this, true)"
-                >Productivity</span
-              >
-            </div>
-          </div>
-
-          <!-- About -->
-          <div class="sidebar-widget">
-            <div class="sidebar-header">About This Blog</div>
-            <div
-              style="
-                padding: 16px 18px;
-                font-size: 0.74rem;
-                color: var(--text2);
-                line-height: 1.65;
-              "
-            >
-              <strong
-                style="color: var(--text); display: block; margin-bottom: 6px"
-                >Honest. Independent. In-depth.</strong
-              >
-              MegaMocks covers AI tools for real people — no fluff, no sponsored
-              rankings. We test everything ourselves.
-            </div>
-          </div>
-        </aside>
-      </div>
-
-      <!-- ── Footer mount — filled via fetch('/footer.html') ── -->
-      <div id="footer-mount"></div>
     </div>
-    <!-- /.app -->
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="pages/tools.html">All Tools</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/contact.html">Contact</a>
+  </div>
+</header>
 
-    <script>
-      /* ════════════════════════════════════════════════════════════
-         DYNAMIC COMPONENT LOADER
-         Fetches navbar.html and footer.html from the server and
-         injects them into their mount points, then calls initNav()
-         from the centralized theme.js to wire up everything.
-         ════════════════════════════════════════════════════════════ */
-      async function loadComponent(url, mountId, afterInject) {
-        try {
-          const res = await fetch(url);
-          if (!res.ok) throw new Error(`${url} → ${res.status}`);
-          const html = await res.text();
-          const mount = document.getElementById(mountId);
-          if (mount) {
-            mount.innerHTML = html;
-            if (typeof afterInject === "function") afterInject(mount);
-          }
-        } catch (err) {
-          console.warn(`[MegaMocks] Could not load ${url}:`, err.message);
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">🎓 Built for real students</div>
+    <h1>Small Study Tools That Actually Help Students</h1>
+    <p class="lead">Simple tools for revision, focus, planning, and exam preparation. No login. No cost. No fluff.</p>
+    <div class="hero-cta">
+      <a href="pages/tools.html" class="btn btn-primary">Explore All Tools →</a>
+      <a href="#featured" class="btn btn-outline">See What's Here</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><strong>10+</strong><span>Free Tools</span></div>
+      <div class="stat"><strong>0</strong><span>Logins needed</span></div>
+      <div class="stat"><strong>100%</strong><span>Free forever</span></div>
+      <div class="stat"><strong>2 min</strong><span>Avg time per tool</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<!-- ===== FEATURED TOOLS ===== -->
+<section class="section" id="featured">
+  <div class="container">
+    <div class="section-title">
+      <h2>Study Tools That Get Straight to the Point</h2>
+      <p>Each tool solves one real problem. Open it, use it, close it. That's it.</p>
+    </div>
+
+    <div class="tools-grid">
+
+      <!-- Tool 1 -->
+      <div class="tool-card">
+        <div class="tool-icon">🎭</div>
+        <h3>False Confidence Detector</h3>
+        <p>Think you know a topic? This tool checks if your confidence actually matches your knowledge — or if you're just fooling yourself.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/false-confidence-detector.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Don't go into exams overconfident.</span>
+      </div>
+
+      <!-- Tool 2 -->
+      <div class="tool-card">
+        <div class="tool-icon">🔍</div>
+        <h3>Revision Gap Finder</h3>
+        <p>Enter your subjects and revision dates. This tool finds the gaps — topics you haven't touched in too long.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~3 minutes</span>
+          <a href="tools/revision-gap-finder.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Revision is memory insurance.</span>
+      </div>
+
+      <!-- Tool 3 -->
+      <div class="tool-card">
+        <div class="tool-icon">📊</div>
+        <h3>Exam Readiness Index</h3>
+        <p>Answer a few honest questions about your preparation and get a real readiness score with what to fix before exam day.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/exam-readiness-index.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Know where you actually stand.</span>
+      </div>
+
+      <!-- Tool 4 -->
+      <div class="tool-card">
+        <div class="tool-icon">📝</div>
+        <h3>Notes Completeness Checker</h3>
+        <p>Rate your notes for each topic. This tool tells you which subjects still have holes before the exam comes.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~3 minutes</span>
+          <a href="tools/notes-completeness-checker.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Good notes today = fewer panics tomorrow.</span>
+      </div>
+
+      <!-- Tool 5 -->
+      <div class="tool-card">
+        <div class="tool-icon">⚖️</div>
+        <h3>Study Load Balance Checker</h3>
+        <p>Are you spending too much time on one subject and ignoring others? This tool checks if your study time is actually balanced.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/study-load-balance-checker.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Balance beats burnout, every time.</span>
+      </div>
+
+      <!-- Tool 6 -->
+      <div class="tool-card">
+        <div class="tool-icon">🛠️</div>
+        <h3>Weak Topic Recovery Planner</h3>
+        <p>Enter your weak subjects and exam date. Get a simple day-by-day recovery plan that actually fits your schedule.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~3 minutes</span>
+          <a href="tools/weak-topic-recovery-planner.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Weak today doesn't mean weak on exam day.</span>
+      </div>
+
+      <!-- Tool 7 -->
+      <div class="tool-card">
+        <div class="tool-icon">📋</div>
+        <h3>PYQ Coverage Tracker</h3>
+        <p>Track how many previous year questions you've solved per subject. See your coverage and know what's still missing.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/pyq-coverage-tracker.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Past papers predict future marks.</span>
+      </div>
+
+      <!-- Tool 8 -->
+      <div class="tool-card">
+        <div class="tool-icon">⏳</div>
+        <h3>Time Leakage Finder</h3>
+        <p>Where is your study time actually going? Enter your daily schedule and see where hours are silently disappearing.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/time-leakage-finder.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Small improvements matter.</span>
+      </div>
+
+      <!-- Tool 9 -->
+      <div class="tool-card">
+        <div class="tool-icon">🎯</div>
+        <h3>Daily Study Target Validator</h3>
+        <p>Check if your daily study plan is realistic for your exam date. Stop setting targets you can't actually meet.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/daily-study-target-validator.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Consistency beats panic.</span>
+      </div>
+
+      <!-- Tool 10 -->
+      <div class="tool-card">
+        <div class="tool-icon">🗂️</div>
+        <h3>Question Attempt Order Planner</h3>
+        <p>Enter your exam sections and time limits. Get a smart attempt order so you score maximum marks in the time available.</p>
+        <div class="tool-meta">
+          <span class="tool-time">⏱ ~2 minutes</span>
+          <a href="tools/question-attempt-order-planner.html" class="btn btn-primary btn-sm">Open Tool →</a>
+        </div>
+        <span class="micro-line">Strategy wins exams, not just knowledge.</span>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:2rem;">
+      <a href="pages/tools.html" class="btn btn-outline">View All Tools →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY SECTION ===== -->
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Why Students Use MegaMocks</h2>
+      <p>We made this because we know what the week before exams feels like.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">⚡</div>
+        <h4>Takes Under 3 Minutes</h4>
+        <p>Quick tools for quick decisions. No long onboarding.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🔓</div>
+        <h4>No Login Needed</h4>
+        <p>Open, use, and close. Your data stays on your device.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💸</div>
+        <h4>Free Forever</h4>
+        <p>No trial period. No premium plan. Just free tools.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">📱</div>
+        <h4>Works on Mobile</h4>
+        <p>Fully mobile-friendly. Use it anywhere you study.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🎯</div>
+        <h4>One Problem Each</h4>
+        <p>Every tool solves one specific student problem. That's it.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🧘</div>
+        <h4>No Distractions</h4>
+        <p>Clean, calm interface. Built for focus, not for show.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<!-- ===== STUDY TIPS ===== -->
+<section class="section" id="tips">
+  <div class="container">
+    <div class="section-title">
+      <h2>Study Tips That Actually Make Sense</h2>
+      <p>Not generic advice. Real stuff that changes how you study.</p>
+    </div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <p>Studying for 8 hours means nothing if you forget everything after 2 days. Revise shorter, revise more often.</p>
+      </div>
+      <div class="tip-card">
+        <p>The feeling of being ready and actually being ready are two different things. Test yourself before you walk in.</p>
+      </div>
+      <div class="tip-card">
+        <p>Your phone is not a 5-minute break. It is a 45-minute black hole. Put it in another room.</p>
+      </div>
+      <div class="tip-card">
+        <p>Reading your notes is not revision. Closing your notes and trying to recall from memory — that is revision.</p>
+      </div>
+      <div class="tip-card">
+        <p>The night before an exam is not the time to learn new things. Rest is productive too.</p>
+      </div>
+      <div class="tip-card">
+        <p>One difficult topic per day beats ten easy topics you already know. Fix weaknesses before they cost you marks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);">
+  <div class="container">
+    <div class="section-title">
+      <h2>Common Questions</h2>
+      <p>Things students usually ask before using MegaMocks.</p>
+    </div>
+
+    <!-- Schema FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Are all tools on MegaMocks free?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool on MegaMocks is 100% free. No plan, no payment, no hidden cost." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need to create an account?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. You don't need an account or even an email address. Just open the tool and use it." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does MegaMocks save my data anywhere?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No data is sent to any server. Some tools save your inputs in your browser's local storage so you can return later, but everything stays on your own device." }
+        },
+        {
+          "@type": "Question",
+          "name": "Who are these tools built for?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Any student preparing for exams — school, college, or competitive exams. The tools are simple enough for anyone to use in a few minutes." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use MegaMocks on my phone?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool is fully mobile-responsive and works well on phones and tablets." }
         }
-      }
-
-      /* Load navbar first, then footer in parallel */
-      Promise.all([
-        loadComponent("/navbar.html", "navbar-mount", () => {
-          /* Remove skeleton once real nav is injected */
-          document.getElementById("navSkeleton")?.remove();
-          /* Wire up the inline search in the injected navbar */
-          const navSearch = document.getElementById("navSearchInput");
-          if (navSearch) {
-            navSearch.addEventListener("keydown", (e) => {
-              if (e.key === "Enter" && navSearch.value.trim()) {
-                window.location =
-                  "/?q=" + encodeURIComponent(navSearch.value.trim());
-              }
-            });
-          }
-          /* Tell theme.js the nav is ready */
-          if (typeof initNav === "function") initNav();
-        }),
-        loadComponent("/footer.html", "footer-mount"),
-      ]);
-
-      /* ════════════════════════════════════════════════════════════
-         POSTS DATA
-         ════════════════════════════════════════════════════════════ */
-      const POSTS = [
-        {
-          slug: "openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks",
-          title:
-            "OpenAI Codex vs Claude Cowork: Which AI Agent Is Actually Better for You in 2026?",
-          excerpt:
-            "Both tools look similar on the surface. But once you use them side by side, the differences are clear. Here's the full feature-by-feature breakdown.",
-          tag: "compare",
-          tagLabel: "Compare",
-          date: "May 19, 2026",
-          readTime: "10 min read",
-          image:
-            "openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd420, #d4572a15)",
-        },
-        {
-          slug: "google-android-ai-iphone-switch-megamocks",
-          title:
-            "Google's Android AI Is So Good It Made an iPhone Guy Want to Switch",
-          excerpt:
-            "Google's new Android AI features almost convinced a 15-year iPhone user to switch. Here's everything that happened in AI this week.",
-          tag: "news",
-          tagLabel: "News",
-          date: "May 18, 2026",
-          readTime: "7 min read",
-          image: "google-android-ai-iphone-switch-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd415, #d4572a15)",
-        },
-        {
-          slug: "wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks",
-          title: "Wispr Flow Review: The One AI App You Actually Need in 2026",
-          excerpt:
-            "Wispr Flow turns your voice into clean, ready-to-send text in any app. Here's why it's the one AI app everyone should download in 2026.",
-          tag: "review",
-          tagLabel: "Review",
-          date: "May 15, 2026",
-          readTime: "6 min read",
-          image:
-            "wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd420, #d4572a15)",
-        },
-        {
-          slug: "how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks",
-          title:
-            "How to Get Better Results From NotebookLM Without Changing Your Prompts",
-          excerpt:
-            "Most people blame their prompts when NotebookLM gives bad answers. The real fix happens before you type anything. Here are the 4 steps that change everything.",
-          tag: "tutorial",
-          tagLabel: "Tutorial",
-          date: "May 14, 2026",
-          readTime: "7 min read",
-          image:
-            "how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd415, #2d7a4e15)",
-        },
-        {
-          slug: "5-ai-video-tools-that-are-changing-how-videos-are-made-2026-megamocks",
-          title:
-            "5 AI Video Tools That Are Changing How Videos Are Made (2026)",
-          excerpt:
-            "AI video tools have come a long way. Here are the 5 best AI video generators in 2026 — what they do, how they compare, and which one to pick.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "May 13, 2026",
-          readTime: "8 min read",
-          image:
-            "5-ai-video-tools-that-are-changing-how-videos-are-made-2026-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd420, #d4572a15)",
-        },
-        {
-          slug: "why-youtube-is-really-demonetizing-ai-channels-megamocks",
-          title:
-            "Why YouTube Is Really Demonetizing AI Channels (And It's Not What You Think)",
-          excerpt:
-            "YouTube is demonetizing AI channels fast. But the real reason has nothing to do with quality. Here's the EU law behind it all — and what to do next.",
-          tag: "news",
-          tagLabel: "News",
-          date: "May 12, 2026",
-          readTime: "8 min read",
-          image:
-            "why-youtube-is-really-demonetizing-ai-channels-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #d4572a15, #2a6dd420)",
-        },
-        {
-          slug: "gpt-realtime-2-what-openai-biggest-voice-ai-upgrade-actually-does-megamocks",
-          title:
-            "GPT Realtime 2: What OpenAI's Biggest Voice AI Upgrade Actually Does",
-          excerpt:
-            "OpenAI just launched GPT Realtime 2 — a voice AI that thinks, translates, and acts in real time. Here's what it does and why it matters.",
-          tag: "news",
-          tagLabel: "News",
-          date: "May 11, 2026",
-          readTime: "8 min read",
-          image:
-            "gpt-realtime-2-what-openai-biggest-voice-ai-upgrade-actually-does-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #c9a22720, #d4572a15)",
-        },
-        {
-          slug: "free-heygen-alternative-nobody-is-talking-about-in-2026-megamocks",
-          title: "Free HeyGen Alternative Nobody Is Talking About in 2026",
-          excerpt:
-            "Tired of paying for HeyGen? Symphony AI is a free, unlimited AI avatar tool in 2026 that does everything HeyGen does — and nobody is talking about it.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "May 10, 2026",
-          readTime: "6 min read",
-          image:
-            "free-heygen-alternative-nobody-is-talking-about-in-2026-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd415, #d4572a20)",
-        },
-        {
-          slug: "the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks",
-          title:
-            "The Real ChatGPT-5.5 vs Claude Opus 4.7 Test — Speed, Cost, and Results",
-          excerpt:
-            "ChatGPT-5.5 vs Claude Opus 4.7 tested across 4 real tasks. Here's what the speed, cost, and output data actually shows — no fluff.",
-          tag: "compare",
-          tagLabel: "Compare",
-          date: "May 9, 2026",
-          readTime: "8 min read",
-          image:
-            "the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #d4572a20, #2a6dd420)",
-        },
-        {
-          slug: "the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks",
-          title:
-            "The 6 Claude Code Skills That Clients Actually Pay For (2026)",
-          excerpt:
-            "Discover the 6 Claude Code skills that real businesses pay for in 2026. Simple, practical, and proven across real estate, HVAC, marketing, and more.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "May 8, 2026",
-          readTime: "8 min read",
-          image:
-            "the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd420, #d4572a15)",
-        },
-        {
-          slug: "can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks",
-          title:
-            "Can Manus AI Really Replace Hours of Work? Here Are 7 Proof Points",
-          excerpt:
-            "Manus AI claims to replace hours of work with zero code. Here are 7 proof points that show exactly how it does it — and why it matters.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "May 7, 2026",
-          readTime: "8 min read",
-          image:
-            "can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2a6dd420, #d4572a15)",
-        },
-        {
-          slug: "5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks",
-          title:
-            "5 AI Tools That Replace Hours of Work (And When to Use Each One)",
-          excerpt:
-            "Overwhelmed by AI tools? This guide breaks down the 5 best AI tools for real work — and tells you exactly when to use each one.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "May 6, 2026",
-          readTime: "7 min read",
-          image:
-            "5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #d4572a15, #2a6dd420)",
-          featured: true,
-        },
-        {
-          slug: "top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks",
-          title: "Top 5 AI Habits Every iPhone User Should Build Right Now",
-          excerpt:
-            "Most iPhone users only use 10% of what AI can do. These 5 practical habits change that — small changes, real results.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "May 4, 2026",
-          readTime: "7 min read",
-          image:
-            "top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.jpeg",
-          cover: "linear-gradient(135deg, #2d7a4e15, #d4572a15)",
-        },
-        {
-          slug: "claude-vs-chatgpt-2026",
-          title: "Claude vs ChatGPT in 2026: Which AI Assistant Actually Wins?",
-          excerpt:
-            "We spent two weeks running identical tasks through both. The results are more nuanced than you'd expect — and one clearly wins for coding.",
-          tag: "compare",
-          tagLabel: "Compare",
-          date: "May 1, 2026",
-          readTime: "9 min read",
-          emoji: "⚖️",
-          cover: "linear-gradient(135deg, #d4572a20, #2a6dd420)",
-        },
-        {
-          slug: "best-ai-writing-tools-2026",
-          title: "Best AI Writing Tools in 2026: A Practical Roundup",
-          excerpt:
-            "Jasper, Copy.ai, Notion AI, and 7 others — tested on real projects. Here's what's actually worth your money.",
-          tag: "review",
-          tagLabel: "Review",
-          date: "Apr 29, 2026",
-          readTime: "11 min read",
-          emoji: "✍️",
-          cover: "linear-gradient(135deg, #2a6dd415, #2d7a4e15)",
-        },
-        {
-          slug: "cursor-ai-review",
-          title: "Cursor AI Review: The Code Editor That Thinks With You",
-          excerpt:
-            "After 3 months of daily use, here's our honest take on whether Cursor AI is worth abandoning VS Code for.",
-          tag: "review",
-          tagLabel: "Review",
-          date: "Apr 27, 2026",
-          readTime: "8 min read",
-          emoji: "💻",
-          cover: "linear-gradient(135deg, #2a6dd420, #c9a22715)",
-        },
-        {
-          slug: "how-to-use-ai-for-research",
-          title: "How to Use AI Tools for Deep Research Without Getting Burned",
-          excerpt:
-            "Hallucinations, outdated info, overconfidence — AI research tools have real pitfalls. This guide shows you how to avoid all of them.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "Apr 24, 2026",
-          readTime: "7 min read",
-          emoji: "🔍",
-          cover: "linear-gradient(135deg, #2d7a4e15, #d4572a15)",
-        },
-        {
-          slug: "gemini-1-5-pro-review",
-          title: "Gemini 1.5 Pro: Google's Comeback Model Reviewed",
-          excerpt:
-            "A 1M token context window sounds amazing on paper. We pushed it to find out what actually breaks, and what truly impresses.",
-          tag: "review",
-          tagLabel: "Review",
-          date: "Apr 22, 2026",
-          readTime: "10 min read",
-          emoji: "💎",
-          cover: "linear-gradient(135deg, #c9a22720, #2d7a4e15)",
-        },
-        {
-          slug: "top-ai-tools-for-developers",
-          title: "Top 10 AI Tools Every Developer Should Be Using Right Now",
-          excerpt:
-            "From code completion to documentation generation — these tools are changing how developers work, and most are free to start.",
-          tag: "ai",
-          tagLabel: "AI Tools",
-          date: "Apr 19, 2026",
-          readTime: "9 min read",
-          emoji: "🛠️",
-          cover: "linear-gradient(135deg, #d4572a15, #c9a22715)",
-        },
-        {
-          slug: "perplexity-vs-chatgpt-search",
-          title: "Perplexity vs ChatGPT: Which AI Search Engine Is Better?",
-          excerpt:
-            "Both claim to be the future of search. We ran 50 queries through each — here's what we found.",
-          tag: "compare",
-          tagLabel: "Compare",
-          date: "Apr 17, 2026",
-          readTime: "6 min read",
-          emoji: "🔎",
-          cover: "linear-gradient(135deg, #2a6dd420, #d4572a15)",
-        },
-        {
-          slug: "ai-productivity-stack-2026",
-          title: "The AI Productivity Stack That's Adding 3 Hours to My Day",
-          excerpt:
-            "A real workflow using 5 AI tools together — not just theory. Includes the exact prompts and integrations I use daily.",
-          tag: "guide",
-          tagLabel: "Guide",
-          date: "Apr 14, 2026",
-          readTime: "7 min read",
-          emoji: "⚡",
-          cover: "linear-gradient(135deg, #2d7a4e15, #2a6dd415)",
-        },
-        {
-          slug: "openai-o3-what-it-means",
-          title: "What OpenAI's o3 Actually Means for the Rest of Us",
-          excerpt:
-            "Benchmark records are one thing. What does a reasoning-first model mean for how we actually use AI day-to-day?",
-          tag: "news",
-          tagLabel: "News",
-          date: "Apr 12, 2026",
-          readTime: "5 min read",
-          emoji: "📰",
-          cover: "linear-gradient(135deg, #c9a22720, #d4572a15)",
-        },
-        {
-          slug: "beginners-guide-to-prompt-engineering",
-          title: "Prompt Engineering for Beginners: The Definitive 2026 Guide",
-          excerpt:
-            "You don't need a PhD to write better prompts. These 12 principles work across every major AI model — with real examples.",
-          tag: "tutorial",
-          tagLabel: "Tutorial",
-          date: "Apr 9, 2026",
-          readTime: "14 min read",
-          emoji: "🎓",
-          cover: "linear-gradient(135deg, #2d7a4e20, #c9a22715)",
-        },
-        {
-          slug: "notion-ai-review-2026",
-          title: "Notion AI in 2026: Is It Finally Worth Paying For?",
-          excerpt:
-            "After a year of incremental updates, Notion AI has grown up. Here's a complete breakdown of what's new and whether it earns its price.",
-          tag: "review",
-          tagLabel: "Review",
-          date: "Apr 6, 2026",
-          readTime: "7 min read",
-          emoji: "📓",
-          cover: "linear-gradient(135deg, #2a6dd415, #d4572a10)",
-        },
-      ];
-
-      /* ════════════════════════════════════════════════════════════
-         POSTS RENDERING
-         ════════════════════════════════════════════════════════════ */
-      const POSTS_PER_PAGE = 6;
-      let currentPage = 1;
-      let activeTag = null;
-      let searchQuery = "";
-
-      function getFiltered() {
-        return POSTS.filter((p) => {
-          const matchTag = !activeTag || p.tag === activeTag;
-          const q = searchQuery.toLowerCase();
-          const matchSearch =
-            !q ||
-            p.title.toLowerCase().includes(q) ||
-            p.excerpt.toLowerCase().includes(q);
-          return matchTag && matchSearch;
-        });
-      }
-
-      function renderAll() {
-        renderFeatured();
-        renderPosts();
-        renderTrending();
-      }
-
-      function renderFeatured() {
-        const featured = POSTS.find((p) => p.featured);
-        if (!featured) {
-          document.getElementById("featuredPost").innerHTML = "";
-          return;
-        }
-        document.getElementById("featuredPost").innerHTML = `
-          <a href="/${featured.slug}.html" class="featured-post">
-            <div class="featured-cover" style="background:${featured.cover}">
-              
-                  <img src="${featured.image}" style="width: 100%; height: 100%; display: block" alt="${featured.title}" />
-              
-            </div>
-            <div class="featured-body">
-              <div class="featured-label">⭐ Featured · ${featured.tagLabel}</div>
-              <div class="featured-title">${featured.title}</div>
-              <div class="featured-excerpt">${featured.excerpt}</div>
-              <div class="featured-meta">
-                <span class="featured-date">${featured.date}</span>
-                <span class="featured-read">· ${featured.readTime}</span>
-                <span class="featured-read-more">Read article →</span>
-              </div>
-            </div>
-          </a>`;
-      }
-
-      function renderPosts() {
-        const filtered = getFiltered().filter(
-          (p) => !p.featured || activeTag || searchQuery,
-        );
-        const total = filtered.length;
-        const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
-        if (currentPage > totalPages) currentPage = 1;
-        const slice = filtered.slice(
-          (currentPage - 1) * POSTS_PER_PAGE,
-          currentPage * POSTS_PER_PAGE,
-        );
-        const grid = document.getElementById("postsGrid");
-        grid.innerHTML =
-          slice.length === 0
-            ? `<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--text2);font-size:0.82rem;">No posts found. <span onclick="clearFilters()" style="color:var(--accent);cursor:pointer;">Clear filters</span></div>`
-            : slice.map(cardHTML).join("");
-        renderPagination(totalPages);
-        observeFadeUps();
-      }
-
-      function cardHTML(p) {
-        return `
-          <a href="/${p.slug}.html" class="post-card fade-up">
-            <div class="post-card-cover">
-              <img src="${p.image}" alt="${p.title}" />
-            </div>
-            <div class="post-card-body">
-              <div class="post-meta">
-                <span class="post-tag tag-${p.tag}">${p.tagLabel}</span>
-                <span class="post-date">${p.date}</span>
-              </div>
-              <div class="post-card-title">${p.title}</div>
-              <div class="post-card-excerpt">${p.excerpt}</div>
-              <div class="post-card-footer">
-                <span class="post-read-time">⏱ ${p.readTime}</span>
-                <span class="post-read-more">Read more →</span>
-              </div>
-            </div>
-          </a>`;
-      }
-
-      function renderPagination(totalPages) {
-        const pag = document.getElementById("pagination");
-        if (totalPages <= 1) {
-          pag.innerHTML = "";
-          return;
-        }
-        let html = `<button class="page-btn wide" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled style="opacity:.4;cursor:default"' : ""}>← Prev</button>`;
-        for (let i = 1; i <= totalPages; i++) {
-          html += `<button class="page-btn${i === currentPage ? " active" : ""}" onclick="goPage(${i})">${i}</button>`;
-        }
-        html += `<button class="page-btn wide" onclick="goPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled style="opacity:.4;cursor:default"' : ""}>Next →</button>`;
-        pag.innerHTML = html;
-      }
-
-      function goPage(n) {
-        const total = Math.ceil(getFiltered().length / POSTS_PER_PAGE);
-        if (n < 1 || n > total) return;
-        currentPage = n;
-        renderPosts();
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-
-      function filterPosts() {
-        searchQuery = document.getElementById("searchInput")?.value || "";
-        currentPage = 1;
-        renderPosts();
-      }
-
-      function filterByTag(tag, el, fromSidebar) {
-        activeTag = tag;
-        currentPage = 1;
-        document
-          .querySelectorAll(".hero-tag")
-          .forEach((t) => t.classList.remove("active"));
-        document
-          .querySelectorAll(".cloud-tag")
-          .forEach((t) => t.classList.remove("active"));
-        if (!fromSidebar && el) el.classList.add("active");
-        if (fromSidebar && el) el.classList.add("active");
-        if (!tag) {
-          document.querySelectorAll(".hero-tag")[0]?.classList.add("active");
-          document.querySelectorAll(".cloud-tag")[0]?.classList.add("active");
-        }
-        renderFeatured();
-        renderPosts();
-        return false;
-      }
-
-      function clearFilters() {
-        activeTag = null;
-        searchQuery = "";
-        const si = document.getElementById("searchInput");
-        if (si) si.value = "";
-        document.querySelectorAll(".hero-tag")[0]?.classList.add("active");
-        document.querySelectorAll(".cloud-tag")[0]?.classList.add("active");
-        renderAll();
-      }
-
-      function renderTrending() {
-        const top = [...POSTS].slice(0, 5);
-        document.getElementById("sidebarTrending").innerHTML = top
-          .map(
-            (p, i) => `
-          <a href="/${p.slug}.html" class="sidebar-post-item">
-            <span class="sidebar-num">0${i + 1}</span>
-            <div>
-              <div class="sidebar-post-title">${p.title}</div>
-              <div class="sidebar-post-meta">${p.date} · ${p.readTime}</div>
-            </div>
-          </a>`,
-          )
-          .join("");
-      }
-
-      /* ── Scroll animations ── */
-      function observeFadeUps() {
-        const els = document.querySelectorAll(".fade-up:not(.visible)");
-        const obs = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((e, i) => {
-              if (e.isIntersecting) {
-                setTimeout(() => e.target.classList.add("visible"), i * 80);
-                obs.unobserve(e.target);
-              }
-            });
-          },
-          { threshold: 0.08 },
-        );
-        els.forEach((el) => obs.observe(el));
-      }
-
-      /* ── Init ── */
-      window.addEventListener("DOMContentLoaded", () => {
-        /* theme.js already ran applyTheme on its own DOMContentLoaded,
-           but calling it again here is safe and covers race conditions */
-        if (typeof applyTheme === "function")
-          applyTheme(localStorage.getItem("theme") || "light");
-        renderAll();
-        document.querySelector(".hero")?.classList.add("visible");
-        observeFadeUps();
-      });
+      ]
+    }
     </script>
-  </body>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">Are all tools on MegaMocks free? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes. Every tool on MegaMocks is 100% free. No plan, no payment, no hidden cost. We built this for students who are already stressed about exams — not for making money off them.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do I need to create an account? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>No account needed. No email. No sign-up. Just open a tool and use it right away. We kept it that way on purpose — you don't need another thing to log into.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Does MegaMocks save my data anywhere? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Nothing is sent to any server. Some tools save your inputs in your browser's local storage so you can come back later. But that data never leaves your own device. We have no database and no user accounts.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Who are these tools made for? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Any student preparing for exams — school, college, or competitive exams. If you're studying for something and want quick, honest help with planning and revision, these tools are for you.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I use MegaMocks on my phone? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes, fully. Every page and every tool is built to work on phones and tablets. Most students study using phones, so we made sure everything is easy to use on a small screen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How accurate are the tool results? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>The results are only as honest as your inputs. If you rate yourself truthfully, you'll get useful output. These tools are not a guarantee — they're a mirror. They help you see your situation more clearly so you can act on it.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">Mega<span>Mocks</span></a>
+        <p>Simple, free study tools for students who want to study smarter and stress less. No login needed.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="tools/false-confidence-detector.html">False Confidence Detector</a></li>
+          <li><a href="tools/revision-gap-finder.html">Revision Gap Finder</a></li>
+          <li><a href="tools/exam-readiness-index.html">Exam Readiness Index</a></li>
+          <li><a href="tools/study-load-balance-checker.html">Study Load Balance</a></li>
+          <li><a href="pages/tools.html">All Tools →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="pages/about.html">About</a></li>
+          <li><a href="pages/contact.html">Contact</a></li>
+          <li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="pages/disclaimer.html">Disclaimer</a></li>
+          <li><a href="pages/terms.html">Terms & Conditions</a></li>
+          <li><a href="pages/sitemap.html">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MegaMocks. Made with care for students everywhere. All tools are free and no account is needed.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<script src="js/main.js"></script>
+</body>
 </html>

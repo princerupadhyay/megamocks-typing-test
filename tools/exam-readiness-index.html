@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exam Readiness Index — MegaMocks</title>
+  <meta name="description" content="Get an honest exam readiness score out of 100. Answer 8 questions about your preparation and find out exactly where you stand before your exam." />
+  <link rel="canonical" href="https://megamocks.com/tools/exam-readiness-index/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/tools.html">All Tools</a></li>
+      <li><a href="../pages/about.html">About</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="../pages/tools.html">All Tools</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">/</span>
+    <a href="../pages/tools.html">Tools</a><span class="sep">/</span>
+    <span>Exam Readiness Index</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tool-intro">
+    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:0.75rem;">📊</div>
+    <h1>Exam Readiness Index</h1>
+    <p style="font-size:1rem;color:var(--muted);">
+      Answer 8 honest questions about your exam preparation. Get a score from 0 to 100 — and a clear list of what you need to fix before exam day.
+    </p>
+    <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes — be honest for accurate results</p>
+  </div>
+</div>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<div class="container">
+  <div class="tool-ui-box">
+
+    <h3 style="color:var(--text);margin-bottom:0.5rem;">About Your Exam</h3>
+    <div class="form-group">
+      <label for="examName">Exam / Subject Name</label>
+      <input type="text" id="examName" placeholder="e.g. Biology Paper 1, UPSC Prelims..." />
+    </div>
+    <div class="form-group">
+      <label for="daysLeft">How many days until your exam?</label>
+      <input type="number" id="daysLeft" min="0" max="365" placeholder="e.g. 14" />
+    </div>
+
+    <div class="divider" style="margin:1.5rem 0;"></div>
+    <h3 style="color:var(--text);margin-bottom:1.25rem;">8 Readiness Questions</h3>
+
+    <!-- Q1 -->
+    <div class="form-group">
+      <label>1. How much of the syllabus have you covered?</label>
+      <select id="q1">
+        <option value="0">Less than 25% — barely started</option>
+        <option value="4">25–50% — roughly half done</option>
+        <option value="8">50–75% — majority covered</option>
+        <option value="12">75–90% — nearly all covered</option>
+        <option value="15">90–100% — fully covered</option>
+      </select>
+    </div>
+
+    <!-- Q2 -->
+    <div class="form-group">
+      <label>2. How many practice tests / mock papers have you completed?</label>
+      <select id="q2">
+        <option value="0">None</option>
+        <option value="3">1–2 papers</option>
+        <option value="7">3–5 papers</option>
+        <option value="10">6–10 papers</option>
+        <option value="12">More than 10 papers</option>
+      </select>
+    </div>
+
+    <!-- Q3 -->
+    <div class="form-group">
+      <label>3. How are you scoring on those practice tests?</label>
+      <select id="q3">
+        <option value="0">I haven't done any yet</option>
+        <option value="2">Below 40% — mostly failing</option>
+        <option value="5">40–55% — borderline</option>
+        <option value="8">55–70% — average</option>
+        <option value="12">70–85% — good</option>
+        <option value="15">85%+ — strong performance</option>
+      </select>
+    </div>
+
+    <!-- Q4 -->
+    <div class="form-group">
+      <label>4. Have you reviewed your mistakes from practice tests?</label>
+      <select id="q4">
+        <option value="0">I haven't done any practice yet</option>
+        <option value="2">No — I look at the score and move on</option>
+        <option value="5">Sometimes — I check some mistakes</option>
+        <option value="10">Yes — I review all mistakes carefully</option>
+      </select>
+    </div>
+
+    <!-- Q5 -->
+    <div class="form-group">
+      <label>5. How confident do you feel about your weakest topic?</label>
+      <select id="q5">
+        <option value="0">I have major gaps I haven't touched</option>
+        <option value="3">I know it exists but haven't done enough</option>
+        <option value="6">I've started but it still worries me</option>
+        <option value="10">It's improved — I've worked on it</option>
+      </select>
+    </div>
+
+    <!-- Q6 -->
+    <div class="form-group">
+      <label>6. How consistent is your daily study?</label>
+      <select id="q6">
+        <option value="0">Barely studying — lots of off days</option>
+        <option value="3">Irregular — good days and bad days</option>
+        <option value="6">Reasonably consistent — most days</option>
+        <option value="10">Very consistent — daily without fail</option>
+      </select>
+    </div>
+
+    <!-- Q7 -->
+    <div class="form-group">
+      <label>7. How are you sleeping and taking care of yourself?</label>
+      <select id="q7">
+        <option value="0">Badly — sleep-deprived and stressed</option>
+        <option value="3">Not great — cutting sleep to study more</option>
+        <option value="6">Okay — could be better</option>
+        <option value="10">Well — good sleep, managing stress</option>
+      </select>
+    </div>
+
+    <!-- Q8 -->
+    <div class="form-group">
+      <label>8. Do you have a clear plan for the remaining days?</label>
+      <select id="q8">
+        <option value="0">No plan — just studying randomly</option>
+        <option value="3">Loose idea — no real structure</option>
+        <option value="6">Basic plan — could be more detailed</option>
+        <option value="8">Clear plan — I know what to do each day</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="calcReadiness()" style="width:100%;justify-content:center;margin-top:0.5rem;">
+      Calculate My Readiness Score →
+    </button>
+
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('copyText').value, this)">📋 Copy Result</button>
+        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+      </div>
+      <textarea id="copyText" style="position:absolute;left:-9999px;"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container" style="margin-top:1rem;">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<div class="container" style="margin-top:2rem;">
+  <div class="info-section">
+    <h2>How This Tool Works</h2>
+    <p>Each question is scored based on how much it actually contributes to exam performance. Syllabus coverage, practice test scores, and mistake review are weighted most heavily — because research shows these are the biggest predictors of exam results.</p>
+    <p>The total score out of 100 tells you where you stand right now. More importantly, the suggestions tell you what to fix in the time you have left.</p>
+
+    <h2 style="margin-top:2rem;">What the Scores Mean</h2>
+    <div class="example-box">
+      <strong>80–100:</strong> You're in strong shape. Focus on maintaining, not cramming.<br/>
+      <strong>60–79:</strong> Good preparation but gaps remain. Prioritise weak areas.<br/>
+      <strong>40–59:</strong> Moderate risk. Increase intensity — especially practice tests.<br/>
+      <strong>20–39:</strong> High risk. You need to change your approach urgently.<br/>
+      <strong>0–19:</strong> Critical stage. Focus on highest-weight topics first and start testing yourself now.
+    </div>
+
+    <h2 style="margin-top:2rem;">Study Tips</h2>
+    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.6rem;">
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ A readiness score is only useful if you're honest. Overestimating yourself now costs you marks later.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Sleep has a bigger impact on exam performance than an extra hour of studying on the night before.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Practice tests without reviewing mistakes are almost useless. The review is the learning.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Run this tool again in 3–4 days. Watch your score move. That's real progress tracking.</li>
+    </ul>
+  </div>
+</div>
+
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+  <div class="container">
+    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">What is a good exam readiness score? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>A score of 70 or above suggests you're in a reasonably strong position. Above 80 is good. The most important thing isn't the number — it's understanding which specific areas are pulling your score down and fixing those.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Should I check this score multiple times? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes. Use it every few days as your exam approaches. It's a useful way to track real improvement and catch any areas you're falling behind on before it's too late.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What if my score is very low with just a few days left? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Don't panic — focus. With limited time, prioritise high-weight topics, do as many practice questions as you can, and ensure you're sleeping. Cramming 10 chapters you'll forget is worse than deeply reviewing 3 key areas.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Does this tool work for competitive exams too? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes. The questions are general enough to apply to any type of exam — school, university, or competitive entrance exams like JEE, UPSC, IELTS, etc.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Why is sleep included in the readiness score? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Because sleep is genuinely important for exam performance. Memory consolidation happens during sleep. A student who sleeps 7–8 hours consistently will outperform a sleep-deprived student who studied more hours — especially on reasoning and recall tasks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
+  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+  <div class="related-grid">
+    <a href="false-confidence-detector.html" class="related-card"><span class="r-icon">🎭</span><span>False Confidence Detector</span></a>
+    <a href="revision-gap-finder.html" class="related-card"><span class="r-icon">🔍</span><span>Revision Gap Finder</span></a>
+    <a href="weak-topic-recovery-planner.html" class="related-card"><span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span></a>
+    <a href="daily-study-target-validator.html" class="related-card"><span class="r-icon">🎯</span><span>Daily Study Target Validator</span></a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+        <p>Free study tools for students. No login, no cost.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="false-confidence-detector.html">False Confidence Detector</a></li>
+          <li><a href="revision-gap-finder.html">Revision Gap Finder</a></li>
+          <li><a href="../pages/tools.html">All Tools →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MegaMocks — Free study tools for every student.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop">↑</button>
+<script src="../js/main.js"></script>
+<script>
+function calcReadiness() {
+  const examName = document.getElementById('examName').value.trim() || 'Your exam';
+  const daysLeft = parseInt(document.getElementById('daysLeft').value) || 0;
+  const scores = ['q1','q2','q3','q4','q5','q6','q7','q8'].map(id => parseInt(document.getElementById(id).value));
+  const total = scores.reduce((a,b) => a+b, 0);
+  const maxPossible = 15+12+15+10+10+10+10+8; // = 90, scale to 100
+  const finalScore = Math.round((total / maxPossible) * 100);
+
+  let statusText, statusClass, summary, actions;
+
+  if (finalScore >= 80) {
+    statusText = '✅ Strong Readiness';
+    statusClass = 'score-good';
+    summary = `You're in a solid position for ${examName}. Your preparation looks thorough. Focus on maintaining consistency and avoiding burnout in the final stretch.`;
+    actions = ['Keep doing daily revision — don\'t stop now.', 'Do at least one more full practice test.', 'Review any remaining weak spots, even briefly.', 'Prioritise sleep in the final 3 days before the exam.'];
+  } else if (finalScore >= 60) {
+    statusText = '⚡ Moderate Readiness';
+    statusClass = 'score-warn';
+    summary = `You have a reasonable base for ${examName} but there are clear gaps. The time between now and exam day matters a lot. Use it well.`;
+    actions = ['Identify your 2–3 weakest areas and give them focused attention.', 'Do at least 2 more full practice tests before the exam.', 'Review every mistake — don\'t just note the score.', 'Make a day-by-day plan for the remaining ' + daysLeft + ' days.', 'Sleep consistently — fatigue will hurt your performance more than skipping one chapter.'];
+  } else if (finalScore >= 40) {
+    statusText = '⚠️ At Risk';
+    statusClass = 'score-warn';
+    summary = `Your preparation for ${examName} needs more work. There are ${daysLeft} days left — use them as efficiently as possible.`;
+    actions = ['Prioritise high-weight syllabus areas first.', 'Stop passive reading. Start active recall and practice questions.', 'Set a daily target and track it — use the Daily Study Target Validator.', 'Do at least 1 timed practice test this week.', 'Don\'t try to cover everything — cover the most important things properly.'];
+  } else {
+    statusText = '🚨 Critical — Act Now';
+    statusClass = 'score-danger';
+    summary = `Your readiness level for ${examName} is low with ${daysLeft} days remaining. This is fixable, but it requires a real change in approach right now.`;
+    actions = ['Drop low-priority topics and go deep on core areas.', 'Study using past year questions — not just notes.', 'Do practice questions every single day, even 20 minutes.', 'Tell someone your study plan so you stay accountable.', 'Get proper sleep. Tiredness destroys memory retention.'];
+  }
+
+  const progressColor = finalScore >= 80 ? 'var(--success)' : finalScore >= 60 ? 'var(--warning)' : finalScore >= 40 ? 'var(--warning)' : 'var(--danger)';
+
+  const html = `
+    <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+      <div>
+        <div class="result-score ${statusClass}" style="font-size:3.5rem;">${finalScore}</div>
+        <div class="result-label">out of 100 — ${statusText}</div>
+      </div>
+      <div style="flex:1;min-width:150px;">
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.4rem;">Readiness level</div>
+        <div class="progress-wrap">
+          <div class="progress-bar" style="width:${finalScore}%;background:${progressColor};"></div>
+        </div>
+        ${daysLeft ? `<div style="font-size:0.75rem;color:var(--muted);margin-top:0.4rem;">${daysLeft} days until exam</div>` : ''}
+      </div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--text);margin-bottom:1rem;">${summary}</p>
+    <h4 style="color:var(--text);font-size:0.85rem;margin-bottom:0.6rem;">Priority actions for you:</h4>
+    <ul class="result-suggestions">
+      ${actions.map(a => `<li>${a}</li>`).join('')}
+    </ul>
+  `;
+
+  const copy = `MegaMocks — Exam Readiness Index\nExam: ${examName}\nDays left: ${daysLeft}\nScore: ${finalScore}/100 — ${statusText}\n${summary}\n\nActions:\n${actions.map(a=>'• '+a).join('\n')}`;
+
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('copyText').value = copy;
+  const box = document.getElementById('resultBox');
+  box.classList.add('show');
+  box.scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+</body>
+</html>

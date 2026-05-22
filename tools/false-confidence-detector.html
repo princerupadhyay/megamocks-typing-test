@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>False Confidence Detector — MegaMocks</title>
+  <meta name="description" content="The False Confidence Detector checks if your self-rated confidence in a subject actually matches your real knowledge. Stop going into exams overconfident." />
+  <link rel="canonical" href="https://megamocks.com/tools/false-confidence-detector/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "What is false confidence in studying?", "acceptedAnswer": { "@type": "Answer", "text": "False confidence means you feel you know a topic well but you actually struggle when tested. It usually happens when you read material without actively recalling it." } },
+      { "@type": "Question", "name": "Why do students have false confidence?", "acceptedAnswer": { "@type": "Answer", "text": "Passive reading and watching lectures feels productive but doesn't build real memory. Students confuse familiarity with knowledge." } }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../pages/tools.html">All Tools</a></li>
+      <li><a href="../pages/about.html">About</a></li>
+      <li><a href="../pages/contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="../index.html">Home</a>
+    <a href="../pages/tools.html">All Tools</a>
+    <a href="../pages/about.html">About</a>
+    <a href="../pages/contact.html">Contact</a>
+  </div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">/</span>
+    <a href="../pages/tools.html">Tools</a><span class="sep">/</span>
+    <span>False Confidence Detector</span>
+  </div>
+</div>
+
+<!-- ===== TOOL INTRO ===== -->
+<div class="container">
+  <div class="tool-intro">
+    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:0.75rem;">🎭</div>
+    <h1>False Confidence Detector</h1>
+    <p style="font-size:1rem;color:var(--muted);">
+      You think you know a topic. But do you actually? This tool checks whether your confidence is backed by real understanding — or if you're just familiar with the material without actually knowing it.
+    </p>
+    <p style="font-size:0.85rem;color:var(--muted);font-style:italic;">⏱ Takes less than 2 minutes</p>
+  </div>
+</div>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<!-- ===== TOOL UI ===== -->
+<div class="container">
+  <div class="tool-ui-box">
+    <h3 style="margin-bottom:1.25rem;color:var(--text);">Enter Your Subject Details</h3>
+
+    <div class="form-group">
+      <label for="subject">Subject / Topic Name</label>
+      <input type="text" id="subject" placeholder="e.g. Organic Chemistry, World War II, Calculus..." />
+    </div>
+
+    <div class="form-group">
+      <label>How confident do you feel about this topic?
+        <span class="range-val" id="confidence_val">5</span>/10
+      </label>
+      <input type="range" id="confidence" min="1" max="10" value="5" />
+    </div>
+
+    <div class="form-group">
+      <label>How many practice questions have you attempted on this topic?</label>
+      <select id="questions">
+        <option value="0">None — I haven't done any practice yet</option>
+        <option value="1">1–5 questions</option>
+        <option value="2">6–15 questions</option>
+        <option value="3">16–30 questions</option>
+        <option value="4">30+ questions</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>What was your average score on those practice questions?</label>
+      <select id="score">
+        <option value="0">Haven't attempted any</option>
+        <option value="1">Below 40% — mostly wrong</option>
+        <option value="2">40–60% — hit and miss</option>
+        <option value="3">60–75% — mostly right</option>
+        <option value="4">75%+ — nearly all correct</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>How did you revise this topic? (pick the best one)</label>
+      <select id="method">
+        <option value="1">I read through notes or textbook once</option>
+        <option value="2">I read notes and highlighted</option>
+        <option value="3">I watched video lectures</option>
+        <option value="4">I made my own summary notes</option>
+        <option value="5">I closed my notes and tried to recall / explained to myself</option>
+        <option value="6">I did past papers and reviewed my mistakes</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>When did you last properly revise this topic?</label>
+      <select id="recency">
+        <option value="1">More than 3 weeks ago</option>
+        <option value="2">2–3 weeks ago</option>
+        <option value="3">1–2 weeks ago</option>
+        <option value="4">3–7 days ago</option>
+        <option value="5">Within the last 3 days</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" onclick="detectConfidence()" style="width:100%;justify-content:center;margin-top:0.5rem;">
+      Check My Confidence →
+    </button>
+
+    <!-- Result -->
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('copyText').value, this)">📋 Copy Result</button>
+        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+      </div>
+      <textarea id="copyText" style="position:absolute;left:-9999px;"></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- Adsense Ad Placeholder -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<!-- ===== EXAMPLE ===== -->
+<div class="container" style="margin-top:1rem;">
+  <div class="info-section">
+    <h2>Example Usage</h2>
+    <div class="example-box">
+      <strong>Inputs:</strong><br/>
+      Topic: Organic Chemistry<br/>
+      Confidence: 8/10<br/>
+      Practice questions: 1–5 only<br/>
+      Score on practice: 40–60% (hit and miss)<br/>
+      Revision method: Read notes once<br/>
+      Last revised: 2 weeks ago<br/><br/>
+      <strong>Result:</strong> ⚠️ Confidence Gap Detected — Your confidence score (8) is much higher than your actual performance suggests. You may be confusing familiarity with knowledge. Do 15+ practice questions and test yourself without your notes.
+    </div>
+
+    <h2 style="margin-top:2rem;">How This Tool Works</h2>
+    <p>The tool compares your self-rated confidence against three things: how much you've actually practiced, how well you've scored, and how recently you've reviewed the material.</p>
+    <p>If your confidence score is much higher than your practice and performance scores, that's a confidence gap — also known as the "illusion of knowing." This is one of the most common reasons students underperform on exams they thought they were ready for.</p>
+
+    <h2 style="margin-top:2rem;">Why This Matters</h2>
+    <p>Research in cognitive psychology shows that students consistently overestimate how much they know when they've only read material passively. The feeling of recognising something is not the same as being able to recall or apply it under exam pressure.</p>
+    <p>This tool is your honest friend. It won't sugar-coat — but it will tell you what you need to hear while there's still time to do something about it.</p>
+
+    <h2 style="margin-top:2rem;">Study Tips for This Tool</h2>
+    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:0.6rem;">
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ After reading a topic, close your notes and write down everything you remember. That's real revision.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ A score of 8/10 on practice means nothing if you only attempted 3 easy questions. Volume and difficulty both matter.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ If you haven't revised a topic in 2 weeks, your brain has forgotten more than you think. A quick re-visit is not optional.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Explaining a topic out loud to yourself (or a friend) is one of the best ways to test real understanding.</li>
+      <li style="background:var(--card);border-radius:8px;padding:0.75rem 1rem;font-size:0.88rem;color:var(--text);border:1px solid var(--border);">→ Confidence is useful only when it's earned. Practice until your score matches your gut feeling.</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ===== FAQ ===== -->
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+  <div class="container">
+    <div class="section-title">
+      <h2>Frequently Asked Questions</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">What is false confidence in studying? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>False confidence is when you feel you know a topic well but you actually struggle when tested. It happens when you confuse recognising something with actually knowing it. Reading feels productive, but it doesn't build real recall.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Why do students overestimate their knowledge? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Passive study — reading, highlighting, watching videos — creates a feeling of familiarity. That feeling tricks the brain into thinking it knows something. The problem only becomes clear when you close the book and try to recall it from scratch.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What should I do if I have a confidence gap? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Start doing practice questions immediately. Don't just re-read the topic. Set the notes aside and try to recall the material, then check. The harder it feels at first, the better it sticks.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Is it bad to be too confident before an exam? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Overconfidence before an exam is a real risk. It can make you skip final revision, leave weak areas unaddressed, and underperform when actual questions are harder than expected. Some confidence is healthy — false confidence is dangerous.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I use this tool for multiple subjects? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes. Run it once for each subject or topic. It only takes about a minute per topic, so you can check your entire exam syllabus pretty quickly.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Does this tool store any of my data? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>No data is sent anywhere. Everything runs in your browser. Nothing is saved or stored by us.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED TOOLS ===== -->
+<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
+  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+  <div class="related-grid">
+    <a href="revision-gap-finder.html" class="related-card">
+      <span class="r-icon">🔍</span><span>Revision Gap Finder</span>
+    </a>
+    <a href="exam-readiness-index.html" class="related-card">
+      <span class="r-icon">📊</span><span>Exam Readiness Index</span>
+    </a>
+    <a href="weak-topic-recovery-planner.html" class="related-card">
+      <span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span>
+    </a>
+    <a href="notes-completeness-checker.html" class="related-card">
+      <span class="r-icon">📝</span><span>Notes Completeness Checker</span>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+        <p>Free study tools for students. No login, no cost.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Tools</h4>
+        <ul>
+          <li><a href="revision-gap-finder.html">Revision Gap Finder</a></li>
+          <li><a href="exam-readiness-index.html">Exam Readiness Index</a></li>
+          <li><a href="../pages/tools.html">All Tools →</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Info</h4>
+        <ul>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="../pages/terms.html">Terms</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 MegaMocks — Free study tools for every student.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="scrollTop" aria-label="Scroll to top">↑</button>
+
+<script src="../js/main.js"></script>
+<script>
+function detectConfidence() {
+  const subject     = document.getElementById('subject').value.trim() || 'This topic';
+  const confidence  = parseInt(document.getElementById('confidence').value);
+  const questions   = parseInt(document.getElementById('questions').value);
+  const score       = parseInt(document.getElementById('score').value);
+  const method      = parseInt(document.getElementById('method').value);
+  const recency     = parseInt(document.getElementById('recency').value);
+
+  // Calculate actual knowledge score (0-10)
+  const practiceScore  = (questions / 4) * 3;        // max 3
+  const performScore   = (score / 4) * 3;            // max 3
+  const methodScore    = (method / 6) * 2.5;         // max 2.5
+  const recencyScore   = (recency / 5) * 1.5;        // max 1.5
+  const actualKnowledge = Math.min(10, practiceScore + performScore + methodScore + recencyScore);
+
+  const gap = confidence - actualKnowledge;
+  const gapAbs = Math.abs(gap).toFixed(1);
+
+  let status, statusClass, headline, suggestions;
+
+  if (gap > 3.5) {
+    status = '🚨 High Confidence Gap';
+    statusClass = 'score-danger';
+    headline = `Your confidence (${confidence}/10) is significantly higher than your evidence of actual knowledge (${actualKnowledge.toFixed(1)}/10). This is a real risk before an exam.`;
+    suggestions = [
+      'Stop re-reading. Start doing practice questions right now.',
+      'Attempt at least 20 questions on this topic without looking at notes.',
+      'Revisit this topic within the next 48 hours, not next week.',
+      'Find your mistakes in practice and understand why — don\'t just look at the answer.',
+      'Teach this topic out loud to yourself. If you can\'t explain it simply, you don\'t know it.'
+    ];
+  } else if (gap > 1.5) {
+    status = '⚠️ Moderate Confidence Gap';
+    statusClass = 'score-warn';
+    headline = `Your confidence (${confidence}/10) is a bit ahead of your actual preparation (${actualKnowledge.toFixed(1)}/10). A small gap — but worth closing before exam day.`;
+    suggestions = [
+      'Do a mini practice test of 10 questions on this topic.',
+      'Review this topic one more time — actively, not passively.',
+      'If you revised more than 2 weeks ago, do a quick recap today.',
+      'Make sure your study method involves recall, not just reading.'
+    ];
+  } else if (gap >= -1) {
+    status = '✅ Confidence Looks Calibrated';
+    statusClass = 'score-good';
+    headline = `Your confidence (${confidence}/10) matches your preparation (${actualKnowledge.toFixed(1)}/10). Your self-assessment looks honest.`;
+    suggestions = [
+      'Keep up with regular revision so this stays accurate.',
+      'Don\'t stop practicing — maintaining is as important as learning.',
+      'Do a final round of practice closer to your exam to lock it in.'
+    ];
+  } else {
+    status = '💙 You Know More Than You Think';
+    statusClass = 'score-good';
+    headline = `Your preparation (${actualKnowledge.toFixed(1)}/10) actually looks stronger than your confidence (${confidence}/10). Don't underestimate yourself.`;
+    suggestions = [
+      'Trust your preparation more — you\'ve put in real work.',
+      'It\'s okay to feel nervous, but that\'s not the same as not knowing.',
+      'Do a few more practice questions to boost your confidence with evidence.'
+    ];
+  }
+
+  const html = `
+    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+      <div>
+        <div class="result-score ${statusClass}">${status}</div>
+        <div class="result-label">${subject} — Confidence gap: ${gapAbs > 0 ? gapAbs : '0'} points</div>
+      </div>
+    </div>
+    <p style="font-size:0.9rem;color:var(--text);margin-bottom:1rem;">${headline}</p>
+    <div style="display:flex;gap:1.5rem;margin-bottom:1rem;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;">Your confidence</div>
+        <div style="font-size:1.4rem;font-weight:700;color:var(--warning);">${confidence}/10</div>
+      </div>
+      <div>
+        <div style="font-size:0.75rem;color:var(--muted);margin-bottom:0.25rem;">Evidence score</div>
+        <div style="font-size:1.4rem;font-weight:700;color:var(--accent);">${actualKnowledge.toFixed(1)}/10</div>
+      </div>
+    </div>
+    <div class="progress-wrap" style="margin-bottom:1.5rem;">
+      <div class="progress-bar" style="width:${(actualKnowledge/10)*100}%;background:${gap > 2 ? 'var(--danger)' : gap > 1 ? 'var(--warning)' : 'var(--success)'};"></div>
+    </div>
+    <h4 style="color:var(--text);font-size:0.85rem;margin-bottom:0.6rem;">What you should do next:</h4>
+    <ul class="result-suggestions">
+      ${suggestions.map(s => `<li>${s}</li>`).join('')}
+    </ul>
+  `;
+
+  const copyText = `MegaMocks — False Confidence Detector\nSubject: ${subject}\nYour confidence: ${confidence}/10\nEvidence score: ${actualKnowledge.toFixed(1)}/10\nResult: ${status}\n${headline}\n\nNext steps:\n${suggestions.map(s => '• ' + s).join('\n')}`;
+
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('copyText').value = copyText;
+  const box = document.getElementById('resultBox');
+  box.classList.add('show');
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weak Topic Recovery Planner — MegaMocks</title>
+  <meta name="description" content="List your weak topics and exam date. Get a realistic day-by-day recovery plan that fits the time you have left before your exam." />
+  <link rel="canonical" href="https://megamocks.com/tools/weak-topic-recovery-planner/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Weak Topic Recovery Planner</span></div>
+</div>
+
+<div class="container">
+  <div class="tool-intro">
+    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">🛠️</div>
+    <h1>Weak Topic Recovery Planner</h1>
+    <p style="font-size:1rem;color:var(--muted);">List your weak topics, your exam date, and daily study time. Get a realistic day-by-day recovery plan — not an overwhelming one.</p>
+    <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 3 minutes</p>
+  </div>
+</div>
+
+<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
+
+<div class="container">
+  <div class="tool-ui-box">
+
+    <div class="form-group">
+      <label for="examDate">When is your exam?</label>
+      <input type="date" id="examDate" />
+    </div>
+
+    <div class="form-group">
+      <label>How many hours can you study per day?
+        <span class="range-val" id="dailyHrs_val">4</span> hrs
+      </label>
+      <input type="range" id="dailyHrs" min="1" max="12" value="4" />
+    </div>
+
+    <div class="form-group">
+      <label>How many hours does recovering one weak topic take (roughly)?
+        <span class="range-val" id="hrsPerTopic_val">3</span> hrs
+      </label>
+      <input type="range" id="hrsPerTopic" min="1" max="10" value="3" />
+    </div>
+
+    <div class="divider" style="margin:1.25rem 0;"></div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+      <h3 style="color:var(--text);">Your Weak Topics</h3>
+      <button class="btn btn-outline btn-sm" onclick="addTopic()">+ Add Topic</button>
+    </div>
+
+    <div id="topicContainer"></div>
+
+    <button class="btn btn-primary" onclick="buildPlan()" style="width:100%;justify-content:center;margin-top:.75rem;">
+      Build My Recovery Plan →
+    </button>
+
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('ct').value,this)">📋 Copy Plan</button>
+        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+        <button class="btn btn-outline btn-sm" onclick="savePlan()">💾 Save</button>
+      </div>
+      <textarea id="ct" style="position:absolute;left:-9999px;"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top:2rem;">
+  <div class="info-section">
+    <h2>Example Usage</h2>
+    <div class="example-box">
+      <strong>Inputs:</strong> Exam in 10 days | Study 5 hrs/day | 3 hrs per topic recovery<br/>
+      Weak topics: Organic Chemistry, Trigonometry, Essay Writing (3 topics)<br/><br/>
+      <strong>Result:</strong> Total recovery needed: 9 hrs. Available study time: 50 hrs. Plan: Organic Chemistry on Days 1–2, Trigonometry on Days 2–3, Essay Writing on Days 3–4. Days 5–10 reserved for full revision.
+    </div>
+
+    <h2 style="margin-top:2rem;">How This Tool Works</h2>
+    <p>The tool multiplies the number of weak topics by your estimated recovery time per topic. It then maps those hours onto the days remaining before your exam — starting from today. Topics are spread out so you're not overloading any single day. Any leftover days are marked as revision time.</p>
+
+    <h2 style="margin-top:2rem;">Why Recovery Planning Works</h2>
+    <p>Most students know their weak areas but don't have a concrete plan to fix them. Without a plan, it's easy to keep putting weak topics off. A day-by-day schedule removes that decision every morning — you already know what to work on.</p>
+    <p>Weak today does not mean weak on exam day. It just means you need a plan and the time to execute it.</p>
+
+    <h2 style="margin-top:2rem;">Study Tips</h2>
+    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Start with the most important weak topic first — not the easiest one.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ For each weak topic, focus on doing practice questions — not re-reading everything.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ If you have too many weak topics for the time left, be ruthless. Pick the ones with the highest exam marks.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Reserve the last 2 days before the exam for revision only — no new topics.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ After you finish a recovery session, test yourself immediately. That's how you know it worked.</li>
+    </ul>
+  </div>
+</div>
+
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+  <div class="container">
+    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">What if I have too many weak topics and not enough time? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>The tool will tell you clearly if your weak topics exceed the available time. In that case, prioritise by exam marks. Which topics carry the most weight? Focus there first. You can't fix everything — but you can fix the most important things.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How accurate is the recovery time estimate? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>It depends on how honest you are about the time each topic needs. Simple topics might only need 1–2 hours. A heavy topic might need 5+. Adjust the slider to match what's realistic for your specific situation.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Should I work on one weak topic per day or multiple? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>For difficult topics, one per day or even one over two days is better. Switching between hard topics too fast means nothing really sticks. Give each one the focus it deserves.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What should I do after recovering a weak topic? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Test yourself immediately — attempt practice questions without looking at notes. Then revisit it briefly 2–3 days later to make sure it's stuck. Recovery isn't done until you can recall it under pressure.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I save this plan? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Yes — use the Save button after generating your plan. It saves to your browser's local storage so you can return to it without re-entering everything.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
+  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+  <div class="related-grid">
+    <a href="revision-gap-finder.html" class="related-card"><span class="r-icon">🔍</span><span>Revision Gap Finder</span></a>
+    <a href="exam-readiness-index.html" class="related-card"><span class="r-icon">📊</span><span>Exam Readiness Index</span></a>
+    <a href="daily-study-target-validator.html" class="related-card"><span class="r-icon">🎯</span><span>Daily Study Target Validator</span></a>
+    <a href="false-confidence-detector.html" class="related-card"><span class="r-icon">🎭</span><span>False Confidence Detector</span></a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></li></ul></div>
+      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
+  </div>
+</footer>
+<button id="scrollTop">↑</button>
+<script src="../js/main.js"></script>
+<script>
+function addTopic(name='', priority='medium') {
+  const c = document.getElementById('topicContainer');
+  const d = document.createElement('div');
+  d.style.cssText = 'display:grid;grid-template-columns:1fr auto auto;gap:.6rem;margin-bottom:.6rem;align-items:end;';
+  d.innerHTML = `
+    <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Topic name</label><input type="text" class="wt-name" placeholder="e.g. Quadratic Equations" value="${name}"/></div>
+    <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Priority</label>
+      <select class="wt-pri" style="background:var(--bg);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:Poppins,sans-serif;font-size:.85rem;padding:.55rem .7rem;">
+        <option value="high" ${priority==='high'?'selected':''}>🔴 High</option>
+        <option value="medium" ${priority==='medium'?'selected':''}>🟡 Medium</option>
+        <option value="low" ${priority==='low'?'selected':''}>🟢 Low</option>
+      </select>
+    </div>
+    <button onclick="this.closest('div').remove()" class="btn btn-outline btn-sm" style="height:42px;">✕</button>`;
+  c.appendChild(d);
+}
+
+function savePlan() {
+  const topics = [...document.querySelectorAll('.wt-name')].map((n, i) => ({
+    name: n.value,
+    priority: document.querySelectorAll('.wt-pri')[i].value
+  }));
+  localStorage.setItem('mm_wtrp', JSON.stringify({ topics, exam: document.getElementById('examDate').value }));
+  alert('Plan saved! It will be here next time you visit.');
+}
+
+function buildPlan() {
+  const examDateVal = document.getElementById('examDate').value;
+  if (!examDateVal) { alert('Please enter your exam date.'); return; }
+
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  const examDate = new Date(examDateVal); examDate.setHours(0, 0, 0, 0);
+  const daysLeft = Math.floor((examDate - today) / 86400000);
+
+  if (daysLeft <= 0) { alert('Your exam date should be in the future.'); return; }
+
+  const dailyHrs = parseInt(document.getElementById('dailyHrs').value);
+  const hrsPerTopic = parseInt(document.getElementById('hrsPerTopic').value);
+
+  const nameEls = [...document.querySelectorAll('.wt-name')];
+  const priEls  = [...document.querySelectorAll('.wt-pri')];
+  const topics = [];
+  nameEls.forEach((n, i) => {
+    if (n.value.trim()) topics.push({ name: n.value.trim(), priority: priEls[i].value });
+  });
+
+  if (topics.length === 0) { alert('Add at least one weak topic.'); return; }
+
+  // Sort: high → medium → low
+  const priOrder = { high: 0, medium: 1, low: 2 };
+  topics.sort((a, b) => priOrder[a.priority] - priOrder[b.priority]);
+
+  const totalRecoveryHrs = topics.length * hrsPerTopic;
+  const reservedDays = Math.min(2, Math.floor(daysLeft * 0.2));
+  const availableDays = daysLeft - reservedDays;
+  const totalAvailableHrs = availableDays * dailyHrs;
+  const feasible = totalRecoveryHrs <= totalAvailableHrs;
+
+  // Build day-by-day plan
+  const plan = [];
+  let currentDay = 1;
+  let hrsUsedToday = 0;
+
+  topics.forEach(topic => {
+    let hrsLeft = hrsPerTopic;
+    const startDay = currentDay;
+    while (hrsLeft > 0 && currentDay <= availableDays) {
+      const canDo = Math.min(hrsLeft, dailyHrs - hrsUsedToday);
+      hrsLeft -= canDo;
+      hrsUsedToday += canDo;
+      if (hrsUsedToday >= dailyHrs) { currentDay++; hrsUsedToday = 0; }
+    }
+    plan.push({ topic, startDay, endDay: hrsLeft > 0 ? availableDays : currentDay });
+  });
+
+  const priColors = { high: 'var(--danger)', medium: 'var(--warning)', low: 'var(--success)' };
+  const priBadge  = { high: 'badge-red', medium: 'badge-yellow', low: 'badge-green' };
+
+  let html = `
+    <div style="margin-bottom:1rem;">
+      <div class="result-score ${feasible ? 'score-good' : 'score-danger'}" style="font-size:1.5rem;margin-bottom:.25rem;">
+        ${feasible ? '✅ Feasible Recovery Plan' : '⚠️ Tight — Prioritise Carefully'}
+      </div>
+      <div class="result-label">${topics.length} topics · ${totalRecoveryHrs}h needed · ${totalAvailableHrs}h available · ${daysLeft} days left</div>
+    </div>`;
+
+  if (!feasible) {
+    html += `<div style="background:rgba(248,113,113,.1);border:1px solid var(--danger);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.88rem;color:var(--text);">
+      ⚠️ Your ${topics.length} topics need ${totalRecoveryHrs}h but you only have ${totalAvailableHrs}h available. Consider reducing hours per topic, removing lower-priority topics, or increasing daily study time.
+    </div>`;
+  }
+
+  html += `<div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;">`;
+  plan.forEach(p => {
+    const dateStart = new Date(today); dateStart.setDate(today.getDate() + p.startDay - 1);
+    const dateEnd   = new Date(today); dateEnd.setDate(today.getDate() + p.endDay - 1);
+    const fmt = d => d.toLocaleDateString('en-GB', { weekday:'short', day:'numeric', month:'short' });
+    const sameDay = p.startDay === p.endDay;
+    html += `<div style="background:var(--card);border:1px solid var(--border);border-left:3px solid ${priColors[p.topic.priority]};border-radius:8px;padding:.75rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+      <div>
+        <strong style="color:var(--text);font-size:.9rem;">${p.topic.name}</strong>
+        <div style="font-size:.77rem;color:var(--muted);">${sameDay ? fmt(dateStart) : fmt(dateStart) + ' → ' + fmt(dateEnd)} · ${hrsPerTopic}h</div>
+      </div>
+      <span class="badge ${priBadge[p.topic.priority]}">${p.topic.priority} priority</span>
+    </div>`;
+  });
+
+  if (reservedDays > 0) {
+    const revStart = new Date(today); revStart.setDate(today.getDate() + availableDays);
+    html += `<div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:8px;padding:.75rem 1rem;">
+      <strong style="color:var(--accent);font-size:.9rem;">📚 Final ${reservedDays} day${reservedDays>1?'s':''} — Revision Only</strong>
+      <div style="font-size:.77rem;color:var(--muted);">From ${revStart.toLocaleDateString('en-GB',{weekday:'short',day:'numeric',month:'short'})} — no new topics, just consolidation.</div>
+    </div>`;
+  }
+  html += `</div>`;
+
+  const copyLines = [`MegaMocks — Weak Topic Recovery Plan\nDays left: ${daysLeft} | Daily study: ${dailyHrs}h | Topics: ${topics.length}\n`];
+  plan.forEach(p => copyLines.push(`• ${p.topic.name} (${p.topic.priority}) — Days ${p.startDay}–${p.endDay}`));
+  if (reservedDays) copyLines.push(`• Final ${reservedDays} days — Revision only`);
+
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('ct').value = copyLines.join('\n');
+  const box = document.getElementById('resultBox');
+  box.classList.add('show');
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('mm_wtrp');
+  if (saved) {
+    const d = JSON.parse(saved);
+    if (d.exam) document.getElementById('examDate').value = d.exam;
+    if (d.topics && d.topics.length) d.topics.forEach(t => addTopic(t.name, t.priority));
+    else { addTopic(); addTopic(); }
+  } else { addTopic(); addTopic(); }
+});
+</script>
+</body>
+</html>

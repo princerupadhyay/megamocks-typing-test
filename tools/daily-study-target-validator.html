@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily Study Target Validator — MegaMocks</title>
+  <meta name="description" content="Check if your daily study plan is realistic for your exam date. Stop setting targets you cannot meet. Get a plan that actually fits your schedule." />
+  <link rel="canonical" href="https://megamocks.com/tools/daily-study-target-validator/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
+</header>
+
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Daily Study Target Validator</span></div>
+</div>
+
+<div class="container">
+  <div class="tool-intro">
+    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">🎯</div>
+    <h1>Daily Study Target Validator</h1>
+    <p style="font-size:1rem;color:var(--muted);">Are your daily study targets realistic? This tool checks your plan against your exam date and remaining syllabus — so you're not setting yourself up to fail before you even start.</p>
+    <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes</p>
+  </div>
+</div>
+
+<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
+
+<div class="container">
+  <div class="tool-ui-box">
+    <h3 style="color:var(--text);margin-bottom:1.25rem;">Your Study Plan Details</h3>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+      <div class="form-group" style="margin:0;">
+        <label for="examDate">Exam date</label>
+        <input type="date" id="examDate" />
+      </div>
+      <div class="form-group" style="margin:0;">
+        <label for="subjectCount">Number of subjects</label>
+        <input type="number" id="subjectCount" min="1" max="20" value="4" placeholder="4" />
+      </div>
+    </div>
+
+    <div class="form-group" style="margin-top:.75rem;">
+      <label>Estimated total syllabus hours remaining (all subjects combined)
+        <span class="range-val" id="syllabusHrs_val">60</span> hrs
+      </label>
+      <input type="range" id="syllabusHrs" min="5" max="300" value="60" />
+    </div>
+
+    <div class="form-group">
+      <label>How many hours per day are you planning to study?
+        <span class="range-val" id="plannedHrs_val">5</span> hrs/day
+      </label>
+      <input type="range" id="plannedHrs" min="1" max="16" value="5" />
+    </div>
+
+    <div class="form-group">
+      <label>How many days per week can you study?</label>
+      <select id="daysPerWeek">
+        <option value="5">5 days/week (weekdays)</option>
+        <option value="6">6 days/week</option>
+        <option value="7" selected>7 days/week (every day)</option>
+        <option value="4">4 days/week</option>
+        <option value="3">3 days/week</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>How much of the syllabus have you already covered?</label>
+      <select id="coveredPct">
+        <option value="0">None — starting fresh</option>
+        <option value="25">About 25% done</option>
+        <option value="50" selected>About 50% done</option>
+        <option value="75">About 75% done</option>
+        <option value="90">90%+ done — mostly revision now</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Do you have any rest days / unavoidable off days planned?
+        <span class="range-val" id="offDays_val">2</span> days total
+      </label>
+      <input type="range" id="offDays" min="0" max="30" value="2" />
+    </div>
+
+    <button class="btn btn-primary" onclick="validateTarget()" style="width:100%;justify-content:center;margin-top:.5rem;">Validate My Study Target →</button>
+
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('ct').value,this)">📋 Copy</button>
+        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+      </div>
+      <textarea id="ct" style="position:absolute;left:-9999px;"></textarea>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top:2rem;">
+  <div class="info-section">
+    <h2>Example Usage</h2>
+    <div class="example-box">
+      <strong>Inputs:</strong> Exam in 20 days · 4 subjects · 80h syllabus remaining · Plan: 4h/day · 7 days/week · 50% covered · 3 off days<br/><br/>
+      <strong>Result:</strong> ✅ Feasible — You have 68 available study hours. You need 40 hours for remaining syllabus + 15h revision buffer. Your plan works. Stick to it.
+    </div>
+
+    <h2 style="margin-top:2rem;">How This Tool Works</h2>
+    <p>The tool calculates how many actual study hours you have between today and your exam (accounting for off days and your weekly schedule). It then compares that against the syllabus hours you still need to cover, plus a recommended revision buffer. If the numbers work, your plan is feasible. If not, it tells you what needs to change.</p>
+
+    <h2 style="margin-top:2rem;">Why Setting Realistic Targets Matters</h2>
+    <p>Setting a target that's too ambitious feels motivating for about one day. Then you miss it. Then you feel behind. Then you panic. A realistic target you actually hit is infinitely more valuable than an impossible one that demoralises you by Day 3.</p>
+    <p>This tool helps you build a plan your future self can actually execute.</p>
+
+    <h2 style="margin-top:2rem;">Study Tips</h2>
+    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Plan for 80% capacity, not 100%. Life always takes some time back.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Keep the last 2–3 days before your exam for revision only — no new content.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ If your plan shows you're short on hours, don't add more study hours — cut lower-priority syllabus instead.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ A consistent 4 hours every day beats an inconsistent 8 hours every other day.</li>
+    </ul>
+  </div>
+</div>
+
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+  <div class="container">
+    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">How do I estimate total syllabus hours? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>A rough method: count the number of chapters or major topics, estimate how long each takes to learn properly (usually 2–5 hours per topic depending on difficulty), and multiply. For a standard 4-subject exam, 60–120 total hours is typical for moderate preparation.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What if my plan is not feasible? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>You have three levers: increase daily hours, reduce off days, or reduce the syllabus you're trying to cover. The last option — strategic prioritisation — is often the most realistic one when time is genuinely tight.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Should I include weekends in my plan? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>During exam prep, yes. Weekends can give you longer, uninterrupted study sessions. But don't plan every single hour — leave some flexibility. A weekend day planned as 8 hours of study often delivers 5–6 in reality.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How much revision time should I keep at the end? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>At minimum, keep 2 days for revision. Ideally 4–5 days for a major exam. The tool adds a buffer recommendation automatically based on your exam timeline.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Can I use this for multiple exams on different dates? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer"><p>Run it separately for each exam. If exams are close together, plan backwards from the earlier one first and make sure you're not over-committing on the later one's time.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
+  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+  <div class="related-grid">
+    <a href="time-leakage-finder.html" class="related-card"><span class="r-icon">⏳</span><span>Time Leakage Finder</span></a>
+    <a href="weak-topic-recovery-planner.html" class="related-card"><span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span></a>
+    <a href="exam-readiness-index.html" class="related-card"><span class="r-icon">📊</span><span>Exam Readiness Index</span></a>
+    <a href="study-load-balance-checker.html" class="related-card"><span class="r-icon">⚖️</span><span>Study Load Balance Checker</span></a>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></li></ul></div>
+      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
+  </div>
+</footer>
+<button id="scrollTop">↑</button>
+<script src="../js/main.js"></script>
+<script>
+function validateTarget() {
+  const examDateVal = document.getElementById('examDate').value;
+  if (!examDateVal) { alert('Please enter your exam date.'); return; }
+
+  const today = new Date(); today.setHours(0,0,0,0);
+  const examDate = new Date(examDateVal); examDate.setHours(0,0,0,0);
+  const totalDays = Math.floor((examDate - today) / 86400000);
+
+  if (totalDays <= 0) { alert('Exam date must be in the future.'); return; }
+
+  const subjectCount = parseInt(document.getElementById('subjectCount').value) || 4;
+  const syllabusHrs  = parseInt(document.getElementById('syllabusHrs').value);
+  const plannedHrs   = parseInt(document.getElementById('plannedHrs').value);
+  const daysPerWeek  = parseInt(document.getElementById('daysPerWeek').value);
+  const coveredPct   = parseInt(document.getElementById('coveredPct').value);
+  const offDays      = parseInt(document.getElementById('offDays').value);
+
+  const studyDaysPerWeek = daysPerWeek;
+  const weeks = totalDays / 7;
+  const studyDays = Math.max(0, Math.round(weeks * studyDaysPerWeek) - offDays);
+  const reservedRevisionDays = Math.min(Math.floor(totalDays * 0.15), 5);
+  const activeDays = Math.max(0, studyDays - reservedRevisionDays);
+  const availableHrs = activeDays * plannedHrs;
+  const revisionHrs = reservedRevisionDays * plannedHrs;
+
+  const remainingPct = (100 - coveredPct) / 100;
+  const actualSyllabusLeft = Math.round(syllabusHrs * remainingPct);
+  const bufferHrs = Math.max(5, Math.round(actualSyllabusLeft * 0.2));
+  const neededHrs = actualSyllabusLeft + bufferHrs;
+
+  const surplus = availableHrs - neededHrs;
+  const feasible = surplus >= 0;
+  const tight = feasible && surplus < actualSyllabusLeft * 0.15;
+
+  const statusColor = feasible ? (tight ? 'var(--warning)' : 'var(--success)') : 'var(--danger)';
+  const statusIcon  = feasible ? (tight ? '⚡' : '✅') : '🚨';
+  const statusText  = feasible ? (tight ? 'Feasible but Tight' : 'Your Plan is Realistic') : 'Not Enough Time';
+
+  let html = `
+    <div style="margin-bottom:1.25rem;">
+      <div class="result-score" style="color:${statusColor};font-size:1.8rem;margin-bottom:.25rem;">${statusIcon} ${statusText}</div>
+      <div class="result-label">${totalDays} days to exam · ${studyDays} usable study days · ${plannedHrs}h/day planned</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;margin-bottom:1.25rem;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--accent);">${availableHrs}h</div>
+        <div style="font-size:.75rem;color:var(--muted);">Total hours available</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--warning);">${neededHrs}h</div>
+        <div style="font-size:.75rem;color:var(--muted);">Hours needed (incl. buffer)</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;">
+        <div style="font-size:1.4rem;font-weight:700;color:${surplus >= 0 ? 'var(--success)' : 'var(--danger)'};">${surplus >= 0 ? '+' : ''}${surplus}h</div>
+        <div style="font-size:.75rem;color:var(--muted);">${surplus >= 0 ? 'Buffer surplus' : 'Hours short'}</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;">
+        <div style="font-size:1.4rem;font-weight:700;color:var(--accent);">${reservedRevisionDays}d</div>
+        <div style="font-size:.75rem;color:var(--muted);">Reserved for revision</div>
+      </div>
+    </div>
+
+    <div class="progress-wrap" style="margin-bottom:.5rem;">
+      <div class="progress-bar" style="width:${Math.min(100, Math.round((availableHrs/Math.max(neededHrs,1))*100))}%;background:${statusColor};"></div>
+    </div>
+    <div style="font-size:.78rem;color:var(--muted);margin-bottom:1.25rem;">Coverage: ${Math.min(100, Math.round((availableHrs/Math.max(neededHrs,1))*100))}% of needed hours available</div>`;
+
+  if (feasible) {
+    html += `<ul class="result-suggestions">
+      <li>Syllabus left: ~${actualSyllabusLeft}h (${100-coveredPct}% remaining at ${syllabusHrs}h total estimate)</li>
+      <li>Reserve the last ${reservedRevisionDays} day${reservedRevisionDays>1?'s':''} (${revisionHrs}h) for revision only — no new topics</li>
+      ${tight ? '<li>Your plan is tight — avoid missing days. Even one unplanned off day will put you behind.</li>' : '<li>You have a reasonable surplus — use some of it to revisit weak topics.</li>'}
+      <li>Divide your ${actualSyllabusLeft}h across ${subjectCount} subjects: ~${Math.round(actualSyllabusLeft/subjectCount)}h per subject</li>
+    </ul>`;
+  } else {
+    const shortfall = Math.abs(surplus);
+    const extraHrsNeeded = Math.ceil(shortfall / activeDays);
+    html += `<ul class="result-suggestions">
+      <li>You are short by <strong>${shortfall} hours</strong>. Something needs to change.</li>
+      <li>Option 1: Study ${plannedHrs + extraHrsNeeded}h/day instead of ${plannedHrs}h/day</li>
+      <li>Option 2: Reduce the syllabus — cut lower-priority topics to save ~${shortfall}h</li>
+      <li>Option 3: Reduce off days — even ${Math.ceil(shortfall/plannedHrs)} fewer off days would recover ${Math.ceil(shortfall/plannedHrs)*plannedHrs}h</li>
+      <li>Combination works too — small improvements across all three add up fast</li>
+    </ul>`;
+  }
+
+  const copy = `MegaMocks — Daily Study Target Validator\nExam in ${totalDays} days | Planned: ${plannedHrs}h/day | Available: ${availableHrs}h | Needed: ${neededHrs}h\nResult: ${statusText} (${surplus >= 0 ? '+' : ''}${surplus}h ${surplus >= 0 ? 'surplus' : 'short'})`;
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('ct').value = copy;
+  const box = document.getElementById('resultBox');
+  box.classList.add('show');
+  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

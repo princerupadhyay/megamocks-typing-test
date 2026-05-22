@@ -1,115 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Homepage -->
-  <url>
-    <loc>https://megamocks.com/</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- Post 1 -->
-  <url>
-    <loc>https://megamocks.com/top-5-ai-habits-every-iphone-user-should-build-right-now-megamocks.html</loc>
-    <lastmod>2026-05-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 2 -->
-  <url>
-    <loc>https://megamocks.com/5-ai-tools-that-replace-hours-of-work-and-when-to-use-each-one-megamocks.html</loc>
-    <lastmod>2026-05-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 3 -->
-  <url>
-    <loc>https://megamocks.com/can-manus-ai-really-replace-hours-of-work-here-are-7-proof-points-megamocks.html</loc>
-    <lastmod>2026-05-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 4 -->
-  <url>
-    <loc>https://megamocks.com/the-6-claude-code-skills-that-clients-actually-pay-for-2026-megamocks.html</loc>
-    <lastmod>2026-05-08</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 5 -->
-  <url>
-    <loc>https://megamocks.com/the-real-chatgpt-5-5-vs-claude-opus-4-7-test-speed-cost-and-results-megamocks.html</loc>
-    <lastmod>2026-05-09</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 6 -->
-  <url>
-    <loc>https://megamocks.com/free-heygen-alternative-nobody-is-talking-about-in-2026-megamocks.html</loc>
-    <lastmod>2026-05-10</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 7 -->
-  <url>
-    <loc>https://megamocks.com/gpt-realtime-2-what-openai-biggest-voice-ai-upgrade-actually-does-megamocks.html</loc>
-    <lastmod>2026-05-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 8 -->
-  <url>
-    <loc>https://megamocks.com/why-youtube-is-really-demonetizing-ai-channels-megamocks.html</loc>
-    <lastmod>2026-05-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 9 -->
-  <url>
-    <loc>https://megamocks.com/5-ai-video-tools-that-are-changing-how-videos-are-made-2026-megamocks.html</loc>
-    <lastmod>2026-05-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 10 -->
-  <url>
-    <loc>https://megamocks.com/how-to-get-better-results-from-notebooklm-without-changing-your-prompts-megamocks.html</loc>
-    <lastmod>2026-05-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 11 -->
-  <url>
-    <loc>https://megamocks.com/wispr-flow-review-the-one-ai-app-you-actually-need-in-2026-megamocks.html</loc>
-    <lastmod>2026-05-15</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 12 -->
-  <url>
-    <loc>https://megamocks.com/google-android-ai-iphone-switch-megamocks.html</loc>
-    <lastmod>2026-05-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Post 13 -->
-  <url>
-    <loc>https://megamocks.com/openai-codex-vs-claude-cowork-which-ai-agent-is-actually-better-for-you-in-2026-megamocks.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://megamocks.com/</loc><priority>1.0</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://megamocks.com/pages/tools.html</loc><priority>0.9</priority><changefreq>weekly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/false-confidence-detector.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/revision-gap-finder.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/exam-readiness-index.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/notes-completeness-checker.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/study-load-balance-checker.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/weak-topic-recovery-planner.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/pyq-coverage-tracker.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/time-leakage-finder.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/daily-study-target-validator.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/tools/question-attempt-order-planner.html</loc><priority>0.8</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/pages/about.html</loc><priority>0.6</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/pages/contact.html</loc><priority>0.5</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/pages/privacy-policy.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://megamocks.com/pages/disclaimer.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
+  <url><loc>https://megamocks.com/pages/terms.html</loc><priority>0.4</priority><changefreq>yearly</changefreq></url>
 </urlset>

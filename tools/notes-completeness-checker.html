@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Notes Completeness Checker — MegaMocks</title>
+  <meta name="description" content="Rate your notes topic by topic and find which subjects still have gaps before your exam. Free, no login needed." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+<header>
+  <nav>
+    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </nav>
+  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
+</header>
+<div class="container">
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Notes Completeness Checker</span></div>
+</div>
+<div class="container">
+  <div class="tool-intro">
+    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">📝</div>
+    <h1>Notes Completeness Checker</h1>
+    <p style="font-size:1rem;color:var(--muted);">Rate how complete your notes are for each topic. Find the holes before the exam finds them.</p>
+    <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 3 minutes</p>
+  </div>
+</div>
+<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
+<div class="container">
+  <div class="tool-ui-box">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
+      <h3 style="color:var(--text);">Your Topics &amp; Notes Rating</h3>
+      <button class="btn btn-outline btn-sm" onclick="addRow()">+ Add Topic</button>
+    </div>
+    <div id="topicsContainer"></div>
+    <button class="btn btn-primary" onclick="checkNotes()" style="width:100%;justify-content:center;margin-top:.5rem;">Check My Notes →</button>
+    <div class="result-box" id="resultBox">
+      <div id="resultContent"></div>
+      <div class="result-actions">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('ct').value,this)">📋 Copy</button>
+        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+      </div>
+      <textarea id="ct" style="position:absolute;left:-9999px;"></textarea>
+    </div>
+  </div>
+</div>
+<div class="container" style="margin-top:2rem;">
+  <div class="info-section">
+    <h2>How This Tool Works</h2>
+    <p>For each topic, you rate how complete your notes feel from 1 (barely started) to 5 (detailed and complete). The tool calculates an average completeness score and flags any topic rated 2 or below as a priority gap.</p>
+    <h2 style="margin-top:2rem;">Study Tips</h2>
+    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Incomplete notes are not a failure — they're just information. Now you know what to fix.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Borrow notes from a classmate for gaps — don't relearn from scratch if you don't have time.</li>
+      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Notes don't need to be perfect. They need to be useful for revision.</li>
+    </ul>
+  </div>
+</div>
+<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+  <div class="container">
+    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><button class="faq-question">What rating should I aim for? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Aim for a 4 or 5 across all topics. A 3 is acceptable if time is limited. Anything rated 1 or 2 needs attention before the exam.</p></div></div>
+      <div class="faq-item"><button class="faq-question">What if my notes are detailed but my understanding is weak? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Rate your notes based on both completeness and how well you understand them. Notes you don't understand are almost as risky as no notes at all.</p></div></div>
+      <div class="faq-item"><button class="faq-question">Should I rate all topics even ones I haven't started? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Yes — give them a 1. That's the most honest rating and it'll show up clearly in your results so you don't accidentally skip them.</p></div></div>
+    </div>
+  </div>
+</section>
+<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
+  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+  <div class="related-grid">
+    <a href="revision-gap-finder.html" class="related-card"><span class="r-icon">🔍</span><span>Revision Gap Finder</span></a>
+    <a href="exam-readiness-index.html" class="related-card"><span class="r-icon">📊</span><span>Exam Readiness Index</span></a>
+    <a href="weak-topic-recovery-planner.html" class="related-card"><span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span></a>
+  </div>
+</div>
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
+      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></ul></div>
+      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
+  </div>
+</footer>
+<button id="scrollTop">↑</button>
+<script src="../js/main.js"></script>
+<script>
+const ratings = ['','1 — Nothing yet','2 — Bare minimum','3 — Partial notes','4 — Mostly complete','5 — Fully detailed'];
+function addRow(name='',val=3){
+  const c=document.getElementById('topicsContainer');
+  const d=document.createElement('div');
+  d.style.cssText='display:grid;grid-template-columns:1fr auto auto;gap:.6rem;margin-bottom:.6rem;align-items:end;';
+  d.innerHTML=`<div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Topic name</label><input type="text" class="tn" placeholder="e.g. Cell Division" value="${name}"/></div>
+  <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Notes rating</label><select class="tr" style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:Poppins,sans-serif;font-size:.85rem;padding:.55rem .7rem;">${ratings.slice(1).map((r,i)=>`<option value="${i+1}"${i+1===val?'selected':''}>${r}</option>`).join('')}</select></div>
+  <button onclick="this.closest('div').remove()" class="btn btn-outline btn-sm" style="height:42px;" title="Remove">✕</button>`;
+  c.appendChild(d);
+}
+function checkNotes(){
+  const rows=document.querySelectorAll('.tn');
+  const topics=[];
+  rows.forEach((r,i)=>{
+    const name=r.value.trim(); if(!name)return;
+    const rating=parseInt(document.querySelectorAll('.tr')[i].value);
+    topics.push({name,rating});
+  });
+  if(!topics.length){alert('Add at least one topic.');return;}
+  const avg=(topics.reduce((a,t)=>a+t.rating,0)/topics.length).toFixed(1);
+  const bad=topics.filter(t=>t.rating<=2).sort((a,b)=>a.rating-b.rating);
+  const ok=topics.filter(t=>t.rating>=3).sort((a,b)=>b.rating-a.rating);
+  const col=avg>=4?'var(--success)':avg>=3?'var(--warning)':'var(--danger)';
+  let html=`<div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap;">
+    <div><div class="result-score" style="color:${col};font-size:3rem;">${avg}</div><div class="result-label">Average notes completeness (out of 5)</div></div>
+    <div style="flex:1;min-width:140px;"><div class="progress-wrap"><div class="progress-bar" style="width:${(avg/5)*100}%;background:${col};"></div></div></div>
+  </div>`;
+  if(bad.length){
+    html+=`<h4 style="color:var(--danger);font-size:.85rem;margin-bottom:.5rem;">🚨 Priority gaps (${bad.length} topic${bad.length>1?'s':''}):</h4>
+    <div style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;">`;
+    bad.forEach(t=>{html+=`<div style="background:var(--card);border:1px solid var(--border);border-left:3px solid var(--danger);border-radius:8px;padding:.65rem 1rem;display:flex;justify-content:space-between;align-items:center;"><strong style="color:var(--text);font-size:.88rem;">${t.name}</strong><span class="badge badge-red">${t.rating}/5</span></div>`;});
+    html+=`</div>`;
+  }
+  if(ok.length){
+    html+=`<h4 style="color:var(--muted);font-size:.85rem;margin-bottom:.5rem;">Good shape (${ok.length}):</h4><div style="display:flex;flex-direction:column;gap:.4rem;">`;
+    ok.forEach(t=>{const bc=t.rating>=4?'badge-green':'badge-yellow';html+=`<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.6rem 1rem;display:flex;justify-content:space-between;"><strong style="color:var(--text);font-size:.85rem;">${t.name}</strong><span class="badge ${bc}">${t.rating}/5</span></div>`;});
+    html+=`</div>`;
+  }
+  document.getElementById('resultContent').innerHTML=html;
+  document.getElementById('ct').value=`MegaMocks Notes Completeness Checker\nAvg: ${avg}/5\nGaps: ${bad.map(t=>t.name+'('+t.rating+'/5)').join(', ')}\nGood: ${ok.map(t=>t.name+'('+t.rating+'/5)').join(', ')}`;
+  const box=document.getElementById('resultBox');box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+document.addEventListener('DOMContentLoaded',()=>{addRow('',3);addRow('',3);addRow('',3);});
+</script>
+</body></html>
