@@ -22,32 +22,11 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../pages/tools.html">All Tools</a></li>
-      <li><a href="../pages/about.html">About</a></li>
-      <li><a href="../pages/contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="../index.html">Home</a>
-    <a href="../pages/tools.html">All Tools</a>
-    <a href="../pages/about.html">About</a>
-    <a href="../pages/contact.html">Contact</a>
-  </div>
-</header>
-
+<div id="site-header"></div>
 <div class="container">
   <div class="breadcrumb">
     <a href="../index.html">Home</a><span class="sep">/</span>
-    <a href="../pages/tools.html">Tools</a><span class="sep">/</span>
+    <a href="../tools/">Tools</a><span class="sep">/</span>
     <span>False Confidence Detector</span>
   </div>
 </div>
@@ -55,7 +34,7 @@
 <!-- ===== TOOL INTRO ===== -->
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:0.75rem;">🎭</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:0.75rem;">🎭</div>
     <h1>False Confidence Detector</h1>
     <p style="font-size:1rem;color:var(--muted);">
       You think you know a topic. But do you actually? This tool checks whether your confidence is backed by real understanding — or if you're just familiar with the material without actually knowing it.
@@ -240,38 +219,9 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-        <p>Free study tools for students. No login, no cost.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="revision-gap-finder.html">Revision Gap Finder</a></li>
-          <li><a href="exam-readiness-index.html">Exam Readiness Index</a></li>
-          <li><a href="../pages/tools.html">All Tools →</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Info</h4>
-        <ul>
-          <li><a href="../pages/about.html">About</a></li>
-          <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../pages/terms.html">Terms</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 MegaMocks — Free study tools for every student.</p>
-    </div>
-  </div>
-</footer>
+<div id="site-footer"></div>
 
-<button id="scrollTop" aria-label="Scroll to top">↑</button>
-
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 function detectConfidence() {
@@ -336,7 +286,7 @@ function detectConfidence() {
   }
 
   const html = `
-    <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;">
+    <div style="display:flex;align-items:flex-start;gap:0.75rem;flex-wrap:wrap;margin-bottom:1rem;">
       <div>
         <div class="result-score ${statusClass}">${status}</div>
         <div class="result-label">${subject} — Confidence gap: ${gapAbs > 0 ? gapAbs : '0'} points</div>

@@ -12,37 +12,18 @@
 </head>
 <body>
 
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li>
-      <li><a href="../pages/tools.html">All Tools</a></li>
-      <li><a href="../pages/about.html">About</a></li>
-      <li><a href="../pages/contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="../index.html">Home</a>
-    <a href="../pages/tools.html">All Tools</a>
-  </div>
-</header>
-
+<div id="site-header"></div>
 <div class="container">
   <div class="breadcrumb">
     <a href="../index.html">Home</a><span class="sep">/</span>
-    <a href="../pages/tools.html">Tools</a><span class="sep">/</span>
+    <a href="../tools/">Tools</a><span class="sep">/</span>
     <span>Revision Gap Finder</span>
   </div>
 </div>
 
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:0.75rem;">🔍</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:0.75rem;">🔍</div>
     <h1>Revision Gap Finder</h1>
     <p style="font-size:1rem;color:var(--muted);">
       Enter your topics and when you last revised each one. This tool will find the ones that are overdue — before your exam finds them for you.
@@ -181,37 +162,8 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-        <p>Free study tools for students. No login, no cost.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="false-confidence-detector.html">False Confidence Detector</a></li>
-          <li><a href="exam-readiness-index.html">Exam Readiness Index</a></li>
-          <li><a href="../pages/tools.html">All Tools →</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Info</h4>
-        <ul>
-          <li><a href="../pages/about.html">About</a></li>
-          <li><a href="../pages/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="../pages/terms.html">Terms</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 MegaMocks — Free study tools for every student.</p>
-    </div>
-  </div>
-</footer>
-
-<button id="scrollTop" aria-label="Scroll to top">↑</button>
+<div id="site-footer"></div>
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 // Default topics on load
@@ -292,7 +244,7 @@ function findGaps() {
 
   if (overdue.length > 0) {
     html += `<div style="margin-bottom:1rem;">
-      <div class="result-score score-danger" style="font-size:1.6rem;margin-bottom:0.25rem;">🚨 ${overdue.length} Overdue Topic${overdue.length > 1 ? 's' : ''}</div>
+      <div class="result-score score-danger" style="font-size:clamp(1rem,3.5vw,1.6rem);margin-bottom:0.25rem;">🚨 ${overdue.length} Overdue Topic${overdue.length > 1 ? 's' : ''}</div>
       <div class="result-label">These topics need revision now. ${examText}</div>
     </div>`;
     html += `<div style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.25rem;">`;
@@ -326,7 +278,7 @@ function findGaps() {
   }
 
   if (overdue.length === 0) {
-    html = `<div class="result-score score-good" style="font-size:1.6rem;margin-bottom:0.5rem;">✅ No Gaps Found!</div>
+    html = `<div class="result-score score-good" style="font-size:clamp(1rem,3.5vw,1.6rem);margin-bottom:0.5rem;">✅ No Gaps Found!</div>
     <p style="font-size:0.9rem;color:var(--text);">All topics are within your safe revision interval. Keep this up!</p>` + html;
   }
 

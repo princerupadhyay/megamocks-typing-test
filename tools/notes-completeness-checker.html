@@ -9,25 +9,13 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
-</header>
+<div id="site-header"></div>
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Notes Completeness Checker</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>Notes Completeness Checker</span></div>
 </div>
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">📝</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">📝</div>
     <h1>Notes Completeness Checker</h1>
     <p style="font-size:1rem;color:var(--muted);">Rate how complete your notes are for each topic. Find the holes before the exam finds them.</p>
     <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 3 minutes</p>
@@ -82,24 +70,15 @@
     <a href="weak-topic-recovery-planner.html" class="related-card"><span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span></a>
   </div>
 </div>
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
-      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></ul></div>
-      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
-  </div>
-</footer>
-<button id="scrollTop">↑</button>
+<div id="site-footer"></div>
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 const ratings = ['','1 — Nothing yet','2 — Bare minimum','3 — Partial notes','4 — Mostly complete','5 — Fully detailed'];
 function addRow(name='',val=3){
   const c=document.getElementById('topicsContainer');
   const d=document.createElement('div');
-  d.style.cssText='display:grid;grid-template-columns:1fr auto auto;gap:.6rem;margin-bottom:.6rem;align-items:end;';
+  d.className='form-row-grid';d.style.cssText='margin-bottom:.6rem;';
   d.innerHTML=`<div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Topic name</label><input type="text" class="tn" placeholder="e.g. Cell Division" value="${name}"/></div>
   <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Notes rating</label><select class="tr" style="width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;color:var(--text);font-family:Poppins,sans-serif;font-size:.85rem;padding:.55rem .7rem;">${ratings.slice(1).map((r,i)=>`<option value="${i+1}"${i+1===val?'selected':''}>${r}</option>`).join('')}</select></div>
   <button onclick="this.closest('div').remove()" class="btn btn-outline btn-sm" style="height:42px;" title="Remove">✕</button>`;
@@ -118,8 +97,8 @@ function checkNotes(){
   const bad=topics.filter(t=>t.rating<=2).sort((a,b)=>a.rating-b.rating);
   const ok=topics.filter(t=>t.rating>=3).sort((a,b)=>b.rating-a.rating);
   const col=avg>=4?'var(--success)':avg>=3?'var(--warning)':'var(--danger)';
-  let html=`<div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:.75rem;flex-wrap:wrap;">
-    <div><div class="result-score" style="color:${col};font-size:3rem;">${avg}</div><div class="result-label">Average notes completeness (out of 5)</div></div>
+  let html=`<div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:.75rem;flex-wrap:wrap;">
+    <div><div class="result-score" style="color:${col};font-size:clamp(1.2rem,5vw,2.8rem);">${avg}</div><div class="result-label">Average notes completeness (out of 5)</div></div>
     <div style="flex:1;min-width:140px;"><div class="progress-wrap"><div class="progress-bar" style="width:${(avg/5)*100}%;background:${col};"></div></div></div>
   </div>`;
   if(bad.length){

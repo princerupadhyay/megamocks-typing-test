@@ -10,27 +10,14 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
-</header>
-
+<div id="site-header"></div>
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Time Leakage Finder</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>Time Leakage Finder</span></div>
 </div>
 
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">⏳</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">⏳</div>
     <h1>Time Leakage Finder</h1>
     <p style="font-size:1rem;color:var(--muted);">You wake up with 16 hours. You go to bed feeling like you studied for 2. Where did the rest go? This tool finds out.</p>
     <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes — be honest about your day</p>
@@ -45,7 +32,7 @@
     <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;">Enter honest estimates in hours. Decimals are fine (e.g. 1.5 for 90 minutes). All values default to 0.</p>
 
     <!-- Fixed activities -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.75rem;margin-bottom:1.5rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin-bottom:1.5rem;">
 
       <div class="form-group" style="margin:0;">
         <label>😴 Sleep</label>
@@ -188,17 +175,8 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
-      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></li></ul></div>
-      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
-  </div>
-</footer>
-<button id="scrollTop">↑</button>
+<div id="site-footer"></div>
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 function findLeaks() {
@@ -238,17 +216,17 @@ function findLeaks() {
   ].filter(l => l.hrs > 0).sort((a, b) => b.hrs - a.hrs);
 
   let html = `
-    <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.25rem;">
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
       <div style="text-align:center;">
-        <div class="result-score" style="color:${statusColor};font-size:2.5rem;">${study}h</div>
+        <div class="result-score" style="color:${statusColor};font-size:clamp(1.1rem,4.5vw,2.4rem);">${study}h</div>
         <div class="result-label">Actual study time</div>
       </div>
       <div style="text-align:center;">
-        <div class="result-score" style="color:var(--accent);font-size:2.5rem;">${available.toFixed(1)}h</div>
+        <div class="result-score" style="color:var(--accent);font-size:clamp(1.1rem,4.5vw,2.4rem);">${available.toFixed(1)}h</div>
         <div class="result-label">Available after essentials</div>
       </div>
       <div style="text-align:center;">
-        <div class="result-score" style="color:${studyGap > 0 ? 'var(--danger)' : 'var(--success)'};font-size:2.5rem;">${studyGap > 0 ? '-' + studyGap.toFixed(1) : '✓'}${studyGap > 0 ? 'h' : ''}</div>
+        <div class="result-score" style="color:${studyGap > 0 ? 'var(--danger)' : 'var(--success)'};font-size:clamp(1.1rem,4.5vw,2.4rem);">${studyGap > 0 ? '-' + studyGap.toFixed(1) : '✓'}${studyGap > 0 ? 'h' : ''}</div>
         <div class="result-label">${studyGap > 0 ? 'Short of your ' + goal + 'h goal' : 'Hitting your study goal'}</div>
       </div>
     </div>`;

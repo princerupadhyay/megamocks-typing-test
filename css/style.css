@@ -38,7 +38,7 @@ body.light-mode {
 /* ---- Reset & Base ---- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; font-size: 16px; }
+html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -47,6 +47,7 @@ body {
   line-height: 1.7;
   transition: background 0.3s ease, color 0.3s ease;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 
 a { color: var(--accent); text-decoration: none; transition: var(--transition); }
@@ -159,6 +160,10 @@ nav {
   gap: 5px;
   cursor: pointer;
   padding: 4px;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
 }
 .hamburger span {
   width: 22px;
@@ -166,7 +171,12 @@ nav {
   background: var(--text);
   border-radius: 2px;
   transition: var(--transition);
+  transform-origin: center;
 }
+/* Animate to X when active */
+.hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 /* Mobile nav */
 .mobile-nav {
@@ -174,14 +184,20 @@ nav {
   flex-direction: column;
   background: var(--card);
   border-top: 1px solid var(--border);
-  padding: 1rem 1.25rem;
-  gap: 0.75rem;
+  padding: 0.75rem 1.25rem 1rem;
+  gap: 0.25rem;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
 }
 .mobile-nav a {
   color: var(--muted);
   font-size: 0.95rem;
-  padding: 0.4rem 0;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--border);
+  display: block;
+  transition: var(--transition);
 }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav a:hover, .mobile-nav a:active { color: var(--accent); padding-left: 0.4rem; }
 .mobile-nav.open { display: flex; }
 
 /* ---- Buttons ---- */
@@ -276,6 +292,22 @@ nav {
   transform: translateY(-3px);
 }
 .tool-card:hover::before { opacity: 1; }
+
+/* ---- Form row grid (JS-generated multi-input rows) ---- */
+.form-row-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.6rem;
+  align-items: end;
+}
+@media (max-width: 520px) {
+  .form-row-grid {
+    grid-template-columns: 1fr auto;
+  }
+  .form-row-grid .form-group:nth-child(2) {
+    grid-column: 1;
+  }
+}
 
 .tool-icon {
   font-size: 1.8rem;
@@ -528,10 +560,12 @@ input[type="range"]::-webkit-slider-thumb {
 .result-box.show { display: block; }
 
 .result-score {
-  font-size: 3rem;
+  font-size: clamp(1.4rem, 6vw, 3rem);
   font-weight: 700;
-  line-height: 1;
+  line-height: 1.2;
   margin-bottom: 0.25rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .score-good   { color: var(--success); }
 .score-warn   { color: var(--warning); }
@@ -649,9 +683,12 @@ footer {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 2rem;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr 1fr;
+  gap: 1.5rem;
   margin-bottom: 2.5rem;
+}
+@media (max-width: 1024px) {
+  .footer-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
 .footer-brand p { font-size: 0.85rem; margin-top: 0.6rem; max-width: 260px; }
 .footer-col h4 { font-size: 0.85rem; color: var(--text); margin-bottom: 0.8rem; }
@@ -679,7 +716,8 @@ footer {
   border-bottom: 1px solid var(--border);
   margin-bottom: 2.5rem;
 }
-.page-hero h1 { margin-bottom: 0.5rem; }
+.page-hero h1 { margin-bottom: 0.5rem; font-size: clamp(1.4rem, 4vw, 2.4rem); }
+.page-hero p  { font-size: clamp(0.88rem, 2.5vw, 1rem); }
 
 /* ---- Checkbox grid ---- */
 .checkbox-grid {
@@ -763,20 +801,190 @@ footer {
 #scrollTop:hover { background: var(--accent2); transform: translateY(-2px); }
 #scrollTop.show  { display: flex; }
 
-/* ---- Responsive ---- */
+/* ============================================
+   RESPONSIVE — Mobile First
+   ============================================ */
+
+/* --- Tablet --- */
 @media (max-width: 768px) {
+  /* Nav */
   .nav-links { display: none; }
   .hamburger { display: flex; }
-  .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-  .hero { padding: 3rem 0 2.5rem; }
-  .section { padding: 3rem 0; }
-  .hero-stats { gap: 1.25rem; }
+
+  /* Hero */
+  .hero { padding: 2.5rem 0 2rem; }
+  .hero-stats { gap: 1rem; }
+  .hero-stats .stat strong { font-size: 1.25rem; }
+
+  /* Sections */
+  .section { padding: 2.5rem 0; }
+
+  /* Tool UI box */
   .tool-ui-box { padding: 1.25rem; }
+
+  /* Tool cards: always single column on tablet */
+  .tools-grid { grid-template-columns: 1fr; }
+
+  /* Footer: 2-col then stacks */
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .footer-brand { grid-column: 1 / -1; }
+
+  /* Page hero */
+  .page-hero { padding: 2rem 0 1.5rem; }
+
+  /* Result box: prevent any overflow */
+  .result-box { padding: 1.1rem; }
+  .result-score { font-size: clamp(1.2rem, 5.5vw, 2.2rem); }
+
+  /* Result inner grids stack */
+  .result-stats-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  /* Tool intro */
+  .tool-intro { padding: 1.5rem 0 1rem; }
+
+  /* Breadcrumb smaller */
+  .breadcrumb { font-size: 0.75rem; }
+
+  /* Blog grid single col */
+  .blog-grid { grid-template-columns: 1fr !important; }
+
+  /* Related tools grid */
+  .related-grid { grid-template-columns: 1fr 1fr; }
+
+  /* Why grid */
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Tips grid */
+  .tips-grid { grid-template-columns: 1fr; }
+
+  /* Inline grid inputs used in tools */
+  .tool-row-grid { grid-template-columns: 1fr !important; }
+
+  /* Contact page 2-col → 1-col */
+  .contact-grid { grid-template-columns: 1fr !important; }
+
+  /* Ad placeholder smaller */
+  .ad-placeholder { padding: 1rem; font-size: 0.72rem; }
 }
 
+/* --- Mobile --- */
 @media (max-width: 480px) {
-  h1 { font-size: 1.6rem; }
-  .hero p.lead { font-size: 0.95rem; }
-  .tools-grid { grid-template-columns: 1fr; }
-  .why-grid   { grid-template-columns: repeat(2, 1fr); }
+  html { font-size: 15px; }
+
+  /* Typography */
+  h1 { font-size: 1.55rem; line-height: 1.25; }
+  h2 { font-size: 1.2rem; }
+  h3 { font-size: 1rem; }
+  .hero p.lead { font-size: 0.92rem; }
+
+  /* Nav brand */
+  .logo { font-size: 1.1rem; }
+
+  /* Hero */
+  .hero { padding: 2rem 0 1.75rem; }
+  .hero-cta { flex-direction: column; align-items: center; }
+  .hero-cta .btn { width: 100%; justify-content: center; max-width: 280px; }
+  .hero-stats { gap: 0.75rem; }
+  .hero-stats .stat strong { font-size: 1.1rem; }
+  .hero-badge { font-size: 0.72rem; }
+
+  /* Grids all single column */
+  .tools-grid,
+  .why-grid,
+  .tips-grid,
+  .related-grid { grid-template-columns: 1fr; }
+
+  /* Footer completely single column */
+  .footer-grid { grid-template-columns: 1fr; gap: 1rem; }
+
+  /* Tool UI */
+  .tool-ui-box { padding: 1rem 0.9rem; border-radius: 12px; }
+
+  /* Form elements full width & bigger tap targets */
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-size: 0.9rem;
+    padding: 0.7rem 0.85rem;
+    min-height: 44px;
+  }
+
+  /* Buttons — full width in tool contexts */
+  .tool-ui-box .btn { padding: 0.7rem 1rem; font-size: 0.88rem; }
+
+  /* Result box */
+  .result-box { padding: 1rem 0.85rem; }
+  .result-score { font-size: clamp(1.1rem, 5vw, 1.8rem); }
+  .result-label { font-size: 0.78rem; }
+
+  /* Result suggestions */
+  .result-suggestions li { font-size: 0.82rem; padding: 0.55rem 0.75rem; }
+
+  /* Range inputs */
+  input[type="range"] { height: 8px; }
+  input[type="range"]::-webkit-slider-thumb { width: 22px; height: 22px; }
+
+  /* Badges */
+  .badge { font-size: 0.68rem; }
+  .range-val { font-size: 0.75rem; }
+
+  /* Section title */
+  .section-title p { font-size: 0.88rem; }
+
+  /* Inline grids used in tool rows — always stack */
+  div[style*="grid-template-columns: 1fr 1fr"],
+  div[style*="grid-template-columns:1fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0 !important;
+  }
+
+  /* Tag/blog meta */
+  .blog-hero-meta { gap: 0.5rem; font-size: 0.75rem; }
+
+  /* Scroll-to-top button position */
+  #scrollTop { bottom: 1rem; right: 1rem; width: 36px; height: 36px; font-size: 0.9rem; }
+
+  /* Page hero */
+  .page-hero { padding: 1.5rem 0 1rem; }
+  .page-hero h1 { font-size: 1.5rem; }
+
+  /* Breadcrumb */
+  .breadcrumb { font-size: 0.72rem; padding: 0.5rem 0; }
+
+  /* Ad placeholder */
+  .ad-placeholder { margin: 1rem 0; padding: 0.85rem; }
+
+  /* Container padding */
+  .container { padding: 0 1rem; }
+
+  /* Tool card meta row */
+  .tool-meta { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  .tool-meta .btn { width: 100%; justify-content: center; }
+
+  /* Prose font */
+  .prose p, .prose ul { font-size: 0.88rem; }
+
+  /* Info section */
+  .info-section h2 { font-size: 1.15rem; }
+
+  /* Example box */
+  .example-box { font-size: 0.83rem; padding: 1rem; }
+
+  /* Related tools — single col already, just spacing */
+  .related-card { padding: 0.85rem; }
+
+  /* Why items */
+  .why-item { padding: 1rem; }
+  .why-item .why-icon { font-size: 1.4rem; }
+}
+
+/* --- Very small phones --- */
+@media (max-width: 360px) {
+  html { font-size: 14px; }
+  .hero-stats { flex-wrap: wrap; justify-content: center; }
+  .tool-ui-box { padding: 0.85rem 0.75rem; }
 }

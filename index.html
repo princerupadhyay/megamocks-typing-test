@@ -1,406 +1,724 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>MegaMocks — Free Study Tools for Students</title>
-  <meta name="description" content="MegaMocks offers free study and productivity tools for students. Find your revision gaps, track exam readiness, balance your study load, and study smarter — no login needed." />
-  <meta name="keywords" content="study tools, exam preparation, revision, student productivity, free study planner" />
-  <link rel="canonical" href="https://megamocks.com/" />
-  <!-- Open Graph -->
-  <meta property="og:title" content="MegaMocks — Free Study Tools for Students" />
-  <meta property="og:description" content="Simple study tools for revision, focus, planning, and exam prep. Free, no login, works on any device." />
-  <meta property="og:type" content="website" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <!-- Schema: WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "MegaMocks",
-    "url": "https://megamocks.com",
-    "description": "Free study and productivity tools for students"
-  }
-  </script>
-</head>
-<body>
-
-<!-- ===== HEADER ===== -->
-<header>
-  <nav>
-    <a href="index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="pages/tools.html">All Tools</a></li>
-      <li><a href="pages/about.html">About</a></li>
-      <li><a href="pages/contact.html">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav">
-    <a href="index.html">Home</a>
-    <a href="pages/tools.html">All Tools</a>
-    <a href="pages/about.html">About</a>
-    <a href="pages/contact.html">Contact</a>
-  </div>
-</header>
-
-<!-- ===== HERO ===== -->
-<section class="hero">
-  <div class="container">
-    <div class="hero-badge">🎓 Built for real students</div>
-    <h1>Small Study Tools That Actually Help Students</h1>
-    <p class="lead">Simple tools for revision, focus, planning, and exam preparation. No login. No cost. No fluff.</p>
-    <div class="hero-cta">
-      <a href="pages/tools.html" class="btn btn-primary">Explore All Tools →</a>
-      <a href="#featured" class="btn btn-outline">See What's Here</a>
-    </div>
-    <div class="hero-stats">
-      <div class="stat"><strong>10+</strong><span>Free Tools</span></div>
-      <div class="stat"><strong>0</strong><span>Logins needed</span></div>
-      <div class="stat"><strong>100%</strong><span>Free forever</span></div>
-      <div class="stat"><strong>2 min</strong><span>Avg time per tool</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- Adsense Ad Placeholder -->
-<div class="container">
-  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
-</div>
-
-<!-- ===== FEATURED TOOLS ===== -->
-<section class="section" id="featured">
-  <div class="container">
-    <div class="section-title">
-      <h2>Study Tools That Get Straight to the Point</h2>
-      <p>Each tool solves one real problem. Open it, use it, close it. That's it.</p>
-    </div>
-
-    <div class="tools-grid">
-
-      <!-- Tool 1 -->
-      <div class="tool-card">
-        <div class="tool-icon">🎭</div>
-        <h3>False Confidence Detector</h3>
-        <p>Think you know a topic? This tool checks if your confidence actually matches your knowledge — or if you're just fooling yourself.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/false-confidence-detector.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Don't go into exams overconfident.</span>
-      </div>
-
-      <!-- Tool 2 -->
-      <div class="tool-card">
-        <div class="tool-icon">🔍</div>
-        <h3>Revision Gap Finder</h3>
-        <p>Enter your subjects and revision dates. This tool finds the gaps — topics you haven't touched in too long.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~3 minutes</span>
-          <a href="tools/revision-gap-finder.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Revision is memory insurance.</span>
-      </div>
-
-      <!-- Tool 3 -->
-      <div class="tool-card">
-        <div class="tool-icon">📊</div>
-        <h3>Exam Readiness Index</h3>
-        <p>Answer a few honest questions about your preparation and get a real readiness score with what to fix before exam day.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/exam-readiness-index.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Know where you actually stand.</span>
-      </div>
-
-      <!-- Tool 4 -->
-      <div class="tool-card">
-        <div class="tool-icon">📝</div>
-        <h3>Notes Completeness Checker</h3>
-        <p>Rate your notes for each topic. This tool tells you which subjects still have holes before the exam comes.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~3 minutes</span>
-          <a href="tools/notes-completeness-checker.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Good notes today = fewer panics tomorrow.</span>
-      </div>
-
-      <!-- Tool 5 -->
-      <div class="tool-card">
-        <div class="tool-icon">⚖️</div>
-        <h3>Study Load Balance Checker</h3>
-        <p>Are you spending too much time on one subject and ignoring others? This tool checks if your study time is actually balanced.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/study-load-balance-checker.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Balance beats burnout, every time.</span>
-      </div>
-
-      <!-- Tool 6 -->
-      <div class="tool-card">
-        <div class="tool-icon">🛠️</div>
-        <h3>Weak Topic Recovery Planner</h3>
-        <p>Enter your weak subjects and exam date. Get a simple day-by-day recovery plan that actually fits your schedule.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~3 minutes</span>
-          <a href="tools/weak-topic-recovery-planner.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Weak today doesn't mean weak on exam day.</span>
-      </div>
-
-      <!-- Tool 7 -->
-      <div class="tool-card">
-        <div class="tool-icon">📋</div>
-        <h3>PYQ Coverage Tracker</h3>
-        <p>Track how many previous year questions you've solved per subject. See your coverage and know what's still missing.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/pyq-coverage-tracker.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Past papers predict future marks.</span>
-      </div>
-
-      <!-- Tool 8 -->
-      <div class="tool-card">
-        <div class="tool-icon">⏳</div>
-        <h3>Time Leakage Finder</h3>
-        <p>Where is your study time actually going? Enter your daily schedule and see where hours are silently disappearing.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/time-leakage-finder.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Small improvements matter.</span>
-      </div>
-
-      <!-- Tool 9 -->
-      <div class="tool-card">
-        <div class="tool-icon">🎯</div>
-        <h3>Daily Study Target Validator</h3>
-        <p>Check if your daily study plan is realistic for your exam date. Stop setting targets you can't actually meet.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/daily-study-target-validator.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Consistency beats panic.</span>
-      </div>
-
-      <!-- Tool 10 -->
-      <div class="tool-card">
-        <div class="tool-icon">🗂️</div>
-        <h3>Question Attempt Order Planner</h3>
-        <p>Enter your exam sections and time limits. Get a smart attempt order so you score maximum marks in the time available.</p>
-        <div class="tool-meta">
-          <span class="tool-time">⏱ ~2 minutes</span>
-          <a href="tools/question-attempt-order-planner.html" class="btn btn-primary btn-sm">Open Tool →</a>
-        </div>
-        <span class="micro-line">Strategy wins exams, not just knowledge.</span>
-      </div>
-
-    </div>
-
-    <div style="text-align:center;margin-top:2rem;">
-      <a href="pages/tools.html" class="btn btn-outline">View All Tools →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== WHY SECTION ===== -->
-<section class="section" style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
-  <div class="container">
-    <div class="section-title">
-      <h2>Why Students Use MegaMocks</h2>
-      <p>We made this because we know what the week before exams feels like.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-icon">⚡</div>
-        <h4>Takes Under 3 Minutes</h4>
-        <p>Quick tools for quick decisions. No long onboarding.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">🔓</div>
-        <h4>No Login Needed</h4>
-        <p>Open, use, and close. Your data stays on your device.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">💸</div>
-        <h4>Free Forever</h4>
-        <p>No trial period. No premium plan. Just free tools.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">📱</div>
-        <h4>Works on Mobile</h4>
-        <p>Fully mobile-friendly. Use it anywhere you study.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">🎯</div>
-        <h4>One Problem Each</h4>
-        <p>Every tool solves one specific student problem. That's it.</p>
-      </div>
-      <div class="why-item">
-        <div class="why-icon">🧘</div>
-        <h4>No Distractions</h4>
-        <p>Clean, calm interface. Built for focus, not for show.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Adsense Ad Placeholder -->
-<div class="container">
-  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
-</div>
-
-<!-- ===== STUDY TIPS ===== -->
-<section class="section" id="tips">
-  <div class="container">
-    <div class="section-title">
-      <h2>Study Tips That Actually Make Sense</h2>
-      <p>Not generic advice. Real stuff that changes how you study.</p>
-    </div>
-    <div class="tips-grid">
-      <div class="tip-card">
-        <p>Studying for 8 hours means nothing if you forget everything after 2 days. Revise shorter, revise more often.</p>
-      </div>
-      <div class="tip-card">
-        <p>The feeling of being ready and actually being ready are two different things. Test yourself before you walk in.</p>
-      </div>
-      <div class="tip-card">
-        <p>Your phone is not a 5-minute break. It is a 45-minute black hole. Put it in another room.</p>
-      </div>
-      <div class="tip-card">
-        <p>Reading your notes is not revision. Closing your notes and trying to recall from memory — that is revision.</p>
-      </div>
-      <div class="tip-card">
-        <p>The night before an exam is not the time to learn new things. Rest is productive too.</p>
-      </div>
-      <div class="tip-card">
-        <p>One difficult topic per day beats ten easy topics you already know. Fix weaknesses before they cost you marks.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="section" style="background:var(--card);border-top:1px solid var(--border);">
-  <div class="container">
-    <div class="section-title">
-      <h2>Common Questions</h2>
-      <p>Things students usually ask before using MegaMocks.</p>
-    </div>
-
-    <!-- Schema FAQ -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MegaMocks — Free Study Tools for Students</title>
+    <meta
+      name="description"
+      content="MegaMocks offers free study and productivity tools for students. Find your revision gaps, track exam readiness, balance your study load, and study smarter — no login needed."
+    />
+    <meta
+      name="keywords"
+      content="study tools, exam preparation, revision, student productivity, free study planner"
+    />
+    <link rel="canonical" href="https://megamocks.com/" />
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="MegaMocks — Free Study Tools for Students"
+    />
+    <meta
+      property="og:description"
+      content="Simple study tools for revision, focus, planning, and exam prep. Free, no login, works on any device."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Schema: WebSite -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Are all tools on MegaMocks free?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool on MegaMocks is 100% free. No plan, no payment, no hidden cost." }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need to create an account?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No. You don't need an account or even an email address. Just open the tool and use it." }
-        },
-        {
-          "@type": "Question",
-          "name": "Does MegaMocks save my data anywhere?",
-          "acceptedAnswer": { "@type": "Answer", "text": "No data is sent to any server. Some tools save your inputs in your browser's local storage so you can return later, but everything stays on your own device." }
-        },
-        {
-          "@type": "Question",
-          "name": "Who are these tools built for?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Any student preparing for exams — school, college, or competitive exams. The tools are simple enough for anyone to use in a few minutes." }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I use MegaMocks on my phone?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every tool is fully mobile-responsive and works well on phones and tablets." }
-        }
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "MegaMocks",
+        "url": "https://megamocks.com",
+        "description": "Free study and productivity tools for students"
+      }
     </script>
+  </head>
+  <body>
+    <!-- ===== HEADER ===== -->
+    <div id="site-header"></div>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-badge">🎓 Built for real students</div>
+        <h1>Small Study Tools That Actually Help Students</h1>
+        <p class="lead">
+          Simple tools for revision, focus, planning, and exam preparation. No
+          login. No cost. No fluff.
+        </p>
+        <div class="hero-cta">
+          <a href="tools/" class="btn btn-primary">Explore All Tools →</a>
+          <a href="#featured" class="btn btn-outline">See What's Here</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><strong>10+</strong><span>Free Tools</span></div>
+          <div class="stat"><strong>0</strong><span>Logins needed</span></div>
+          <div class="stat"><strong>100%</strong><span>Free forever</span></div>
+          <div class="stat">
+            <strong>2 min</strong><span>Avg time per tool</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">Are all tools on MegaMocks free? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Yes. Every tool on MegaMocks is 100% free. No plan, no payment, no hidden cost. We built this for students who are already stressed about exams — not for making money off them.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Do I need to create an account? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>No account needed. No email. No sign-up. Just open a tool and use it right away. We kept it that way on purpose — you don't need another thing to log into.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Does MegaMocks save my data anywhere? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Nothing is sent to any server. Some tools save your inputs in your browser's local storage so you can come back later. But that data never leaves your own device. We have no database and no user accounts.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Who are these tools made for? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Any student preparing for exams — school, college, or competitive exams. If you're studying for something and want quick, honest help with planning and revision, these tools are for you.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Can I use MegaMocks on my phone? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Yes, fully. Every page and every tool is built to work on phones and tablets. Most students study using phones, so we made sure everything is easy to use on a small screen.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How accurate are the tool results? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>The results are only as honest as your inputs. If you rate yourself truthfully, you'll get useful output. These tools are not a guarantee — they're a mirror. They help you see your situation more clearly so you can act on it.</p></div>
+    <!-- Adsense Ad Placeholder -->
+    <div class="container">
+      <div class="ad-placeholder">
+        Advertisement space — AdSense placeholder
       </div>
     </div>
-  </div>
-</section>
 
-<!-- ===== FOOTER ===== -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="logo">Mega<span>Mocks</span></a>
-        <p>Simple, free study tools for students who want to study smarter and stress less. No login needed.</p>
+    <!-- ===== FEATURED TOOLS ===== -->
+    <section class="section" id="featured">
+      <div class="container">
+        <div class="section-title">
+          <h2>Study Tools That Get Straight to the Point</h2>
+          <p>
+            Each tool solves one real problem. Open it, use it, close it. That's
+            it.
+          </p>
+        </div>
+
+        <div class="tools-grid">
+          <!-- Tool 1 -->
+          <div class="tool-card">
+            <div class="tool-icon">🎭</div>
+            <h3>False Confidence Detector</h3>
+            <p>
+              Think you know a topic? This tool checks if your confidence
+              actually matches your knowledge — or if you're just fooling
+              yourself.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/false-confidence-detector.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Don't go into exams overconfident.</span>
+          </div>
+
+          <!-- Tool 2 -->
+          <div class="tool-card">
+            <div class="tool-icon">🔍</div>
+            <h3>Revision Gap Finder</h3>
+            <p>
+              Enter your subjects and revision dates. This tool finds the gaps —
+              topics you haven't touched in too long.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~3 minutes</span>
+              <a
+                href="tools/revision-gap-finder.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Revision is memory insurance.</span>
+          </div>
+
+          <!-- Tool 3 -->
+          <div class="tool-card">
+            <div class="tool-icon">📊</div>
+            <h3>Exam Readiness Index</h3>
+            <p>
+              Answer a few honest questions about your preparation and get a
+              real readiness score with what to fix before exam day.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/exam-readiness-index.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Know where you actually stand.</span>
+          </div>
+
+          <!-- Tool 4 -->
+          <div class="tool-card">
+            <div class="tool-icon">📝</div>
+            <h3>Notes Completeness Checker</h3>
+            <p>
+              Rate your notes for each topic. This tool tells you which subjects
+              still have holes before the exam comes.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~3 minutes</span>
+              <a
+                href="tools/notes-completeness-checker.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line"
+              >Good notes today = fewer panics tomorrow.</span
+            >
+          </div>
+
+          <!-- Tool 5 -->
+          <div class="tool-card">
+            <div class="tool-icon">⚖️</div>
+            <h3>Study Load Balance Checker</h3>
+            <p>
+              Are you spending too much time on one subject and ignoring others?
+              This tool checks if your study time is actually balanced.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/study-load-balance-checker.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Balance beats burnout, every time.</span>
+          </div>
+
+          <!-- Tool 6 -->
+          <div class="tool-card">
+            <div class="tool-icon">🛠️</div>
+            <h3>Weak Topic Recovery Planner</h3>
+            <p>
+              Enter your weak subjects and exam date. Get a simple day-by-day
+              recovery plan that actually fits your schedule.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~3 minutes</span>
+              <a
+                href="tools/weak-topic-recovery-planner.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line"
+              >Weak today doesn't mean weak on exam day.</span
+            >
+          </div>
+
+          <!-- Tool 7 -->
+          <div class="tool-card">
+            <div class="tool-icon">📋</div>
+            <h3>PYQ Coverage Tracker</h3>
+            <p>
+              Track how many previous year questions you've solved per subject.
+              See your coverage and know what's still missing.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/pyq-coverage-tracker.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Past papers predict future marks.</span>
+          </div>
+
+          <!-- Tool 8 -->
+          <div class="tool-card">
+            <div class="tool-icon">⏳</div>
+            <h3>Time Leakage Finder</h3>
+            <p>
+              Where is your study time actually going? Enter your daily schedule
+              and see where hours are silently disappearing.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/time-leakage-finder.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Small improvements matter.</span>
+          </div>
+
+          <!-- Tool 9 -->
+          <div class="tool-card">
+            <div class="tool-icon">🎯</div>
+            <h3>Daily Study Target Validator</h3>
+            <p>
+              Check if your daily study plan is realistic for your exam date.
+              Stop setting targets you can't actually meet.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/daily-study-target-validator.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line">Consistency beats panic.</span>
+          </div>
+
+          <!-- Tool 10 -->
+          <div class="tool-card">
+            <div class="tool-icon">🗂️</div>
+            <h3>Question Attempt Order Planner</h3>
+            <p>
+              Enter your exam sections and time limits. Get a smart attempt
+              order so you score maximum marks in the time available.
+            </p>
+            <div class="tool-meta">
+              <span class="tool-time">⏱ ~2 minutes</span>
+              <a
+                href="tools/question-attempt-order-planner.html"
+                class="btn btn-primary btn-sm"
+                >Open Tool →</a
+              >
+            </div>
+            <span class="micro-line"
+              >Strategy wins exams, not just knowledge.</span
+            >
+          </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 2rem">
+          <a href="tools/" class="btn btn-outline">View All Tools →</a>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Tools</h4>
-        <ul>
-          <li><a href="tools/false-confidence-detector.html">False Confidence Detector</a></li>
-          <li><a href="tools/revision-gap-finder.html">Revision Gap Finder</a></li>
-          <li><a href="tools/exam-readiness-index.html">Exam Readiness Index</a></li>
-          <li><a href="tools/study-load-balance-checker.html">Study Load Balance</a></li>
-          <li><a href="pages/tools.html">All Tools →</a></li>
-        </ul>
+    </section>
+
+    <!-- ===== WHY SECTION ===== -->
+    <section
+      class="section"
+      style="
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      "
+    >
+      <div class="container">
+        <div class="section-title">
+          <h2>Why Students Use MegaMocks</h2>
+          <p>
+            We made this because we know what the week before exams feels like.
+          </p>
+        </div>
+        <div class="why-grid">
+          <div class="why-item">
+            <div class="why-icon">⚡</div>
+            <h4>Takes Under 3 Minutes</h4>
+            <p>Quick tools for quick decisions. No long onboarding.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🔓</div>
+            <h4>No Login Needed</h4>
+            <p>Open, use, and close. Your data stays on your device.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">💸</div>
+            <h4>Free Forever</h4>
+            <p>No trial period. No premium plan. Just free tools.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">📱</div>
+            <h4>Works on Mobile</h4>
+            <p>Fully mobile-friendly. Use it anywhere you study.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🎯</div>
+            <h4>One Problem Each</h4>
+            <p>Every tool solves one specific student problem. That's it.</p>
+          </div>
+          <div class="why-item">
+            <div class="why-icon">🧘</div>
+            <h4>No Distractions</h4>
+            <p>Clean, calm interface. Built for focus, not for show.</p>
+          </div>
+        </div>
       </div>
-      <div class="footer-col">
-        <h4>Info</h4>
-        <ul>
-          <li><a href="pages/about.html">About</a></li>
-          <li><a href="pages/contact.html">Contact</a></li>
-          <li><a href="pages/privacy-policy.html">Privacy Policy</a></li>
-          <li><a href="pages/disclaimer.html">Disclaimer</a></li>
-          <li><a href="pages/terms.html">Terms & Conditions</a></li>
-          <li><a href="pages/sitemap.html">Sitemap</a></li>
-        </ul>
+    </section>
+
+    <!-- Adsense Ad Placeholder -->
+    <div class="container">
+      <div class="ad-placeholder">
+        Advertisement space — AdSense placeholder
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2025 MegaMocks. Made with care for students everywhere. All tools are free and no account is needed.</p>
-    </div>
-  </div>
-</footer>
 
-<button id="scrollTop" aria-label="Scroll to top">↑</button>
+    <!-- ===== STUDY TIPS ===== -->
+    <section class="section" id="tips">
+      <div class="container">
+        <div class="section-title">
+          <h2>Study Tips That Actually Make Sense</h2>
+          <p>Not generic advice. Real stuff that changes how you study.</p>
+        </div>
+        <div class="tips-grid">
+          <div class="tip-card">
+            <p>
+              Studying for 8 hours means nothing if you forget everything after
+              2 days. Revise shorter, revise more often.
+            </p>
+          </div>
+          <div class="tip-card">
+            <p>
+              The feeling of being ready and actually being ready are two
+              different things. Test yourself before you walk in.
+            </p>
+          </div>
+          <div class="tip-card">
+            <p>
+              Your phone is not a 5-minute break. It is a 45-minute black hole.
+              Put it in another room.
+            </p>
+          </div>
+          <div class="tip-card">
+            <p>
+              Reading your notes is not revision. Closing your notes and trying
+              to recall from memory — that is revision.
+            </p>
+          </div>
+          <div class="tip-card">
+            <p>
+              The night before an exam is not the time to learn new things. Rest
+              is productive too.
+            </p>
+          </div>
+          <div class="tip-card">
+            <p>
+              One difficult topic per day beats ten easy topics you already
+              know. Fix weaknesses before they cost you marks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<script src="js/main.js"></script>
-</body>
+    <!-- ===== BLOG TEASER ===== -->
+    <section
+      class="section"
+      id="blog"
+      style="background: var(--card); border-top: 1px solid var(--border)"
+    >
+      <div class="container">
+        <div class="section-title">
+          <h2>From the MegaMocks Blog</h2>
+          <p>
+            Short reads on studying smarter, avoiding common mistakes, and
+            getting ready for exams.
+          </p>
+        </div>
+        <div
+          style="
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.25rem;
+          "
+        >
+          <a
+            href="blog/false-confidence-in-studying.html"
+            style="
+              background: var(--card2);
+              border: 1px solid var(--border);
+              border-radius: var(--radius);
+              padding: 1.4rem;
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              gap: 0.6rem;
+              transition: var(--transition);
+            "
+            onmouseover="
+              this.style.borderColor = 'var(--accent)';
+              this.style.transform = 'translateY(-2px)';
+            "
+            onmouseout="
+              this.style.borderColor = 'var(--border)';
+              this.style.transform = 'none';
+            "
+          >
+            <span
+              style="
+                font-size: 0.72rem;
+                background: rgba(56, 189, 248, 0.12);
+                color: var(--accent);
+                padding: 0.2rem 0.6rem;
+                border-radius: 50px;
+                width: fit-content;
+              "
+              >🎭 Exam Prep</span
+            >
+            <strong
+              style="color: var(--text); font-size: 0.95rem; line-height: 1.4"
+              >False Confidence in Studying: Why Feeling Ready Isn't the Same as
+              Being Ready</strong
+            >
+            <p style="font-size: 0.83rem; margin: 0">
+              The most dangerous exam mistake you don't know you're making — and
+              how to catch it in time.
+            </p>
+            <span
+              style="font-size: 0.8rem; color: var(--accent); margin-top: auto"
+              >Read post →</span
+            >
+          </a>
+
+          <a
+            href="blog/where-does-study-time-go.html"
+            style="
+              background: var(--card2);
+              border: 1px solid var(--border);
+              border-radius: var(--radius);
+              padding: 1.4rem;
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              gap: 0.6rem;
+              transition: var(--transition);
+            "
+            onmouseover="
+              this.style.borderColor = 'var(--accent)';
+              this.style.transform = 'translateY(-2px)';
+            "
+            onmouseout="
+              this.style.borderColor = 'var(--border)';
+              this.style.transform = 'none';
+            "
+          >
+            <span
+              style="
+                font-size: 0.72rem;
+                background: rgba(56, 189, 248, 0.12);
+                color: var(--accent);
+                padding: 0.2rem 0.6rem;
+                border-radius: 50px;
+                width: fit-content;
+              "
+              >⏳ Productivity</span
+            >
+            <strong
+              style="color: var(--text); font-size: 0.95rem; line-height: 1.4"
+              >Where Does Your Study Time Actually Go? (It's Not Where You
+              Think)</strong
+            >
+            <p style="font-size: 0.83rem; margin: 0">
+              Most students overestimate how much they study by 40–60%. Here's
+              where the time really goes.
+            </p>
+            <span
+              style="font-size: 0.8rem; color: var(--accent); margin-top: auto"
+              >Read post →</span
+            >
+          </a>
+
+          <a
+            href="blog/why-previous-year-questions-matter.html"
+            style="
+              background: var(--card2);
+              border: 1px solid var(--border);
+              border-radius: var(--radius);
+              padding: 1.4rem;
+              text-decoration: none;
+              color: inherit;
+              display: flex;
+              flex-direction: column;
+              gap: 0.6rem;
+              transition: var(--transition);
+            "
+            onmouseover="
+              this.style.borderColor = 'var(--accent)';
+              this.style.transform = 'translateY(-2px)';
+            "
+            onmouseout="
+              this.style.borderColor = 'var(--border)';
+              this.style.transform = 'none';
+            "
+          >
+            <span
+              style="
+                font-size: 0.72rem;
+                background: rgba(56, 189, 248, 0.12);
+                color: var(--accent);
+                padding: 0.2rem 0.6rem;
+                border-radius: 50px;
+                width: fit-content;
+              "
+              >📋 PYQ Strategy</span
+            >
+            <strong
+              style="color: var(--text); font-size: 0.95rem; line-height: 1.4"
+              >Why Previous Year Questions Are the Most Underrated Exam Prep
+              Tool</strong
+            >
+            <p style="font-size: 0.83rem; margin: 0">
+              The research behind why past papers work — and how students who
+              use them consistently outperform those who don't.
+            </p>
+            <span
+              style="font-size: 0.8rem; color: var(--accent); margin-top: auto"
+              >Read post →</span
+            >
+          </a>
+        </div>
+        <div style="text-align: center; margin-top: 2rem">
+          <a href="blog/index.html" class="btn btn-outline">Read All Posts →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section
+      class="section"
+      style="background: var(--card); border-top: 1px solid var(--border)"
+    >
+      <div class="container">
+        <div class="section-title">
+          <h2>Common Questions</h2>
+          <p>Things students usually ask before using MegaMocks.</p>
+        </div>
+
+        <!-- Schema FAQ -->
+        <script type="application/ld+json">
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Are all tools on MegaMocks free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Every tool on MegaMocks is 100% free. No plan, no payment, no hidden cost."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Do I need to create an account?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. You don't need an account or even an email address. Just open the tool and use it."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does MegaMocks save my data anywhere?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No data is sent to any server. Some tools save your inputs in your browser's local storage so you can return later, but everything stays on your own device."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Who are these tools built for?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Any student preparing for exams — school, college, or competitive exams. The tools are simple enough for anyone to use in a few minutes."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use MegaMocks on my phone?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Every tool is fully mobile-responsive and works well on phones and tablets."
+                }
+              }
+            ]
+          }
+        </script>
+
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              Are all tools on MegaMocks free?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Every tool on MegaMocks is 100% free. No plan, no payment,
+                no hidden cost. We built this for students who are already
+                stressed about exams — not for making money off them.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Do I need to create an account? <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No account needed. No email. No sign-up. Just open a tool and
+                use it right away. We kept it that way on purpose — you don't
+                need another thing to log into.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Does MegaMocks save my data anywhere?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Nothing is sent to any server. Some tools save your inputs in
+                your browser's local storage so you can come back later. But
+                that data never leaves your own device. We have no database and
+                no user accounts.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Who are these tools made for? <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Any student preparing for exams — school, college, or
+                competitive exams. If you're studying for something and want
+                quick, honest help with planning and revision, these tools are
+                for you.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I use MegaMocks on my phone?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes, fully. Every page and every tool is built to work on phones
+                and tablets. Most students study using phones, so we made sure
+                everything is easy to use on a small screen.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How accurate are the tool results?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                The results are only as honest as your inputs. If you rate
+                yourself truthfully, you'll get useful output. These tools are
+                not a guarantee — they're a mirror. They help you see your
+                situation more clearly so you can act on it.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <div id="site-footer"></div>
+
+    <script src="./js/components.js"></script>
+    <script src="./js/main.js"></script>
+  </body>
 </html>

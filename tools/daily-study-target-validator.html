@@ -10,27 +10,14 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
-</header>
-
+<div id="site-header"></div>
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Daily Study Target Validator</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>Daily Study Target Validator</span></div>
 </div>
 
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">🎯</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">🎯</div>
     <h1>Daily Study Target Validator</h1>
     <p style="font-size:1rem;color:var(--muted);">Are your daily study targets realistic? This tool checks your plan against your exam date and remaining syllabus — so you're not setting yourself up to fail before you even start.</p>
     <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes</p>
@@ -43,7 +30,7 @@
   <div class="tool-ui-box">
     <h3 style="color:var(--text);margin-bottom:1.25rem;">Your Study Plan Details</h3>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;">
       <div class="form-group" style="margin:0;">
         <label for="examDate">Exam date</label>
         <input type="date" id="examDate" />
@@ -173,17 +160,8 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
-      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></li></ul></div>
-      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
-  </div>
-</footer>
-<button id="scrollTop">↑</button>
+<div id="site-footer"></div>
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 function validateTarget() {
@@ -226,11 +204,11 @@ function validateTarget() {
 
   let html = `
     <div style="margin-bottom:1.25rem;">
-      <div class="result-score" style="color:${statusColor};font-size:1.8rem;margin-bottom:.25rem;">${statusIcon} ${statusText}</div>
+      <div class="result-score" style="color:${statusColor};font-size:clamp(1.05rem,4vw,1.8rem);margin-bottom:.25rem;">${statusIcon} ${statusText}</div>
       <div class="result-label">${totalDays} days to exam · ${studyDays} usable study days · ${plannedHrs}h/day planned</div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.75rem;margin-bottom:1.25rem;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.75rem;margin-bottom:1.25rem;">
       <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem;text-align:center;">
         <div style="font-size:1.4rem;font-weight:700;color:var(--accent);">${availableHrs}h</div>
         <div style="font-size:.75rem;color:var(--muted);">Total hours available</div>

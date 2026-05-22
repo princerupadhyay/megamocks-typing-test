@@ -10,27 +10,14 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
-</header>
-
+<div id="site-header"></div>
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>Study Load Balance Checker</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>Study Load Balance Checker</span></div>
 </div>
 
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">⚖️</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">⚖️</div>
     <h1>Study Load Balance Checker</h1>
     <p style="font-size:1rem;color:var(--muted);">Are you spending too much time on subjects you already know well? Enter your weekly study hours per subject and see if your time is really balanced — or dangerously lopsided.</p>
     <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes</p>
@@ -108,23 +95,14 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
-      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></li></ul></div>
-      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
-  </div>
-</footer>
-<button id="scrollTop">↑</button>
+<div id="site-footer"></div>
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 function addSubject(name='',hrs=0){
   const c=document.getElementById('subjectContainer');
   const d=document.createElement('div');
-  d.style.cssText='display:grid;grid-template-columns:1fr 1fr auto;gap:.6rem;margin-bottom:.6rem;align-items:end;';
+  d.className='form-row-grid';d.style.cssText='margin-bottom:.6rem;';
   d.innerHTML=`<div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Subject</label><input type="text" class="sn" placeholder="e.g. Mathematics" value="${name}"/></div>
   <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Hours this week</label><input type="number" class="sh" min="0" max="80" step=".5" value="${hrs}" placeholder="0"/></div>
   <button onclick="this.closest('div').remove()" class="btn btn-outline btn-sm" style="height:42px;">✕</button>`;
@@ -151,7 +129,7 @@ function checkBalance(){
   subjects.sort((a,b)=>b.h-a.h);
 
   let html=`<div style="margin-bottom:1rem;">
-    <div class="result-score ${balanced?'score-good':'score-warn'}" style="font-size:1.8rem;margin-bottom:.25rem;">${balanced?'✅ Well Balanced':'⚠️ Imbalanced'}</div>
+    <div class="result-score ${balanced?'score-good':'score-warn'}" style="font-size:clamp(1.05rem,4vw,1.8rem);margin-bottom:.25rem;">${balanced?'✅ Well Balanced':'⚠️ Imbalanced'}</div>
     <div class="result-label">Total: ${total}h/week | Ideal per subject: ${ideal.toFixed(1)}h | Spread ratio: ${ratio}x</div>
   </div>
   <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;">`;

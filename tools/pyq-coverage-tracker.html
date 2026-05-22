@@ -10,27 +10,14 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-<header>
-  <nav>
-    <a href="../index.html" class="logo">Mega<span>Mocks</span></a>
-    <ul class="nav-links">
-      <li><a href="../index.html">Home</a></li><li><a href="../pages/tools.html">All Tools</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-toggle" id="themeToggle">☀️ Light</button>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    </div>
-  </nav>
-  <div class="mobile-nav" id="mobileNav"><a href="../index.html">Home</a><a href="../pages/tools.html">All Tools</a></div>
-</header>
-
+<div id="site-header"></div>
 <div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../pages/tools.html">Tools</a><span class="sep">/</span><span>PYQ Coverage Tracker</span></div>
+  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>PYQ Coverage Tracker</span></div>
 </div>
 
 <div class="container">
   <div class="tool-intro">
-    <div class="tool-icon" style="font-size:2.5rem;margin-bottom:.75rem;">📋</div>
+    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">📋</div>
     <h1>PYQ Coverage Tracker</h1>
     <p style="font-size:1rem;color:var(--muted);">Previous year questions are one of the best ways to prepare for any exam. Track how many you've solved per subject and see exactly where your coverage is missing.</p>
     <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes</p>
@@ -126,23 +113,14 @@
   </div>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="../index.html" class="logo">Mega<span>Mocks</span></a><p>Free study tools for students.</p></div>
-      <div class="footer-col"><h4>Tools</h4><ul><li><a href="../pages/tools.html">All Tools →</a></li></ul></div>
-      <div class="footer-col"><h4>Info</h4><ul><li><a href="../pages/about.html">About</a></li><li><a href="../pages/privacy-policy.html">Privacy</a></li></ul></div>
-    </div>
-    <div class="footer-bottom"><p>© 2025 MegaMocks</p></div>
-  </div>
-</footer>
-<button id="scrollTop">↑</button>
+<div id="site-footer"></div>
+<script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
 <script>
 function addRow(name='', total=50, solved=0) {
   const c = document.getElementById('pyqContainer');
   const d = document.createElement('div');
-  d.style.cssText = 'display:grid;grid-template-columns:1fr auto auto auto;gap:.6rem;margin-bottom:.6rem;align-items:end;';
+  d.className='form-row-grid';d.style.cssText='margin-bottom:.6rem;';
   d.innerHTML = `
     <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Subject</label><input type="text" class="pn" placeholder="e.g. Physics" value="${name}"/></div>
     <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Total PYQs</label><input type="number" class="pt" min="1" value="${total}" placeholder="50"/></div>
@@ -185,9 +163,9 @@ function trackPYQ() {
   subjects.sort((a, b) => a.pct - b.pct);
 
   let html = `
-    <div style="display:flex;align-items:flex-end;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
+    <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;flex-wrap:wrap;">
       <div>
-        <div class="result-score" style="color:${overallColor};font-size:3rem;">${overallPct}%</div>
+        <div class="result-score" style="color:${overallColor};font-size:clamp(1.2rem,5vw,2.8rem);">${overallPct}%</div>
         <div class="result-label">Overall PYQ coverage — ${overallSolved} of ${overallTotal} solved</div>
       </div>
       <div style="flex:1;min-width:140px;">
