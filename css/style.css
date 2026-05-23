@@ -151,7 +151,7 @@ nav {
 }
 
 .logo {
-  font-size: 1.3rem;
+  font-size: 2rem;
   font-weight: 700;
   color: var(--text);
   display: flex;
@@ -851,7 +851,7 @@ footer {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1.2fr 1.2fr 1.2fr 1fr;
+  grid-template-columns: 2fr 1.2fr 1.2fr 1fr;
   gap: 1.5rem;
   margin-bottom: 2.5rem;
 }
@@ -863,7 +863,6 @@ footer {
 .footer-brand p {
   font-size: 0.85rem;
   margin-top: 0.6rem;
-  max-width: 260px;
 }
 .footer-col h4 {
   font-size: 0.85rem;
@@ -1174,7 +1173,8 @@ footer {
 
   /* Nav brand */
   .logo {
-    font-size: 1.1rem;
+    justify-content: center;
+    font-size: 1.6rem;
   }
 
   /* Hero */
@@ -1210,6 +1210,7 @@ footer {
 
   /* Footer completely single column */
   .footer-grid {
+    text-align: center;
     grid-template-columns: 1fr;
     gap: 1rem;
   }
@@ -1376,4 +1377,24 @@ footer {
   .tool-ui-box {
     padding: 0.85rem 0.75rem;
   }
+}
+
+/* Active navbar tab */
+.nav-links a.active,
+.mobile-nav a.active {
+  color: var(--accent);
+  font-weight: 600;
+  position: relative;
+}
+
+.nav-links a.active::after,
+.mobile-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  border-radius: 999px;
 }

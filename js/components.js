@@ -69,7 +69,7 @@
 
       <div class="footer-brand">
         <a href="${R}index.html" class="logo">Mega<span>Mocks</span></a>
-        <p>Simple, free study tools for students who want to study smarter and stress less. No login needed. No cost. Ever.</p>
+        <p>Simple and free study tools for students who want to study smarter and stress less. No login needed. No cost. Ever.</p>
       </div>
 
       <div class="footer-col">
@@ -84,16 +84,7 @@
         </ul>
       </div>
 
-      <div class="footer-col">
-        <h4>More Tools</h4>
-        <ul>
-          <li><a href="${R}tools/weak-topic-recovery-planner.html">Weak Topic Recovery Planner</a></li>
-          <li><a href="${R}tools/pyq-coverage-tracker.html">PYQ Coverage Tracker</a></li>
-          <li><a href="${R}tools/time-leakage-finder.html">Time Leakage Finder</a></li>
-          <li><a href="${R}tools/daily-study-target-validator.html">Daily Study Target Validator</a></li>
-          <li><a href="${R}tools/question-attempt-order-planner.html">Question Attempt Order Planner</a></li>
-        </ul>
-      </div>
+      
 
       <div class="footer-col">
         <h4>Blog</h4>
@@ -121,7 +112,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 MegaMocks — Free study tools for every student. No login. No cost. Made with care.</p>
+      <p>© 2025 - MegaMocks | All Rights Reserved | Made with 🩵</p>
     </div>
   </div>
 </footer>
@@ -138,6 +129,27 @@
     if (headerPlaceholder) {
       headerPlaceholder.outerHTML = buildHeader();
     }
+
+    // =============================================
+    // ACTIVE NAV LINK HIGHLIGHT
+    // =============================================
+    const currentPath = location.pathname
+      .replace(/index\.html$/, '')
+      .replace(/\/$/, '');
+
+    document.querySelectorAll('.nav-links a, .mobile-nav a').forEach(link => {
+      let linkPath = new URL(link.href).pathname
+        .replace(/index\.html$/, '')
+        .replace(/\/$/, '');
+
+      if (currentPath === '' && linkPath === '') {
+        link.classList.add('active');
+      }
+
+      if (linkPath && currentPath.includes(linkPath)) {
+        link.classList.add('active');
+      }
+    });
 
     // --- Inject footer ---
     const footerPlaceholder = document.getElementById('site-footer');
