@@ -1,168 +1,416 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PYQ Coverage Tracker — MegaMocks</title>
-  <meta name="description" content="Track how many previous year questions you have solved per subject. See your PYQ coverage percentage and find what is still missing before your exam." />
-  <link rel="canonical" href="https://megamocks.com/tools/pyq-coverage-tracker/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-<div id="site-header"></div>
-<div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>PYQ Coverage Tracker</span></div>
-</div>
-
-<div class="container">
-  <div class="tool-intro">
-    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">📋</div>
-    <h1>PYQ Coverage Tracker</h1>
-    <p style="font-size:1rem;color:var(--muted);">Previous year questions are one of the best ways to prepare for any exam. Track how many you've solved per subject and see exactly where your coverage is missing.</p>
-    <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes</p>
-  </div>
-</div>
-
-<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
-
-<div class="container">
-  <div class="tool-ui-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
-      <h3 style="color:var(--text);">Subjects &amp; PYQ Progress</h3>
-      <button class="btn btn-outline btn-sm" onclick="addRow()">+ Add Subject</button>
-    </div>
-
-    <p style="font-size:.82rem;color:var(--muted);margin-bottom:1rem;">For each subject, enter the total number of PYQs available and how many you've solved so far.</p>
-
-    <div id="pyqContainer"></div>
-
-    <button class="btn btn-primary" onclick="trackPYQ()" style="width:100%;justify-content:center;margin-top:.75rem;">Show My Coverage →</button>
-
-    <div class="result-box" id="resultBox">
-      <div id="resultContent"></div>
-      <div class="result-actions">
-        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('ct').value,this)">📋 Copy</button>
-        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
-        <button class="btn btn-outline btn-sm" onclick="savePYQ()">💾 Save</button>
-      </div>
-      <textarea id="ct" style="position:absolute;left:-9999px;"></textarea>
-    </div>
-  </div>
-</div>
-
-<div class="container" style="margin-top:2rem;">
-  <div class="info-section">
-    <h2>Example Usage</h2>
-    <div class="example-box">
-      <strong>Inputs:</strong><br/>
-      Physics: 80 total PYQs, 55 solved → 69% coverage<br/>
-      Chemistry: 60 total PYQs, 12 solved → 20% coverage<br/>
-      Maths: 100 total PYQs, 90 solved → 90% coverage<br/><br/>
-      <strong>Result:</strong> Overall 62% coverage. Chemistry is critically low — 48 questions remaining. Prioritise Chemistry PYQs immediately.
-    </div>
-
-    <h2 style="margin-top:2rem;">How This Tool Works</h2>
-    <p>For each subject, the tool calculates: (questions solved ÷ total questions) × 100. It then shows your coverage as a percentage and a progress bar. Subjects below 50% coverage are flagged as priority areas.</p>
-
-    <h2 style="margin-top:2rem;">Why PYQs Matter So Much</h2>
-    <p>Previous year questions tell you exactly what the exam has tested before. They show patterns in question types, topic weightage, and difficulty level. A student who has solved 80%+ of PYQs for a subject almost always goes into that exam with more confidence than someone who has only read the textbook.</p>
-    <p>PYQs are not optional preparation — for most competitive and board exams, they are the most efficient thing you can do.</p>
-
-    <h2 style="margin-top:2rem;">Study Tips</h2>
-    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Don't just solve PYQs — analyse why you got each wrong answer wrong. That's where the real learning is.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Aim for at least 70% PYQ coverage in every subject before your exam.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Past papers predict future patterns. If a topic appears in 5 out of 7 years, assume it'll appear again.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Update this tracker every few days so you can see your progress and stay motivated.</li>
-    </ul>
-  </div>
-</div>
-
-<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
-  <div class="container">
-    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">How many years of PYQs should I solve? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>For most exams, solving the last 5–10 years of previous year questions is a solid goal. For competitive exams with large question banks, focus on the most recent years first — question patterns change over time.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Is solving PYQs better than reading the textbook? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>For revision and final preparation, yes — PYQs are generally more efficient. They show you exactly what the exam expects. But you do need a solid base of conceptual understanding first. PYQs work best after you've covered the syllabus once.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What's a good PYQ coverage target? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Aim for 70% or above in every subject. Above 85% is excellent. If you're below 50% in a subject, that's a clear sign it needs urgent attention.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Can I use this for multiple exams? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Yes. Just run the tracker separately for each exam you're preparing for. The Save button stores your data in your browser so you can return to each one anytime.</p></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PYQ Coverage Tracker — MegaMocks</title>
+    <meta
+      name="description"
+      content="Track how many previous year questions you have solved per subject. See your PYQ coverage percentage and find what is still missing before your exam."
+    />
+    <link
+      rel="canonical"
+      href="https://megamocks.com/tools/pyq-coverage-tracker/"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span
+        ><a href="../tools/">Tools</a><span class="sep">/</span
+        ><span>PYQ Coverage Tracker</span>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
-  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
-  <div class="related-grid">
-    <a href="exam-readiness-index.html" class="related-card"><span class="r-icon">📊</span><span>Exam Readiness Index</span></a>
-    <a href="false-confidence-detector.html" class="related-card"><span class="r-icon">🎭</span><span>False Confidence Detector</span></a>
-    <a href="revision-gap-finder.html" class="related-card"><span class="r-icon">🔍</span><span>Revision Gap Finder</span></a>
-    <a href="study-load-balance-checker.html" class="related-card"><span class="r-icon">⚖️</span><span>Study Load Balance</span></a>
-  </div>
-</div>
+    <div class="container">
+      <div class="tool-intro">
+        <div
+          class="tool-icon"
+          style="
+            font-size: clamp(1.1rem, 4.5vw, 2.4rem);
+            margin-bottom: 0.75rem;
+          "
+        >
+          📋
+        </div>
+        <h1>PYQ Coverage Tracker</h1>
+        <p style="font-size: 1rem; color: var(--muted)">
+          Previous year questions are one of the best ways to prepare for any
+          exam. Track how many you've solved per subject and see exactly where
+          your coverage is missing.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--muted); font-style: italic">
+          ⏱ Takes about 2 minutes
+        </p>
+      </div>
+    </div>
 
-<div id="site-footer"></div>
-<script src="../js/components.js"></script>
-<script src="../js/main.js"></script>
-<script>
-function addRow(name='', total=50, solved=0) {
-  const c = document.getElementById('pyqContainer');
-  const d = document.createElement('div');
-  d.className='form-row-grid';d.style.cssText='margin-bottom:.6rem;';
-  d.innerHTML = `
-    <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Subject</label><input type="text" class="pn" placeholder="e.g. Physics" value="${name}"/></div>
-    <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Total PYQs</label><input type="number" class="pt" min="1" value="${total}" placeholder="50"/></div>
-    <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Solved</label><input type="number" class="ps" min="0" value="${solved}" placeholder="0"/></div>
-    <button onclick="this.closest('div').remove()" class="btn btn-outline btn-sm" style="height:42px;">✕</button>`;
-  c.appendChild(d);
-}
+    <div class="container">
+      <div class="ad-placeholder">
+        Advertisement space — AdSense placeholder
+      </div>
+    </div>
 
-function savePYQ() {
-  const data = [...document.querySelectorAll('.pn')].map((n, i) => ({
-    name: n.value,
-    total: document.querySelectorAll('.pt')[i].value,
-    solved: document.querySelectorAll('.ps')[i].value
-  }));
-  localStorage.setItem('mm_pyq', JSON.stringify(data));
-  alert('Saved to browser. You can continue tracking later.');
-}
+    <div class="container">
+      <div class="tool-ui-box">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.25rem;
+          "
+        >
+          <h3 style="color: var(--text)">Subjects &amp; PYQ Progress</h3>
+          <button class="btn btn-outline btn-sm" onclick="addRow()">
+            + Add Subject
+          </button>
+        </div>
 
-function trackPYQ() {
-  const names  = [...document.querySelectorAll('.pn')];
-  const totals = [...document.querySelectorAll('.pt')];
-  const solveds = [...document.querySelectorAll('.ps')];
+        <p style="font-size: 0.82rem; color: var(--muted); margin-bottom: 1rem">
+          For each subject, enter the total number of PYQs available and how
+          many you've solved so far.
+        </p>
 
-  const subjects = [];
-  names.forEach((n, i) => {
-    if (!n.value.trim()) return;
-    const total  = parseInt(totals[i].value) || 0;
-    const solved = Math.min(parseInt(solveds[i].value) || 0, total);
-    const pct    = total > 0 ? Math.round((solved / total) * 100) : 0;
-    subjects.push({ name: n.value.trim(), total, solved, pct, remaining: total - solved });
-  });
+        <div id="pyqContainer"></div>
 
-  if (!subjects.length) { alert('Add at least one subject.'); return; }
+        <button
+          class="btn btn-primary"
+          onclick="trackPYQ()"
+          style="width: 100%; justify-content: center; margin-top: 0.75rem"
+        >
+          Show My Coverage →
+        </button>
 
-  const overallTotal  = subjects.reduce((a, s) => a + s.total, 0);
-  const overallSolved = subjects.reduce((a, s) => a + s.solved, 0);
-  const overallPct    = overallTotal > 0 ? Math.round((overallSolved / overallTotal) * 100) : 0;
-  const overallColor  = overallPct >= 70 ? 'var(--success)' : overallPct >= 50 ? 'var(--warning)' : 'var(--danger)';
+        <div class="result-box" id="resultBox">
+          <div id="resultContent"></div>
+          <div class="result-actions">
+            <button
+              class="btn btn-outline btn-sm"
+              onclick="copyResult(document.getElementById('ct').value, this)"
+            >
+              📋 Copy
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="printResult()">
+              🖨 Print
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="savePYQ()">
+              💾 Save
+            </button>
+          </div>
+          <textarea
+            id="ct"
+            style="position: absolute; left: -9999px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
 
-  subjects.sort((a, b) => a.pct - b.pct);
+    <div class="container" style="margin-top: 2rem">
+      <div class="info-section">
+        <h2>Example Usage</h2>
+        <div class="example-box">
+          <strong>Inputs:</strong><br />
+          Physics: 80 total PYQs, 55 solved → 69% coverage<br />
+          Chemistry: 60 total PYQs, 12 solved → 20% coverage<br />
+          Maths: 100 total PYQs, 90 solved → 90% coverage<br /><br />
+          <strong>Result:</strong> Overall 62% coverage. Chemistry is critically
+          low — 48 questions remaining. Prioritise Chemistry PYQs immediately.
+        </div>
 
-  let html = `
+        <h2 style="margin-top: 2rem">How This Tool Works</h2>
+        <p>
+          For each subject, the tool calculates: (questions solved ÷ total
+          questions) × 100. It then shows your coverage as a percentage and a
+          progress bar. Subjects below 50% coverage are flagged as priority
+          areas.
+        </p>
+
+        <h2 style="margin-top: 2rem">Why PYQs Matter So Much</h2>
+        <p>
+          Previous year questions tell you exactly what the exam has tested
+          before. They show patterns in question types, topic weightage, and
+          difficulty level. A student who has solved 80%+ of PYQs for a subject
+          almost always goes into that exam with more confidence than someone
+          who has only read the textbook.
+        </p>
+        <p>
+          PYQs are not optional preparation — for most competitive and board
+          exams, they are the most efficient thing you can do.
+        </p>
+
+        <h2 style="margin-top: 2rem">Study Tips</h2>
+        <ul
+          style="
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+          "
+        >
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Don't just solve PYQs — analyse why you got each wrong answer
+            wrong. That's where the real learning is.
+          </li>
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Aim for at least 70% PYQ coverage in every subject before your
+            exam.
+          </li>
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Past papers predict future patterns. If a topic appears in 5 out
+            of 7 years, assume it'll appear again.
+          </li>
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Update this tracker every few days so you can see your progress
+            and stay motivated.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section
+      class="section"
+      style="
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        margin-top: 3rem;
+      "
+    >
+      <div class="container">
+        <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              How many years of PYQs should I solve?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                For most exams, solving the last 5–10 years of previous year
+                questions is a solid goal. For competitive exams with large
+                question banks, focus on the most recent years first — question
+                patterns change over time.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Is solving PYQs better than reading the textbook?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                For revision and final preparation, yes — PYQs are generally
+                more efficient. They show you exactly what the exam expects. But
+                you do need a solid base of conceptual understanding first. PYQs
+                work best after you've covered the syllabus once.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What's a good PYQ coverage target?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Aim for 70% or above in every subject. Above 85% is excellent.
+                If you're below 50% in a subject, that's a clear sign it needs
+                urgent attention.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Can I use this for multiple exams?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Yes. Just run the tracker separately for each exam you're
+                preparing for. The Save button stores your data in your browser
+                so you can return to each one anytime.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="margin-top: 3rem; margin-bottom: 2rem">
+      <h2 style="margin-bottom: 1.25rem">Related Tools</h2>
+      <div class="related-grid">
+        <a href="exam-readiness-index.html" class="related-card"
+          ><span class="r-icon">📊</span><span>Exam Readiness Index</span></a
+        >
+        <a href="false-confidence-detector.html" class="related-card"
+          ><span class="r-icon">🎭</span
+          ><span>False Confidence Detector</span></a
+        >
+        <a href="revision-gap-finder.html" class="related-card"
+          ><span class="r-icon">🔍</span><span>Revision Gap Finder</span></a
+        >
+        <a href="study-load-balance-checker.html" class="related-card"
+          ><span class="r-icon">⚖️</span><span>Study Load Balance</span></a
+        >
+      </div>
+    </div>
+
+    <div id="site-footer"></div>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      function addRow(name = "", total = 50, solved = 0) {
+        const c = document.getElementById("pyqContainer");
+
+        const d = document.createElement("div");
+        d.className = "pyq-row";
+
+        d.innerHTML = `
+
+    <div class="form-group subject-group">
+      <label style="font-size:.78rem;">Subject</label>
+      <input 
+        type="text" 
+        class="pn" 
+        placeholder="e.g. Physics" 
+        value="${name}"
+      />
+    </div>
+
+    <div class="pyq-bottom-row">
+
+      <div class="form-group" style="margin:0;">
+        <label style="font-size:.78rem;">Total PYQs</label>
+        <input 
+          type="number" 
+          class="pt" 
+          min="1" 
+          value="${total}" 
+          placeholder="50"
+        />
+      </div>
+
+      <div class="form-group" style="margin:0;">
+        <label style="font-size:.78rem;">Solved</label>
+        <input 
+          type="number" 
+          class="ps" 
+          min="0" 
+          value="${solved}" 
+          placeholder="0"
+        />
+      </div>
+
+      <button 
+        onclick="this.closest('.pyq-row').remove()" 
+        class="btn btn-outline btn-sm remove-btn"
+        title="Remove"
+      >
+        ✕
+      </button>
+
+    </div>
+  `;
+
+        c.appendChild(d);
+      }
+
+      function savePYQ() {
+        const data = [...document.querySelectorAll(".pn")].map((n, i) => ({
+          name: n.value,
+          total: document.querySelectorAll(".pt")[i].value,
+          solved: document.querySelectorAll(".ps")[i].value,
+        }));
+        localStorage.setItem("mm_pyq", JSON.stringify(data));
+        alert("Saved to browser. You can continue tracking later.");
+      }
+
+      function trackPYQ() {
+        const names = [...document.querySelectorAll(".pn")];
+        const totals = [...document.querySelectorAll(".pt")];
+        const solveds = [...document.querySelectorAll(".ps")];
+
+        const subjects = [];
+        names.forEach((n, i) => {
+          if (!n.value.trim()) return;
+          const total = parseInt(totals[i].value) || 0;
+          const solved = Math.min(parseInt(solveds[i].value) || 0, total);
+          const pct = total > 0 ? Math.round((solved / total) * 100) : 0;
+          subjects.push({
+            name: n.value.trim(),
+            total,
+            solved,
+            pct,
+            remaining: total - solved,
+          });
+        });
+
+        if (!subjects.length) {
+          alert("Add at least one subject.");
+          return;
+        }
+
+        const overallTotal = subjects.reduce((a, s) => a + s.total, 0);
+        const overallSolved = subjects.reduce((a, s) => a + s.solved, 0);
+        const overallPct =
+          overallTotal > 0
+            ? Math.round((overallSolved / overallTotal) * 100)
+            : 0;
+        const overallColor =
+          overallPct >= 70
+            ? "var(--success)"
+            : overallPct >= 50
+              ? "var(--warning)"
+              : "var(--danger)";
+
+        subjects.sort((a, b) => a.pct - b.pct);
+
+        let html = `
     <div style="display:flex;align-items:flex-start;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;flex-wrap:wrap;">
       <div>
         <div class="result-score" style="color:${overallColor};font-size:clamp(1.2rem,5vw,2.8rem);">${overallPct}%</div>
@@ -174,12 +422,24 @@ function trackPYQ() {
     </div>
     <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;">`;
 
-  const copyLines = [`MegaMocks — PYQ Coverage Tracker\nOverall: ${overallPct}% (${overallSolved}/${overallTotal})\n`];
+        const copyLines = [
+          `MegaMocks — PYQ Coverage Tracker\nOverall: ${overallPct}% (${overallSolved}/${overallTotal})\n`,
+        ];
 
-  subjects.forEach(s => {
-    const bc  = s.pct >= 70 ? 'badge-green' : s.pct >= 50 ? 'badge-yellow' : 'badge-red';
-    const bar = s.pct >= 70 ? 'var(--success)' : s.pct >= 50 ? 'var(--warning)' : 'var(--danger)';
-    html += `
+        subjects.forEach((s) => {
+          const bc =
+            s.pct >= 70
+              ? "badge-green"
+              : s.pct >= 50
+                ? "badge-yellow"
+                : "badge-red";
+          const bar =
+            s.pct >= 70
+              ? "var(--success)"
+              : s.pct >= 50
+                ? "var(--warning)"
+                : "var(--danger)";
+          html += `
       <div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;flex-wrap:wrap;gap:.4rem;">
           <strong style="color:var(--text);font-size:.9rem;">${s.name}</strong>
@@ -190,38 +450,42 @@ function trackPYQ() {
         </div>
         <div class="progress-wrap"><div class="progress-bar" style="width:${s.pct}%;background:${bar};"></div></div>
       </div>`;
-    copyLines.push(`${s.name}: ${s.pct}% (${s.solved}/${s.total}, ${s.remaining} remaining)`);
-  });
+          copyLines.push(
+            `${s.name}: ${s.pct}% (${s.solved}/${s.total}, ${s.remaining} remaining)`,
+          );
+        });
 
-  html += `</div>`;
+        html += `</div>`;
 
-  const critical = subjects.filter(s => s.pct < 50);
-  if (critical.length) {
-    html += `<h4 style="color:var(--danger);font-size:.85rem;margin-bottom:.5rem;">Priority subjects (below 50%):</h4>
+        const critical = subjects.filter((s) => s.pct < 50);
+        if (critical.length) {
+          html += `<h4 style="color:var(--danger);font-size:.85rem;margin-bottom:.5rem;">Priority subjects (below 50%):</h4>
     <ul class="result-suggestions">
-      ${critical.map(s => `<li>Solve ${s.remaining} more PYQs for <strong>${s.name}</strong> — currently at ${s.pct}%</li>`).join('')}
+      ${critical.map((s) => `<li>Solve ${s.remaining} more PYQs for <strong>${s.name}</strong> — currently at ${s.pct}%</li>`).join("")}
     </ul>`;
-  } else {
-    html += `<div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);">
+        } else {
+          html += `<div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);">
       ✅ All subjects are above 50% coverage. Keep pushing towards 70%+ across the board.
     </div>`;
-  }
+        }
 
-  document.getElementById('resultContent').innerHTML = html;
-  document.getElementById('ct').value = copyLines.join('\n');
-  const box = document.getElementById('resultBox');
-  box.classList.add('show');
-  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
+        document.getElementById("resultContent").innerHTML = html;
+        document.getElementById("ct").value = copyLines.join("\n");
+        const box = document.getElementById("resultBox");
+        box.classList.add("show");
+        box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('mm_pyq');
-  if (saved) {
-    JSON.parse(saved).forEach(d => addRow(d.name, d.total, d.solved));
-  } else {
-    addRow('', 50, 0); addRow('', 50, 0); addRow('', 50, 0);
-  }
-});
-</script>
-</body>
+      document.addEventListener("DOMContentLoaded", () => {
+        const saved = localStorage.getItem("mm_pyq");
+        if (saved) {
+          JSON.parse(saved).forEach((d) => addRow(d.name, d.total, d.solved));
+        } else {
+          addRow("", 50, 0);
+          addRow("", 50, 0);
+          addRow("", 50, 0);
+        }
+      });
+    </script>
+  </body>
 </html>

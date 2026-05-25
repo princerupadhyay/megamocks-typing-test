@@ -1398,3 +1398,148 @@ footer {
   background: var(--accent);
   border-radius: 999px;
 }
+
+.topic-row {
+  margin-bottom: 0.75rem;
+}
+
+.topic-fields {
+  display: flex;
+  flex-direction: column;
+}
+
+.topic-bottom-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-end;
+}
+
+.remove-topic-btn {
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pyq-row {
+  margin-bottom: 1rem;
+}
+
+.subject-group {
+  margin-bottom: 0.35rem;
+}
+
+.pyq-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  gap: 0.6rem;
+  align-items: end;
+}
+
+.remove-btn {
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .pyq-bottom-row {
+    grid-template-columns: 1fr 1fr auto;
+  }
+}
+
+.time-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.time-grid .form-group {
+  margin: 0;
+}
+
+.time-grid label {
+  line-height: 1.35;
+  display: block;
+  margin-bottom: 0.35rem;
+}
+
+@media (max-width: 768px) {
+  .time-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .time-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.exam-section-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.section-name-group {
+  margin-bottom: 0.45rem;
+}
+
+.section-bottom-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.2fr auto;
+  gap: 0.6rem;
+  align-items: end;
+}
+
+.section-select {
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: Poppins, sans-serif;
+  font-size: 0.82rem;
+  padding: 0.5rem 0.6rem;
+  width: 100%;
+}
+
+.remove-section-btn {
+  height: 42px;
+  min-width: 42px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .section-bottom-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .remove-section-btn {
+    width: 100%;
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-bottom-row {
+    grid-template-columns: 1fr;
+  }
+
+  .remove-section-btn {
+    grid-column: auto;
+  }
+}

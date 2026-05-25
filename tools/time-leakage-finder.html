@@ -1,221 +1,539 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Time Leakage Finder — MegaMocks</title>
-  <meta name="description" content="Find where your study time is actually disappearing. Map your typical day and discover hidden time leaks that are costing you hours every week." />
-  <link rel="canonical" href="https://megamocks.com/tools/time-leakage-finder/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
-</head>
-<body>
-<div id="site-header"></div>
-<div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>Time Leakage Finder</span></div>
-</div>
-
-<div class="container">
-  <div class="tool-intro">
-    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">⏳</div>
-    <h1>Time Leakage Finder</h1>
-    <p style="font-size:1rem;color:var(--muted);">You wake up with 16 hours. You go to bed feeling like you studied for 2. Where did the rest go? This tool finds out.</p>
-    <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes — be honest about your day</p>
-  </div>
-</div>
-
-<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
-
-<div class="container">
-  <div class="tool-ui-box">
-    <h3 style="color:var(--text);margin-bottom:1.25rem;">How Do You Spend a Typical Day?</h3>
-    <p style="font-size:.85rem;color:var(--muted);margin-bottom:1.25rem;">Enter honest estimates in hours. Decimals are fine (e.g. 1.5 for 90 minutes). All values default to 0.</p>
-
-    <!-- Fixed activities -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;margin-bottom:1.5rem;">
-
-      <div class="form-group" style="margin:0;">
-        <label>😴 Sleep</label>
-        <input type="number" id="a_sleep" min="0" max="24" step=".5" value="7" placeholder="7"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>🏫 School / College / Work</label>
-        <input type="number" id="a_school" min="0" max="24" step=".5" value="6" placeholder="6"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>🍽 Meals &amp; personal hygiene</label>
-        <input type="number" id="a_meals" min="0" max="24" step=".5" value="1.5" placeholder="1.5"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>🚌 Commuting / travel</label>
-        <input type="number" id="a_commute" min="0" max="24" step=".5" value="1" placeholder="1"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>📱 Phone / social media</label>
-        <input type="number" id="a_phone" min="0" max="24" step=".5" value="2" placeholder="2"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>📺 TV / streaming / YouTube</label>
-        <input type="number" id="a_tv" min="0" max="24" step=".5" value="1.5" placeholder="1.5"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>🎮 Gaming / hobbies</label>
-        <input type="number" id="a_gaming" min="0" max="24" step=".5" value="0" placeholder="0"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>👨‍👩‍👧 Family / social time</label>
-        <input type="number" id="a_social" min="0" max="24" step=".5" value="1" placeholder="1"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>🧹 Chores / other tasks</label>
-        <input type="number" id="a_chores" min="0" max="24" step=".5" value="0.5" placeholder="0.5"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>📚 Actual studying</label>
-        <input type="number" id="a_study" min="0" max="24" step=".5" value="2" placeholder="2"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>☕ Breaks / idle time</label>
-        <input type="number" id="a_breaks" min="0" max="24" step=".5" value="1" placeholder="1"/>
-      </div>
-      <div class="form-group" style="margin:0;">
-        <label>✏️ Other (specify below)</label>
-        <input type="number" id="a_other" min="0" max="24" step=".5" value="0" placeholder="0"/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Time Leakage Finder — MegaMocks</title>
+    <meta
+      name="description"
+      content="Find where your study time is actually disappearing. Map your typical day and discover hidden time leaks that are costing you hours every week."
+    />
+    <link
+      rel="canonical"
+      href="https://megamocks.com/tools/time-leakage-finder/"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="../index.html">Home</a><span class="sep">/</span
+        ><a href="../tools/">Tools</a><span class="sep">/</span
+        ><span>Time Leakage Finder</span>
       </div>
     </div>
 
-    <div class="form-group">
-      <label for="otherLabel">What is "Other"? (optional)</label>
-      <input type="text" id="otherLabel" placeholder="e.g. Prayer time, gym, tuition..." />
-    </div>
-
-    <div class="form-group">
-      <label>How many hours per day do you want to study?
-        <span class="range-val" id="studyGoal_val">5</span> hrs
-      </label>
-      <input type="range" id="studyGoal" min="1" max="14" value="5" />
-    </div>
-
-    <button class="btn btn-primary" onclick="findLeaks()" style="width:100%;justify-content:center;margin-top:.5rem;">Find My Time Leaks →</button>
-
-    <div class="result-box" id="resultBox">
-      <div id="resultContent"></div>
-      <div class="result-actions">
-        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('ct').value,this)">📋 Copy</button>
-        <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
-      </div>
-      <textarea id="ct" style="position:absolute;left:-9999px;"></textarea>
-    </div>
-  </div>
-</div>
-
-<div class="container" style="margin-top:2rem;">
-  <div class="info-section">
-    <h2>Example Usage</h2>
-    <div class="example-box">
-      <strong>Typical day entered:</strong> Sleep 7h · School 6h · Meals 1.5h · Commute 1h · Phone 3h · TV 2h · Studying 1h · Breaks 1.5h<br/><br/>
-      <strong>Total accounted for:</strong> 23h<br/>
-      <strong>Study hours:</strong> Only 1h of actual studying<br/>
-      <strong>Biggest leak:</strong> Phone (3h) + TV (2h) = 5 hours that could partially go to studying<br/>
-      <strong>Result:</strong> Even cutting screen time by half gives you 2.5 extra study hours daily.
-    </div>
-
-    <h2 style="margin-top:2rem;">How This Tool Works</h2>
-    <p>The tool adds up all your hours, checks how they compare to 24 hours, and separates essential time (sleep, school, meals) from discretionary time (phone, TV, gaming). It then shows how much time you have truly available for studying versus how much you're actually using.</p>
-    <p>The gap between "available" and "actual study time" is your leakage. Even recovering 1–2 hours a day adds up to 7–14 extra study hours a week.</p>
-
-    <h2 style="margin-top:2rem;">Why This Matters</h2>
-    <p>Most students don't actually know where their time goes. It disappears in small pieces — 20 minutes here, 40 minutes there — until the day is gone. Seeing the numbers laid out makes it concrete. You can't argue with a number.</p>
-
-    <h2 style="margin-top:2rem;">Study Tips</h2>
-    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Your phone is probably your biggest time leak. Even just limiting it to 45 minutes a day can free up 1–2 study hours.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Commute time is study time. Flashcards, podcasts, or reading — don't let it go to waste.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ You don't need to find 4 extra hours. Finding 1 clean, focused hour is worth more than 3 distracted ones.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Track your day honestly for just one week. You'll be surprised how quickly you find unused pockets of time.</li>
-    </ul>
-  </div>
-</div>
-
-<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
-  <div class="container">
-    <div class="section-title"><h2>Frequently Asked Questions</h2></div>
-    <div class="faq-list">
-      <div class="faq-item">
-        <button class="faq-question">What counts as a "time leak"? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>A time leak is any discretionary activity that takes more time than you realise or intended. Scrolling social media for "5 minutes" that turns into 90 minutes is a classic leak. Passive TV watching, unnecessary browsing, and unplanned chatting all count.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">Should I cut all leisure time completely? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>No — that's burnout territory. The goal isn't to eliminate rest. It's to make your leisure time intentional. Plan when you relax, and study when you study. The problem is unintentional drifting, not relaxation itself.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What if my total is more than 24 hours? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>That means you're underestimating at least one activity. The tool will flag this. Try to be more honest — especially with phone and screen time, which most people significantly underestimate.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">What if I genuinely have very little free time? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Some students really do have heavy commitments — work, family, long commutes. In that case, efficiency matters more than quantity. Focus on active recall techniques so every study hour counts more.</p></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-question">How often should I run this tool? <span class="faq-chevron">▼</span></button>
-        <div class="faq-answer"><p>Once a week during exam prep is ideal. Your schedule shifts, and so do your habits. Checking regularly keeps you honest and helps you spot when things start slipping.</p></div>
+    <div class="container">
+      <div class="tool-intro">
+        <div
+          class="tool-icon"
+          style="
+            font-size: clamp(1.1rem, 4.5vw, 2.4rem);
+            margin-bottom: 0.75rem;
+          "
+        >
+          ⏳
+        </div>
+        <h1>Time Leakage Finder</h1>
+        <p style="font-size: 1rem; color: var(--muted)">
+          You wake up with 16 hours. You go to bed feeling like you studied for
+          2. Where did the rest go? This tool finds out.
+        </p>
+        <p style="font-size: 0.85rem; color: var(--muted); font-style: italic">
+          ⏱ Takes about 2 minutes — be honest about your day
+        </p>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
-  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
-  <div class="related-grid">
-    <a href="daily-study-target-validator.html" class="related-card"><span class="r-icon">🎯</span><span>Daily Study Target Validator</span></a>
-    <a href="study-load-balance-checker.html" class="related-card"><span class="r-icon">⚖️</span><span>Study Load Balance Checker</span></a>
-    <a href="exam-readiness-index.html" class="related-card"><span class="r-icon">📊</span><span>Exam Readiness Index</span></a>
-    <a href="weak-topic-recovery-planner.html" class="related-card"><span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span></a>
-  </div>
-</div>
+    <div class="container">
+      <div class="ad-placeholder">
+        Advertisement space — AdSense placeholder
+      </div>
+    </div>
 
-<div id="site-footer"></div>
-<script src="../js/components.js"></script>
-<script src="../js/main.js"></script>
-<script>
-function findLeaks() {
-  const get = id => parseFloat(document.getElementById(id).value) || 0;
-  const sleep   = get('a_sleep');
-  const school  = get('a_school');
-  const meals   = get('a_meals');
-  const commute = get('a_commute');
-  const phone   = get('a_phone');
-  const tv      = get('a_tv');
-  const gaming  = get('a_gaming');
-  const social  = get('a_social');
-  const chores  = get('a_chores');
-  const study   = get('a_study');
-  const breaks  = get('a_breaks');
-  const other   = get('a_other');
-  const otherLbl = document.getElementById('otherLabel').value.trim() || 'Other';
-  const goal    = parseInt(document.getElementById('studyGoal').value);
+    <div class="container">
+      <div class="tool-ui-box">
+        <h3 style="color: var(--text); margin-bottom: 1.25rem">
+          How Do You Spend a Typical Day?
+        </h3>
+        <p
+          style="
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 1.25rem;
+          "
+        >
+          Enter honest estimates in hours. Decimals are fine (e.g. 1.5 for 90
+          minutes). All values default to 0.
+        </p>
 
-  const total = sleep + school + meals + commute + phone + tv + gaming + social + chores + study + breaks + other;
-  const essential = sleep + school + meals + commute + chores + other;
-  const discretionary = phone + tv + gaming + social + breaks;
-  const available = 24 - essential;
-  const leakage = Math.max(0, discretionary - (24 - essential - study));
-  const studyGap = Math.max(0, goal - study);
+        <!-- Fixed activities -->
+        <div class="time-grid">
+          <div class="form-group" style="margin: 0">
+            <label>😴 Sleep</label>
+            <input
+              type="number"
+              id="a_sleep"
+              min="0"
+              max="24"
+              step=".5"
+              value="7"
+              placeholder="7"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>🏫 School / College / Work</label>
+            <input
+              type="number"
+              id="a_school"
+              min="0"
+              max="24"
+              step=".5"
+              value="6"
+              placeholder="6"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>🍽 Meals &amp; personal hygiene</label>
+            <input
+              type="number"
+              id="a_meals"
+              min="0"
+              max="24"
+              step=".5"
+              value="1.5"
+              placeholder="1.5"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>🚌 Commuting / travel</label>
+            <input
+              type="number"
+              id="a_commute"
+              min="0"
+              max="24"
+              step=".5"
+              value="1"
+              placeholder="1"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>📱 Phone / social media</label>
+            <input
+              type="number"
+              id="a_phone"
+              min="0"
+              max="24"
+              step=".5"
+              value="2"
+              placeholder="2"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>📺 TV / streaming / YouTube</label>
+            <input
+              type="number"
+              id="a_tv"
+              min="0"
+              max="24"
+              step=".5"
+              value="1.5"
+              placeholder="1.5"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>🎮 Gaming / hobbies</label>
+            <input
+              type="number"
+              id="a_gaming"
+              min="0"
+              max="24"
+              step=".5"
+              value="0"
+              placeholder="0"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>👨‍👩‍👧 Family / social time</label>
+            <input
+              type="number"
+              id="a_social"
+              min="0"
+              max="24"
+              step=".5"
+              value="1"
+              placeholder="1"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>🧹 Chores / other tasks</label>
+            <input
+              type="number"
+              id="a_chores"
+              min="0"
+              max="24"
+              step=".5"
+              value="0.5"
+              placeholder="0.5"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>📚 Actual studying</label>
+            <input
+              type="number"
+              id="a_study"
+              min="0"
+              max="24"
+              step=".5"
+              value="2"
+              placeholder="2"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>☕ Breaks / idle time</label>
+            <input
+              type="number"
+              id="a_breaks"
+              min="0"
+              max="24"
+              step=".5"
+              value="1"
+              placeholder="1"
+            />
+          </div>
+          <div class="form-group" style="margin: 0">
+            <label>✏️ Other (specify below)</label>
+            <input
+              type="number"
+              id="a_other"
+              min="0"
+              max="24"
+              step=".5"
+              value="0"
+              placeholder="0"
+            />
+          </div>
+        </div>
 
-  const over = total > 24;
-  const statusColor = study >= goal ? 'var(--success)' : study >= goal * 0.6 ? 'var(--warning)' : 'var(--danger)';
+        <div class="form-group">
+          <label for="otherLabel">What is "Other"? (optional)</label>
+          <input
+            type="text"
+            id="otherLabel"
+            placeholder="e.g. Prayer time, gym, tuition..."
+          />
+        </div>
 
-  // Build leaks list sorted by size
-  const leakItems = [
-    { label: '📱 Phone / Social media', hrs: phone },
-    { label: '📺 TV / Streaming / YouTube', hrs: tv },
-    { label: '🎮 Gaming / Hobbies', hrs: gaming },
-    { label: '☕ Unplanned breaks / idle', hrs: breaks },
-    { label: '👨‍👩‍👧 Social time', hrs: social },
-  ].filter(l => l.hrs > 0).sort((a, b) => b.hrs - a.hrs);
+        <div class="form-group">
+          <label
+            >How many hours per day do you want to study?
+            <span class="range-val" id="studyGoal_val">5</span> hrs
+          </label>
+          <input type="range" id="studyGoal" min="1" max="14" value="5" />
+        </div>
 
-  let html = `
+        <button
+          class="btn btn-primary"
+          onclick="findLeaks()"
+          style="width: 100%; justify-content: center; margin-top: 0.5rem"
+        >
+          Find My Time Leaks →
+        </button>
+
+        <div class="result-box" id="resultBox">
+          <div id="resultContent"></div>
+          <div class="result-actions">
+            <button
+              class="btn btn-outline btn-sm"
+              onclick="copyResult(document.getElementById('ct').value, this)"
+            >
+              📋 Copy
+            </button>
+            <button class="btn btn-outline btn-sm" onclick="printResult()">
+              🖨 Print
+            </button>
+          </div>
+          <textarea
+            id="ct"
+            style="position: absolute; left: -9999px"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+
+    <div class="container" style="margin-top: 2rem">
+      <div class="info-section">
+        <h2>Example Usage</h2>
+        <div class="example-box">
+          <strong>Typical day entered:</strong> Sleep 7h · School 6h · Meals
+          1.5h · Commute 1h · Phone 3h · TV 2h · Studying 1h · Breaks 1.5h<br /><br />
+          <strong>Total accounted for:</strong> 23h<br />
+          <strong>Study hours:</strong> Only 1h of actual studying<br />
+          <strong>Biggest leak:</strong> Phone (3h) + TV (2h) = 5 hours that
+          could partially go to studying<br />
+          <strong>Result:</strong> Even cutting screen time by half gives you
+          2.5 extra study hours daily.
+        </div>
+
+        <h2 style="margin-top: 2rem">How This Tool Works</h2>
+        <p>
+          The tool adds up all your hours, checks how they compare to 24 hours,
+          and separates essential time (sleep, school, meals) from discretionary
+          time (phone, TV, gaming). It then shows how much time you have truly
+          available for studying versus how much you're actually using.
+        </p>
+        <p>
+          The gap between "available" and "actual study time" is your leakage.
+          Even recovering 1–2 hours a day adds up to 7–14 extra study hours a
+          week.
+        </p>
+
+        <h2 style="margin-top: 2rem">Why This Matters</h2>
+        <p>
+          Most students don't actually know where their time goes. It disappears
+          in small pieces — 20 minutes here, 40 minutes there — until the day is
+          gone. Seeing the numbers laid out makes it concrete. You can't argue
+          with a number.
+        </p>
+
+        <h2 style="margin-top: 2rem">Study Tips</h2>
+        <ul
+          style="
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+          "
+        >
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Your phone is probably your biggest time leak. Even just limiting
+            it to 45 minutes a day can free up 1–2 study hours.
+          </li>
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Commute time is study time. Flashcards, podcasts, or reading —
+            don't let it go to waste.
+          </li>
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → You don't need to find 4 extra hours. Finding 1 clean, focused
+            hour is worth more than 3 distracted ones.
+          </li>
+          <li
+            style="
+              background: var(--card);
+              border-radius: 8px;
+              padding: 0.75rem 1rem;
+              font-size: 0.88rem;
+              color: var(--text);
+              border: 1px solid var(--border);
+            "
+          >
+            → Track your day honestly for just one week. You'll be surprised how
+            quickly you find unused pockets of time.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <section
+      class="section"
+      style="
+        background: var(--card);
+        border-top: 1px solid var(--border);
+        margin-top: 3rem;
+      "
+    >
+      <div class="container">
+        <div class="section-title"><h2>Frequently Asked Questions</h2></div>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question">
+              What counts as a "time leak"? <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                A time leak is any discretionary activity that takes more time
+                than you realise or intended. Scrolling social media for "5
+                minutes" that turns into 90 minutes is a classic leak. Passive
+                TV watching, unnecessary browsing, and unplanned chatting all
+                count.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              Should I cut all leisure time completely?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                No — that's burnout territory. The goal isn't to eliminate rest.
+                It's to make your leisure time intentional. Plan when you relax,
+                and study when you study. The problem is unintentional drifting,
+                not relaxation itself.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What if my total is more than 24 hours?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                That means you're underestimating at least one activity. The
+                tool will flag this. Try to be more honest — especially with
+                phone and screen time, which most people significantly
+                underestimate.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              What if I genuinely have very little free time?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Some students really do have heavy commitments — work, family,
+                long commutes. In that case, efficiency matters more than
+                quantity. Focus on active recall techniques so every study hour
+                counts more.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question">
+              How often should I run this tool?
+              <span class="faq-chevron">▼</span>
+            </button>
+            <div class="faq-answer">
+              <p>
+                Once a week during exam prep is ideal. Your schedule shifts, and
+                so do your habits. Checking regularly keeps you honest and helps
+                you spot when things start slipping.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container" style="margin-top: 3rem; margin-bottom: 2rem">
+      <h2 style="margin-bottom: 1.25rem">Related Tools</h2>
+      <div class="related-grid">
+        <a href="daily-study-target-validator.html" class="related-card"
+          ><span class="r-icon">🎯</span
+          ><span>Daily Study Target Validator</span></a
+        >
+        <a href="study-load-balance-checker.html" class="related-card"
+          ><span class="r-icon">⚖️</span
+          ><span>Study Load Balance Checker</span></a
+        >
+        <a href="exam-readiness-index.html" class="related-card"
+          ><span class="r-icon">📊</span><span>Exam Readiness Index</span></a
+        >
+        <a href="weak-topic-recovery-planner.html" class="related-card"
+          ><span class="r-icon">🛠️</span
+          ><span>Weak Topic Recovery Planner</span></a
+        >
+      </div>
+    </div>
+
+    <div id="site-footer"></div>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+      function findLeaks() {
+        const get = (id) => parseFloat(document.getElementById(id).value) || 0;
+        const sleep = get("a_sleep");
+        const school = get("a_school");
+        const meals = get("a_meals");
+        const commute = get("a_commute");
+        const phone = get("a_phone");
+        const tv = get("a_tv");
+        const gaming = get("a_gaming");
+        const social = get("a_social");
+        const chores = get("a_chores");
+        const study = get("a_study");
+        const breaks = get("a_breaks");
+        const other = get("a_other");
+        const otherLbl =
+          document.getElementById("otherLabel").value.trim() || "Other";
+        const goal = parseInt(document.getElementById("studyGoal").value);
+
+        const total =
+          sleep +
+          school +
+          meals +
+          commute +
+          phone +
+          tv +
+          gaming +
+          social +
+          chores +
+          study +
+          breaks +
+          other;
+        const essential = sleep + school + meals + commute + chores + other;
+        const discretionary = phone + tv + gaming + social + breaks;
+        const available = 24 - essential;
+        const leakage = Math.max(0, discretionary - (24 - essential - study));
+        const studyGap = Math.max(0, goal - study);
+
+        const over = total > 24;
+        const statusColor =
+          study >= goal
+            ? "var(--success)"
+            : study >= goal * 0.6
+              ? "var(--warning)"
+              : "var(--danger)";
+
+        // Build leaks list sorted by size
+        const leakItems = [
+          { label: "📱 Phone / Social media", hrs: phone },
+          { label: "📺 TV / Streaming / YouTube", hrs: tv },
+          { label: "🎮 Gaming / Hobbies", hrs: gaming },
+          { label: "☕ Unplanned breaks / idle", hrs: breaks },
+          { label: "👨‍👩‍👧 Social time", hrs: social },
+        ]
+          .filter((l) => l.hrs > 0)
+          .sort((a, b) => b.hrs - a.hrs);
+
+        let html = `
     <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.25rem;">
       <div style="text-align:center;">
         <div class="result-score" style="color:${statusColor};font-size:clamp(1.1rem,4.5vw,2.4rem);">${study}h</div>
@@ -226,79 +544,83 @@ function findLeaks() {
         <div class="result-label">Available after essentials</div>
       </div>
       <div style="text-align:center;">
-        <div class="result-score" style="color:${studyGap > 0 ? 'var(--danger)' : 'var(--success)'};font-size:clamp(1.1rem,4.5vw,2.4rem);">${studyGap > 0 ? '-' + studyGap.toFixed(1) : '✓'}${studyGap > 0 ? 'h' : ''}</div>
-        <div class="result-label">${studyGap > 0 ? 'Short of your ' + goal + 'h goal' : 'Hitting your study goal'}</div>
+        <div class="result-score" style="color:${studyGap > 0 ? "var(--danger)" : "var(--success)"};font-size:clamp(1.1rem,4.5vw,2.4rem);">${studyGap > 0 ? "-" + studyGap.toFixed(1) : "✓"}${studyGap > 0 ? "h" : ""}</div>
+        <div class="result-label">${studyGap > 0 ? "Short of your " + goal + "h goal" : "Hitting your study goal"}</div>
       </div>
     </div>`;
 
-  if (over) {
-    html += `<div style="background:rgba(248,113,113,.1);border:1px solid var(--danger);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.88rem;color:var(--text);">
+        if (over) {
+          html += `<div style="background:rgba(248,113,113,.1);border:1px solid var(--danger);border-radius:8px;padding:.75rem 1rem;margin-bottom:1rem;font-size:.88rem;color:var(--text);">
       ⚠️ Your total adds up to ${total.toFixed(1)} hours — more than 24. You're underestimating at least one activity. Check your phone and screen time especially.
     </div>`;
-  }
+        }
 
-  // Day breakdown bar
-  const segments = [
-    { label: 'Sleep', hrs: sleep, color: '#6366f1' },
-    { label: 'School/Work', hrs: school, color: '#8b5cf6' },
-    { label: 'Essentials', hrs: meals + commute + chores + other, color: '#94a3b8' },
-    { label: 'Studying', hrs: study, color: '#4ade80' },
-    { label: 'Phone', hrs: phone, color: '#f87171' },
-    { label: 'TV', hrs: tv, color: '#fb923c' },
-    { label: 'Gaming', hrs: gaming, color: '#fbbf24' },
-    { label: 'Social', hrs: social, color: '#a78bfa' },
-    { label: 'Breaks', hrs: breaks, color: '#64748b' },
-  ].filter(s => s.hrs > 0);
+        // Day breakdown bar
+        const segments = [
+          { label: "Sleep", hrs: sleep, color: "#6366f1" },
+          { label: "School/Work", hrs: school, color: "#8b5cf6" },
+          {
+            label: "Essentials",
+            hrs: meals + commute + chores + other,
+            color: "#94a3b8",
+          },
+          { label: "Studying", hrs: study, color: "#4ade80" },
+          { label: "Phone", hrs: phone, color: "#f87171" },
+          { label: "TV", hrs: tv, color: "#fb923c" },
+          { label: "Gaming", hrs: gaming, color: "#fbbf24" },
+          { label: "Social", hrs: social, color: "#a78bfa" },
+          { label: "Breaks", hrs: breaks, color: "#64748b" },
+        ].filter((s) => s.hrs > 0);
 
-  html += `<h4 style="color:var(--text);font-size:.85rem;margin-bottom:.6rem;">How your 24 hours are used:</h4>
+        html += `<h4 style="color:var(--text);font-size:.85rem;margin-bottom:.6rem;">How your 24 hours are used:</h4>
   <div style="display:flex;height:20px;border-radius:10px;overflow:hidden;margin-bottom:.5rem;">`;
-  segments.forEach(s => {
-    const w = Math.min(100, (s.hrs / 24) * 100).toFixed(1);
-    html += `<div style="width:${w}%;background:${s.color};title='${s.label}: ${s.hrs}h';" title="${s.label}: ${s.hrs}h"></div>`;
-  });
-  html += `</div>
+        segments.forEach((s) => {
+          const w = Math.min(100, (s.hrs / 24) * 100).toFixed(1);
+          html += `<div style="width:${w}%;background:${s.color};title='${s.label}: ${s.hrs}h';" title="${s.label}: ${s.hrs}h"></div>`;
+        });
+        html += `</div>
   <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.25rem;">
-    ${segments.map(s => `<span style="font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.25rem;"><span style="width:8px;height:8px;border-radius:50%;background:${s.color};display:inline-block;"></span>${s.label} ${s.hrs}h</span>`).join('')}
+    ${segments.map((s) => `<span style="font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.25rem;"><span style="width:8px;height:8px;border-radius:50%;background:${s.color};display:inline-block;"></span>${s.label} ${s.hrs}h</span>`).join("")}
   </div>`;
 
-  if (leakItems.length > 0) {
-    html += `<h4 style="color:var(--text);font-size:.85rem;margin-bottom:.6rem;">⏳ Time leaks — discretionary activities:</h4>
+        if (leakItems.length > 0) {
+          html += `<h4 style="color:var(--text);font-size:.85rem;margin-bottom:.6rem;">⏳ Time leaks — discretionary activities:</h4>
     <div style="display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem;">`;
-    leakItems.forEach(l => {
-      const potential = Math.min(l.hrs, l.hrs * 0.5).toFixed(1);
-      html += `<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.65rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem;">
+          leakItems.forEach((l) => {
+            const potential = Math.min(l.hrs, l.hrs * 0.5).toFixed(1);
+            html += `<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.65rem 1rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.4rem;">
         <span style="font-size:.88rem;color:var(--text);">${l.label}</span>
         <div style="display:flex;align-items:center;gap:.5rem;">
           <span style="font-size:.8rem;color:var(--muted);">${l.hrs}h/day · ${(l.hrs * 7).toFixed(0)}h/week</span>
           <span class="badge badge-yellow">Recoverable: ~${potential}h</span>
         </div>
       </div>`;
-    });
-    html += `</div>`;
-  }
+          });
+          html += `</div>`;
+        }
 
-  if (studyGap > 0) {
-    const weeklyGain = (studyGap * 7).toFixed(1);
-    html += `<ul class="result-suggestions">
+        if (studyGap > 0) {
+          const weeklyGain = (studyGap * 7).toFixed(1);
+          html += `<ul class="result-suggestions">
       <li>You need <strong>${studyGap.toFixed(1)} more hours/day</strong> to hit your ${goal}h study goal — that's ${weeklyGain}h a week</li>
-      ${phone > 1.5 ? `<li>Cutting phone time from ${phone}h to 1h frees up ${(phone - 1).toFixed(1)}h/day</li>` : ''}
-      ${tv > 1 ? `<li>Reducing TV/streaming from ${tv}h to 30 minutes frees up ${(tv - 0.5).toFixed(1)}h/day</li>` : ''}
-      ${commute > 0.5 ? `<li>Your ${commute}h commute could be partially used for flashcard revision or audio learning</li>` : ''}
+      ${phone > 1.5 ? `<li>Cutting phone time from ${phone}h to 1h frees up ${(phone - 1).toFixed(1)}h/day</li>` : ""}
+      ${tv > 1 ? `<li>Reducing TV/streaming from ${tv}h to 30 minutes frees up ${(tv - 0.5).toFixed(1)}h/day</li>` : ""}
+      ${commute > 0.5 ? `<li>Your ${commute}h commute could be partially used for flashcard revision or audio learning</li>` : ""}
       <li>Even recovering 1 focused hour per day gives you 7 extra study hours this week</li>
     </ul>`;
-  } else {
-    html += `<div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);">
+        } else {
+          html += `<div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);">
       ✅ You're already hitting your study goal of ${goal}h/day. Keep this up and make sure the quality of those study hours is high.
     </div>`;
-  }
+        }
 
-  const copyText = `MegaMocks — Time Leakage Finder\nStudy time: ${study}h | Available: ${available.toFixed(1)}h | Goal: ${goal}h\nTop leaks: ${leakItems.map(l => l.label + ' (' + l.hrs + 'h)').join(', ')}`;
-  document.getElementById('resultContent').innerHTML = html;
-  document.getElementById('ct').value = copyText;
-  const box = document.getElementById('resultBox');
-  box.classList.add('show');
-  box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-}
-</script>
-</body>
+        const copyText = `MegaMocks — Time Leakage Finder\nStudy time: ${study}h | Available: ${available.toFixed(1)}h | Goal: ${goal}h\nTop leaks: ${leakItems.map((l) => l.label + " (" + l.hrs + "h)").join(", ")}`;
+        document.getElementById("resultContent").innerHTML = html;
+        document.getElementById("ct").value = copyText;
+        const box = document.getElementById("resultBox");
+        box.classList.add("show");
+        box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    </script>
+  </body>
 </html>

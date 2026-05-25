@@ -1,172 +1,598 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Study Load Balance Checker — MegaMocks</title>
   <meta name="description" content="Check if you are spending too much time on one subject and neglecting others. The Study Load Balance Checker helps you study all subjects evenly before your exam." />
   <link rel="canonical" href="https://megamocks.com/tools/study-load-balance-checker/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    /* ── Subject row layout ─────────────────────── */
+    .subject-row {
+      display: grid;
+      grid-template-columns: 1fr 140px 44px;
+      gap: 0.6rem;
+      align-items: end;
+      margin-bottom: 0.6rem;
+    }
+    @media (max-width: 480px) {
+      .subject-row {
+        grid-template-columns: 1fr 100px 38px;
+        gap: 0.4rem;
+      }
+    }
+    .subject-row .form-group { margin: 0; }
+    .subject-row .remove-btn {
+      height: 44px;
+      width: 44px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      border-radius: 8px;
+      flex-shrink: 0;
+      align-self: end;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: 'Poppins', sans-serif;
+    }
+    .subject-row .remove-btn:hover {
+      border-color: var(--danger);
+      color: var(--danger);
+      background: rgba(248,113,113,0.08);
+    }
+    @media (max-width: 480px) {
+      .subject-row .remove-btn { height: 40px; width: 38px; font-size: 0.85rem; }
+    }
+
+    /* ── Empty state ────────────────────────────── */
+    .empty-state {
+      text-align: center;
+      padding: 1.5rem 1rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+      border: 1.5px dashed var(--border);
+      border-radius: 10px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Result bar card ────────────────────────── */
+    .subject-result-card {
+      background: var(--card2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .subject-result-card .top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+    .subject-result-card .name-hrs {
+      display: flex;
+      align-items: baseline;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .subject-result-card strong { font-size: 0.9rem; color: var(--text); }
+    .subject-result-card .hrs-label { font-size: 0.78rem; color: var(--muted); }
+
+    /* ── Validation error style ─────────────────── */
+    .field-error {
+      font-size: 0.75rem;
+      color: var(--danger);
+      margin-top: 0.2rem;
+      display: none;
+    }
+    .field-error.show { display: block; }
+    input.invalid, select.invalid { border-color: var(--danger) !important; }
+
+    /* ── Summary strip ──────────────────────────── */
+    .summary-strip {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .summary-strip .s-item { display: flex; flex-direction: column; gap: 0.1rem; }
+    .summary-strip .s-val { font-size: 1.1rem; font-weight: 700; color: var(--accent); }
+    .summary-strip .s-lbl { font-size: 0.72rem; color: var(--muted); }
+  </style>
 </head>
 <body>
+
 <div id="site-header"></div>
-<div class="container">
-  <div class="breadcrumb"><a href="../index.html">Home</a><span class="sep">/</span><a href="../tools/">Tools</a><span class="sep">/</span><span>Study Load Balance Checker</span></div>
-</div>
 
 <div class="container">
-  <div class="tool-intro">
-    <div class="tool-icon" style="font-size:clamp(1.1rem,4.5vw,2.4rem);margin-bottom:.75rem;">⚖️</div>
-    <h1>Study Load Balance Checker</h1>
-    <p style="font-size:1rem;color:var(--muted);">Are you spending too much time on subjects you already know well? Enter your weekly study hours per subject and see if your time is really balanced — or dangerously lopsided.</p>
-    <p style="font-size:.85rem;color:var(--muted);font-style:italic;">⏱ Takes about 2 minutes</p>
+  <div class="breadcrumb">
+    <a href="../index.html">Home</a><span class="sep">/</span>
+    <a href="../tools/">Tools</a><span class="sep">/</span>
+    <span>Study Load Balance Checker</span>
   </div>
 </div>
 
-<div class="container"><div class="ad-placeholder">Advertisement space — AdSense placeholder</div></div>
+<!-- Intro -->
+<div class="container">
+  <div class="tool-intro">
+    <div style="font-size: 2rem; margin-bottom: 0.75rem;">⚖️</div>
+    <h1>Study Load Balance Checker</h1>
+    <p style="font-size: 1rem; color: var(--muted);">
+      Are you spending too much time on subjects you already know well? Enter your weekly study hours per subject and see if your time is really balanced — or dangerously lopsided.
+    </p>
+    <p style="font-size: 0.85rem; color: var(--muted); font-style: italic;">⏱ Takes about 2 minutes</p>
+  </div>
+</div>
 
+<!-- Ad -->
+<div class="container">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<!-- ── TOOL UI ─────────────────────────────────── -->
 <div class="container">
   <div class="tool-ui-box">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;">
-      <h3 style="color:var(--text);">Hours Per Subject (This Week)</h3>
-      <button class="btn btn-outline btn-sm" onclick="addSubject()">+ Add Subject</button>
+
+    <!-- Header row -->
+    <div style="display: flex; justify-content: space-between; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; flex-wrap: wrap;">
+      <h3 style="color: var(--text); margin: 0;">Hours Per Subject This Week</h3>
+      <button class="btn btn-outline btn-sm" id="addBtn" onclick="addSubject()">+ Add Subject</button>
     </div>
+
+    <!-- Subject rows injected here -->
     <div id="subjectContainer"></div>
 
-    <div class="form-group" style="margin-top:1rem;">
-      <label>How do you want to balance your subjects?</label>
+    <!-- Balance goal -->
+    <div class="form-group" style="margin-top: 0.5rem;">
+      <label for="balanceGoal">How should balance be judged?</label>
       <select id="balanceGoal">
-        <option value="equal">Equal time — all subjects matter equally</option>
-        <option value="weighted">Weighted — harder subjects need more time</option>
+        <option value="equal">Equal time — every subject matters equally</option>
+        <option value="weighted">Flexible — some subjects may need more time</option>
       </select>
     </div>
 
-    <button class="btn btn-primary" onclick="checkBalance()" style="width:100%;justify-content:center;margin-top:.5rem;">Check My Balance →</button>
+    <!-- Submit -->
+    <button
+      class="btn btn-primary"
+      onclick="checkBalance()"
+      style="width: 100%; justify-content: center; margin-top: 0.75rem; padding: 0.8rem;">
+      Check My Balance →
+    </button>
 
+    <!-- Result -->
     <div class="result-box" id="resultBox">
       <div id="resultContent"></div>
-      <div class="result-actions">
-        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('ct').value,this)">📋 Copy</button>
+      <div class="result-actions" style="margin-top: 1rem;">
+        <button class="btn btn-outline btn-sm" onclick="copyResult(document.getElementById('copyText').value, this)">📋 Copy Result</button>
         <button class="btn btn-outline btn-sm" onclick="printResult()">🖨 Print</button>
+        <button class="btn btn-outline btn-sm" onclick="resetTool()">↺ Reset</button>
       </div>
-      <textarea id="ct" style="position:absolute;left:-9999px;"></textarea>
+      <textarea id="copyText" style="position: absolute; left: -9999px;" aria-hidden="true"></textarea>
     </div>
+
   </div>
 </div>
 
-<div class="container" style="margin-top:2rem;">
+<!-- Ad -->
+<div class="container" style="margin-top: 1rem;">
+  <div class="ad-placeholder">Advertisement space — AdSense placeholder</div>
+</div>
+
+<!-- Info sections -->
+<div class="container" style="margin-top: 2rem;">
   <div class="info-section">
+
     <h2>Example Usage</h2>
     <div class="example-box">
-      <strong>Inputs:</strong> Maths — 12 hrs, Physics — 2 hrs, Chemistry — 3 hrs, English — 1 hr<br/>
+      <strong>Inputs:</strong> Maths — 12 hrs, Physics — 2 hrs, Chemistry — 3 hrs, English — 1 hr<br/><br/>
       <strong>Result:</strong> ⚠️ Imbalanced — Maths is getting 67% of your time. Physics, Chemistry, and English are underserved. Redistribute at least 4 hours away from Maths this week.
     </div>
-    <h2 style="margin-top:2rem;">How This Tool Works</h2>
-    <p>The tool calculates the percentage of your total study time going to each subject. If any subject is getting significantly more or less than a balanced share, it flags it. The ideal share depends on your goal — equal spread, or weighted by difficulty.</p>
-    <h2 style="margin-top:2rem;">Why Load Balance Matters</h2>
-    <p>It's natural to spend more time on subjects you enjoy or feel comfortable in. But exams test everything. The subject you keep putting off is usually the one that costs you the most marks.</p>
-    <h2 style="margin-top:2rem;">Study Tips</h2>
-    <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.6rem;">
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ The subjects you avoid are usually the ones that need the most time. Face them first.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Set a minimum floor for each subject — for example, no subject gets less than 2 hours per week.</li>
-      <li style="background:var(--card);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);border:1px solid var(--border);">→ Update this tool at the end of each week to make sure you're not drifting.</li>
+
+    <h2 style="margin-top: 2rem;">How This Tool Works</h2>
+    <p>
+      For each subject you enter, the tool calculates what percentage of your total weekly study time it's receiving.
+      It then compares every subject's share against what a balanced distribution would look like — and flags anything that's significantly over or under.
+    </p>
+    <p>
+      The spread ratio shows how lopsided your schedule is. A ratio of 1x is perfect balance.
+      A ratio above 2x means your most-studied subject is getting double the time of your least-studied one — which is usually a warning sign.
+    </p>
+
+    <h2 style="margin-top: 2rem;">Why Load Balance Matters</h2>
+    <p>
+      It's completely natural to gravitate toward subjects you enjoy or already feel confident in.
+      But exams test everything — and the subject you keep putting off is almost always the one that costs you the most marks on the day.
+    </p>
+    <p>
+      Regular balance checks (even just weekly) prevent the slow drift where one subject dominates your schedule without you realising.
+    </p>
+
+    <h2 style="margin-top: 2rem;">Study Tips</h2>
+    <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 0.6rem;">
+      <li style="background: var(--card); border-radius: 8px; padding: .75rem 1rem; font-size: .88rem; color: var(--text); border: 1px solid var(--border);">→ The subject you've been avoiding is usually the one that needs the most time. Face it first each day.</li>
+      <li style="background: var(--card); border-radius: 8px; padding: .75rem 1rem; font-size: .88rem; color: var(--text); border: 1px solid var(--border);">→ Set a minimum floor for every subject — for example, no subject gets fewer than 2 hours per week regardless of how prepared you feel.</li>
+      <li style="background: var(--card); border-radius: 8px; padding: .75rem 1rem; font-size: .88rem; color: var(--text); border: 1px solid var(--border);">→ Run this tool at the end of each week. Imbalances are easy to correct early and hard to correct the night before an exam.</li>
+      <li style="background: var(--card); border-radius: 8px; padding: .75rem 1rem; font-size: .88rem; color: var(--text); border: 1px solid var(--border);">→ Feeling confident in a subject is not a reason to study it more — it's a reason to study it less so you can fix the gaps elsewhere.</li>
     </ul>
   </div>
 </div>
 
-<section class="section" style="background:var(--card);border-top:1px solid var(--border);margin-top:3rem;">
+<!-- FAQ -->
+<section class="section" style="background: var(--card); border-top: 1px solid var(--border); margin-top: 3rem;">
   <div class="container">
     <div class="section-title"><h2>Frequently Asked Questions</h2></div>
     <div class="faq-list">
-      <div class="faq-item"><button class="faq-question">Should all subjects always get equal time? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Not necessarily. Subjects where you're weaker or that carry more exam marks may justify more time. The key is that every subject gets enough — not that they all get exactly the same.</p></div></div>
-      <div class="faq-item"><button class="faq-question">What does a "balanced" study schedule look like? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>A roughly balanced schedule means no single subject is taking more than double the time of the lowest one, unless there's a clear reason (like a subject having twice the exam marks or syllabus).</p></div></div>
-      <div class="faq-item"><button class="faq-question">What if I only have one exam coming up? <span class="faq-chevron">▼</span></button><div class="faq-answer"><p>Then use the tool to balance topics within that one subject instead of separate subjects. The logic is the same.</p></div></div>
+
+      <div class="faq-item">
+        <button class="faq-question">Should all subjects get exactly equal time? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">
+          <p>Not always. Subjects where you're weaker, or that carry more exam marks, may deserve more time. The key is that every subject gets <em>enough</em> — not that they all get exactly the same. The tool flags when the gap becomes too large to ignore.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What spread ratio is too high? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">
+          <p>A ratio above 2x (one subject getting more than double the time of another) is usually a warning sign — unless there's a clear reason like a much larger syllabus or a much harder subject. Above 3x is almost always imbalanced.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">What if I'm only preparing for one exam? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">
+          <p>You can use this tool to balance topics <em>within</em> a single subject instead of separate subjects. Just treat each topic as a "subject" row. The balance logic works exactly the same way.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">How many subjects can I add? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">
+          <p>You can add up to 10 subjects. For most students preparing for board or competitive exams, 3–6 subjects is typical. If you have more, consider grouping related ones together.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">Can I save my subject list? <span class="faq-chevron">▼</span></button>
+        <div class="faq-answer">
+          <p>Your subject names and hours are saved automatically in your browser each time you run a check. They'll be there the next time you visit — so you can update hours each week without re-typing everything.</p>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<div class="container" style="margin-top:3rem;margin-bottom:2rem;">
-  <h2 style="margin-bottom:1.25rem;">Related Tools</h2>
+<!-- Related tools -->
+<div class="container" style="margin-top: 3rem; margin-bottom: 2rem;">
+  <h2 style="margin-bottom: 1.25rem;">Related Tools</h2>
   <div class="related-grid">
     <a href="revision-gap-finder.html" class="related-card"><span class="r-icon">🔍</span><span>Revision Gap Finder</span></a>
     <a href="daily-study-target-validator.html" class="related-card"><span class="r-icon">🎯</span><span>Daily Study Target Validator</span></a>
     <a href="weak-topic-recovery-planner.html" class="related-card"><span class="r-icon">🛠️</span><span>Weak Topic Recovery Planner</span></a>
+    <a href="time-leakage-finder.html" class="related-card"><span class="r-icon">⏳</span><span>Time Leakage Finder</span></a>
   </div>
 </div>
 
 <div id="site-footer"></div>
 <script src="../js/components.js"></script>
 <script src="../js/main.js"></script>
+
 <script>
-function addSubject(name='',hrs=0){
-  const c=document.getElementById('subjectContainer');
-  const d=document.createElement('div');
-  d.className='form-row-grid';d.style.cssText='margin-bottom:.6rem;';
-  d.innerHTML=`<div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Subject</label><input type="text" class="sn" placeholder="e.g. Mathematics" value="${name}"/></div>
-  <div class="form-group" style="margin:0;"><label style="font-size:.78rem;">Hours this week</label><input type="number" class="sh" min="0" max="80" step=".5" value="${hrs}" placeholder="0"/></div>
-  <button onclick="this.closest('div').remove()" class="btn btn-outline btn-sm" style="height:42px;">✕</button>`;
-  c.appendChild(d);
-}
-function checkBalance(){
-  const names=[...document.querySelectorAll('.sn')];
-  const hrs=[...document.querySelectorAll('.sh')];
-  const subjects=[];
-  names.forEach((n,i)=>{
-    const name=n.value.trim(); if(!name)return;
-    const h=parseFloat(hrs[i].value)||0;
-    subjects.push({name,h});
-  });
-  if(subjects.length<2){alert('Add at least 2 subjects.');return;}
-  const total=subjects.reduce((a,s)=>a+s.h,0);
-  if(total===0){alert('Enter at least some hours for your subjects.');return;}
-  const ideal=total/subjects.length;
-  const maxH=Math.max(...subjects.map(s=>s.h));
-  const minH=Math.min(...subjects.map(s=>s.h));
-  const ratio=minH===0?99:(maxH/minH).toFixed(1);
-  const balanced=maxH<=ideal*1.6 && minH>=ideal*0.4;
+/* ── Constants ─────────────────────────────────── */
+const MAX_SUBJECTS = 10;
+const STORAGE_KEY  = 'mm_slbc_subjects';
 
-  subjects.sort((a,b)=>b.h-a.h);
+/* ── Add a subject row ─────────────────────────── */
+function addSubject(name, hrs) {
+  var container = document.getElementById('subjectContainer');
+  var count     = container.querySelectorAll('.subject-row').length;
 
-  let html=`<div style="margin-bottom:1rem;">
-    <div class="result-score ${balanced?'score-good':'score-warn'}" style="font-size:clamp(1.05rem,4vw,1.8rem);margin-bottom:.25rem;">${balanced?'✅ Well Balanced':'⚠️ Imbalanced'}</div>
-    <div class="result-label">Total: ${total}h/week | Ideal per subject: ${ideal.toFixed(1)}h | Spread ratio: ${ratio}x</div>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;">`;
-
-  subjects.forEach(s=>{
-    const pct=Math.round((s.h/total)*100);
-    const ideal_share=Math.round((1/subjects.length)*100);
-    const diff=pct-ideal_share;
-    const barColor=Math.abs(diff)>20?'var(--danger)':Math.abs(diff)>10?'var(--warning)':'var(--success)';
-    const badge=diff>15?'Over':'  diff<-15?'Under':'OK';
-    const bc=diff>15?'badge-red':diff<-15?'badge-yellow':'badge-green';
-    html+=`<div style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:.75rem 1rem;">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.4rem;">
-        <strong style="font-size:.88rem;color:var(--text);">${s.name}</strong>
-        <div style="display:flex;align-items:center;gap:.5rem;">
-          <span style="font-size:.8rem;color:var(--muted);">${s.h}h (${pct}%)</span>
-          <span class="badge ${bc}">${badge}</span>
-        </div>
-      </div>
-      <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%;background:${barColor};"></div></div>
-    </div>`;
-  });
-  html+=`</div>`;
-  if(!balanced){
-    const over=subjects.filter(s=>s.h>ideal*1.6);
-    const under=subjects.filter(s=>s.h<ideal*0.4);
-    html+=`<ul class="result-suggestions">
-      ${over.map(s=>`<li>Move some hours away from <strong>${s.name}</strong> (${s.h}h — ${Math.round((s.h/total)*100)}% of your time)</li>`).join('')}
-      ${under.map(s=>`<li>Give more time to <strong>${s.name}</strong> — it's getting less than it needs (${s.h}h)</li>`).join('')}
-      <li>Aim for no subject getting less than ${Math.floor(ideal*0.5)}h per week</li>
-    </ul>`;
+  if (count >= MAX_SUBJECTS) {
+    showToast('Maximum ' + MAX_SUBJECTS + ' subjects allowed.');
+    return;
   }
-  document.getElementById('resultContent').innerHTML=html;
-  document.getElementById('ct').value=`MegaMocks Study Load Balance\n${subjects.map(s=>s.name+': '+s.h+'h ('+Math.round((s.h/total)*100)+'%)').join('\n')}\nResult: ${balanced?'Balanced':'Imbalanced'}`;
-  const box=document.getElementById('resultBox');box.classList.add('show');box.scrollIntoView({behavior:'smooth',block:'nearest'});
+
+  // Remove empty state if present
+  var empty = container.querySelector('.empty-state');
+  if (empty) empty.remove();
+
+  var row = document.createElement('div');
+  row.className = 'subject-row';
+
+  var nameVal = name !== undefined ? escapeHtml(name) : '';
+  var hrsVal  = hrs  !== undefined ? hrs : '';
+
+  row.innerHTML =
+    '<div class="form-group">' +
+      '<label style="font-size:.8rem;font-weight:500;">Subject name</label>' +
+      '<input type="text" class="sub-name" placeholder="e.g. Mathematics" value="' + nameVal + '" maxlength="40" />' +
+      '<span class="field-error" aria-live="polite"></span>' +
+    '</div>' +
+    '<div class="form-group">' +
+      '<label style="font-size:.8rem;font-weight:500;">Hours / week</label>' +
+      '<input type="number" class="sub-hrs" min="0" max="80" step="0.5" value="' + hrsVal + '" placeholder="0" />' +
+      '<span class="field-error" aria-live="polite"></span>' +
+    '</div>' +
+    '<button type="button" class="remove-btn" onclick="removeRow(this)" title="Remove subject" aria-label="Remove subject">✕</button>';
+
+  container.appendChild(row);
+  updateAddButton();
+
+  // Focus the name input if it's empty (new row added by user)
+  if (!name) {
+    var input = row.querySelector('.sub-name');
+    setTimeout(function(){ input.focus(); }, 50);
+  }
 }
-document.addEventListener('DOMContentLoaded',()=>{addSubject('',0);addSubject('',0);addSubject('',0);});
+
+/* ── Remove a row ──────────────────────────────── */
+function removeRow(btn) {
+  var row       = btn.closest('.subject-row');
+  var container = document.getElementById('subjectContainer');
+  row.remove();
+  updateAddButton();
+  if (container.querySelectorAll('.subject-row').length === 0) {
+    showEmptyState();
+  }
+}
+
+/* ── Empty state ───────────────────────────────── */
+function showEmptyState() {
+  var container = document.getElementById('subjectContainer');
+  var div = document.createElement('div');
+  div.className = 'empty-state';
+  div.textContent = 'No subjects yet — tap "+ Add Subject" to get started.';
+  container.appendChild(div);
+}
+
+/* ── Keep Add button label accurate ───────────── */
+function updateAddButton() {
+  var container = document.getElementById('subjectContainer');
+  var count     = container.querySelectorAll('.subject-row').length;
+  var btn       = document.getElementById('addBtn');
+  if (count >= MAX_SUBJECTS) {
+    btn.disabled = true;
+    btn.textContent = 'Max reached';
+  } else {
+    btn.disabled = false;
+    btn.textContent = '+ Add Subject';
+  }
+}
+
+/* ── Validation helpers ────────────────────────── */
+function clearErrors() {
+  document.querySelectorAll('.field-error').forEach(function(el) {
+    el.textContent = '';
+    el.classList.remove('show');
+  });
+  document.querySelectorAll('.invalid').forEach(function(el) {
+    el.classList.remove('invalid');
+  });
+}
+
+function showFieldError(input, msg) {
+  input.classList.add('invalid');
+  var err = input.parentElement.querySelector('.field-error');
+  if (err) { err.textContent = msg; err.classList.add('show'); }
+}
+
+function showToast(msg) {
+  var existing = document.getElementById('mm-toast');
+  if (existing) existing.remove();
+  var toast = document.createElement('div');
+  toast.id = 'mm-toast';
+  toast.textContent = msg;
+  toast.style.cssText =
+    'position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);' +
+    'background:var(--card2);color:var(--text);border:1px solid var(--border);' +
+    'border-radius:8px;padding:.65rem 1.25rem;font-size:.85rem;' +
+    'font-family:Poppins,sans-serif;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.3);' +
+    'max-width:90vw;text-align:center;';
+  document.body.appendChild(toast);
+  setTimeout(function(){ toast.remove(); }, 3000);
+}
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/"/g,'&quot;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;');
+}
+
+/* ── Main check function ───────────────────────── */
+function checkBalance() {
+  clearErrors();
+
+  var rows     = document.querySelectorAll('.subject-row');
+  var subjects = [];
+  var hasError = false;
+
+  rows.forEach(function(row) {
+    var nameInput = row.querySelector('.sub-name');
+    var hrsInput  = row.querySelector('.sub-hrs');
+    var name      = nameInput.value.trim();
+    var hrs       = parseFloat(hrsInput.value);
+
+    if (!name) {
+      showFieldError(nameInput, 'Enter a subject name.');
+      hasError = true;
+      return;
+    }
+    if (isNaN(hrs) || hrs < 0) {
+      showFieldError(hrsInput, 'Enter 0 or more hours.');
+      hasError = true;
+      return;
+    }
+    if (hrs > 80) {
+      showFieldError(hrsInput, 'Maximum 80 hrs/week.');
+      hasError = true;
+      return;
+    }
+    subjects.push({ name: name, h: hrs });
+  });
+
+  if (hasError) return;
+
+  if (subjects.length < 2) {
+    showToast('Add at least 2 subjects to check balance.');
+    return;
+  }
+
+  var allZero = subjects.every(function(s){ return s.h === 0; });
+  if (allZero) {
+    showToast('Enter at least some study hours to see a result.');
+    return;
+  }
+
+  // ── Compute ─────────────────────────────────────
+  var total       = subjects.reduce(function(a, s){ return a + s.h; }, 0);
+  var ideal       = total / subjects.length;
+  var maxH        = Math.max.apply(null, subjects.map(function(s){ return s.h; }));
+  var minH        = Math.min.apply(null, subjects.map(function(s){ return s.h; }));
+  var ratio       = minH === 0 ? '∞' : (maxH / minH).toFixed(1);
+  var balanced    = maxH <= ideal * 1.6 && (minH === 0 || minH >= ideal * 0.4);
+  var flexMode    = document.getElementById('balanceGoal').value === 'weighted';
+
+  // Sort highest first
+  subjects.sort(function(a, b){ return b.h - a.h; });
+
+  // ── Build result HTML ────────────────────────────
+  var statusText  = balanced ? '✅ Well Balanced' : '⚠️ Imbalanced';
+  var statusClass = balanced ? 'score-good' : 'score-warn';
+
+  var html = '';
+
+  // Status headline
+  html += '<div class="result-score ' + statusClass + '" style="margin-bottom:.5rem;">' + statusText + '</div>';
+
+  // Summary strip
+  html +=
+    '<div class="summary-strip">' +
+      '<div class="s-item"><span class="s-val">' + total.toFixed(1) + 'h</span><span class="s-lbl">Total hrs/week</span></div>' +
+      '<div class="s-item"><span class="s-val">' + ideal.toFixed(1) + 'h</span><span class="s-lbl">Ideal per subject</span></div>' +
+      '<div class="s-item"><span class="s-val">' + ratio + 'x</span><span class="s-lbl">Spread ratio</span></div>' +
+      '<div class="s-item"><span class="s-val">' + subjects.length + '</span><span class="s-lbl">Subjects</span></div>' +
+    '</div>';
+
+  // Per-subject bars
+  html += '<div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;">';
+
+  subjects.forEach(function(s) {
+    var pct        = total > 0 ? Math.round((s.h / total) * 100) : 0;
+    var idealShare = Math.round((1 / subjects.length) * 100);
+    var diff       = pct - idealShare;
+
+    var barColor, badgeText, badgeClass;
+    if (diff > 20)       { barColor = 'var(--danger)';  badgeText = 'Over';  badgeClass = 'badge-red';    }
+    else if (diff < -20) { barColor = 'var(--danger)';  badgeText = 'Under'; badgeClass = 'badge-red';    }
+    else if (diff > 10)  { barColor = 'var(--warning)'; badgeText = 'High';  badgeClass = 'badge-yellow'; }
+    else if (diff < -10) { barColor = 'var(--warning)'; badgeText = 'Low';   badgeClass = 'badge-yellow'; }
+    else                 { barColor = 'var(--success)'; badgeText = 'OK';    badgeClass = 'badge-green';  }
+
+    html +=
+      '<div class="subject-result-card">' +
+        '<div class="top-row">' +
+          '<div class="name-hrs">' +
+            '<strong>' + escapeHtml(s.name) + '</strong>' +
+            '<span class="hrs-label">' + s.h + 'h · ' + pct + '%</span>' +
+          '</div>' +
+          '<span class="badge ' + badgeClass + '">' + badgeText + '</span>' +
+        '</div>' +
+        '<div class="progress-wrap">' +
+          '<div class="progress-bar" style="width:' + pct + '%;background:' + barColor + ';"></div>' +
+        '</div>' +
+      '</div>';
+  });
+
+  html += '</div>';
+
+  // Suggestions
+  if (!balanced) {
+    var over  = subjects.filter(function(s){ return s.h > ideal * 1.6; });
+    var under = subjects.filter(function(s){ return s.h < ideal * 0.4; });
+
+    html += '<ul class="result-suggestions">';
+    over.forEach(function(s) {
+      html += '<li>Reduce time on <strong>' + escapeHtml(s.name) + '</strong> (' + s.h + 'h — ' + Math.round((s.h/total)*100) + '% of your week)</li>';
+    });
+    under.forEach(function(s) {
+      html += '<li>Increase time on <strong>' + escapeHtml(s.name) + '</strong> — it\'s only getting ' + s.h + 'h (' + Math.round((s.h/total)*100) + '%)</li>';
+    });
+    html += '<li>Aim for no subject getting fewer than <strong>' + (ideal * 0.5).toFixed(1) + 'h</strong> per week</li>';
+    html += '</ul>';
+  } else {
+    html +=
+      '<div style="background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3);border-radius:8px;padding:.75rem 1rem;font-size:.88rem;color:var(--text);">' +
+        '✅ Your study time looks well distributed. Keep this up — consistency is what gets results.' +
+      '</div>';
+  }
+
+  // ── Copy text ────────────────────────────────────
+  var copyLines = ['MegaMocks — Study Load Balance Checker', ''];
+  subjects.forEach(function(s) {
+    var pct = total > 0 ? Math.round((s.h/total)*100) : 0;
+    copyLines.push(s.name + ': ' + s.h + 'h (' + pct + '%)');
+  });
+  copyLines.push('');
+  copyLines.push('Total: ' + total.toFixed(1) + 'h | Ideal: ' + ideal.toFixed(1) + 'h | Ratio: ' + ratio + 'x');
+  copyLines.push('Result: ' + (balanced ? 'Well Balanced' : 'Imbalanced'));
+
+  // ── Save to localStorage ─────────────────────────
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(
+      subjects.map(function(s){ return { name: s.name, h: s.h }; })
+    ));
+  } catch(e) {}
+
+  // ── Inject & show ────────────────────────────────
+  document.getElementById('resultContent').innerHTML = html;
+  document.getElementById('copyText').value = copyLines.join('\n');
+
+  var box = document.getElementById('resultBox');
+  box.classList.add('show');
+  setTimeout(function(){
+    box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }, 50);
+}
+
+/* ── Reset ─────────────────────────────────────── */
+function resetTool() {
+  var container = document.getElementById('subjectContainer');
+  container.innerHTML = '';
+  document.getElementById('resultBox').classList.remove('show');
+  document.getElementById('resultContent').innerHTML = '';
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  addSubject(); addSubject(); addSubject();
+  updateAddButton();
+}
+
+/* ── Init on load ──────────────────────────────── */
+document.addEventListener('DOMContentLoaded', function() {
+  var saved = null;
+  try { saved = JSON.parse(localStorage.getItem(STORAGE_KEY)); } catch(e) {}
+
+  if (saved && Array.isArray(saved) && saved.length > 0) {
+    saved.forEach(function(s) { addSubject(s.name, s.h); });
+  } else {
+    addSubject('', ''); addSubject('', ''); addSubject('', '');
+  }
+  updateAddButton();
+});
 </script>
 </body>
 </html>

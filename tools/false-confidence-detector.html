@@ -452,8 +452,15 @@
     <script src="../js/main.js"></script>
     <script>
       function detectConfidence() {
-        const subject =
-          document.getElementById("subject").value.trim() || "This topic";
+        const subjectInput = document.getElementById("subject");
+        const subject = subjectInput.value.trim();
+
+        if (subject.length < 3) {
+          alert("Please enter a valid subject or topic name.");
+          subjectInput.focus();
+          return;
+        }
+
         const confidence = parseInt(
           document.getElementById("confidence").value,
         );
