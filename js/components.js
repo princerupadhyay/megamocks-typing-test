@@ -31,7 +31,7 @@
     return `
 <header>
   <nav>
-    <a href="${R}index.html" class="logo">Mega<span>Mocks</span></a>
+    <a href="${R}" class="logo">Mega<span>Mocks</span></a>
     <ul class="nav-links">
       <li><a href="${R}index.html">Home</a></li>
       <li><a href="${R}tools/">All Tools</a></li>
@@ -68,7 +68,7 @@
     <div class="footer-grid">
 
       <div class="footer-brand">
-        <a href="${R}index.html" class="logo">Mega<span>Mocks</span></a>
+        <a href="${R}" class="logo">Mega<span>Mocks</span></a>
         <p>Simple and free study tools for students who want to study smarter and stress less. No login needed. No cost. Ever.</p>
       </div>
 
