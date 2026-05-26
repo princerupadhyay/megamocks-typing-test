@@ -350,17 +350,7 @@
         const idx = container.children.length;
         const div = document.createElement("div");
         div.className = "topic-row";
-        div.style.cssText = `
-  display:grid;
-  grid-template-columns:1fr 1fr auto;
-  gap:0.6rem;
-  margin-bottom:0.9rem;
-  align-items:end;
-`;
 
-        if (window.innerWidth <= 768) {
-          div.style.gridTemplateColumns = "1fr";
-        }
         div.innerHTML = `
   <div class="topic-fields">
 

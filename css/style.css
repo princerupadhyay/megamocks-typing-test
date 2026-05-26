@@ -1401,6 +1401,9 @@ footer {
 
 .topic-row {
   margin-bottom: 0.75rem;
+  background-color: #0f172a;
+  padding: 1rem;
+  border-radius: 0.5rem;
 }
 
 .topic-fields {
