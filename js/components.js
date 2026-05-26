@@ -33,7 +33,7 @@
   <nav>
     <a href="${R}" class="logo">Mega<span>Mocks</span></a>
     <ul class="nav-links">
-      <li><a href="${R}index.html">Home</a></li>
+      <li><a href="${R}">Home</a></li>
       <li><a href="${R}tools/">All Tools</a></li>
       <li><a href="${R}blog/">Blog</a></li>
       <li><a href="${R}about.html">About Us</a></li>
@@ -48,7 +48,7 @@
     </div>
   </nav>
   <div class="mobile-nav" id="mobileNav">
-    <a href="${R}index.html">Home</a>
+    <a href="${R}">Home</a>
     <a href="${R}tools/">All Tools</a>
     <a href="${R}blog/">Blog</a>
     <a href="${R}about.html">About Us</a>
