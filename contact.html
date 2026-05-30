@@ -179,7 +179,26 @@
           </div>
         </div>
 
-        <div class="contact-form-wrap">
+        <form
+          class="contact-form-wrap"
+          action="https://formsubmit.co/princeupadhyay2025@gmail.com"
+          method="POST"
+        >
+          <input
+            type="hidden"
+            name="_subject"
+            value="New MegaMocks Contact Form Submission"
+          />
+
+          <input type="hidden" name="_template" value="table" />
+
+          <input type="hidden" name="_captcha" value="false" />
+
+          <input
+            type="hidden"
+            name="_next"
+            value="https://megamocks.com/contact.html?success=1"
+          />
           <h2
             style="
               margin-bottom: 1.25rem;
@@ -195,8 +214,10 @@
             <input
               type="text"
               id="c_name"
+              name="name"
               placeholder="What should we call you?"
               autocomplete="name"
+              required
             />
           </div>
           <div class="form-group">
@@ -204,13 +225,15 @@
             <input
               type="email"
               id="c_email"
+              name="email"
               placeholder="your@email.com"
               autocomplete="email"
+              required
             />
           </div>
           <div class="form-group">
             <label for="c_subject">What is this about?</label>
-            <select id="c_subject">
+            <select id="c_subject" name="subject" required>
               <option value="">Select a topic...</option>
               <option value="bug">Bug report</option>
               <option value="idea">Tool idea / suggestion</option>
@@ -223,14 +246,16 @@
             <label for="c_message">Your message</label>
             <textarea
               id="c_message"
+              name="message"
               rows="5"
               placeholder="Tell us what's on your mind..."
+              required
             ></textarea>
           </div>
 
           <button
+            type="submit"
             class="btn btn-primary"
-            onclick="sendMessage()"
             style="
               width: 100%;
               justify-content: center;
@@ -255,7 +280,7 @@
               >EmailJS</a
             >.
           </p>
-        </div>
+        </form>
       </div>
     </section>
 
@@ -263,56 +288,10 @@
     <script src="js/components.js"></script>
     <script src="js/main.js"></script>
     <script>
-      function sendMessage() {
-        var name = document.getElementById("c_name").value.trim();
-        var email = document.getElementById("c_email").value.trim();
-        var subject = document.getElementById("c_subject").value;
-        var message = document.getElementById("c_message").value.trim();
-        if (!name) {
-          flashError("c_name", "Please enter your name.");
-          return;
-        }
-        if (!email || !email.includes("@")) {
-          flashError("c_email", "Please enter a valid email.");
-          return;
-        }
-        if (!subject) {
-          flashError("c_subject", "Please choose a topic.");
-          return;
-        }
-        if (!message) {
-          flashError("c_message", "Please write a message.");
-          return;
-        }
-        document.getElementById("c_name").value = "";
-        document.getElementById("c_email").value = "";
-        document.getElementById("c_subject").value = "";
-        document.getElementById("c_message").value = "";
-        var s = document.getElementById("formSuccess");
-        s.style.display = "block";
-        setTimeout(function () {
-          s.style.display = "none";
-        }, 6000);
-      }
-      function flashError(id, msg) {
-        var el = document.getElementById(id);
-        el.style.borderColor = "var(--danger)";
-        el.focus();
-        setTimeout(function () {
-          el.style.borderColor = "";
-        }, 2500);
-        var err = document.getElementById(id + "_err");
-        if (!err) {
-          err = document.createElement("p");
-          err.id = id + "_err";
-          err.style.cssText =
-            "font-size:.78rem;color:var(--danger);margin:.25rem 0 0;";
-          el.parentNode.appendChild(err);
-        }
-        err.textContent = msg;
-        setTimeout(function () {
-          err.textContent = "";
-        }, 2500);
+      if (window.location.search.includes("success=1")) {
+        document.getElementById("formSuccess").style.display = "block";
+        document.getElementById("formSuccess").innerHTML =
+          "✅ Message sent successfully. Thanks for reaching out!";
       }
     </script>
   </body>
