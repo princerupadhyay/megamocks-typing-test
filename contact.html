@@ -269,17 +269,6 @@
           <div class="form-success" id="formSuccess">
             ✅ Message received. We read everything — thanks for reaching out.
           </div>
-          <p class="contact-note">
-            Note: This form is a frontend demo. To enable real sending, connect
-            it to
-            <a href="https://formspree.io" target="_blank" rel="noopener"
-              >Formspree</a
-            >
-            or
-            <a href="https://www.emailjs.com" target="_blank" rel="noopener"
-              >EmailJS</a
-            >.
-          </p>
         </form>
       </div>
     </section>
@@ -291,7 +280,7 @@
       if (window.location.search.includes("success=1")) {
         document.getElementById("formSuccess").style.display = "block";
         document.getElementById("formSuccess").innerHTML =
-          "✅ Message sent successfully. Thanks for reaching out!";
+          "✅ Message received. We read everything. Thanks for reaching out!";
       }
     </script>
   </body>
