@@ -93,6 +93,7 @@
           <li><a href="${R}blog/how-to-find-revision-gaps.html">How to Find Revision Gaps</a></li>
           <li><a href="${R}blog/exam-readiness-guide.html">Exam Readiness Guide</a></li>
           <li><a href="${R}blog/how-to-balance-study-load.html">How to Balance Study Load</a></li>
+          <li><a href="${R}blog/where-does-study-time-go.html">Where Does The Study Time Go?</a></li>
           <li><a href="${R}blog/">All Posts →</a></li>
         </ul>
       </div>
@@ -112,7 +113,7 @@
     </div>
 
     <div class="footer-bottom">
-      <p>© 2025 - MegaMocks | All Rights Reserved | Made with 🩵</p>
+      <p>© 2025 - MegaMocks | All Rights Reserved | Made with <span style="color:#3b82f6; font-weight:500; font-size: 1rem;">&hearts;</span></p>
     </div>
   </div>
 </footer>
