@@ -43,12 +43,20 @@
         font-size: clamp(5rem, 20vw, 9rem);
         font-weight: 700;
         line-height: 1;
-        color: var(--card2);
+        color: var(--border);
         letter-spacing: -0.04em;
         position: relative;
         display: inline-block;
         margin-bottom: 0.25rem;
         user-select: none;
+      }
+      /* Dark mode: slightly brighter so it reads well */
+      body:not(.light-mode) .nf-number {
+        color: #2d4a6a;
+      }
+      /* Light mode: solid visible grey */
+      body.light-mode .nf-number {
+        color: #94a3b8;
       }
       .nf-number span {
         color: var(--accent);
@@ -203,8 +211,8 @@
 
         <!-- Actions -->
         <div class="nf-actions">
-          <a href="/" class="btn btn-primary">← Back to Home</a>
-          <a href="/tools" class="btn btn-outline">Browse All Tools</a>
+          <a href="/index.html" class="btn btn-primary">← Back to Home</a>
+          <a href="/tools/" class="btn btn-outline">Browse All Tools</a>
         </div>
 
         <!-- Quick tool shortcuts -->
