@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page Not Found — MegaMocks</title>
+    <meta
+      name="description"
+      content="This page doesn't exist. But your study tools are still here — head back to MegaMocks and keep going."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <script
+      async
+      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4652160033999969"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      /* ── Full-page centered layout ─────────────── */
+      .not-found-wrap {
+        min-height: calc(100vh - 140px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3rem 1.25rem;
+      }
+
+      .not-found-box {
+        max-width: 560px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* ── Big 404 number ─────────────────────────── */
+      .nf-number {
+        font-size: clamp(5rem, 20vw, 9rem);
+        font-weight: 700;
+        line-height: 1;
+        color: var(--card2);
+        letter-spacing: -0.04em;
+        position: relative;
+        display: inline-block;
+        margin-bottom: 0.25rem;
+        user-select: none;
+      }
+      .nf-number span {
+        color: var(--accent);
+      }
+
+      /* ── Illustration inside number ─────────────── */
+      .nf-emoji {
+        font-size: clamp(2rem, 8vw, 3.5rem);
+        display: block;
+        margin-bottom: 1.25rem;
+        animation: float 3s ease-in-out infinite;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+
+      .not-found-box h1 {
+        font-size: clamp(1.3rem, 4vw, 1.75rem);
+        color: var(--text);
+        margin-bottom: 0.75rem;
+      }
+
+      .not-found-box .nf-sub {
+        font-size: 0.92rem;
+        color: var(--muted);
+        line-height: 1.7;
+        margin-bottom: 2rem;
+      }
+
+      /* ── Action buttons ─────────────────────────── */
+      .nf-actions {
+        display: flex;
+        gap: 0.75rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+      }
+
+      /* ── Quick tool links ───────────────────────── */
+      .nf-tools-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        color: var(--muted);
+        margin-bottom: 0.75rem;
+      }
+
+      .nf-tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.5rem;
+      }
+
+      .nf-tool-link {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 0.65rem 0.85rem;
+        text-decoration: none;
+        color: var(--muted);
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        transition: var(--transition);
+      }
+      .nf-tool-link:hover {
+        border-color: var(--accent);
+        color: var(--accent);
+        transform: translateY(-2px);
+      }
+      .nf-tool-link .tl-icon {
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      /* ── Divider line ───────────────────────────── */
+      .nf-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 2rem 0;
+        opacity: 0.5;
+      }
+
+      /* ── Study tip at bottom ────────────────────── */
+      .nf-tip {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--accent);
+        border-radius: 0 10px 10px 0;
+        padding: 0.85rem 1.1rem;
+        text-align: left;
+        font-size: 0.83rem;
+        color: var(--muted);
+        font-style: italic;
+        line-height: 1.6;
+      }
+      .nf-tip::before {
+        content: '"';
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+      .nf-tip::after {
+        content: '"';
+        color: var(--accent);
+        font-size: 1.1rem;
+      }
+
+      @media (max-width: 480px) {
+        .nf-actions {
+          flex-direction: column;
+          align-items: center;
+        }
+        .nf-actions .btn {
+          width: 100%;
+          max-width: 280px;
+          justify-content: center;
+        }
+        .nf-tools-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <div class="not-found-wrap">
+      <div class="not-found-box">
+        <!-- Big 404 -->
+        <div class="nf-number">4<span>0</span>4</div>
+
+        <!-- Floating emoji -->
+        <span class="nf-emoji">📚</span>
+
+        <!-- Heading -->
+        <h1>This page doesn't exist</h1>
+
+        <!-- Message -->
+        <p class="nf-sub">
+          Looks like this page got lost somewhere between studying and
+          procrastinating. The link might be broken, or the page may have moved.
+          Your study tools are still here though — don't let this stop you.
+        </p>
+
+        <!-- Actions -->
+        <div class="nf-actions">
+          <a href="/" class="btn btn-primary">← Back to Home</a>
+          <a href="/tools" class="btn btn-outline">Browse All Tools</a>
+        </div>
+
+        <!-- Quick tool shortcuts -->
+        <div class="nf-tools-label">Or go straight to a tool</div>
+        <div class="nf-tools-grid">
+          <a href="/tools/false-confidence-detector.html" class="nf-tool-link">
+            <span class="tl-icon">🎭</span>False Confidence
+          </a>
+          <a href="/tools/revision-gap-finder.html" class="nf-tool-link">
+            <span class="tl-icon">🔍</span>Revision Gaps
+          </a>
+          <a href="/tools/exam-readiness-index.html" class="nf-tool-link">
+            <span class="tl-icon">📊</span>Exam Readiness
+          </a>
+        </div>
+
+        <div class="nf-divider"></div>
+
+        <!-- Study tip -->
+        <div class="nf-tip">
+          Getting lost is part of the process. What matters is that you find
+          your way back and keep going. Consistency beats a perfect plan.
+        </div>
+      </div>
+    </div>
+
+    <div id="site-footer"></div>
+    <script src="/js/components.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
