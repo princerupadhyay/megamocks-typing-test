@@ -21,14 +21,23 @@
 
   <!-- Blog -->
   <url><loc>https://megamocks.com/blog/</loc><priority>0.7</priority><changefreq>weekly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/false-confidence-in-studying.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/how-to-find-revision-gaps.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/7-day-exam-countdown.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://megamocks.com/blog/exam-readiness-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/how-to-take-better-study-notes.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/false-confidence-in-studying.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://megamocks.com/blog/how-to-balance-study-load.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/weak-topic-recovery-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/why-previous-year-questions-matter.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/where-does-study-time-go.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
-  <url><loc>https://megamocks.com/blog/how-to-set-realistic-study-targets.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
   <url><loc>https://megamocks.com/blog/how-to-decide-which-subject-to-study-first.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/how-to-find-revision-gaps.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/how-to-get-back-on-track-after-ruining-study-schedule.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/how-to-revise-any-topic-in-30-minutes.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/how-to-set-realistic-study-targets.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/how-to-stop-mind-blanking-during-exams.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/how-to-take-better-study-notes.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/study-routine-no-motivation-no-time.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/the-only-revision-schedule-that-works.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/time-wasters-killing-exam-preparation.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/weak-topic-recovery-guide.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/where-does-study-time-go.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/why-previous-year-questions-matter.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/why-studying-more-hours-lowers-scores.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
+  <url><loc>https://megamocks.com/blog/why-you-forget-everything-before-an-exam.html</loc><priority>0.7</priority><changefreq>monthly</changefreq></url>
 </urlset>
